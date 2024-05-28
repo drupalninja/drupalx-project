@@ -5145,12 +5145,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupalninja/drupalx_theme.git",
-                "reference": "b2dcbef8c8fcd00283c3ea72431e655300e0acf3"
+                "reference": "acda4b61bbea029fc7c4989afea67a522e82e011"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupalninja/drupalx_theme/zipball/b2dcbef8c8fcd00283c3ea72431e655300e0acf3",
-                "reference": "b2dcbef8c8fcd00283c3ea72431e655300e0acf3",
+                "url": "https://api.github.com/repos/drupalninja/drupalx_theme/zipball/acda4b61bbea029fc7c4989afea67a522e82e011",
+                "reference": "acda4b61bbea029fc7c4989afea67a522e82e011",
                 "shasum": ""
             },
             "default-branch": true,
@@ -5169,7 +5169,7 @@
                 "issues": "https://github.com/drupalninja/drupalx_theme/issues",
                 "source": "https://github.com/drupalninja/drupalx_theme/tree/main"
             },
-            "time": "2024-05-28T22:11:48+00:00"
+            "time": "2024-05-28T22:22:16+00:00"
         },
         {
             "name": "drush/drush",
