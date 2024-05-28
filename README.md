@@ -22,6 +22,12 @@ Create your project:
 composer create-project drupalninja/drupalx-project:10.x-dev some-dir --no-interaction
 ```
 
+Configure DDEV (follow prompts).
+
+```bash
+ddev config
+```
+
 Start DDEV, download Composer dependencies and install DrupalX CMS.
 
 ```bash
