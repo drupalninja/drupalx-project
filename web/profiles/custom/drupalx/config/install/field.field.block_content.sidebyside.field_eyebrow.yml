@@ -1,0 +1,21 @@
+uuid: a2e36fd4-336f-4826-9a04-1168a8d7b7d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.sidebyside
+    - field.storage.block_content.field_eyebrow
+_core:
+  default_config_hash: F6O-PbWItR25aN1ULnhJsTnoX1IX31j2YGzsyzjQf4c
+id: block_content.sidebyside.field_eyebrow
+field_name: field_eyebrow
+entity_type: block_content
+bundle: sidebyside
+label: Eyebrow
+description: 'Provide a short label for this content.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

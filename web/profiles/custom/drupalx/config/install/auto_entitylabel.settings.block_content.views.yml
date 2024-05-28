@@ -1,0 +1,11 @@
+_core:
+  default_config_hash: xa8YfqsB5VnJtkH4JTj5WNDCc7DfcYme9P4wlTiy7pg
+status: 2
+pattern: 'Views: [block_content:field_title]'
+escape: false
+preserve_titles: false
+save: false
+chunk: 50
+dependencies:
+  config:
+    - block_content.type.views

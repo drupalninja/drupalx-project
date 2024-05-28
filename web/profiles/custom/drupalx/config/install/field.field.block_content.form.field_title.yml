@@ -1,0 +1,21 @@
+uuid: 8f79ce82-da6d-48ab-b14d-7d05ecb24473
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.form
+    - field.storage.block_content.field_title
+_core:
+  default_config_hash: RvfoS6YfjKmyIdSnrx2kPgp2-3OyRkU6276H3y_j4As
+id: block_content.form.field_title
+field_name: field_title
+entity_type: block_content
+bundle: form
+label: Title
+description: 'Provide the primary heading for the form.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

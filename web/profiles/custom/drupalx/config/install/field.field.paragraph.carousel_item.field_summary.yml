@@ -1,0 +1,21 @@
+uuid: 46abbee1-beb0-48a8-b745-4a3656bbb0c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary
+    - paragraphs.paragraphs_type.carousel_item
+_core:
+  default_config_hash: BLMiAiO-NSJ3fjVvvvZP2d89qfSbP4ucLe5SDP56vwA
+id: paragraph.carousel_item.field_summary
+field_name: field_summary
+entity_type: paragraph
+bundle: carousel_item
+label: Summary
+description: 'Carousel item summary.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

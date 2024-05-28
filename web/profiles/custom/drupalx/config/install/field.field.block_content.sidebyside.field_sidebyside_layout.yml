@@ -1,0 +1,23 @@
+uuid: 3381d414-c9c6-4d83-85e2-3a0f147e9850
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.sidebyside
+    - field.storage.block_content.field_sidebyside_layout
+  module:
+    - options
+_core:
+  default_config_hash: vJCMlit47rCVhmBimqfDIZC_qDeob3kf-TUvOmeYxRk
+id: block_content.sidebyside.field_sidebyside_layout
+field_name: field_sidebyside_layout
+entity_type: block_content
+bundle: sidebyside
+label: Layout
+description: 'Select the display layout for this component.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

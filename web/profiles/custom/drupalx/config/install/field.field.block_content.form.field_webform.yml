@@ -1,0 +1,27 @@
+uuid: 9ed13887-56a9-4253-a6b0-34a86e1a422f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.form
+    - field.storage.block_content.field_webform
+  module:
+    - webform
+_core:
+  default_config_hash: vZaOc3RwbO6i80h0GvsX-9Gv0lBHs9djinDVx-22gpA
+id: block_content.form.field_webform
+field_name: field_webform
+entity_type: block_content
+bundle: form
+label: Webform
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

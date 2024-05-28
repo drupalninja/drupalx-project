@@ -1,0 +1,10 @@
+uuid: 8e7bcd7f-3a9f-4675-9221-e6088c5d1983
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ERUL0FoP8cpMgNT_F0y-JH-bnmW_J75-M9uOiR9yKOE
+id: form
+label: Form
+revision: 0
+description: 'The Form Component allows you to seamlessly integrate a webform into your web pages. This component is perfect for collecting user inputs such as feedback, contact information, survey responses, and more.'

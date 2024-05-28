@@ -1,0 +1,11 @@
+_core:
+  default_config_hash: lk3wlFiKwugEmr4XetB2oKUvW0GK-VgUiaPfQ9Tm3Eg
+status: 2
+pattern: 'Carousel: [block_content:field_title]'
+escape: false
+preserve_titles: false
+save: false
+chunk: 50
+dependencies:
+  config:
+    - block_content.type.carousel

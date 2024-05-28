@@ -1,0 +1,61 @@
+uuid: 7521e8bc-c146-45b8-ac5a-47609a957797
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.views
+    - field.storage.block_content.field_views_ref
+  module:
+    - viewsreference
+_core:
+  default_config_hash: siCBkoxS1rItVcb8dbF6q9gs0toh3yjj4lSKkAgLcD0
+id: block_content.views.field_views_ref
+field_name: field_views_ref
+entity_type: block_content
+bundle: views
+label: 'List View'
+description: 'Select a list of content using the "Views" module.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+  plugin_types:
+    block: block
+    default: '0'
+    page: '0'
+    feed: '0'
+    embed: '0'
+  preselect_views:
+    block_content: '0'
+    content: '0'
+    content_recent: '0'
+    files: '0'
+    frontpage: '0'
+    latest_news: '0'
+    media: '0'
+    media_library: '0'
+    moderated_content: '0'
+    recent_cards: '0'
+    redirect: '0'
+    related_articles: '0'
+    scheduler_scheduled_content: '0'
+    scheduler_scheduled_media: '0'
+    scheduler_scheduled_taxonomy_term: '0'
+    taxonomy_term: '0'
+    user_admin_people: '0'
+    watchdog: '0'
+    webform_submissions: '0'
+    who_s_new: '0'
+    who_s_online: '0'
+  enabled_settings:
+    argument: argument
+    pager: '0'
+    offset: 0
+    title: false
+    limit: 0
+field_type: viewsreference

@@ -1,0 +1,10 @@
+uuid: 6781daba-a95e-4f3b-909b-133e3d69faa7
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: BBdJz-EPaUr_CdBsS23x3EITSuUT5HyaHw3xgHTCHJI
+id: media
+label: Media
+weight: null
+opened: true

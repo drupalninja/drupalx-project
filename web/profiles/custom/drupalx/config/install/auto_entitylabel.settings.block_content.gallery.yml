@@ -1,0 +1,11 @@
+_core:
+  default_config_hash: 9fTS8XDMZpHgjxIW0i88ovN7YsT0jU-TcWLJGHw4GQU
+status: 2
+pattern: 'Gallery: [block_content:field_title]'
+escape: false
+preserve_titles: false
+save: false
+chunk: 50
+dependencies:
+  config:
+    - block_content.type.gallery

@@ -1,0 +1,12 @@
+langcode: en
+uuid: 64d01d4e-c6a5-4a6f-b9f1-4c2375d5db30
+name: Drupal
+mail: admin@example.com
+slogan: ''
+page:
+  403: /node/5
+  404: /node/4
+  front: /node/9
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en

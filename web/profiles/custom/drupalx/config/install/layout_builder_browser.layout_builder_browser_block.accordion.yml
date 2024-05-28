@@ -1,0 +1,13 @@
+uuid: 48930de1-f936-45c5-a0ee-3a1e0e9c9472
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 6nAm5UgbDAFTE3V_RPYjM2MEFm_bk-Vw62__WQc5zeY
+id: accordion
+block_id: 'inline_block:accordion'
+category: content
+label: Accordion
+image_path: /profiles/custom/drupalx_demo/images/accordion.png
+image_alt: ''
+weight: -6

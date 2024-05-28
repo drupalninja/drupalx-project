@@ -1,0 +1,13 @@
+uuid: e5e2b65a-b23e-11ed-afa1-0242ac120002
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: EKF0QqqY3SWHG_HE1jyWHxF7GbQOE3vOFrvFfGXKxvE
+id: newsletter
+block_id: 'inline_block:newsletter'
+category: other
+label: Newsletter
+image_path: /profiles/custom/drupalx_demo/images/newsletter.png
+image_alt: ''
+weight: -3

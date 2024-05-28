@@ -1,0 +1,22 @@
+uuid: 619fe4be-b415-4786-8c5a-d1e66ccbda65
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.newsletter
+_core:
+  default_config_hash: aKIHLC9k5aAlw3ncizJNFt5r-mVGr4aL6tnU98SN7zM
+id: block_content.newsletter.default
+targetEntityType: block_content
+bundle: newsletter
+mode: default
+content:
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

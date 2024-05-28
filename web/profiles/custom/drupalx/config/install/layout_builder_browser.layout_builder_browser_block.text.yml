@@ -1,0 +1,13 @@
+uuid: eedbcf05-3ad3-4169-a55d-517de4657fb0
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: DqI-jS-VTTsP2O0XpKhWrPX24Y6VUSQl9MQxG9DLVcE
+id: text
+block_id: 'inline_block:text'
+category: content
+label: Text
+image_path: /profiles/custom/drupalx_demo/images/text.png
+image_alt: ''
+weight: -1

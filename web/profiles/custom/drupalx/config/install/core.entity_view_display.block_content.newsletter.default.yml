@@ -1,0 +1,15 @@
+uuid: 0975a012-dbee-4d51-8c36-3d703487737c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.newsletter
+_core:
+  default_config_hash: 4sRw4OpIq0wdRHT-pWjClt_mWsPhd7W4ZzQQCcAoelU
+id: block_content.newsletter.default
+targetEntityType: block_content
+bundle: newsletter
+mode: default
+content: {  }
+hidden:
+  search_api_excerpt: true

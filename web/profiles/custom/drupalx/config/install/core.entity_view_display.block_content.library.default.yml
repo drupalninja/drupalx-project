@@ -1,0 +1,25 @@
+uuid: 05518722-fafa-489c-841d-7c5bf7ae9fb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.library
+    - field.field.block_content.library.field_block
+_core:
+  default_config_hash: I3ZEw_igvOoGOxGPIEF3NWELOM6pdCX0ERyr2kbxbO8
+id: block_content.library.default
+targetEntityType: block_content
+bundle: library
+mode: default
+content:
+  field_block:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

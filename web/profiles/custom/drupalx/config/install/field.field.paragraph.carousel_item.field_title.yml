@@ -1,0 +1,21 @@
+uuid: e6d93e46-311c-4e8a-862c-0e8d0b562639
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.carousel_item
+_core:
+  default_config_hash: dQp3tc4mUtQkS-MFxXYHDHLnzcJZLHN6gqqomkJGE2o
+id: paragraph.carousel_item.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: carousel_item
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

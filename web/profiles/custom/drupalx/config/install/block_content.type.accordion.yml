@@ -1,0 +1,10 @@
+uuid: 31c05a6f-5948-4a08-93b7-3033830b6ad4
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 9qTlM73m040e4zo9UXNfBBN9qNVP8Pe1u8VQ3thQ09s
+id: accordion
+label: Accordion
+revision: 0
+description: 'The Accordion component is perfect for rendering FAQs or similar types of title-description content pairings. This interactive UI element allows users to expand and collapse sections, providing a clean and organized way to present information.'

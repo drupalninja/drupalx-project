@@ -1,0 +1,34 @@
+uuid: ed86eaa4-57a4-495f-8423-7b0c42fed4d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.accordion_item
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    restricted_html: '0'
+    scripts: '0'
+    full_html: '0'
+    plain_text: '0'
+_core:
+  default_config_hash: 61r_SAlTGHgzM7pYBPecmWx5IB5EKGroRC40jfhJ_hU
+id: paragraph.accordion_item.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: accordion_item
+label: Description
+description: 'Item description.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

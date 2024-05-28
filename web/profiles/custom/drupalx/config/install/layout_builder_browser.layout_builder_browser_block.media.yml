@@ -1,0 +1,13 @@
+uuid: 64eb08b7-d9df-4026-a53e-25fa5b953bd2
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: xBQjmhsUF1P0MIA31ADjsu7yMCuKSmIX2BW73esOloE
+id: media
+block_id: 'inline_block:media'
+category: media
+label: Media
+image_path: /profiles/custom/drupalx_demo/images/media.png
+image_alt: ''
+weight: -98

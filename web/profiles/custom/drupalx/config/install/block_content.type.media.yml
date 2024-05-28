@@ -1,0 +1,10 @@
+uuid: 80267af2-5b7d-4c81-80cc-86e77306f439
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: kkrz1oO5w-FMLUbK8GyDPmT0BzOIO9holCl4NvVrjL8
+id: media
+label: Media
+revision: 0
+description: 'The Media Component provides a simple way to place media assets, such as images, videos, or audio files, on your web pages. Whether you’re showcasing visuals, multimedia content, or interactive elements, this component allows seamless integration of media assets to enhance the user experience.'

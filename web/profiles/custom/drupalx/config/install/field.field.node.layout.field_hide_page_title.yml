@@ -1,0 +1,25 @@
+uuid: 93c28554-351c-4eb8-b2e9-903308c730aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_page_title
+    - node.type.layout
+_core:
+  default_config_hash: imWGrc3Gf5RguKGEToECqS_lVjhjiDppafmi6BdXMSw
+id: node.layout.field_hide_page_title
+field_name: field_hide_page_title
+entity_type: node
+bundle: layout
+label: 'Hide Page Title?'
+description: 'Optionally hide page title.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

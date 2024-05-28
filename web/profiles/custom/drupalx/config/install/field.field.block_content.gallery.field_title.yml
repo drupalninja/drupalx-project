@@ -1,0 +1,21 @@
+uuid: 30dd0c32-5a00-4ad4-ad4b-e3c3cae53060
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.gallery
+    - field.storage.block_content.field_title
+_core:
+  default_config_hash: meoWBb2auK2mzx-a94Ox6IHZGAlsNwzRlrs7jvO3V-g
+id: block_content.gallery.field_title
+field_name: field_title
+entity_type: block_content
+bundle: gallery
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

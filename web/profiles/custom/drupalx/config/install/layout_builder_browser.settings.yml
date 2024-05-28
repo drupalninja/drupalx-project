@@ -1,0 +1,3 @@
+enabled_section_storages:
+  - overrides
+use_modal: true

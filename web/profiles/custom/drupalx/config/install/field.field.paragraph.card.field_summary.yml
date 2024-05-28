@@ -1,0 +1,21 @@
+uuid: 870da0d2-50c1-4735-90e2-d3c853ca99e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary
+    - paragraphs.paragraphs_type.card
+_core:
+  default_config_hash: 0gvD3a-rR4ECvT1la5HVoonCFFQg3_64THxmgqlrlUo
+id: paragraph.card.field_summary
+field_name: field_summary
+entity_type: paragraph
+bundle: card
+label: Summary
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,12 @@
+uuid: f5d70927-f007-4b5d-8557-d4bc37c5cbbd
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: HBLZcBZtK5HU3W-rLAswUriARninr1-UWdq6_iFagqM
+id: carousel_item
+label: 'Carousel item'
+icon_uuid: null
+icon_default: null
+description: 'Carousel item for the Carousel component.'
+behavior_plugins: {  }

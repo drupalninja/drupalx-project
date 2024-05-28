@@ -1,0 +1,21 @@
+uuid: 61b04f20-129d-4bf1-b3d2-31a244a15081
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote
+    - field.storage.block_content.field_author
+_core:
+  default_config_hash: oEi70RixOlLwn48IcTq9zoPkw9xf7dBCh5yU8QvZ7Yo
+id: block_content.quote.field_author
+field_name: field_author
+entity_type: block_content
+bundle: quote
+label: Author
+description: 'Author of the quote.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

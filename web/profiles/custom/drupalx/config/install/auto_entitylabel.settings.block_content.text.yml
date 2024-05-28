@@ -1,0 +1,11 @@
+_core:
+  default_config_hash: 5yGBeceMYDNOQdJb2jqwsB9RMal7bHoZjJBEQ-BN5a4
+status: 2
+pattern: 'Title: [block_content:field_title]'
+escape: false
+preserve_titles: false
+save: false
+chunk: 50
+dependencies:
+  config:
+    - block_content.type.text

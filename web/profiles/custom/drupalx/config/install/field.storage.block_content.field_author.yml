@@ -1,0 +1,23 @@
+uuid: b05cf653-9dad-4e94-976a-99f113bc6b18
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+_core:
+  default_config_hash: _akqv53iBI9p-mP6oMxr7C3Ec4__et3HVQ5sW0Fp0ns
+id: block_content.field_author
+field_name: field_author
+entity_type: block_content
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

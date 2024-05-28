@@ -1,0 +1,22 @@
+uuid: d0616b79-338f-4782-a4ac-200370442498
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - paragraphs
+_core:
+  default_config_hash: J4WyxYL5bPIAEmHtI5jITl5bhFc5bEjBzC_lxFrEMoE
+id: paragraph.field_custom_icon
+field_name: field_custom_icon
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

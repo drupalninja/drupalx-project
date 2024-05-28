@@ -1,0 +1,21 @@
+uuid: 0eb9056a-29db-4f3a-a90e-4db9bb68db75
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote
+    - field.storage.block_content.field_job_title
+_core:
+  default_config_hash: 3TB1ehw85b_9rh7ldowEHVYZVeW9uehsKeNmnXJLfPQ
+id: block_content.quote.field_job_title
+field_name: field_job_title
+entity_type: block_content
+bundle: quote
+label: 'Job Title'
+description: 'Title of the author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

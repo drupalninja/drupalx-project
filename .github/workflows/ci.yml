@@ -1,0 +1,109 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+env:
+  COMPOSER_MEMORY_LIMIT: -1
+  SIMPLETEST_DB: sqlite://tmp/site.sqlite
+  SIMPLETEST_BASE_URL: "http://127.0.0.1:8080"
+
+jobs:
+  build:
+    runs-on: 'ubuntu-20.04'
+    strategy:
+      fail-fast: false
+
+      matrix:
+        php-versions: ['8.1', '8.2']
+        drupal-release: ['stable']
+        composer-channel: ['stable', 'snapshot']
+        # Drupal 10.x-dev tests fail on PHP 8.3.
+        # @see https://www.drupal.org/project/drupal/issues/3375693
+        include:
+          - php-versions: '8.3'
+            drupal-release: 'stable'
+            composer-channel: 'stable'
+          - php-versions: '8.3'
+            drupal-release: 'stable'
+            composer-channel: 'snapshot'
+
+    steps:
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJSON(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: gd, pdo_sqlite
+
+      - name: Update Composer
+        run: composer --verbose self-update --${{ matrix.composer-channel }}
+
+      - name: Show Composer version
+        run: composer --version
+
+      - name: Validate composer.json
+        run: composer --verbose validate
+
+      - name: Install dependencies
+        run: composer --verbose install
+
+      - name: Validate composer.json structure
+        run: composer normalize --dry-run
+
+      - name: Require bower-asset
+        run: |
+          test ! -d web/libraries/dropzone
+          composer require bower-asset/dropzone
+          test -d web/libraries/dropzone
+
+      # @see https://www.drupal.org/node/3176567
+      - name: Install testing dependency
+        if: ${{ matrix.php-versions == '8.1' }}
+        run: composer require --dev phpspec/prophecy-phpunit:^2
+
+      - name: Install site
+        run: ./vendor/bin/drush site-install drupalx --verbose --yes --db-url=sqlite://tmp/site.sqlite
+
+      - name: Start server
+        run: |
+          ./vendor/bin/drush runserver "$SIMPLETEST_BASE_URL" &
+          until curl -s "$SIMPLETEST_BASE_URL"; do true; done > /dev/null
+
+      - name: Run a single unit test to verify the testing setup
+        run: ./vendor/bin/phpunit -c ./web/core ./web/core/modules/user/tests/src/Unit/UserAccessControlHandlerTest.php
+
+  # Using outdated Composer version to test the Composer version constraint.
+  test-composer:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: gd, pdo_sqlite
+          tools: composer:v2.2
+
+      - name: Show Composer version
+        run: composer --version
+
+      - name: Install dependencies
+        # This command should fail because of the Composer version constraint.
+        run: composer --verbose install && exit 1 || exit 0

@@ -1,0 +1,21 @@
+uuid: 25df60eb-9e48-444f-b888-3fbe4994ba99
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quote
+    - field.storage.block_content.field_quote
+_core:
+  default_config_hash: Q2EuQix_JTX1X7_iNykU92ooRW8uJa3PnxRa6TI4xXU
+id: block_content.quote.field_quote
+field_name: field_quote
+entity_type: block_content
+bundle: quote
+label: Quote
+description: 'Author quote or testimonial.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

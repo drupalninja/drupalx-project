@@ -1,0 +1,31 @@
+uuid: 7f829ec8-6746-4fe2-889d-ea282f89d782
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_media
+    - media.type.image
+_core:
+  default_config_hash: xoEBGI8re8IvbMM3htv7jtxw8AxC2wP0rSaNXw0F_Q4
+id: block_content.hero.field_media
+field_name: field_media
+entity_type: block_content
+bundle: hero
+label: Media
+description: 'Featured media item for the hero.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

@@ -1,0 +1,47 @@
+uuid: eeeaadf2-1db1-4d59-b5e1-950be7013131
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.views
+    - field.field.block_content.views.field_link
+    - field.field.block_content.views.field_title
+    - field.field.block_content.views.field_views_ref
+  module:
+    - link
+    - viewsreference
+_core:
+  default_config_hash: pduxyRQ4jK3KgYclrWD3jvMbgnKjoHI64qwrWchSw6o
+id: block_content.views.default
+targetEntityType: block_content
+bundle: views
+mode: default
+content:
+  field_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_views_ref:
+    type: viewsreference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  info: true

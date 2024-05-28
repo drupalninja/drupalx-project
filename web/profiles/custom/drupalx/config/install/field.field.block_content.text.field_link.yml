@@ -1,0 +1,25 @@
+uuid: 0a489ba8-e21a-49f1-8804-0c3e8cd9ce58
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.text
+    - field.storage.block_content.field_link
+  module:
+    - link
+_core:
+  default_config_hash: t10Fjk6nsY3GRY3WT8l0nfWVg_mapf8dk5AgD3jkEvk
+id: block_content.text.field_link
+field_name: field_link
+entity_type: block_content
+bundle: text
+label: Link
+description: 'Optional CTA link.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

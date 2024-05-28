@@ -1,0 +1,73 @@
+name: DrupalX
+type: profile
+description: 'Build a custom site without pre-configured functionality. Suitable for advanced users.'
+core: 8.x
+core_version_requirement: '^8 || ^9 || ^10'
+install:
+  - admin_toolbar
+  - admin_toolbar_tools
+  - allowed_formats
+  - auto_entitylabel
+  - block
+  - block_content
+  - block_content_template
+  - ckeditor
+  - claro_media_library_theme
+  - components
+  - content_moderation
+  - datetime_range
+  - drupalx_bootswatch
+  - drupalx_gin
+  - editor
+  - entity_reference_revisions
+  - features
+  - field
+  - field_ui
+  - field_group
+  - file
+  - filter
+  - gin_lb
+  - gin_login
+  - guardr_core
+  - image
+  - inline_block_title_automatic
+  - layout_builder
+  - layout_builder_browser
+  - layout_builder_modal
+  - layout_builder_restrictions
+  - layout_discovery
+  - link
+  - linkit
+  - material_icons
+  - media
+  - media_library
+  - menu_ui
+  - metatag
+  - node
+  - node_revision_delete
+  - options
+  - paragraphs
+  - paragraphs_features
+  - path
+  - pathauto
+  - redirect
+  - responsive_image
+  - svg_image
+  - svg_image_responsive
+  - system
+  - taxonomy
+  - taxonomy_access_fix
+  - text
+  - toolbar
+  - twig_field_value
+  - twig_tweak
+  - user
+  - views
+  - viewsreference
+  - webform
+  - webform_ui
+  - webp
+themes:
+  - stable9
+  - drupalx_theme
+  - gin

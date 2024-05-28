@@ -1,0 +1,10 @@
+uuid: 9393410c-155f-4912-b842-d60667df90e7
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: reB6CCRWEwQAF12hIxex0X-EkeYZsvxjb0g4VaMyN04
+id: hero
+label: Hero
+revision: 0
+description: 'The Hero Component is designed for promotional teasers that include a large, impactful image, typically placed at the top of a page. This component is perfect for highlighting key messages, announcements, or featured content in a visually engaging way.'

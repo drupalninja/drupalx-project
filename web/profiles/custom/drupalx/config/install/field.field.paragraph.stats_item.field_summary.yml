@@ -1,0 +1,21 @@
+uuid: 833dac45-aa6e-40f3-9418-47777f432fc1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary
+    - paragraphs.paragraphs_type.stats_item
+_core:
+  default_config_hash: l8p0WwoHBOrhtgw5-LKjoc-IeyiWd-mCezw0lo7pDPI
+id: paragraph.stats_item.field_summary
+field_name: field_summary
+entity_type: paragraph
+bundle: stats_item
+label: Summary
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

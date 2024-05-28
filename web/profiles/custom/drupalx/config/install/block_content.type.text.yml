@@ -1,0 +1,10 @@
+uuid: a50d2517-506b-4ccb-920c-03b69718b159
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Tyd2DHz5SII4hL-Rc9OVwAfJ-7tAQO1yv1jjfqXF9FQ
+id: text
+label: Text
+revision: 1
+description: 'The Text Block Component provides a simple yet versatile solution for displaying textual content on your web pages. Whether you need to convey information, present narratives, or offer instructions, this component offers a straightforward way to incorporate text seamlessly into your design.'

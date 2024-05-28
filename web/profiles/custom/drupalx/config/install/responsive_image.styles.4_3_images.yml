@@ -1,0 +1,27 @@
+uuid: 671ed904-fa11-4867-a6a6-ba53e1924807
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.4_3_large
+    - image.style.4_3_large_2x
+    - image.style.4_3_medium
+    - image.style.4_3_small
+_core:
+  default_config_hash: L-jDBQUTEAgVASFr01LVHwyXgK8H07aPTtUZkKbc-_M
+id: 4_3_images
+label: '4:3 Images'
+image_style_mappings:
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: '(min-width:720px) 33vw, 100vw'
+      sizes_image_styles:
+        - 4_3_large
+        - 4_3_large_2x
+        - 4_3_medium
+        - 4_3_small
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+breakpoint_group: responsive_image
+fallback_image_style: 4_3_small

@@ -1,0 +1,11 @@
+_core:
+  default_config_hash: dwLf_JKp3ShdmQxsTBTDjuXBHxqKYcIAmVf8Y7GIFxA
+status: 2
+pattern: 'Side-by-side: [block_content:field_title]'
+escape: false
+preserve_titles: false
+save: false
+chunk: 50
+dependencies:
+  config:
+    - block_content.type.sidebyside

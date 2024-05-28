@@ -1,0 +1,25 @@
+uuid: 2b561ce7-5bbd-40aa-b915-aab396933f49
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_link
+  module:
+    - link
+_core:
+  default_config_hash: Za9pevSNYiuynzkRvfjpRyhiPJfQsOqGB9NGtG-A3ag
+id: block_content.hero.field_link
+field_name: field_link
+entity_type: block_content
+bundle: hero
+label: Link
+description: 'Optional call to action link.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

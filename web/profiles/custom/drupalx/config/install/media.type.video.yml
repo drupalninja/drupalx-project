@@ -1,0 +1,18 @@
+uuid: 393487fc-22cc-4d8a-9e5b-e0237bd22dec
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: MkoP61LUMoLMOHoryazNtIFN2FW7rCfGqYuxJkvxCdg
+id: video
+label: Video
+description: 'Upload remote video media.'
+source: 'oembed:video'
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_source
+  thumbnails_directory: 'public://oembed_thumbnails/[date:custom:Y-m]'
+  providers:
+    - YouTube
+field_map: {  }

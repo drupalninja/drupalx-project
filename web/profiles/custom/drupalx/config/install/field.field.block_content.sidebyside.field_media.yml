@@ -1,0 +1,31 @@
+uuid: f0bb3ec6-e232-41f4-9ddd-0ce9715862b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.sidebyside
+    - field.storage.block_content.field_media
+    - media.type.image
+_core:
+  default_config_hash: 3Ikyi0FRqs64o388UQptS9mNJVJLaZyQToJFoLnXREQ
+id: block_content.sidebyside.field_media
+field_name: field_media
+entity_type: block_content
+bundle: sidebyside
+label: Media
+description: 'Embed a media item from the media library.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

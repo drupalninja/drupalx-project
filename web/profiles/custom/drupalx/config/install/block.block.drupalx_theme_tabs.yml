@@ -1,0 +1,20 @@
+uuid: b81200f6-1e27-406b-8712-e262a28227a5
+langcode: en
+status: true
+dependencies:
+  theme:
+    - drupalx_theme
+id: drupalx_theme_tabs
+theme: drupalx_theme
+region: content
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

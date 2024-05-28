@@ -1,0 +1,31 @@
+uuid: c05999eb-9f12-4634-9a56-e6599598fca6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_custom_icon
+    - media.type.image
+    - paragraphs.paragraphs_type.stats_item
+_core:
+  default_config_hash: 25HPA2ECwELVZPUh0pR1ITl-on0zMWBxtipfaeduEmA
+id: paragraph.stats_item.field_custom_icon
+field_name: field_custom_icon
+entity_type: paragraph
+bundle: stats_item
+label: 'Custom Icon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

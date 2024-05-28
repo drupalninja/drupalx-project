@@ -1,0 +1,11 @@
+_core:
+  default_config_hash: 4WIcWRE62aVXJBQmWWe4jMqcTyeOI_RIjSBA1auARU4
+status: 2
+pattern: 'Quote: [block_content:field_author]'
+escape: false
+preserve_titles: false
+save: true
+chunk: 50
+dependencies:
+  config:
+    - block_content.type.quote
