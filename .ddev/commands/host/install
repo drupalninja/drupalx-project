@@ -4,5 +4,5 @@
 
 ddev start
 ddev composer install
-ddev si -y --verbose drupalx
+ddev . drush si -y --verbose drupalx
 open $DDEV_PRIMARY_URL
