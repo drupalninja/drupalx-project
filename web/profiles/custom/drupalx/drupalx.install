@@ -55,7 +55,7 @@ function drupalx_install_content() {
   $tag_names = [
     'New feature',
     'Announcement',
-    'Case study',
+    'Article',
   ];
 
   // Create tags.
@@ -69,7 +69,6 @@ function drupalx_install_content() {
   }
 
   $media_names = [
-    'thumb' => 'screenshot.png',
     'card' => 'card.png',
     'stars' => 'stars.jpg',
   ];
@@ -104,10 +103,10 @@ function drupalx_install_content() {
     'sticky' => 1,
     'field_subhead' => 'Why DrupalX',
     'field_media' => [
-      'target_id' => $media_items['thumb']->id(),
+      'target_id' => $media_items['card']->id(),
     ],
     'field_thumbnail' => [
-      'target_id' => $media_items['thumb']->id(),
+      'target_id' => $media_items['card']->id(),
     ],
     'field_tags' => [
       [
@@ -148,10 +147,10 @@ function drupalx_install_content() {
     'sticky' => 1,
     'field_subhead' => 'Why DrupalX',
     'field_media' => [
-      'target_id' => $media_items['thumb']->id(),
+      'target_id' => $media_items['card']->id(),
     ],
     'field_thumbnail' => [
-      'target_id' => $media_items['thumb']->id(),
+      'target_id' => $media_items['card']->id(),
     ],
     'field_tags' => [
       [
@@ -191,10 +190,10 @@ function drupalx_install_content() {
     'sticky' => 1,
     'field_subhead' => 'Why DrupalX',
     'field_media' => [
-      'target_id' => $media_items['thumb']->id(),
+      'target_id' => $media_items['card']->id(),
     ],
     'field_thumbnail' => [
-      'target_id' => $media_items['thumb']->id(),
+      'target_id' => $media_items['card']->id(),
     ],
     'field_tags' => [
       [
@@ -282,7 +281,7 @@ function drupalx_install_content() {
     'promote' => 1,
     'sticky' => 1,
     'field_media' => [
-      'target_id' => $media_items['thumb']->id(),
+      'target_id' => $media_items['card']->id(),
     ],
     'body' => [
       'value' => '<p>This Privacy Policy describes how we collect, use, and disclose information about you when you use our website and any related services (collectively, the "Services").</p>
@@ -332,7 +331,7 @@ function drupalx_install_content() {
     'promote' => 1,
     'sticky' => 1,
     'field_media' => [
-      'target_id' => $media_items['thumb']->id(),
+      'target_id' => $media_items['card']->id(),
     ],
     'body' => [
       'value' => '<p>Welcome to our website (the "Site"). By accessing or using the Site, you agree to be bound by these Terms of Use (the "Agreement"). If you do not agree to these terms, you should not access or use the Site.</p>
@@ -386,7 +385,7 @@ function drupalx_install_content() {
     ],
     'field_hide_page_title' => TRUE,
     'path' => [
-      'alias' => '/contact-us',
+      'alias' => '/contact',
       'pathauto' => 0,
     ],
   ]);
@@ -481,7 +480,7 @@ function drupalx_install_content() {
       'uri' => 'https://drupalx.netlify.app/',
       'title' => 'See our demo',
     ],
-    'media' => $media_items['thumb'],
+    'media' => $media_items['card'],
     'heading' => 'The <strong>Ultimate</strong> CMS Starter Kit for <strong>Enterprise</strong> Developers',
     'summary' => '',
     'layout' => 'image_top',
@@ -497,18 +496,18 @@ function drupalx_install_content() {
       'link' => ['uri' => 'internal:/features', 'title' => 'Explore features'],
       'summary' => 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
       'layout' => 'right',
-      'media' => $media_items['thumb'],
+      'media' => $media_items['card'],
     ],
     [
       'title' => 'Ut Enim Ad Minim Veniam',
       'eyebrow' => 'Quis Nostrud Exercitation',
       'link' => [
         'uri' => 'internal:/articles',
-        'title' => 'Read DrupalX case studies',
+        'title' => 'Read DrupalX articles',
       ],
       'summary' => 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       'layout' => 'left',
-      'media' => $media_items['thumb'],
+      'media' => $media_items['card'],
     ],
   ];
 
@@ -569,7 +568,7 @@ function drupalx_install_content() {
   $blocks = [];
 
   $hero_info = [
-    'media' => $media_items['thumb'],
+    'media' => $media_items['card'],
     'heading' => "DrupalX Features",
     'summary' => '<p>Etiam rhoncus. Ut non enim eleifend felis pretium feugiat.</p>',
     'layout' => 'image_bottom',
@@ -584,21 +583,21 @@ function drupalx_install_content() {
       'eyebrow' => 'Design from Scratch',
       'summary' => 'Our comprehensive Figma UI kit provides designers with a robust starting point to fully customize components.',
       'layout' => 'right',
-      'media' => $media_items['thumb'],
+      'media' => $media_items['card'],
     ],
     [
       'title' => 'Easy Content Management',
       'eyebrow' => 'User-Friendly Editing',
       'summary' => 'Post-launch, anyone on your team can easily create and update pages without any development experience.',
       'layout' => 'left',
-      'media' => $media_items['thumb'],
+      'media' => $media_items['card'],
     ],
     [
       'title' => 'Accessibility First',
       'eyebrow' => 'WCAG 2.0 AA Standard',
       'summary' => 'Our solution adheres to WCAG 2.0 AA accessibility guidelines right out of the box.',
       'layout' => 'right',
-      'media' => $media_items['thumb'],
+      'media' => $media_items['card'],
     ],
   ];
 
@@ -656,7 +655,7 @@ function drupalx_install_content() {
   $blocks = [];
 
   $hero_info = [
-    'media' => $media_items['thumb'],
+    'media' => $media_items['card'],
     'heading' => "Get Started",
     'summary' => 'Dive into the DrupalX design system. Whether you’re a designer or a developer, DrupalX provides the perfect foundation to start customizing to your specific needs. Unleash your creativity, enhance your productivity, and begin experimenting today.',
     'layout' => 'image_top',
@@ -675,7 +674,7 @@ function drupalx_install_content() {
         'uri' => 'https://google.com/',
         'title' => 'Learn more',
       ],
-      'media' => $media_items['thumb'],
+      'media' => $media_items['card'],
     ],
     [
       'title' => 'Lorem Ipsum for Developers',
@@ -686,7 +685,7 @@ function drupalx_install_content() {
         'uri' => 'https://google.com/',
         'title' => 'Find out more',
       ],
-      'media' => $media_items['thumb'],
+      'media' => $media_items['card'],
     ],
   ];
 
@@ -717,10 +716,10 @@ function drupalx_install_content() {
   $node->get('layout_builder__layout')->appendItem($section);
   $node->save();
 
-  // Create Case Studies page layout node.
+  // Create Articles page layout node.
   $node = Node::create([
     'type' => 'layout',
-    'title' => 'Case Studies',
+    'title' => 'Articles',
     'uid' => 1,
     'status' => 1,
     'promote' => 1,
@@ -731,7 +730,7 @@ function drupalx_install_content() {
     ],
     'field_hide_page_title' => TRUE,
     'path' => [
-      'alias' => '/case-studies',
+      'alias' => '/articles',
       'pathauto' => 0,
     ],
   ]);
@@ -743,13 +742,13 @@ function drupalx_install_content() {
   $blocks = [];
 
   $hero_info = [
-    'media' => $media_items['thumb'],
+    'media' => $media_items['card'],
     'heading' => "Take a look at our success stories",
     'layout' => 'image_bottom',
   ];
 
   $blocks[] = _drupalx_create_hero($hero_info);
-  $blocks[] = _drupalx_create_case_studies();
+  $blocks[] = _drupalx_create_articles();
 
   // Create block entities and add them to the layout.
   foreach ($blocks as $block) {
@@ -774,29 +773,29 @@ function drupalx_install_content() {
   $node->save();
 
   $titles = [
-    'Case Study title 1' => [
+    'Article title 1' => [
       'thumb' => 'card',
-      'hero' => 'thumb',
+      'hero' => 'card',
     ],
-    'Case Study title 2' => [
+    'Article title 2' => [
       'thumb' => 'card',
-      'hero' => 'thumb',
+      'hero' => 'card',
     ],
-    'Case Study title 3' => [
+    'Article title 3' => [
       'thumb' => 'card',
-      'hero' => 'thumb',
+      'hero' => 'card',
     ],
-    'Case Study title 4' => [
+    'Article title 4' => [
       'thumb' => 'card',
-      'hero' => 'thumb',
+      'hero' => 'card',
     ],
-    'Case Study title 5' => [
+    'Article title 5' => [
       'thumb' => 'card',
-      'hero' => 'thumb',
+      'hero' => 'card',
     ],
-    'Case Study title 6' => [
+    'Article title 6' => [
       'thumb' => 'card',
-      'hero' => 'thumb',
+      'hero' => 'card',
     ],
   ];
 
@@ -836,10 +835,10 @@ function drupalx_install_content() {
           <p>&nbsp;</p>
           <h3>Editorial components vs base elements / our philosophy on components</h3>
           <p>We subscribe to a component-based approach to site design and development. That means we establish a set list of needed components (ex: a card, a gallery or a form), and reuse those components over and over throughout the design. This approach saves time and keeps the design cohesive.</p>
-          <drupal-media data-align="center" data-caption="Lorem ipsum dolor sit amet consectetur. Urna consectetur blandit suspendisse ut bibendum quam fames tincidunt vitae. Felis porttitor id ac nunc aenean hendrerit enim interdum. Posuere interdum ipsum quis ut." data-entity-type="media" data-entity-uuid="' . $media_items['thumb']->uuid() . '" data-view-mode=""></drupal-media>
+          <drupal-media data-align="center" data-caption="Lorem ipsum dolor sit amet consectetur. Urna consectetur blandit suspendisse ut bibendum quam fames tincidunt vitae. Felis porttitor id ac nunc aenean hendrerit enim interdum. Posuere interdum ipsum quis ut." data-entity-type="media" data-entity-uuid="' . $media_items['card']->uuid() . '" data-view-mode=""></drupal-media>
           <h3>Covering the basics</h3>
           <p>With DrupalX, we took care of the boring work so you can focus on designing your site to fit your organization’s unique needs and brand. Thanks to our Figma UI kit, you don’t need to design another button or card list from scratch. Take the foundational components of DrupalX and tweak them to match your brand’s own look and feel. Our selection of components should cover the basic needs for most websites, but go ahead and build on them and add any others you and your team decide you need throughout your planning process. We created DrupalX to be a starting point for teams to customize to their hearts’ content.</p>
-          <drupal-media data-align="center" data-caption="Lorem ipsum dolor sit amet consectetur. Urna consectetur blandit suspendisse ut bibendum quam fames tincidunt vitae. Felis porttitor id ac nunc aenean hendrerit enim interdum. Posuere interdum ipsum quis ut." data-entity-type="media" data-entity-uuid="' . $media_items['thumb']->uuid() . '" data-view-mode=""></drupal-media>',
+          <drupal-media data-align="center" data-caption="Lorem ipsum dolor sit amet consectetur. Urna consectetur blandit suspendisse ut bibendum quam fames tincidunt vitae. Felis porttitor id ac nunc aenean hendrerit enim interdum. Posuere interdum ipsum quis ut." data-entity-type="media" data-entity-uuid="' . $media_items['card']->uuid() . '" data-view-mode=""></drupal-media>',
         'format' => 'full_html',
       ],
     ]);
@@ -855,7 +854,7 @@ function drupalx_install_content() {
     'uid' => 1,
     'status' => 1,
     'field_thumbnail' => [
-      'target_id' => $media_items['thumb']->id(),
+      'target_id' => $media_items['card']->id(),
     ],
     'path' => [
       'alias' => '/kitchen-sink',
@@ -868,7 +867,7 @@ function drupalx_install_content() {
   $blocks = [];
 
   $hero_info = [
-    'media' => $media_items['thumb'],
+    'media' => $media_items['card'],
     'heading' => "Kitchen Sink Page",
     'summary' => 'This page demonstrates all of the components that ship with DrupalX.',
     'link' => [
@@ -904,7 +903,7 @@ function drupalx_install_content() {
       'link' => ['uri' => 'internal:/features', 'title' => 'Explore features'],
       'summary' => 'Use our customizable design system as a foundation and expand from there to meet your organization’s needs.',
       'layout' => 'right',
-      'media' => $media_items['thumb'],
+      'media' => $media_items['card'],
     ],
     [
       'title' => 'Our tried-and-true design system takes care of the basics',
@@ -915,7 +914,7 @@ function drupalx_install_content() {
       ],
       'summary' => 'DrupalX’s pre-designed and pre-built components allow you to shortcut the boring parts of site development and focus on making your site stand out.',
       'layout' => 'left',
-      'media' => $media_items['thumb'],
+      'media' => $media_items['card'],
     ],
   ];
 
@@ -923,7 +922,7 @@ function drupalx_install_content() {
     $blocks[] = _drupalx_create_sidebyside($info);
   }
 
-  $blocks[] = _drupalx_create_case_studies();
+  $blocks[] = _drupalx_create_articles();
 
   $section = new Section('layout_onecol');
 
@@ -962,16 +961,16 @@ function _drupalx_create_menus() {
   $main_menu_items = [
     ['title' => 'Home', 'uri' => 'internal:/welcome', 'expanded' => TRUE],
     ['title' => 'Features', 'uri' => 'internal:/features', 'expanded' => TRUE],
-    ['title' => 'Case Studies', 'uri' => 'internal:/case-studies', 'expanded' => TRUE],
+    ['title' => 'Articles', 'uri' => 'internal:/articles', 'expanded' => TRUE],
     ['title' => 'Get Started', 'uri' => 'internal:/get-started', 'expanded' => TRUE],
-    ['title' => 'Contact Us', 'uri' => 'internal:/contact-us', 'expanded' => TRUE],
+    ['title' => 'Contact', 'uri' => 'internal:/contact', 'expanded' => TRUE],
   ];
 
   // Footer menu items.
   $footer_menu_items = [
     ['title' => 'Privacy Policy', 'uri' => 'internal:/privacy', 'expanded' => FALSE],
     ['title' => 'Terms of Use', 'uri' => 'internal:/terms-of-use', 'expanded' => FALSE],
-    ['title' => 'Contact Us', 'uri' => 'internal:/contact-us', 'expanded' => FALSE],
+    ['title' => 'Contact', 'uri' => 'internal:/contact', 'expanded' => FALSE],
   ];
 
   // Create main menu links.
@@ -1019,15 +1018,15 @@ function _drupalx_create_newsletter() {
 }
 
 /**
- * Create a Case Studies block.
+ * Create a Articles block.
  *
  * @return \Drupal\block_content\Entity\BlockContent
- *   The Case Studies block.
+ *   The Articles block.
  */
-function _drupalx_create_case_studies() {
+function _drupalx_create_articles() {
   $block = BlockContent::create([
     'type' => 'views',
-    'info' => 'Views: Case Studies',
+    'info' => 'Views: Articles',
     'title' => '',
     'field_views_ref' => [
       'target_id' => 'recent_cards',
@@ -1177,8 +1176,8 @@ function _drupalx_create_accordion() {
     'Can I see examples of other sites created with DrupalX?' => [
       'answer' => 'Of course. Explore how DrupalX can be used across various types of sites.',
       'link' => [
-        'uri' => 'internal:/case-studies',
-        'title' => 'Read DrupalX case studies',
+        'uri' => 'internal:/articles',
+        'title' => 'Read DrupalX articles',
       ],
     ],
   ];
@@ -1244,8 +1243,8 @@ function _drupalx_create_card_group($media_items, $type = 'card') {
       'title' => 'Get in touch with our team',
       'summary' => 'Get in touch with our team for any questions or support.',
       'link' => [
-        'uri' => 'internal:/contact-us',
-        'title' => 'Contact Us',
+        'uri' => 'internal:/contact',
+        'title' => 'Contact',
       ],
       'icon' => 'grouped_bar_chart',
     ],
