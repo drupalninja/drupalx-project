@@ -576,7 +576,7 @@ function drupalx_install_content() {
   $hero_info = [
     'media' => $media_items['card'],
     'heading' => "DrupalX Features",
-    'summary' => '<p>Etiam rhoncus. Ut non enim eleifend felis pretium feugiat.</p>',
+    'summary' => '<p>DrupalX is a comprehensive system that provides a robust starting point for designers and developers to fully customize components.</p>',
     'layout' => 'image_bottom',
   ];
 
@@ -585,28 +585,27 @@ function drupalx_install_content() {
   // Create 50/50 blocks.
   $info_sidebyside = [
     [
-      'title' => 'All-in-One UI Kit',
-      'eyebrow' => 'Design from Scratch',
-      'summary' => 'Our comprehensive Figma UI kit provides designers with a robust starting point to fully customize components.',
+      'title' => 'Ultimate Flexibility',
+      'eyebrow' => 'Customizable Components',
+      'summary' => 'Each component in DrupalX is fully customizable, allowing you to create a unique site tailored to your organization’s needs.',
       'layout' => 'right',
       'media' => $media_items['card'],
     ],
     [
       'title' => 'Easy Content Management',
       'eyebrow' => 'User-Friendly Editing',
-      'summary' => 'Post-launch, anyone on your team can easily create and update pages without any development experience.',
+      'summary' => 'Utilize over a dozen built-in layout builder components for seamless content management, powered by Bootstrap 5.',
       'layout' => 'left',
       'media' => $media_items['card'],
     ],
     [
       'title' => 'Accessibility First',
       'eyebrow' => 'WCAG 2.0 AA Standard',
-      'summary' => 'Our solution adheres to WCAG 2.0 AA accessibility guidelines right out of the box.',
+      'summary' => 'Our solution adheres to WCAG 2.0 AA accessibility guidelines out of the box, ensuring an inclusive experience.',
       'layout' => 'right',
       'media' => $media_items['card'],
     ],
   ];
-
 
   foreach ($info_sidebyside as $info) {
     $blocks[] = _drupalx_create_sidebyside($info);
@@ -749,7 +748,7 @@ function drupalx_install_content() {
 
   $hero_info = [
     'media' => $media_items['card'],
-    'heading' => "Take a look at our success stories",
+    'heading' => "Read more about DrupalX",
     'layout' => 'image_bottom',
   ];
 
