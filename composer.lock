@@ -5081,12 +5081,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupalninja/drupalx_bootswatch.git",
-                "reference": "e184aff737fe6e7ed72b7e80c85a4d2ee78ec004"
+                "reference": "6eda6a2041cbfbc6d5067318a32334990713f0ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupalninja/drupalx_bootswatch/zipball/e184aff737fe6e7ed72b7e80c85a4d2ee78ec004",
-                "reference": "e184aff737fe6e7ed72b7e80c85a4d2ee78ec004",
+                "url": "https://api.github.com/repos/drupalninja/drupalx_bootswatch/zipball/6eda6a2041cbfbc6d5067318a32334990713f0ad",
+                "reference": "6eda6a2041cbfbc6d5067318a32334990713f0ad",
                 "shasum": ""
             },
             "default-branch": true,
@@ -5105,7 +5105,7 @@
                 "issues": "https://github.com/drupalninja/drupalx_bootswatch/issues",
                 "source": "https://github.com/drupalninja/drupalx_bootswatch/tree/main"
             },
-            "time": "2024-05-28T15:25:28+00:00"
+            "time": "2024-05-28T22:04:16+00:00"
         },
         {
             "name": "drupalninja/drupalx_gin",
@@ -5113,12 +5113,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupalninja/drupalx_gin.git",
-                "reference": "8916147d4a7e7ce089af563a7434d1bb0da03e81"
+                "reference": "9f100c688d7a517e76ae62b8a843926c987969c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupalninja/drupalx_gin/zipball/8916147d4a7e7ce089af563a7434d1bb0da03e81",
-                "reference": "8916147d4a7e7ce089af563a7434d1bb0da03e81",
+                "url": "https://api.github.com/repos/drupalninja/drupalx_gin/zipball/9f100c688d7a517e76ae62b8a843926c987969c0",
+                "reference": "9f100c688d7a517e76ae62b8a843926c987969c0",
                 "shasum": ""
             },
             "default-branch": true,
@@ -5137,7 +5137,7 @@
                 "issues": "https://github.com/drupalninja/drupalx_gin/issues",
                 "source": "https://github.com/drupalninja/drupalx_gin/tree/main"
             },
-            "time": "2024-05-28T15:23:01+00:00"
+            "time": "2024-05-28T22:07:00+00:00"
         },
         {
             "name": "drupalninja/drupalx_theme",
@@ -5145,12 +5145,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupalninja/drupalx_theme.git",
-                "reference": "acda4b61bbea029fc7c4989afea67a522e82e011"
+                "reference": "66fc8e4a043a51fcca55d3049e15e87b6d431dda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupalninja/drupalx_theme/zipball/acda4b61bbea029fc7c4989afea67a522e82e011",
-                "reference": "acda4b61bbea029fc7c4989afea67a522e82e011",
+                "url": "https://api.github.com/repos/drupalninja/drupalx_theme/zipball/66fc8e4a043a51fcca55d3049e15e87b6d431dda",
+                "reference": "66fc8e4a043a51fcca55d3049e15e87b6d431dda",
                 "shasum": ""
             },
             "default-branch": true,
@@ -5169,7 +5169,7 @@
                 "issues": "https://github.com/drupalninja/drupalx_theme/issues",
                 "source": "https://github.com/drupalninja/drupalx_theme/tree/main"
             },
-            "time": "2024-05-28T22:22:16+00:00"
+            "time": "2024-05-29T02:19:44+00:00"
         },
         {
             "name": "drush/drush",
