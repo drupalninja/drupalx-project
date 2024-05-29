@@ -1,6 +1,8 @@
+_core:
+  default_config_hash: j-UFVEojMRHMXBWY3vcHUr1dl3pZ768fLygWtCSNzZ4
 langcode: en
-uuid: 64d01d4e-c6a5-4a6f-b9f1-4c2375d5db30
-name: Drupal
+uuid: 6b3a2807-adfe-4497-abf5-cede1ba17041
+name: 'Drush Site-Install'
 mail: admin@example.com
 slogan: ''
 page:

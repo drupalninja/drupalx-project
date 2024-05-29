@@ -8,7 +8,7 @@ dependencies:
   module:
     - image
 _core:
-  default_config_hash: ZxMxkEvjgY4Ckq7GKa-MG2u__bnWTaskXIWD9Sk__qM
+  default_config_hash: n-3eOU9UK9TGJVCrhDI-J4t3W1d_XpH7EgzyMyk8Ktw
 id: block_content.quote.field_thumb
 field_name: field_thumb
 entity_type: block_content

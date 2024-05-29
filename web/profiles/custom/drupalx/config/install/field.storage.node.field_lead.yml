@@ -6,7 +6,7 @@ dependencies:
     - node
     - text
 _core:
-  default_config_hash: T01phV63TK5h3Edb4kCPIp-2Nc9ozYYntmEZ0bd1f3E
+  default_config_hash: ao9YG4DiSv4K27wju85cYu4KfmW2KHljfJypdyjY3HM
 id: node.field_lead
 field_name: field_lead
 entity_type: node

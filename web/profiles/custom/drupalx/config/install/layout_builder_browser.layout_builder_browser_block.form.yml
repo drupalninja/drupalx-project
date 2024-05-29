@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: tygKgl_R8F1fiVDKc2-pTbOH-1J0-DqrLC280jf2Sdk
+  default_config_hash: fBR6MwNgvL97zh7A0DRSEiMmZNn7Loq2WUHMDSGosVA
 id: form
 block_id: 'inline_block:form'
 category: other
 label: Form
+weight: -4
 image_path: /profiles/custom/drupalx_demo/images/form.png
 image_alt: ''
-weight: -4

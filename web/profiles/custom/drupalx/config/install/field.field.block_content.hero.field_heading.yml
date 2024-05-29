@@ -5,11 +5,11 @@ dependencies:
   config:
     - block_content.type.hero
     - field.storage.block_content.field_heading
+    - filter.format.restricted_html
   module:
-    - allowed_formats
     - text
 _core:
-  default_config_hash: f_c9ozxYPcv0R4w91qK_UFJZPy4XLndgLoQCb9dFVY8
+  default_config_hash: ZWqF1eDfAJ3-eb0W8sJBOeBITdBIwQ5xZcH5fP1Cnqo
 id: block_content.hero.field_heading
 field_name: field_heading
 entity_type: block_content

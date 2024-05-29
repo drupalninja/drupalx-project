@@ -11,7 +11,7 @@ dependencies:
   module:
     - material_icons
 _core:
-  default_config_hash: 0EjzvsHv-_-4GyxD83zi-_0K8BOxA41lGfZm8EIeNPU
+  default_config_hash: TYtus43GCOR4WZeKw-kHcLFabe2BucD-SCjDJ7JYANY
 id: paragraph.stats_item.default
 targetEntityType: paragraph
 bundle: stats_item

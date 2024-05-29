@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: THEqBYuGgL05QU4VzIumehiDh4GaUk5BkjYvSOLUJas
+  default_config_hash: R14_USrnHRRUSxB0nynC25edEwTBTcfpS2wEwsiEtoo
 name: hero_s
 label: hero_s
 effects:

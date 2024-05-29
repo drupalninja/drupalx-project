@@ -8,7 +8,7 @@ dependencies:
   module:
     - image
 _core:
-  default_config_hash: K5NOxYxkl6o_8T_sY2953Cl2FRj8eMIgLRTKKQDThmo
+  default_config_hash: XGM2aZTM10fhbzvPIzZw9jXVjoAcKw6lHAI0hOx58dE
 id: media.image.field_image
 field_name: field_image
 entity_type: media
@@ -23,7 +23,7 @@ settings:
   handler: 'default:file'
   handler_settings: {  }
   file_directory: '[current-date:custom:Y]/[current-date:custom:m]/[current-date:custom:d]'
-  file_extensions: 'png gif jpg jpeg'
+  file_extensions: 'png gif jpg jpeg svg'
   max_filesize: ''
   max_resolution: ''
   min_resolution: ''

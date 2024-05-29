@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: O_f2levaX5eINT6Zqg52rAk1rKsu_AD93V50KoO8KCA
+  default_config_hash: p5Tphxm3eCB8ma5wAyK2YtJDnmZfKa3TEHVfjsw3OS4
 id: block_library
 block_id: 'inline_block:library'
 category: other
 label: 'Block Library'
+weight: -6
 image_path: /profiles/custom/drupalx_demo/images/library.png
 image_alt: ''
-weight: -6

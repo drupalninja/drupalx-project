@@ -1,5 +1,5 @@
 _core:
-  default_config_hash: efazdGF9kADwiPsE_eBFyWsGXUulhoSg4qPfSItBc40
+  default_config_hash: r-GiJ9bS8oDp0n8LFewYO3u39zkC8kRbWK8aYVmlNrk
 status: 2
 pattern: "Block: [block_content:field_block:entity:info]\r\n            "
 escape: false

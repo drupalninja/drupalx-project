@@ -14,7 +14,7 @@ dependencies:
     - media_library
     - svg_image
 _core:
-  default_config_hash: g4AjnUBw1ucaXLLIQKm8A8GA002u5Uu8XcWIrY2UlN4
+  default_config_hash: iOpT69zeBqU0u8umcjoySz2bGxJOw5AUqIGzOTcD-QQ
 id: block_content.quote.default
 targetEntityType: block_content
 bundle: quote

@@ -7,7 +7,7 @@ dependencies:
     - file
     - image
 _core:
-  default_config_hash: 3HON_djntTyacMD5FEvqIkjKbLRR-uqsMPx38JFJ5Gk
+  default_config_hash: BsE-jIUVR-2VR3YHLLtLA99FZZ2xRo842a9mb9ET3qc
 id: block_content.field_thumb
 field_name: field_thumb
 entity_type: block_content

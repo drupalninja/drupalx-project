@@ -3,10 +3,10 @@ langcode: en
 status: open
 dependencies: {  }
 _core:
-  default_config_hash: gL00Ew44BjhxWNVF4ELUl4jOMseZNbjkKzmnKajzFLI
-weight: 0
+  default_config_hash: aJtyq-xEZOX1FMxKnvv8F6_Mznq1we1m_25yIP2ceeI
 open: null
 close: null
+weight: 0
 uid: 1
 template: false
 archive: false

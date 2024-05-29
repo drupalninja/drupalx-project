@@ -71,6 +71,9 @@ function drupalx_install_content() {
   $media_names = [
     'card' => 'card.png',
     'stars' => 'stars.jpg',
+    'bootstrap' => 'bootstrap.svg',
+    'storybook' => 'storybook.svg',
+    'bootswatch' => 'bootswatch.svg',
   ];
 
   $media_items = [];
@@ -487,30 +490,33 @@ function drupalx_install_content() {
   ];
 
   $blocks[] = _drupalx_create_hero($hero_info);
+  $blocks[] = _drupalx_create_card_group($media_items, 'stat', '');
 
   // Create 50/50 blocks.
   $info_sidebyside = [
     [
-      'title' => 'Lorem Ipsum Dolor Sit Amet',
-      'eyebrow' => 'Consectetur Adipiscing Elit',
-      'link' => ['uri' => 'internal:/features', 'title' => 'Explore features'],
-      'summary' => 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+      'title' => 'DrupalX Rapid Development',
+      'eyebrow' => 'DrupalX Features',
+      'link' => [
+        'uri' => 'internal:/features',
+        'title' => 'Explore features',
+      ],
+      'summary' => 'The DrupalX template offers top-tier development tools and components for building a site quickly and efficiently.',
       'layout' => 'right',
       'media' => $media_items['card'],
     ],
     [
-      'title' => 'Ut Enim Ad Minim Veniam',
-      'eyebrow' => 'Quis Nostrud Exercitation',
+      'title' => 'DrupalX Content Management',
+      'eyebrow' => 'DrupalX Content',
       'link' => [
         'uri' => 'internal:/articles',
         'title' => 'Read DrupalX articles',
       ],
-      'summary' => 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'summary' => 'DrupalX provides a user-friendly editing experience with fully integrated layout builder components for seamless content management.',
       'layout' => 'left',
       'media' => $media_items['card'],
     ],
   ];
-
 
   foreach ($info_sidebyside as $info) {
     $blocks[] = _drupalx_create_sidebyside($info);
@@ -878,14 +884,14 @@ function drupalx_install_content() {
   ];
 
   $blocks[] = _drupalx_create_hero($hero_info);
-  $blocks[] = _drupalx_create_card_group($media_items, 'stat');
+  $blocks[] = _drupalx_create_card_group($media_items, 'stat', 'Discover DrupalX');
   $blocks[] = _drupalx_create_text();
   $blocks[] = _drupalx_create_media($media_items);
   $blocks[] = _drupalx_create_gallery($media_items);
   $blocks[] = _drupalx_create_form();
   $blocks[] = _drupalx_create_embed();
   $blocks[] = _drupalx_create_carousel($media_items);
-  $blocks[] = _drupalx_create_card_group($media_items);
+  $blocks[] = _drupalx_create_card_group($media_items, 'card', 'Discover DrupalX');
   $blocks[] = _drupalx_create_accordion();
   $blocks[] = _drupalx_create_quote();
 
@@ -1111,9 +1117,9 @@ function _drupalx_create_sidebyside(array $info = []) {
 function _drupalx_create_quote() {
 
   // Create Quote block.
-  $image_path = \Drupal::service('extension.list.profile')->getPath('drupalx') . '/images/logo.svg';
+  $image_path = \Drupal::service('extension.list.profile')->getPath('drupalx') . '/images/quote-logo.svg';
   $data = file_get_contents($image_path);
-  $file = \Drupal::service('file.repository')->writeData($data, 'public://logo.svg');
+  $file = \Drupal::service('file.repository')->writeData($data, 'public://quote-logo.svg');
   $media = Media::create([
     'bundle' => 'image',
     'name' => 'Quote Logo',
@@ -1126,18 +1132,18 @@ function _drupalx_create_quote() {
 
   $media->save();
 
-  $image_path = \Drupal::service('extension.list.profile')->getPath('drupalx') . '/images/quote.svg';
+  $image_path = \Drupal::service('extension.list.profile')->getPath('drupalx') . '/images/dries.jpg';
   $data = file_get_contents($image_path);
-  $file = \Drupal::service('file.repository')->writeData($data, 'public://quote.svg');
+  $file = \Drupal::service('file.repository')->writeData($data, 'public://dries.jpg');
 
   $block = BlockContent::create([
     'type' => 'quote',
     'field_logo' => [
       'target_id' => $media->id(),
     ],
-    'field_quote' => 'Praesent nec nisl a purus blandit viverra. Donec id justo. Nullam dictum felis eu pede mollis pretium.',
-    'field_author' => 'Jane Doe',
-    'field_job_title' => 'Donec interdum metus et hendrerit',
+    'field_quote' => 'Bringing people together under a shared passion is at the heart of what Drupal does',
+    'field_author' => 'Dries Buytaert',
+    'field_job_title' => 'Drupal Founder, Acquia CTO/Co-Founder',
     'reusable' => FALSE,
   ]);
 
@@ -1209,44 +1215,46 @@ function _drupalx_create_accordion() {
  *   An array of media items to display in the group.
  * @param string $type
  *   The type of card to create.
+ * @param string $title
+ *   The title of the card group.
  *
  * @return \Drupal\block_content\Entity\BlockContent
  *   The Card Group block.
  */
-function _drupalx_create_card_group($media_items, $type = 'card') {
+function _drupalx_create_card_group($media_items, $type = 'card', $title = '') {
   $block = BlockContent::create([
     'type' => 'card_group',
-    'field_title' => 'Discover DrupalX',
+    'field_title' => $title,
     'reusable' => FALSE,
   ]);
 
   $card_items = [
     [
-      'title' => 'Explore DrupalX',
-      'summary' => 'Discover how DrupalX can help you build powerful and accessible websites.',
+      'title' => 'Storybook.js',
+      'summary' => 'Learn how Storybook integration allows you to develop and test UI components in isolation.',
       'link' => [
-        'uri' => 'internal:/discover-drupalx',
-        'title' => 'Explore DrupalX',
+        'uri' => 'https://storybook.js.org/',
+        'title' => 'Learn more about Storybook',
       ],
-      'icon' => 'monitoring',
+      'icon' => 'storybook',
     ],
     [
-      'title' => 'Learn about DrupalX',
-      'summary' => 'Learn about the latest features and updates in DrupalX.',
+      'title' => 'Bootstrap 5',
+      'summary' => 'Understand how Bootstrap is used in DrupalX for responsive and mobile-first web development.',
       'link' => [
-        'uri' => 'internal:/latest-features',
-        'title' => 'Check out the updates',
+        'uri' => 'https://getbootstrap.com/',
+        'title' => 'Learn more about Bootstrap',
       ],
-      'icon' => 'bar_chart_4_bars',
+      'icon' => 'bootstrap',
     ],
     [
-      'title' => 'Get in touch with our team',
-      'summary' => 'Get in touch with our team for any questions or support.',
+      'title' => 'Bootswatch',
+      'summary' => 'Explore the Bootswatch themes integrated into DrupalX for rapid and customizable styling.',
       'link' => [
-        'uri' => 'internal:/contact',
-        'title' => 'Contact',
+        'uri' => 'https://bootswatch.com/',
+        'title' => 'Learn more about Bootswatch',
       ],
-      'icon' => 'grouped_bar_chart',
+      'icon' => 'bootswatch',
     ],
   ];
 
@@ -1265,9 +1273,8 @@ function _drupalx_create_card_group($media_items, $type = 'card') {
       $paragraph = Paragraph::create([
         'type' => 'stats_item',
         'field_title' => $info['title'],
-        'field_icon' => [
-          'icon' => $info['icon'],
-          'family' => 'baseline',
+        'field_custom_icon' => [
+          'target_id' => $media_items[$info['icon']]->id(),
         ],
         'field_summary' => $info['summary'],
       ]);

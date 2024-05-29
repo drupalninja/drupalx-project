@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: zCc-ThvZXMqdgip43uursAMMzcpnQ1gF1sPIPAfsKqw
+  default_config_hash: q9h9XNlqFEFVJHOUsLd9ibijBod-ISlBD4de7yJ6dOA
 id: gallery
 block_id: 'inline_block:gallery'
 category: media
 label: Gallery
+weight: -97
 image_path: /profiles/custom/drupalx_demo/images/gallery.png
 image_alt: ''
-weight: -97

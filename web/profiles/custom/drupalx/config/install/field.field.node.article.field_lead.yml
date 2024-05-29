@@ -4,12 +4,12 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_lead
+    - filter.format.full_html
     - node.type.article
   module:
-    - allowed_formats
     - text
 _core:
-  default_config_hash: bieD6_LaQFXlx6XL8yvU_uiqQepWku6CoSBEgersPvY
+  default_config_hash: bzDncUkiNrbRjE1qkhnwjtZ9v2KNtDfkRbjge0kiMr0
 id: node.article.field_lead
 field_name: field_lead
 entity_type: node

@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: xBQjmhsUF1P0MIA31ADjsu7yMCuKSmIX2BW73esOloE
+  default_config_hash: KrQnC9a_SBQW8I8MHtsc7cf3UvEwX5dt2VnBJOenllw
 id: media
 block_id: 'inline_block:media'
 category: media
 label: Media
+weight: -98
 image_path: /profiles/custom/drupalx_demo/images/media.png
 image_alt: ''
-weight: -98

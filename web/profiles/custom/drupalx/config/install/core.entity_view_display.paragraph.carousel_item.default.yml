@@ -8,7 +8,7 @@ dependencies:
     - field.field.paragraph.carousel_item.field_title
     - paragraphs.paragraphs_type.carousel_item
 _core:
-  default_config_hash: VBBzam5L9Jy-5NQ556ZW7ls0JTty6V3fZ3khXS7RjO0
+  default_config_hash: Z_n6xiNRJpkdSe2FwQhlXiyImBeSEpYCtoI2v73xT4M
 id: paragraph.carousel_item.default
 targetEntityType: paragraph
 bundle: carousel_item

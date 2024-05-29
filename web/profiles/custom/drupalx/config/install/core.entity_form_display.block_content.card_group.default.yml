@@ -9,6 +9,8 @@ dependencies:
   module:
     - paragraphs
     - paragraphs_features
+_core:
+  default_config_hash: eWmkzbYDzuUEfQ__Cku6mQ5J-q5E3pgwUD1GeS011qI
 id: block_content.card_group.default
 targetEntityType: block_content
 bundle: card_group

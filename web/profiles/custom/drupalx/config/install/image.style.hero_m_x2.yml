@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: k_UwR59So8qPG0eRXfS5sY8G5oLBV8-KohUoHYkGeIM
+  default_config_hash: ljvjDtZ4hJuqCECUV1jhR7mcHOrt83JfRYJl-Gi87II
 name: hero_m_x2
 label: hero_m_x2
 effects:

@@ -6,7 +6,7 @@ dependencies:
     - block_content.type.media
     - field.storage.block_content.field_title
 _core:
-  default_config_hash: qLra_vXUWzzxezh0Vep6hRUMT7S-weg1sXEqbD1Zofk
+  default_config_hash: CwL1qLL9oBHvUTp6vazwUsy6WkNWa513kMtoGCa5D0E
 id: block_content.media.field_title
 field_name: field_title
 entity_type: block_content

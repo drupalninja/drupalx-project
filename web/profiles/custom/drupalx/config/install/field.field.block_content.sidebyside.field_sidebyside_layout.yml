@@ -8,7 +8,7 @@ dependencies:
   module:
     - options
 _core:
-  default_config_hash: vJCMlit47rCVhmBimqfDIZC_qDeob3kf-TUvOmeYxRk
+  default_config_hash: rKwb82VQ9EJKadcdjHs6UfTIlF0serrKeQwCusagZS4
 id: block_content.sidebyside.field_sidebyside_layout
 field_name: field_sidebyside_layout
 entity_type: block_content

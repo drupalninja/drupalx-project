@@ -1,2 +1,4 @@
+_core:
+  default_config_hash: oOqJRM0jEmjJjG1N9SVvqtEy6AxpehRLnAT6NGbJENI
 admin: gin
 default: drupalx_theme

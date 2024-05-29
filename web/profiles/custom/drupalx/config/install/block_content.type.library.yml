@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: A3L5vk0YbBgm4XynUXUCro286aJzE0I4wOZOnYsmRns
+  default_config_hash: ps7YKtYMbuEVKicuz3LruoSHfdALMinYLwxVOHrRJUQ
 id: library
 label: 'Block Library'
 revision: 0

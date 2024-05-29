@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: aYT73_siYkZ30wp0aifJC1gEMSN5ZbCSETiq0FkpyKM
+  default_config_hash: ncpR125cy9tT1kHS3CaYONP5VWRmMRrCtEYV6eGKLZk
 id: newsletter
 label: Newsletter
 revision: 0

@@ -7,6 +7,8 @@ dependencies:
     - field.storage.block_content.field_hero_layout
   module:
     - options
+_core:
+  default_config_hash: 1dxr5qYVXkz88pYCQNfl_ustsBlkFmE0E3JGRq22dME
 id: block_content.hero.field_hero_layout
 field_name: field_hero_layout
 entity_type: block_content

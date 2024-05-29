@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: 14Nm03_p-P5jnzNhCj0s8fOu9i0EwQ1IlZP45LbjgdA
+  default_config_hash: vz1lZUPmVyGNyi22Ry3-85iBLfOB_JHRYEuBPCY2aQk
 id: hero
 block_id: 'inline_block:hero'
 category: content
 label: Hero
+weight: -3
 image_path: /profiles/custom/drupalx_demo/images/hero.png
 image_alt: ''
-weight: -3

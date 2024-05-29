@@ -12,7 +12,7 @@ dependencies:
   module:
     - toolbar
 _core:
-  default_config_hash: yUkCyw5KuG_fPlKEc9IF8sAvmf2wO3GxepR_C0nWT2k
+  default_config_hash: fbYiOiHpYDcFdl_sn4bko-0RYaOtO--49WQnkpDUfho
 id: hero_responsive
 label: 'Hero Responsive'
 image_style_mappings:

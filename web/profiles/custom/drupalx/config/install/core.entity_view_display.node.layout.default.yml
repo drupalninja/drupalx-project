@@ -60,7 +60,7 @@ third_party_settings:
         core: {  }
       blacklisted_blocks: {  }
 _core:
-  default_config_hash: SXBx3V6c3ZJcJ0HoUtrqTJD3SVj5Bgcw4wWEzkVFaOI
+  default_config_hash: SrjyM7YmlWv9lm_ebap0dRhpFFLIEAZ6xEtWhr7xzKA
 id: node.layout.default
 targetEntityType: node
 bundle: layout

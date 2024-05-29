@@ -11,7 +11,7 @@ dependencies:
     - taxonomy
     - user
 _core:
-  default_config_hash: 02dY4RstAl92u7htB63lBouI54vnMhQax-uNVYcdJdA
+  default_config_hash: a8f9-Rjggrsb-JLaKdi5cYdfwkXnajHC9eTMTStqdnQ
 id: recent_cards
 label: 'Recent (Cards)'
 module: node
@@ -149,6 +149,7 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
+          pagination_heading_level: h4
       exposed_form:
         type: basic
         options:

@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: vTDx330PGYZ8ke3v-ZOyPHzzX78oB0PbtLrI28WdJtw
+  default_config_hash: djM-XrcxbD04s9SJr6PvN-y5jDsTe4bNjMqWTpceQUU
 id: embed
 block_id: 'inline_block:embed'
 category: other
 label: Embed
+weight: -5
 image_path: /profiles/custom/drupalx_demo/images/embed.png
 image_alt: ''
-weight: -5

@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: DqI-jS-VTTsP2O0XpKhWrPX24Y6VUSQl9MQxG9DLVcE
+  default_config_hash: 8Q7shhRHZSp0MbHuLjknndj78nHyfGtSyFzrlA9qHzs
 id: text
 block_id: 'inline_block:text'
 category: content
 label: Text
+weight: -1
 image_path: /profiles/custom/drupalx_demo/images/text.png
 image_alt: ''
-weight: -1

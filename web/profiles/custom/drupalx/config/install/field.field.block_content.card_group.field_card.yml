@@ -10,7 +10,7 @@ dependencies:
   module:
     - entity_reference_revisions
 _core:
-  default_config_hash: 3ZNepEiTzy7GQma-O6FDifWxBo1naMdRANOb_sy6Ej8
+  default_config_hash: _isH6CpDjRgM1vFVKGGsgf71gUKXevWRcBt8qBFrMSE
 id: block_content.card_group.field_card
 field_name: field_card
 entity_type: block_content

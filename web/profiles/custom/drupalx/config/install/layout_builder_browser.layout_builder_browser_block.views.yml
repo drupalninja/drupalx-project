@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: 7ZKNxPBec1Ky0XEcTUc3U__IswwGLH13M79gW3Gx9Mo
+  default_config_hash: Miwqe6t_GqgZZGei7zjmvJypACS3D1URZLjCFQzN2Aw
 id: views
 block_id: 'inline_block:views'
 category: other
 label: Views
+weight: -2
 image_path: /profiles/custom/drupalx_demo/images/views.png
 image_alt: ''
-weight: -2

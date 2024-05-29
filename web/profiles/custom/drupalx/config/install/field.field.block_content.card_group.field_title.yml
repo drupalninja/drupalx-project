@@ -6,7 +6,7 @@ dependencies:
     - block_content.type.card_group
     - field.storage.block_content.field_title
 _core:
-  default_config_hash: 8ZLSNwfD_a-VmigBfWIjP6zvBbKSfK3afKxfUEdbbSg
+  default_config_hash: 6DiCjf_yU_MA0Ux-R_GaXPQnTwYsUQKIbeaGbK3-olI
 id: block_content.card_group.field_title
 field_name: field_title
 entity_type: block_content

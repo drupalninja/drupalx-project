@@ -6,7 +6,7 @@ dependencies:
     - block_content
     - options
 _core:
-  default_config_hash: 2r_ITuUGLx3IMEVx3E0E2eiDZ9xcjuhi3g7TO88KXII
+  default_config_hash: tc4Dy0AdGsgY7z61EfDwv8hxaUSLYZcNMbfeec1NKQI
 id: block_content.field_hero_layout
 field_name: field_hero_layout
 entity_type: block_content

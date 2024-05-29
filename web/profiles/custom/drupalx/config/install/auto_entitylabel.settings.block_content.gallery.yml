@@ -1,5 +1,5 @@
 _core:
-  default_config_hash: 9fTS8XDMZpHgjxIW0i88ovN7YsT0jU-TcWLJGHw4GQU
+  default_config_hash: RyPOV4Jg-NTDtZ1kfDF51D3XRGt9K5AfCBj9GQu86s0
 status: 2
 pattern: 'Gallery: [block_content:field_title]'
 escape: false

@@ -11,7 +11,7 @@ dependencies:
     - node
     - user
 _core:
-  default_config_hash: uzqjYhqTUHZocHoC-VMtqQwZlTmL7LwE7tunML8Oz2Q
+  default_config_hash: IYU8CcgyME7Bb8TR4EEm8Qc9e-6DdtZOWQVpDjTTjA8
 id: latest_news
 label: latest_news
 module: node

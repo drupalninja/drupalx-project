@@ -1,5 +1,5 @@
 _core:
-  default_config_hash: VXAKXzc0UEe8ebdlLCWwlmFg1xrRsL7DZvzYsjHi204
+  default_config_hash: MDjCgihAcq5GHa_AvkdXrJtUOQqDJ0OpfJCpfVd6lvQ
 status: 2
 pattern: 'Embed: [block_content:field_title]'
 escape: false

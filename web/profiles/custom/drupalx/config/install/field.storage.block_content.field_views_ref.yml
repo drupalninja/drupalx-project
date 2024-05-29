@@ -7,7 +7,7 @@ dependencies:
     - views
     - viewsreference
 _core:
-  default_config_hash: LWxFdckFpqWd5jiZdaDQAUU2X8HcPRtbM-JMeOaVOS4
+  default_config_hash: 2rnEyk1t_rxIRbdGA_gcfGMyC_hSZTV0TNkafDYol6s
 id: block_content.field_views_ref
 field_name: field_views_ref
 entity_type: block_content

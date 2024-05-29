@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: It7ni0x27K2jSnHdHMpHBTMDtj1nAAppz2VQG9nvdgA
+  default_config_hash: 4tCkzD2VvKiWkcfY-9L8iLs7FhiBeSuxulhpyrHOx0U
 id: quote
 block_id: 'inline_block:quote'
 category: content
 label: Quote
+weight: -4
 image_path: /profiles/custom/drupalx_demo/images/quote.png
 image_alt: ''
-weight: -4

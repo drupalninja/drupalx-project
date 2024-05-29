@@ -14,7 +14,7 @@ dependencies:
     - options
     - text
 _core:
-  default_config_hash: 7Ulmv6d1FODNH2JCHaGRjRuI6s-q_87wA9vs8bWQ-rA
+  default_config_hash: LI-QbTAGci2dAIP-DkRxS0hTtInKVVrzkQYmkTHWDpA
 id: block_content.hero.default
 targetEntityType: block_content
 bundle: hero

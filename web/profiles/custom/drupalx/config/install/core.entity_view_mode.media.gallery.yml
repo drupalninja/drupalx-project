@@ -5,7 +5,7 @@ dependencies:
   module:
     - media
 _core:
-  default_config_hash: OS4sGR0SUmpgMOlA87RkJzzOadkFqOqrDHO__9AqJhA
+  default_config_hash: YHCMLG_r7jdeilBaBGUvVZl9brYe-JUX9zetubUPE3I
 id: media.gallery
 label: Gallery
 description: ''

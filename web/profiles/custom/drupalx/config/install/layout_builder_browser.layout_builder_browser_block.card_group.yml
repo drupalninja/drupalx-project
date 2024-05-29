@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: H5ciSIacygqZ-KXVp4krw0JWDzYfGaa0EAGouhLiD5I
+  default_config_hash: 1JtLaJ5X71NcBrPoTgS5lYir_NmarzRqzGXnJHWJtHI
 id: card_group
 block_id: 'inline_block:card_group'
 category: content
 label: 'Card Group'
+weight: -5
 image_path: /profiles/custom/drupalx_demo/images/cards.png
 image_alt: ''
-weight: -5

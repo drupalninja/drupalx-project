@@ -6,7 +6,7 @@ dependencies:
     - block_content.type.library
     - field.field.block_content.library.field_block
 _core:
-  default_config_hash: I3ZEw_igvOoGOxGPIEF3NWELOM6pdCX0ERyr2kbxbO8
+  default_config_hash: kSSObOsNFDmqZM5SuW1GtU_JVBQOHpoKGS6iuO_XTT8
 id: block_content.library.default
 targetEntityType: block_content
 bundle: library

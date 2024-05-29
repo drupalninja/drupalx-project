@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: 3eVZ4cBYSGnoRAfN6AWo5xNeELSWGAr5lkiXzcAS030
+  default_config_hash: zU29DXJGwGFDAVwmX0AtmhQn4j6HQ_BHRk6VXr1eYWY
 id: sidebyside
 block_id: 'inline_block:sidebyside'
 category: content
 label: Side-by-side
+weight: -2
 image_path: /profiles/custom/drupalx_demo/images/sidebyside.png
 image_alt: ''
-weight: -2

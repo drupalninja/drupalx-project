@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: l_pe9Hl-9WTixhIQkCymYf3SeLuRdp6IIpTc0Mino5o
+  default_config_hash: gSMzldGm8bl8rSN3ilQw0qyJ5ITDgC_adWYhhYpKdc8
 id: image
 label: Image
-description: ''
+description: 'Basic image media type.'
 source: image
 queue_thumbnail_downloads: false
 new_revision: false
