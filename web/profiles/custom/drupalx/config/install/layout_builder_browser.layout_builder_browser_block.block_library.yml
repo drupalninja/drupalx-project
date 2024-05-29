@@ -9,5 +9,5 @@ block_id: 'inline_block:library'
 category: other
 label: 'Block Library'
 weight: -6
-image_path: /profiles/custom/drupalx_demo/images/library.png
+image_path: /profiles/custom/drupalx/images/library.png
 image_alt: ''

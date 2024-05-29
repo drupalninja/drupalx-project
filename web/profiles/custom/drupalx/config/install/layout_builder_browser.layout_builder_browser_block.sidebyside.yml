@@ -9,5 +9,5 @@ block_id: 'inline_block:sidebyside'
 category: content
 label: Side-by-side
 weight: -2
-image_path: /profiles/custom/drupalx_demo/images/sidebyside.png
+image_path: /profiles/custom/drupalx/images/sidebyside.png
 image_alt: ''

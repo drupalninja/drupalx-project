@@ -9,5 +9,5 @@ block_id: 'inline_block:hero'
 category: content
 label: Hero
 weight: -3
-image_path: /profiles/custom/drupalx_demo/images/hero.png
+image_path: /profiles/custom/drupalx/images/hero.png
 image_alt: ''

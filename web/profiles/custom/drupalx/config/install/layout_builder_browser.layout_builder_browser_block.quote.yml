@@ -9,5 +9,5 @@ block_id: 'inline_block:quote'
 category: content
 label: Quote
 weight: -4
-image_path: /profiles/custom/drupalx_demo/images/quote.png
+image_path: /profiles/custom/drupalx/images/quote.png
 image_alt: ''

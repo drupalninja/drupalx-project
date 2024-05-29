@@ -9,5 +9,5 @@ block_id: 'inline_block:embed'
 category: other
 label: Embed
 weight: -5
-image_path: /profiles/custom/drupalx_demo/images/embed.png
+image_path: /profiles/custom/drupalx/images/embed.png
 image_alt: ''

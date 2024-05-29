@@ -9,5 +9,5 @@ block_id: 'inline_block:accordion'
 category: content
 label: Accordion
 weight: -6
-image_path: /profiles/custom/drupalx_demo/images/accordion.png
+image_path: /profiles/custom/drupalx/images/accordion.png
 image_alt: ''
