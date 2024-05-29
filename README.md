@@ -1,4 +1,4 @@
-# DrupalX Enterprise Starter Template for Drupal
+# DrupalX Enterprise Starter Template
 
 [![CI](https://github.com/drupalninja/drupalx-project/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/drupalninja/drupalx-project/actions/workflows/ci.yml)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
