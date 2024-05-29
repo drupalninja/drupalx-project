@@ -169,7 +169,7 @@ settings:
   confirmation_type: inline
   confirmation_url: ''
   confirmation_title: 'We’ll Take it From Here'
-  confirmation_message: "<p><img alt=\"Success\" src=\"/themes/contrib/ignite_theme/src/stories/components/form/images/success.svg\" /></p>\r\n\r\n<h3>We’ll Take it From Here</h3>\r\n\r\n<p>We’ve received your submission. You’ll receive more information from our business development team soon.<br />\r\n<br />\r\nWhile you wait, why not follow us on <a href=\"https://www.linkedin.com/company/mediacurrent/\">LinkedIn</a> for more about our work and process?</p>"
+  confirmation_message: "<p><h3>We’ll Take it From Here</h3>\r\n\r\n<p>We’ve received your submission. You’ll receive more information from our team soon.</p>"
   confirmation_attributes: {  }
   confirmation_back: false
   confirmation_back_label: ''

@@ -662,7 +662,7 @@ function drupalx_install_content() {
   $hero_info = [
     'media' => $media_items['card'],
     'heading' => "Get Started",
-    'summary' => 'Dive into the DrupalX design system. Whether you’re a designer or a developer, DrupalX provides the perfect foundation to start customizing to your specific needs. Unleash your creativity, enhance your productivity, and begin experimenting today.',
+    'summary' => 'Whether you’re a designer or a developer, DrupalX provides the perfect foundation to start customizing to your specific needs.',
     'layout' => 'image_top',
   ];
 
@@ -671,23 +671,23 @@ function drupalx_install_content() {
   // Create 50/50 blocks.
   $info_sidebyside = [
     [
-      'title' => 'Lorem Ipsum for Designers',
-      'eyebrow' => 'UI Kit',
-      'summary' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'title' => 'DrupalX for Designers',
+      'eyebrow' => 'Bootstrap UI Kits',
+      'summary' => 'Leverage a variety of Figma community templates built on Bootstrap 5 to jumpstart your design process.',
       'layout' => 'right',
       'link' => [
-        'uri' => 'https://google.com/',
-        'title' => 'Learn more',
+        'uri' => 'https://www.figma.com/community/search?resource_type=mixed&sort_by=relevancy&query=bootstrap+5&editor_type=all&price=all&creators=all',
+        'title' => 'Browse Figma UI kits',
       ],
       'media' => $media_items['card'],
     ],
     [
-      'title' => 'Lorem Ipsum for Developers',
-      'eyebrow' => 'DrupalX Demo',
-      'summary' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      'title' => 'DrupalX for Developers',
+      'eyebrow' => 'Project Template',
+      'summary' => 'Visit our GitHub repository to download the DrupalX project template and start building your site today.',
       'layout' => 'left',
       'link' => [
-        'uri' => 'https://google.com/',
+        'uri' => 'https://github.com/drupalninja/drupalx-project',
         'title' => 'Find out more',
       ],
       'media' => $media_items['card'],
@@ -748,7 +748,7 @@ function drupalx_install_content() {
 
   $hero_info = [
     'media' => $media_items['card'],
-    'heading' => "Read more about DrupalX",
+    'heading' => "DrupalX Articles",
     'layout' => 'image_bottom',
   ];
 
@@ -834,16 +834,16 @@ function drupalx_install_content() {
         'format' => 'full_html',
       ],
       'body' => [
-        'value' => '<h2>Why DrupalX is your new best friend</h2>
-          <p>We created DrupalX to help teams build sites more efficiently by giving them the pieces of a fully-established design system. The term ‘design system’ gets thrown around a lot in the product development process, but it’s often used in the wrong way. A design system isn’t just a file with colors, fonts and component styles that only designers touch when they’re working in Figma. A true design system is a set of standards that are adopted by both designers and developers to create a consistent user experience and help teams build faster.</p>
-          <p>A design system establishes what a card component looks like in every instance across a website, or how a button should always be styled depending on whether it’s a primary or secondary button.</p>
+        'value' => '<h2>Lorem ipsum dolor sit amet</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           <p>&nbsp;</p>
-          <h3>Editorial components vs base elements / our philosophy on components</h3>
-          <p>We subscribe to a component-based approach to site design and development. That means we establish a set list of needed components (ex: a card, a gallery or a form), and reuse those components over and over throughout the design. This approach saves time and keeps the design cohesive.</p>
-          <drupal-media data-align="center" data-caption="Lorem ipsum dolor sit amet consectetur. Urna consectetur blandit suspendisse ut bibendum quam fames tincidunt vitae. Felis porttitor id ac nunc aenean hendrerit enim interdum. Posuere interdum ipsum quis ut." data-entity-type="media" data-entity-uuid="' . $media_items['card']->uuid() . '" data-view-mode=""></drupal-media>
-          <h3>Covering the basics</h3>
-          <p>With DrupalX, we took care of the boring work so you can focus on designing your site to fit your organization’s unique needs and brand. Thanks to our Figma UI kit, you don’t need to design another button or card list from scratch. Take the foundational components of DrupalX and tweak them to match your brand’s own look and feel. Our selection of components should cover the basic needs for most websites, but go ahead and build on them and add any others you and your team decide you need throughout your planning process. We created DrupalX to be a starting point for teams to customize to their hearts’ content.</p>
-          <drupal-media data-align="center" data-caption="Lorem ipsum dolor sit amet consectetur. Urna consectetur blandit suspendisse ut bibendum quam fames tincidunt vitae. Felis porttitor id ac nunc aenean hendrerit enim interdum. Posuere interdum ipsum quis ut." data-entity-type="media" data-entity-uuid="' . $media_items['card']->uuid() . '" data-view-mode=""></drupal-media>',
+          <h3>Vestibulum ante ipsum primis</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <drupal-media data-align="center" data-caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." data-entity-type="media" data-entity-uuid="' . $media_items['card']->uuid() . '" data-view-mode=""></drupal-media>
+          <h3>Curabitur vel sem sit amet</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <drupal-media data-align="center" data-caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." data-entity-type="media" data-entity-uuid="' . $media_items['card']->uuid() . '" data-view-mode=""></drupal-media>',
         'format' => 'full_html',
       ],
     ]);
