@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7577b87ffa8c59cd1b25274c1e68dbd4",
+    "content-hash": "17b3bd59241c8eac9ffafc93b05f87b2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1683,101 +1683,6 @@
             }
         },
         {
-            "name": "drupal/ckeditor",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/ckeditor.git",
-                "reference": "1.0.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ckeditor-1.0.2.zip",
-                "reference": "1.0.2",
-                "shasum": "fec2ca9ad852a00c7b9584cb6040dc860364c481"
-            },
-            "require": {
-                "drupal/core": "^9.4 || ^10"
-            },
-            "require-dev": {
-                "drupal/classy": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "1.0.2",
-                    "datestamp": "1695740655",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "dczepierga",
-                    "homepage": "https://www.drupal.org/user/911466"
-                },
-                {
-                    "name": "hass",
-                    "homepage": "https://www.drupal.org/user/85918"
-                },
-                {
-                    "name": "jcisio",
-                    "homepage": "https://www.drupal.org/user/210762"
-                },
-                {
-                    "name": "Jorrit",
-                    "homepage": "https://www.drupal.org/user/161217"
-                },
-                {
-                    "name": "lauriii",
-                    "homepage": "https://www.drupal.org/user/1078742"
-                },
-                {
-                    "name": "Magnus",
-                    "homepage": "https://www.drupal.org/user/73919"
-                },
-                {
-                    "name": "mkesicki",
-                    "homepage": "https://www.drupal.org/user/922884"
-                },
-                {
-                    "name": "nod_",
-                    "homepage": "https://www.drupal.org/user/598310"
-                },
-                {
-                    "name": "p.wiaderny",
-                    "homepage": "https://www.drupal.org/user/2956619"
-                },
-                {
-                    "name": "vokiel",
-                    "homepage": "https://www.drupal.org/user/2793801"
-                },
-                {
-                    "name": "Wim Leers",
-                    "homepage": "https://www.drupal.org/user/99777"
-                },
-                {
-                    "name": "wwalc",
-                    "homepage": "https://www.drupal.org/user/184556"
-                },
-                {
-                    "name": "xjm",
-                    "homepage": "https://www.drupal.org/user/65776"
-                }
-            ],
-            "description": "WYSIWYG editing for rich text fields using CKEditor.",
-            "homepage": "https://www.drupal.org/project/ckeditor",
-            "support": {
-                "source": "https://git.drupalcode.org/project/ckeditor"
-            }
-        },
-        {
             "name": "drupal/claro_media_library_theme",
             "version": "1.0.0-alpha7",
             "source": {
@@ -2312,21 +2217,22 @@
         },
         {
             "name": "drupal/diff",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/diff.git",
-                "reference": "8.x-1.3"
+                "reference": "8.x-1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/diff-8.x-1.3.zip",
-                "reference": "8.x-1.3",
-                "shasum": "7a6e70546d97974600baffd0695105e88699744e"
+                "url": "https://ftp.drupal.org/files/projects/diff-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "8f1e95e6c7f576999c5b2880023de2c2aaaf99b3"
             },
             "require": {
-                "drupal/core": "^9.3 || ^10",
-                "mkalkbrenner/php-htmldiff-advanced": "~0.0.8"
+                "drupal/core": "^9.3 || ^10 || ^11",
+                "mkalkbrenner/php-htmldiff-advanced": "~0.0.8",
+                "php": "^8.1"
             },
             "require-dev": {
                 "jangregor/phpstan-prophecy": "dev-master",
@@ -2341,8 +2247,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.3",
-                    "datestamp": "1712883857",
+                    "version": "8.x-1.4",
+                    "datestamp": "1717130431",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4733,7 +4639,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/viewsreference.git",
-                "reference": "420459b4a43f064c1a5577b286bbd03d691f3d44"
+                "reference": "559bff38a06b92b29283cb46a9c4edab77546423"
             },
             "require": {
                 "drupal/core": "^9.3 || ^10 || ^11"
@@ -4747,8 +4653,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.0-beta7+6-dev",
-                    "datestamp": "1714654461",
+                    "version": "8.x-2.0-beta8+2-dev",
+                    "datestamp": "1717092287",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -5077,7 +4983,7 @@
         },
         {
             "name": "drupalninja/drupalx_bootswatch",
-            "version": "dev-main",
+            "version": "1.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupalninja/drupalx_bootswatch.git",
@@ -5089,7 +4995,6 @@
                 "reference": "6eda6a2041cbfbc6d5067318a32334990713f0ad",
                 "shasum": ""
             },
-            "default-branch": true,
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5103,25 +5008,24 @@
             "description": "Bootswatch theme generator for DrupalX theme.",
             "support": {
                 "issues": "https://github.com/drupalninja/drupalx_bootswatch/issues",
-                "source": "https://github.com/drupalninja/drupalx_bootswatch/tree/main"
+                "source": "https://github.com/drupalninja/drupalx_bootswatch/tree/1.0-beta1"
             },
             "time": "2024-05-28T22:04:16+00:00"
         },
         {
             "name": "drupalninja/drupalx_gin",
-            "version": "dev-main",
+            "version": "1.0-beta1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupalninja/drupalx_gin.git",
-                "reference": "e6d1a1ca07d221afe2164b19c9822d15b5279db2"
+                "reference": "7744703892697528c8fdbfc55da7e7349c12729d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupalninja/drupalx_gin/zipball/e6d1a1ca07d221afe2164b19c9822d15b5279db2",
-                "reference": "e6d1a1ca07d221afe2164b19c9822d15b5279db2",
+                "url": "https://api.github.com/repos/drupalninja/drupalx_gin/zipball/7744703892697528c8fdbfc55da7e7349c12729d",
+                "reference": "7744703892697528c8fdbfc55da7e7349c12729d",
                 "shasum": ""
             },
-            "default-branch": true,
             "type": "drupal-module",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5135,25 +5039,24 @@
             "description": "DrupalX Gin integration, cleanup for Gin theme.",
             "support": {
                 "issues": "https://github.com/drupalninja/drupalx_gin/issues",
-                "source": "https://github.com/drupalninja/drupalx_gin/tree/main"
+                "source": "https://github.com/drupalninja/drupalx_gin/tree/1.0-beta1"
             },
-            "time": "2024-05-29T16:29:45+00:00"
+            "time": "2024-05-31T14:02:52+00:00"
         },
         {
             "name": "drupalninja/drupalx_theme",
-            "version": "dev-main",
+            "version": "1.0.1-beta1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupalninja/drupalx_theme.git",
-                "reference": "cba9d9e80092be238d8c13df06c06fa9216dab73"
+                "reference": "e1277131db308db862fb3c614ac5da7338c0426f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupalninja/drupalx_theme/zipball/cba9d9e80092be238d8c13df06c06fa9216dab73",
-                "reference": "cba9d9e80092be238d8c13df06c06fa9216dab73",
+                "url": "https://api.github.com/repos/drupalninja/drupalx_theme/zipball/e1277131db308db862fb3c614ac5da7338c0426f",
+                "reference": "e1277131db308db862fb3c614ac5da7338c0426f",
                 "shasum": ""
             },
-            "default-branch": true,
             "type": "drupal-theme",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5167,9 +5070,9 @@
             "description": "DrupalX Bootstrap, Storybook starter theme.",
             "support": {
                 "issues": "https://github.com/drupalninja/drupalx_theme/issues",
-                "source": "https://github.com/drupalninja/drupalx_theme/tree/main"
+                "source": "https://github.com/drupalninja/drupalx_theme/tree/1.0.1-beta1"
             },
-            "time": "2024-05-29T16:26:26+00:00"
+            "time": "2024-05-31T14:20:09+00:00"
         },
         {
             "name": "drush/drush",
@@ -10566,16 +10469,16 @@
         },
         {
             "name": "composer/class-map-generator",
-            "version": "1.1.1",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/class-map-generator.git",
-                "reference": "8286a62d243312ed99b3eee20d5005c961adb311"
+                "reference": "d90e2bcf9f846562a39c232eeb01fae0ebab3c3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/8286a62d243312ed99b3eee20d5005c961adb311",
-                "reference": "8286a62d243312ed99b3eee20d5005c961adb311",
+                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/d90e2bcf9f846562a39c232eeb01fae0ebab3c3e",
+                "reference": "d90e2bcf9f846562a39c232eeb01fae0ebab3c3e",
                 "shasum": ""
             },
             "require": {
@@ -10619,7 +10522,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/class-map-generator/issues",
-                "source": "https://github.com/composer/class-map-generator/tree/1.1.1"
+                "source": "https://github.com/composer/class-map-generator/tree/1.2.1"
             },
             "funding": [
                 {
@@ -10635,7 +10538,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-15T12:53:41+00:00"
+            "time": "2024-05-31T13:29:08+00:00"
         },
         {
             "name": "composer/composer",
@@ -13309,16 +13212,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.29.0",
+            "version": "1.29.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "536889f2b340489d328f5ffb7b02bb6b183ddedc"
+                "reference": "fcaefacf2d5c417e928405b71b400d4ce10daaf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/536889f2b340489d328f5ffb7b02bb6b183ddedc",
-                "reference": "536889f2b340489d328f5ffb7b02bb6b183ddedc",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/fcaefacf2d5c417e928405b71b400d4ce10daaf4",
+                "reference": "fcaefacf2d5c417e928405b71b400d4ce10daaf4",
                 "shasum": ""
             },
             "require": {
@@ -13350,22 +13253,22 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.29.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.29.1"
             },
-            "time": "2024-05-06T12:04:23+00:00"
+            "time": "2024-05-31T08:52:43+00:00"
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.11.2",
+            "version": "1.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "0d5d4294a70deb7547db655c47685d680e39cfec"
+                "reference": "e64220a05c1209fc856d58e789c3b7a32c0bb9a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/0d5d4294a70deb7547db655c47685d680e39cfec",
-                "reference": "0d5d4294a70deb7547db655c47685d680e39cfec",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e64220a05c1209fc856d58e789c3b7a32c0bb9a5",
+                "reference": "e64220a05c1209fc856d58e789c3b7a32c0bb9a5",
                 "shasum": ""
             },
             "require": {
@@ -13410,7 +13313,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-24T13:23:04+00:00"
+            "time": "2024-05-31T13:53:37+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -15909,10 +15812,7 @@
         "drupal/gin_lb": 5,
         "drupal/node_revision_delete": 5,
         "drupal/viewsreference": 20,
-        "drupal/webp": 5,
-        "drupalninja/drupalx_bootswatch": 20,
-        "drupalninja/drupalx_gin": 20,
-        "drupalninja/drupalx_theme": 20
+        "drupal/webp": 5
     },
     "prefer-stable": true,
     "prefer-lowest": false,
