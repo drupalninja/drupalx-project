@@ -6,7 +6,7 @@ dependencies:
     - block_content
     - media
 _core:
-  default_config_hash: 6ybeDOUXS20DSZR9_w-rwvZMt8OlnWVIbrTYStJ_lTg
+  default_config_hash: r0Bvy4bfwxCQ6hPe61Je3M-aZFLhsF48CHXZzvyj1j8
 id: block_content.field_thumb
 field_name: field_thumb
 entity_type: block_content

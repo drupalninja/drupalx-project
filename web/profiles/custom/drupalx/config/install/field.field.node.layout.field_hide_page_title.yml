@@ -6,7 +6,7 @@ dependencies:
     - field.storage.node.field_hide_page_title
     - node.type.layout
 _core:
-  default_config_hash: e3JkSLHM9yAb2MEsNeSBePixjB_GOudcvYOgN44WGgA
+  default_config_hash: hRb6jryZUSEPFz3dvtqiysx4jCu2_qazEImDplR1sIQ
 id: node.layout.field_hide_page_title
 field_name: field_hide_page_title
 entity_type: node

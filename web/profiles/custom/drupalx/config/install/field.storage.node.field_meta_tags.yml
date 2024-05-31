@@ -6,7 +6,7 @@ dependencies:
     - metatag
     - node
 _core:
-  default_config_hash: _4uBPVDSnn_m9Trr_F4LVSJ-XACzR6Wj-gKfYiuoN2E
+  default_config_hash: UR76-ay_J8t9Jkm1ZFfB79TZwpcokXyQxuXgj5Sy8O4
 id: node.field_meta_tags
 field_name: field_meta_tags
 entity_type: node

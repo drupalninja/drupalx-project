@@ -15,7 +15,7 @@ dependencies:
     - options
     - text
 _core:
-  default_config_hash: 8rELFB90klXiCOgu3MZkVIA0ShJLM-o2CQuTDwzfETw
+  default_config_hash: KaiuKZjMikl4YskqwVS1E3OKTfq7oADVQQwby3mXXTc
 id: block_content.sidebyside.default
 targetEntityType: block_content
 bundle: sidebyside

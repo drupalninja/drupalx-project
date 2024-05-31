@@ -8,7 +8,7 @@ dependencies:
   module:
     - link
 _core:
-  default_config_hash: Nn-Df2vKpNHixYSVaXxrdJ_gkUUSDjhcyKTSNrhQd8A
+  default_config_hash: 7ibO12vZFDfbDmhDBD_qBnN8lGn-ZK0U1q5C-FYMmEc
 id: block_content.text.field_link
 field_name: field_link
 entity_type: block_content

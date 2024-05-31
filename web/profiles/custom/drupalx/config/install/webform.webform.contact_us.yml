@@ -3,7 +3,7 @@ langcode: en
 status: open
 dependencies: {  }
 _core:
-  default_config_hash: 06zW3lw14d8gzHuVID6pwxhVxWJPI8btsKukzWfVg54
+  default_config_hash: gZiOk6xJsT1XmbxiCZAm9O7ezoMCmzcjzYSnkmQ18sU
 open: null
 close: null
 weight: 0

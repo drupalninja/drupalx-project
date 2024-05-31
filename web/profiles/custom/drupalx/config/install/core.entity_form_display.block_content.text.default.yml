@@ -11,7 +11,7 @@ dependencies:
     - link
     - text
 _core:
-  default_config_hash: cXAeGkIYReiKYztyV_nwot361ns-koVCwE8tjGrxLJw
+  default_config_hash: N3uewH51TUDcYSZTlTIz7kHluPjMv0fTcU-LXMQJ8JA
 id: block_content.text.default
 targetEntityType: block_content
 bundle: text

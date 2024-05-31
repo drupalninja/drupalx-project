@@ -10,7 +10,7 @@ dependencies:
   module:
     - svg_image
 _core:
-  default_config_hash: aCosgRGe3b34nmvQuPBCmUq9BKR84Lu4EkdI5z0BAzM
+  default_config_hash: Mz_nLfuozfF9GUQ2SlLkH25WuuLKLugg-i19r49polk
 id: media.video.media_library
 targetEntityType: media
 bundle: video

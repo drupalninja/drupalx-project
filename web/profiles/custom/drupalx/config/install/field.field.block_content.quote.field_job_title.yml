@@ -6,7 +6,7 @@ dependencies:
     - block_content.type.quote
     - field.storage.block_content.field_job_title
 _core:
-  default_config_hash: R2D-La5nYgn122i1QxgeUje2iUib-QDRGnjca3IrpE8
+  default_config_hash: uvlfvRYMY3nGQnXgsc5Kz7p6mGoL_Rhdz0TyKxQznUg
 id: block_content.quote.field_job_title
 field_name: field_job_title
 entity_type: block_content

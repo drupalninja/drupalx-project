@@ -6,7 +6,7 @@ dependencies:
     - block_content.type.embed
     - field.storage.block_content.field_title
 _core:
-  default_config_hash: 2eGB1wk1dn5Tb--NGjBlhqmCW2n-JY6S2NFuy7rO3t0
+  default_config_hash: PB86alExtp5SOM9yQEuy38kwOjkivdnVrgi3w4nzUu4
 id: block_content.embed.field_title
 field_name: field_title
 entity_type: block_content

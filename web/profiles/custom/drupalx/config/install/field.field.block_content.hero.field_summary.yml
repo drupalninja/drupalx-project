@@ -16,7 +16,7 @@ third_party_settings:
     full_html: '0'
     plain_text: '0'
 _core:
-  default_config_hash: VLvPHntF4g2Ybq-CdUwJyB7hUuwgN-kyevtSbj48_Vg
+  default_config_hash: 5KWxJvO1GjkTiov6iFnfyBlHC04ER42PYNK1aypVFIY
 id: block_content.hero.field_summary
 field_name: field_summary
 entity_type: block_content

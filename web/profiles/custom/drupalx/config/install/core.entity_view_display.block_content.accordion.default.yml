@@ -9,7 +9,7 @@ dependencies:
   module:
     - entity_reference_revisions
 _core:
-  default_config_hash: G4MZEC6Cup-CB9A2Btflo9VmLvDUW2er0-ZDlH1I0oI
+  default_config_hash: GOEu0UOEUDPq_PPAAbhzWPLpp9QdrVV17AZBavn3R_c
 id: block_content.accordion.default
 targetEntityType: block_content
 bundle: accordion

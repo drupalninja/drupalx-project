@@ -1,5 +1,5 @@
 _core:
-  default_config_hash: 8U-udw-G0JZ0xZ6rmFcwkTQR3GEa1w8ke-1jwl9w5WM
+  default_config_hash: wSISvMCIM5PhSSoc57jXMF-N_XM5mbKBQQnmI1e1RXw
 status: 2
 pattern: 'Carousel: [block_content:field_title]'
 escape: false

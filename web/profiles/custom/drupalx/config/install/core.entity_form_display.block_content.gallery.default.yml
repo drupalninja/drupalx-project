@@ -11,7 +11,7 @@ dependencies:
     - media_library
     - text
 _core:
-  default_config_hash: 4jKl8QESN8CVA5DO7z_6kju0Hk-QpLdJ865dzTx5xtA
+  default_config_hash: ZDRLoav4gV_VI8Wp_uPnKquov0wt-0hPDCQ7jTnZTIE
 id: block_content.gallery.default
 targetEntityType: block_content
 bundle: gallery

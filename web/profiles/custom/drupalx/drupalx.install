@@ -397,31 +397,29 @@ function drupalx_install_content() {
 
   $node->save();
 
-  $section = new Section('layout_twocol_section');
+  $section = new Section('layout_onecol');
 
-  // Create a text block.
-  $block = BlockContent::create([
-    'type' => 'text',
-    'field_title' => 'Contact Us',
-    'body' => [
-      'value' => '<p>Have a question about DrupalX? We’re here to help! Drop us a message and we’ll get back to you soon.</p>',
-      'format' => 'full_html',
-    ],
-    'reusable' => FALSE,
-  ]);
+  // Create a hero block.
+  $hero_info = [
+    'media' => $media_items['card'],
+    'heading' => "Contact Us",
+    'summary' => 'Have a question about DrupalX? We’re here to help! Drop us a message and we’ll get back to you soon.',
+    'layout' => 'image_top',
+  ];
 
-  $block->save();
+  $hero_block = _drupalx_create_hero($hero_info);
+  $hero_block->save();
 
-  // Append block to the layout.
+  // Append hero block to the section.
   $component = new SectionComponent(
-    $block->uuid(),
-    'first',
+    $hero_block->uuid(),
+    'content',
     [
-      'id' => 'inline_block:' . $block->bundle(),
-      'label' => $block->label(),
+      'id' => 'inline_block:' . $hero_block->bundle(),
+      'label' => $hero_block->label(),
       'provider' => 'layout_builder',
       'label_display' => '0',
-      'block_revision_id' => $block->getRevisionId(),
+      'block_revision_id' => $hero_block->getRevisionId(),
     ]
   );
   $section->appendComponent($component);
@@ -440,7 +438,7 @@ function drupalx_install_content() {
   // Append block to the layout.
   $component = new SectionComponent(
     $block->uuid(),
-    'second',
+    'content',
     [
       'id' => 'inline_block:' . $block->bundle(),
       'label' => $block->label(),
@@ -665,7 +663,7 @@ function drupalx_install_content() {
     'media' => $media_items['card'],
     'heading' => "Get Started",
     'summary' => 'Whether you’re a designer or a developer, DrupalX provides the perfect foundation to start customizing to your specific needs.',
-    'layout' => 'image_top',
+    'layout' => 'image_bottom',
   ];
 
   $blocks[] = _drupalx_create_hero($hero_info);
@@ -751,7 +749,7 @@ function drupalx_install_content() {
   $hero_info = [
     'media' => $media_items['card'],
     'heading' => "DrupalX Articles",
-    'layout' => 'image_bottom',
+    'layout' => 'image_top',
   ];
 
   $blocks[] = _drupalx_create_hero($hero_info);
@@ -905,21 +903,24 @@ function drupalx_install_content() {
   // Create 50/50 blocks.
   $info_sidebyside = [
     [
-      'title' => 'All the pieces you need to kickstart your site',
-      'eyebrow' => 'Expandable Design System',
-      'link' => ['uri' => 'internal:/features', 'title' => 'Explore features'],
-      'summary' => 'Use our customizable design system as a foundation and expand from there to meet your organization’s needs.',
+      'title' => 'DrupalX Rapid Development',
+      'eyebrow' => 'DrupalX Features',
+      'link' => [
+        'uri' => 'internal:/features',
+        'title' => 'Explore features',
+      ],
+      'summary' => 'The DrupalX template offers top-tier development tools and components for building a site quickly and efficiently.',
       'layout' => 'right',
       'media' => $media_items['card'],
     ],
     [
-      'title' => 'Our tried-and-true design system takes care of the basics',
-      'eyebrow' => 'Get Started Fast',
+      'title' => 'DrupalX Content Management',
+      'eyebrow' => 'DrupalX Content',
       'link' => [
         'uri' => 'internal:/articles',
-        'title' => 'Read why DrupalX works for your whole team',
+        'title' => 'Read DrupalX articles',
       ],
-      'summary' => 'DrupalX’s pre-designed and pre-built components allow you to shortcut the boring parts of site development and focus on making your site stand out.',
+      'summary' => 'DrupalX provides a user-friendly editing experience with fully integrated layout builder components for seamless content management.',
       'layout' => 'left',
       'media' => $media_items['card'],
     ],

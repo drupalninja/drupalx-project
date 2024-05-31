@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: hzkaCVlOFA8GE82hL2omUDD6Zg8CCEskNz7IYb9_o8k
+  default_config_hash: 12NbeT68FuiHLo4dJNW_MG3M3T0LX0QOysWWOjjm2L8
 name: 4_3_large_2x
 label: '4:3 Large 2x (1280 x 960)'
 effects:
