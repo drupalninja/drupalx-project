@@ -11,7 +11,7 @@ install:
   - block
   - block_content
   - block_content_template
-  - ckeditor
+  - ckeditor5
   - claro_media_library_theme
   - components
   - content_moderation

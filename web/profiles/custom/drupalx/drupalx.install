@@ -1219,7 +1219,7 @@ function _drupalx_create_card_group($media_items, $type = 'card', $title = '') {
       'summary' => 'Learn how Storybook integration allows you to develop and test UI components in isolation.',
       'link' => [
         'uri' => 'https://storybook.js.org/',
-        'title' => 'Learn more about Storybook',
+        'title' => 'Learn more',
       ],
       'icon' => 'storybook',
     ],
@@ -1228,7 +1228,7 @@ function _drupalx_create_card_group($media_items, $type = 'card', $title = '') {
       'summary' => 'Understand how Bootstrap is used in DrupalX for responsive and mobile-first web development.',
       'link' => [
         'uri' => 'https://getbootstrap.com/',
-        'title' => 'Learn more about Bootstrap',
+        'title' => 'Learn more',
       ],
       'icon' => 'bootstrap',
     ],
@@ -1237,7 +1237,7 @@ function _drupalx_create_card_group($media_items, $type = 'card', $title = '') {
       'summary' => 'Explore the Bootswatch themes integrated into DrupalX for rapid and customizable styling.',
       'link' => [
         'uri' => 'https://bootswatch.com/',
-        'title' => 'Learn more about Bootswatch',
+        'title' => 'Learn more',
       ],
       'icon' => 'bootswatch',
     ],

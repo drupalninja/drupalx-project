@@ -17,7 +17,6 @@
         "drupal/allowed_formats": "^3.0",
         "drupal/auto_entitylabel": "^3.0",
         "drupal/block_content_template": "^1.5",
-        "drupal/ckeditor": "^1.0",
         "drupal/claro_media_library_theme": "^1.0@alpha",
         "drupal/components": "^3.0@beta",
         "drupal/core-composer-scaffold": "^10.3",

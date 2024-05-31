@@ -4,5 +4,6 @@
 
 ddev start
 ddev composer install
+ddev . drush webform-libraries-download
 ddev . drush si -y --verbose drupalx
 open $DDEV_PRIMARY_URL
