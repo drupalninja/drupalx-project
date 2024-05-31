@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: Miwqe6t_GqgZZGei7zjmvJypACS3D1URZLjCFQzN2Aw
+  default_config_hash: 5D4AWaZHSxyx6bXYlDKGpPGQTivC81PFQMGQ_A-EjHg
 id: views
 block_id: 'inline_block:views'
 category: other

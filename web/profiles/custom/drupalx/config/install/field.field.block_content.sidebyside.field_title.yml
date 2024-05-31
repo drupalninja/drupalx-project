@@ -6,7 +6,7 @@ dependencies:
     - block_content.type.sidebyside
     - field.storage.block_content.field_title
 _core:
-  default_config_hash: rC-Ic_DyLUgKzCI9rmkyngHBPNlvH95ueh1bLN4i85U
+  default_config_hash: fiePzhMh6U_dbFVgHU6YzP7G4Wjdtbz7ESAGiS8wNUU
 id: block_content.sidebyside.field_title
 field_name: field_title
 entity_type: block_content

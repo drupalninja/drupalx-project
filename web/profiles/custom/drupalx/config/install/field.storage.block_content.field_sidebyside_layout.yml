@@ -6,7 +6,7 @@ dependencies:
     - block_content
     - options
 _core:
-  default_config_hash: 0UiYC2t33Ja1fakcWI2MUTy-f-19ogrXjwDS3H2TsG8
+  default_config_hash: Hd_I0UPXL369erTSKn4qsatYhY3uweBz5knsT4cagWI
 id: block_content.field_sidebyside_layout
 field_name: field_sidebyside_layout
 entity_type: block_content

@@ -7,7 +7,7 @@ dependencies:
     - entity_reference_revisions
     - paragraphs
 _core:
-  default_config_hash: VDbacz2_brEjuUdNk-XLKZU4WS51ZWc0Sbcq6I-uT5k
+  default_config_hash: 5kjUAjyJxaH9uaoAF1e1NRIMCKrUBXvXg7vJRbEvxTk
 id: block_content.field_carousel_item
 field_name: field_carousel_item
 entity_type: block_content

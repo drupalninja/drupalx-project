@@ -11,7 +11,7 @@ dependencies:
     - link
     - viewsreference
 _core:
-  default_config_hash: N0BFSx25C43LZk7icYfWhIGSvtjCgKdo-JRw5Dtw81s
+  default_config_hash: DsWXxHNvoUfMzLpLRozGnlst0D1UJpYOW1GOJJlNjyQ
 id: block_content.views.default
 targetEntityType: block_content
 bundle: views

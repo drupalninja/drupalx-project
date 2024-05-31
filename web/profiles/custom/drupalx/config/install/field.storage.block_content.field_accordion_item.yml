@@ -7,7 +7,7 @@ dependencies:
     - entity_reference_revisions
     - paragraphs
 _core:
-  default_config_hash: C7210g9mAJ1zxl5hjIuNpgQ_rrbBZk6TKpJMDaBegI4
+  default_config_hash: hfMsCwWtULFZQAKq8qy8Aw9qrVIqdlbOHTgtGMPwpjg
 id: block_content.field_accordion_item
 field_name: field_accordion_item
 entity_type: block_content

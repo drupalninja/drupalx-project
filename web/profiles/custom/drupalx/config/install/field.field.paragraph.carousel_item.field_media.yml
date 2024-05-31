@@ -7,7 +7,7 @@ dependencies:
     - media.type.image
     - paragraphs.paragraphs_type.carousel_item
 _core:
-  default_config_hash: 4e81MAJ6Soje5CYFu2vnijZ92AmOQYebDgPUKTdKu-8
+  default_config_hash: QsM412qB1IA0yE8maI0Bs137bZs1n5eEG7DBJWF-OEs
 id: paragraph.carousel_item.field_media
 field_name: field_media
 entity_type: paragraph

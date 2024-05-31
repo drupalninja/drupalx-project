@@ -1,5 +1,5 @@
 _core:
-  default_config_hash: Qs57tXhjaAugODBgFPyZW3BUuXHLQcBL4z182xqNhhw
+  default_config_hash: uxsCx4QlpwWqr8odOy3F6IC_ewMd1JIlTbe9QGJBF8o
 status: 2
 pattern: 'Card Group: [block_content:field_title]'
 escape: false

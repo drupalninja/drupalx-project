@@ -5,7 +5,7 @@ dependencies:
   config:
     - block_content.type.newsletter
 _core:
-  default_config_hash: 48jFcUFyp7rEMbFTG1GJo9_quea6fcVqJJ3-k3YeSXo
+  default_config_hash: dg3POnPYKofd9L0E96YAN-9NWRutUjlSLuk5KGINFhw
 id: block_content.newsletter.default
 targetEntityType: block_content
 bundle: newsletter

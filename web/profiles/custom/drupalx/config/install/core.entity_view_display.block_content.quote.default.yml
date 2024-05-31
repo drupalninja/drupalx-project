@@ -9,10 +9,8 @@ dependencies:
     - field.field.block_content.quote.field_logo
     - field.field.block_content.quote.field_quote
     - field.field.block_content.quote.field_thumb
-  module:
-    - svg_image
 _core:
-  default_config_hash: 04FdsTG7Ne_GguJo_y3Fqetn1UdgCDAOK0RzbfWy20U
+  default_config_hash: '-beRXmPbO6zeKcATWSrBbdv6obPZ1ky8LaNiqx2afRY'
 id: block_content.quote.default
 targetEntityType: block_content
 bundle: quote
@@ -52,19 +50,13 @@ content:
     weight: 2
     region: content
   field_thumb:
-    type: image
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      image_link: ''
-      image_style: ''
-      image_loading:
-        attribute: lazy
-      svg_attributes:
-        width: null
-        height: null
-      svg_render_as_image: true
+      view_mode: square
+      link: false
     third_party_settings: {  }
-    weight: 3
+    weight: 5
     region: content
 hidden:
   search_api_excerpt: true

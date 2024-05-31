@@ -7,7 +7,7 @@ dependencies:
     - linkit
     - media
 _core:
-  default_config_hash: '-0hoaVeGC2MbrHbzQQczZoGgUaFNILzZ1Ihqlnst8ks'
+  default_config_hash: 54F-aktStVHG_MaBC9A3_c6BQhTdM-tmjk7LO5exfOg
 name: 'Basic HTML'
 format: basic_html
 weight: 0

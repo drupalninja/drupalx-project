@@ -5,7 +5,7 @@ dependencies:
   module:
     - media
 _core:
-  default_config_hash: Zw3T4u1v9Qb8Y4kKbRvuNqBzULqsoRtN6zBkrWaL7q8
+  default_config_hash: 6Jlhbvu5WQggvco8t-_c4ytrqfMrnC8nQWGcJ2ukC1M
 id: media.square
 label: Square
 description: ''

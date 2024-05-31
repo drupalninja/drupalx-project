@@ -1,5 +1,5 @@
 _core:
-  default_config_hash: NoAMQ46pVXi-kv0JG-3uJW4MS7NNkKVq_S5QHK0nOI8
+  default_config_hash: B9XbMvDdTmpQtDJKrrrvtTWe_J2Cx2C4ja7GPWe95zg
 status: 2
 pattern: 'Accordion: [block_content:field_title]'
 escape: false

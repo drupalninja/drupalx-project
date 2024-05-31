@@ -8,7 +8,7 @@ dependencies:
   module:
     - material_icons
 _core:
-  default_config_hash: 1jkz6Zpej4iEHLoieXdHrQIdbsl2ZlA5Y0YIAEhAz6I
+  default_config_hash: KYpwOExOTIPWlWIqHCD7QVH6u4X17QH07A0fS4zK4Yc
 id: paragraph.stats_item.field_icon
 field_name: field_icon
 entity_type: paragraph

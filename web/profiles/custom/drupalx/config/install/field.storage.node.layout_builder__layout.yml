@@ -6,7 +6,7 @@ dependencies:
     - layout_builder
     - node
 _core:
-  default_config_hash: M5bSKkdL8GXoeuspOttKjy39nzoRSrTP9Tm25CL_i94
+  default_config_hash: OCyMR9nadQzwVfqwYbrA7DfWpxfVcBRsiWilS9krwKE
 id: node.layout_builder__layout
 field_name: layout_builder__layout
 entity_type: node

@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: Qfpfa4GtML1pQBVP7SYZag9ZyPN1MnYDTN6c46JbjPs
+  default_config_hash: 6wpf4U2-n793Ndo1F2WE9PZsSDub_Z7HH-LrnliX0mk
 id: quote
 label: Quote
 revision: 0

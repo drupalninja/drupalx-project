@@ -9,7 +9,7 @@ dependencies:
   module:
     - entity_reference_revisions
 _core:
-  default_config_hash: Fnh01keEk2KXKK_-BY3d0qDpEanQLL-RcQ-IZtEIyEI
+  default_config_hash: mXPltXDa_A0na9quMHf8xuZ29TG1jIA_oezaJ1dj0QQ
 id: block_content.carousel.field_carousel_item
 field_name: field_carousel_item
 entity_type: block_content

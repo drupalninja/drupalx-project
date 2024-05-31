@@ -7,7 +7,7 @@ dependencies:
     - field.field.block_content.media.field_media
     - field.field.block_content.media.field_title
 _core:
-  default_config_hash: TB2aO3Xk-eouAK_5GNKlJCXhGrgk-rS5_YwpBne-jyc
+  default_config_hash: dqSLloOSUtJZpjCunwYrouRxsu_HRE4kngpf7Q63M1s
 id: block_content.media.default
 targetEntityType: block_content
 bundle: media

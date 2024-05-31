@@ -9,12 +9,10 @@ dependencies:
     - field.field.block_content.quote.field_logo
     - field.field.block_content.quote.field_quote
     - field.field.block_content.quote.field_thumb
-    - image.style.thumbnail
   module:
     - media_library
-    - svg_image
 _core:
-  default_config_hash: iOpT69zeBqU0u8umcjoySz2bGxJOw5AUqIGzOTcD-QQ
+  default_config_hash: q0JDMLd_o5WVBbXDWhSfxsupFIsBAZKcgaFKfxApGl0
 id: block_content.quote.default
 targetEntityType: block_content
 bundle: quote
@@ -52,12 +50,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_thumb:
-    type: image_image
+    type: media_library_widget
     weight: 3
     region: content
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      media_types: {  }
     third_party_settings: {  }
 hidden:
   info: true

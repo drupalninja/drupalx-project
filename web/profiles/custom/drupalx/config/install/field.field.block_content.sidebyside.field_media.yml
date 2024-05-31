@@ -7,7 +7,7 @@ dependencies:
     - field.storage.block_content.field_media
     - media.type.image
 _core:
-  default_config_hash: uN1gDWoMJilmwbshgiV5GHSyYnCEz7irBXi48Or8tP0
+  default_config_hash: Ky-6OD5SdaA3nuuzmyXZnJRvD047tQEQ5yutoFAYkm4
 id: block_content.sidebyside.field_media
 field_name: field_media
 entity_type: block_content

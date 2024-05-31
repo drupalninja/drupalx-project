@@ -14,7 +14,7 @@ dependencies:
     - media_library
     - text
 _core:
-  default_config_hash: xx9eHU25aPHPjJt836sL28gkLDibDKhfY7bsxbJaYD0
+  default_config_hash: F1i_5tTe-Gs46vIOSfg8Y9O9sDvP3K4acBKYE7SMdTo
 id: block_content.hero.default
 targetEntityType: block_content
 bundle: hero

@@ -74,6 +74,8 @@ function drupalx_install_content() {
     'bootstrap' => 'bootstrap.svg',
     'storybook' => 'storybook.svg',
     'bootswatch' => 'bootswatch.svg',
+    'quote-logo' => 'quote-logo.svg',
+    'quote-thumb' => 'dries.jpg',
   ];
 
   $media_items = [];
@@ -522,7 +524,7 @@ function drupalx_install_content() {
     $blocks[] = _drupalx_create_sidebyside($info);
   }
 
-  $blocks[] = _drupalx_create_quote();
+  $blocks[] = _drupalx_create_quote($media_items);
   $blocks[] = _drupalx_create_accordion();
 
   // Create block entities and add them to the layout.
@@ -892,7 +894,7 @@ function drupalx_install_content() {
   $blocks[] = _drupalx_create_carousel($media_items);
   $blocks[] = _drupalx_create_card_group($media_items, 'card', 'Discover DrupalX');
   $blocks[] = _drupalx_create_accordion();
-  $blocks[] = _drupalx_create_quote();
+  $blocks[] = _drupalx_create_quote($media_items);
 
   $blocks[] = BlockContent::create([
     'type' => 'newsletter',
@@ -1112,44 +1114,28 @@ function _drupalx_create_sidebyside(array $info = []) {
 
 /**
  * Create a Quote block.
+ *
+ * @param array $media_items
+ *   An array of media items to display in the group.
+ *
+ * @return \Drupal\block_content\Entity\BlockContent
+ *   The Quote block.
  */
-function _drupalx_create_quote() {
+function _drupalx_create_quote($media_items) {
 
   // Create Quote block.
-  $image_path = \Drupal::service('extension.list.profile')->getPath('drupalx') . '/images/quote-logo.svg';
-  $data = file_get_contents($image_path);
-  $file = \Drupal::service('file.repository')->writeData($data, 'public://quote-logo.svg');
-  $media = Media::create([
-    'bundle' => 'image',
-    'name' => 'Quote Logo',
-    'field_image' => [
-      'target_id' => $file->id(),
-      'alt' => 'Quote Logo',
-      'title' => 'Quote Logo',
-    ],
-  ]);
-
-  $media->save();
-
-  $image_path = \Drupal::service('extension.list.profile')->getPath('drupalx') . '/images/dries.jpg';
-  $data = file_get_contents($image_path);
-  $file = \Drupal::service('file.repository')->writeData($data, 'public://dries.jpg');
-
   $block = BlockContent::create([
     'type' => 'quote',
     'field_logo' => [
-      'target_id' => $media->id(),
+      'target_id' => $media_items['quote-logo']->id(),
+    ],
+    'field_thumb' => [
+      'target_id' => $media_items['quote-thumb']->id(),
     ],
     'field_quote' => 'Bringing people together under a shared passion is at the heart of what Drupal does',
     'field_author' => 'Dries Buytaert',
     'field_job_title' => 'Drupal Founder, Acquia CTO/Co-Founder',
     'reusable' => FALSE,
-  ]);
-
-  $block->field_thumb->setValue([
-    'target_id' => $file->id(),
-    'alt' => 'Quote Image',
-    'title' => 'Quote Image',
   ]);
 
   return $block;
