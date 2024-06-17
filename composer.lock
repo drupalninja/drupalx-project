@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "17b3bd59241c8eac9ffafc93b05f87b2",
+    "content-hash": "7dc9cc558513fe3fa4875f1226ddd2c4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4980,6 +4980,37 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/x_originating_ip"
             }
+        },
+        {
+            "name": "drupalninja/drupalai",
+            "version": "1.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drupalninja/drupalai.git",
+                "reference": "a1111b99518df1546a6a4ae64b1b08a725e07f46"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/drupalninja/drupalai/zipball/a1111b99518df1546a6a4ae64b1b08a725e07f46",
+                "reference": "a1111b99518df1546a6a4ae64b1b08a725e07f46",
+                "shasum": ""
+            },
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jay Callicott"
+                }
+            ],
+            "description": "A Drupal module for integrating AI capabilities into your website.",
+            "support": {
+                "issues": "https://github.com/drupalninja/drupalai/issues",
+                "source": "https://github.com/drupalninja/drupalai/tree/1.0.0-beta1"
+            },
+            "time": "2024-06-17T21:24:09+00:00"
         },
         {
             "name": "drupalninja/drupalx_bootswatch",

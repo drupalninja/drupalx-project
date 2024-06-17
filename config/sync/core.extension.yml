@@ -21,6 +21,7 @@ module:
   datetime: 0
   datetime_range: 0
   diff: 0
+  drupalai: 0
   drupalx_bootswatch: 0
   drupalx_gin: 0
   editor: 0

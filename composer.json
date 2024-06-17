@@ -47,6 +47,7 @@
         "drupal/webform": "^6.2",
         "drupal/webform_ui": "^6.2",
         "drupal/webp": "^1.0@RC",
+        "drupalninja/drupalai": "^1.0@beta",
         "drupalninja/drupalx_bootswatch": "^1.0",
         "drupalninja/drupalx_gin": "^1.0",
         "drupalninja/drupalx_theme": "^1.0",
