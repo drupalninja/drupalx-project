@@ -1,0 +1,46 @@
+uuid: 6d66e43a-68dd-45a7-abc0-b6c63b94fe56
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+  module:
+    - ckeditor5
+_core:
+  default_config_hash: oqjkSAkwf9p8FBjCakWxhJ-JyrWgFsPbVFItRx5tRbc
+format: full_html
+editor: ckeditor5
+settings:
+  toolbar:
+    items:
+      - heading
+      - bold
+      - italic
+      - underline
+      - blockQuote
+      - drupalMedia
+      - bulletedList
+      - numberedList
+      - link
+      - sourceEditing
+  plugins:
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_list:
+      properties:
+        reversed: true
+        startIndex: true
+      multiBlock: true
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
+    linkit_extension:
+      linkit_enabled: false
+    media_media:
+      allow_view_mode_override: false
+image_upload:
+  status: false

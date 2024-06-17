@@ -1,0 +1,10 @@
+uuid: 8c10352f-8f9a-44f1-8dc6-95a1b804cca9
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 2CInV9ZoCswxeXI2_1jsheV144l244Tk6VXboQSR58Q
+id: quote
+label: Quote
+revision: 0
+description: 'The Quote Component is a versatile tool commonly used to highlight testimonials or impactful statements on web pages. Whether showcasing customer feedback, endorsements, or memorable phrases, this component effectively captures attention and adds credibility to your content.'

@@ -1,0 +1,10 @@
+uuid: 67283d7a-e711-4226-9f43-b45729639765
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: GK2x3AyT9_S9_7E1LAb-rTriC_6WF8Zrf15lFrQfELY
+id: card_group
+label: 'Card Group'
+revision: 0
+description: 'The Card Group Feature provides editors with a versatile way to highlight a collection of content items using grouped card layouts. This component is ideal for showcasing articles, products, services, or any other content type in an organized and visually appealing manner.'

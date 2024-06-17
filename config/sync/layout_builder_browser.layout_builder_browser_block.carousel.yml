@@ -1,0 +1,13 @@
+uuid: 3f205208-8fee-4891-b5d7-003dfcb482dd
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: mf7zmGqY945-Imqx13AZ72ClKzJJwZtF1zprzUIX8mI
+id: carousel
+block_id: 'inline_block:carousel'
+category: media
+label: Carousel
+weight: -99
+image_path: /profiles/custom/drupalx/images/carousel.png
+image_alt: ''

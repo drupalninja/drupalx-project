@@ -1,0 +1,26 @@
+uuid: 134edb73-fb70-47d1-8025-14e1b86d05a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero
+    - field.storage.block_content.field_heading
+    - filter.format.restricted_html
+  module:
+    - text
+_core:
+  default_config_hash: 9avcjbYUd-8-fZu3nsFaqPeZ6KRNLvCNfFv2NVDjcJQ
+id: block_content.hero.field_heading
+field_name: field_heading
+entity_type: block_content
+bundle: hero
+label: Heading
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - restricted_html
+field_type: text

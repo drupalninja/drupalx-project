@@ -1,0 +1,32 @@
+uuid: 91436af1-9e3f-44f5-9ae0-b755cb306292
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.sidebyside
+    - field.storage.block_content.field_summary
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    restricted_html: '0'
+    scripts: '0'
+    full_html: '0'
+    plain_text: '0'
+_core:
+  default_config_hash: VL_oVQnjdQB8wNHgOqeWNu9j-JqKjaa_s5PTIfYMs2k
+id: block_content.sidebyside.field_summary
+field_name: field_summary
+entity_type: block_content
+bundle: sidebyside
+label: Summary
+description: 'Provide a brief description of the content being featured.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

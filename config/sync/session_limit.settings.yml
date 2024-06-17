@@ -1,0 +1,9 @@
+_core:
+  default_config_hash: JNv0vk7_gKtj7wSCqHwRQsldB3aZaathGImxNUv5RyA
+session_limit_max: 1
+session_limit_masquerade_ignore: false
+session_limit_behaviour: 0
+session_limit_logged_out_message_severity: warning
+session_limit_roles: {  }
+session_limit_admin_inclusion: 0
+session_limit_log_events: false

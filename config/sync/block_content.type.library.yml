@@ -1,0 +1,10 @@
+uuid: d7e9b394-d253-463e-ad76-9a0c29a16fa7
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: wIPnwqSSHIWsGIpCi6Phet4XqTnAPCff6OwxW0PajoE
+id: library
+label: 'Block Library'
+revision: 0
+description: 'The Block Library serves as a comprehensive reference for existing custom blocks within your project. It provides an organized catalog of reusable blocks, showcasing their various configurations and uses, making it easier to manage and implement consistent design elements across your site.'

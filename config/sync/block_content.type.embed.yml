@@ -1,0 +1,10 @@
+uuid: a3169978-0b55-42b0-8f65-762a7a1db579
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: jShhz-d302aCS95Lzc4Lo2vizecZ0L3vJ8SnBHnjLxQ
+id: embed
+label: Embed
+revision: 0
+description: 'The Embed Component allows you to seamlessly integrate third-party embedded scripts into your web pages. This is ideal for incorporating external content such as videos, social media feeds, maps, and other interactive elements directly into your site.'

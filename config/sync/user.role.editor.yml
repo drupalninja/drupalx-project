@@ -1,0 +1,47 @@
+uuid: 4545a83a-e6ff-4bf5-85a1-864a569a40a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.scripts
+  module:
+    - block
+    - contextual
+    - file
+    - filter
+    - layout_builder
+    - media
+    - node
+    - path
+    - system
+    - taxonomy
+    - toolbar
+_core:
+  default_config_hash: dKR6glamgDTm-km_ND9fL7LG2htPWeFVmLdrQrXW5GE
+id: editor
+label: Editor
+weight: 2
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access files overview'
+  - 'access media overview'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'administer blocks'
+  - 'administer media'
+  - 'administer menu'
+  - 'administer nodes'
+  - 'administer taxonomy'
+  - 'bypass node access'
+  - 'configure any layout'
+  - 'create and edit custom blocks'
+  - 'create url aliases'
+  - 'use text format basic_html'
+  - 'use text format full_html'
+  - 'use text format scripts'
+  - 'view the administration theme'

@@ -1,0 +1,11 @@
+_core:
+  default_config_hash: '-yw6_ChSz-8FvcWCy4pMF9H_q-Lwys_hTldZobZHd7Y'
+status: 2
+pattern: 'Media: [block_content:field_title]'
+escape: false
+preserve_titles: false
+save: false
+chunk: 50
+dependencies:
+  config:
+    - block_content.type.media

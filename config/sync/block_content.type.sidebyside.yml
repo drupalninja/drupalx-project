@@ -1,0 +1,10 @@
+uuid: bd7357ce-bf06-40c1-b486-9652fc618fe4
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ldqV_UT-fYQYV8ir8DCCbYI9VUXR55bfi06upgmoAl8
+id: sidebyside
+label: Side-by-side
+revision: 0
+description: 'A side-by-side teaser provides a visually engaging preview of a piece of content, whether it’s hosted locally or externally. This layout typically features an image or video on one side and a brief text summary or call-to-action on the other, creating a balanced and attractive presentation.'

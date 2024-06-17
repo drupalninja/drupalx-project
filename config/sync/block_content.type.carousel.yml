@@ -1,0 +1,10 @@
+uuid: 5cada2e4-6a08-42dc-af2a-7440a05a1034
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: x0AraT2BUYW_FoKKbLXaT2z-BPCEmwU7MzZ8MxBxxm0
+id: carousel
+label: Carousel
+revision: 0
+description: 'The Carousel component allows you to rotate through a collection of media items, within a dynamic and interactive slider. This component is perfect for showcasing a series of related content in a limited space, enhancing user engagement and visual appeal.'

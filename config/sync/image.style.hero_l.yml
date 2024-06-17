@@ -1,0 +1,17 @@
+uuid: 507c6936-ce53-4594-98f0-b1793d819e75
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ggRd_8yY_R9R1g0T8ACuJTVQciPJut3KQj3vPRDFbIg
+name: hero_l
+label: hero_l
+effects:
+  5982e31c-0259-4b4b-bf01-0f708b50f482:
+    uuid: 5982e31c-0259-4b4b-bf01-0f708b50f482
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 766
+      height: 296
+      anchor: center-top

@@ -1,0 +1,10 @@
+uuid: 9d2de566-909f-4e08-9f6f-fa290d003822
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ZOjy8YxGitE-seVluW2BRtnkY63z6fXDgMdX1fDNHdo
+id: gallery
+label: Gallery
+revision: 0
+description: 'The Media Gallery component allows you to showcase a collection of media items, including images, in a visually appealing and organized manner. This component is perfect for portfolios, photo albums, product showcases, and more.'

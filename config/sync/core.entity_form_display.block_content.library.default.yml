@@ -1,0 +1,33 @@
+uuid: 925c9867-1379-4f5a-8208-f1c3abbfd202
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.library
+    - field.field.block_content.library.field_block
+_core:
+  default_config_hash: dR1DJcJnPkKBOKbcLWbYvilOnr03Eykw0rl4RmBlPxk
+id: block_content.library.default
+targetEntityType: block_content
+bundle: library
+mode: default
+content:
+  field_block:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

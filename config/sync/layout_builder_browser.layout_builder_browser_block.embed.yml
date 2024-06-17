@@ -1,0 +1,13 @@
+uuid: 03651d3e-6e30-44b9-9779-2e05a344f38a
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: AKX5rLCQztT0RFBUYPJHtjWP9PXwdaCkm0yzUpvoCJE
+id: embed
+block_id: 'inline_block:embed'
+category: other
+label: Embed
+weight: -5
+image_path: /profiles/custom/drupalx/images/embed.png
+image_alt: ''

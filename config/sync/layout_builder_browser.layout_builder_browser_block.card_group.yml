@@ -1,0 +1,13 @@
+uuid: a4d90105-9816-4422-b830-4e644b3c3bd4
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: CnsGvWJJi6ggJARvLWWazbWMGCTXDxzomhg3BbfQyV4
+id: card_group
+block_id: 'inline_block:card_group'
+category: content
+label: 'Card Group'
+weight: -5
+image_path: /profiles/custom/drupalx/images/cards.png
+image_alt: ''

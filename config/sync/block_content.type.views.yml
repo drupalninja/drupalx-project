@@ -1,0 +1,10 @@
+uuid: 2db714e3-4792-433a-9662-19e7e29cff9c
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: RTK84FTKzupMg32GhauAKpGU5rvGGtz3TpLfbUJAOvA
+id: views
+label: Views
+revision: 0
+description: 'The Views Component allows you to render a Drupal view directly within your web pages. This is ideal for displaying dynamic content lists, such as news articles, blog posts, product listings, and more.'

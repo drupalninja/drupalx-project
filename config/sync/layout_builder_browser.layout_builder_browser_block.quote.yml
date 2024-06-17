@@ -1,0 +1,13 @@
+uuid: bf645f7c-4ede-47f3-a9e6-7f1e0b385924
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: aZZQEHBgv78_wxljtG7B4c6nGKCD8mXFAEQnsX4zJcE
+id: quote
+block_id: 'inline_block:quote'
+category: content
+label: Quote
+weight: -4
+image_path: /profiles/custom/drupalx/images/quote.png
+image_alt: ''

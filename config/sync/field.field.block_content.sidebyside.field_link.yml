@@ -1,0 +1,25 @@
+uuid: cd769bcf-6b0c-4638-8ec5-bd960223bbf1
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.sidebyside
+    - field.storage.block_content.field_link
+  module:
+    - link
+_core:
+  default_config_hash: zFs3F3uwCcjqHFqlTAj1szlsxlMUQqQOGV4FJwK2qU0
+id: block_content.sidebyside.field_link
+field_name: field_link
+entity_type: block_content
+bundle: sidebyside
+label: Link
+description: 'Provide an internal or external link.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

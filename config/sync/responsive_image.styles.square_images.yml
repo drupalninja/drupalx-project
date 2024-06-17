@@ -1,0 +1,40 @@
+uuid: 19823243-8577-4de5-9e56-8ec29b8f5215
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.1_1_large
+    - image.style.1_1_medium
+  module:
+    - toolbar
+_core:
+  default_config_hash: fPj5Ql0YlbEQxTsrsn6ylEfNQYm_XCd5gheFHlCVIes
+id: square_images
+label: 'Square Images'
+image_style_mappings:
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - 1_1_large
+    breakpoint_id: toolbar.wide
+    multiplier: 1x
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - 1_1_medium
+    breakpoint_id: toolbar.standard
+    multiplier: 1x
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - 1_1_medium
+    breakpoint_id: toolbar.narrow
+    multiplier: 1x
+breakpoint_group: toolbar
+fallback_image_style: 1_1_medium

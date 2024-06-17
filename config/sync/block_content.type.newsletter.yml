@@ -1,0 +1,10 @@
+uuid: a1c82505-1045-4b25-8dc2-4bce05ea2c56
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: kZwM6ljvbi5jw5Q5s7KInnnAUtDl5R6qRDDrSmqgXDM
+id: newsletter
+label: Newsletter
+revision: 0
+description: 'The Newsletter Form Component offers a tailored solution for integrating a custom newsletter signup form seamlessly into your web pages. This component streamlines the process of collecting subscriber information, empowering you to build and engage with your audience effectively.'

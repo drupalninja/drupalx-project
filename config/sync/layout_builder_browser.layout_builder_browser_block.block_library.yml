@@ -1,0 +1,13 @@
+uuid: f8fce0f4-a0c3-4747-a112-356d872cefd2
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 748hjBRYene8_TY_TfBJIR44NnNXL7MwPd6q1pq_BLU
+id: block_library
+block_id: 'inline_block:library'
+category: other
+label: 'Block Library'
+weight: -6
+image_path: /profiles/custom/drupalx/images/library.png
+image_alt: ''

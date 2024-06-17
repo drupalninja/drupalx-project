@@ -1,0 +1,13 @@
+uuid: 2b331350-b44f-4709-89af-39889595a53e
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: '-oGADqTyoYsKBKUOray7JcAeD3EuNwX_M4WyG1pA5sk'
+id: views
+block_id: 'inline_block:views'
+category: other
+label: Views
+weight: -2
+image_path: /profiles/custom/drupalx/images/views.png
+image_alt: ''

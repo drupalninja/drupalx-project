@@ -1,0 +1,11 @@
+_core:
+  default_config_hash: KEJLLhxagXBpW99pV80H5HRQ4PPs_QzL39-fRryVxiE
+status: 2
+pattern: 'Form: [block_content:field_title]'
+escape: false
+preserve_titles: false
+save: false
+chunk: 50
+dependencies:
+  config:
+    - block_content.type.form

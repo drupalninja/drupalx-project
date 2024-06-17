@@ -1,0 +1,13 @@
+uuid: 3da9c6c4-62a6-46b1-8a5c-35eaddf95c7d
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: iyJU8of9IMWiYZ-8gbabGf8elhKPbNVQw536y3NISsA
+id: hero
+block_id: 'inline_block:hero'
+category: content
+label: Hero
+weight: -3
+image_path: /profiles/custom/drupalx/images/hero.png
+image_alt: ''
