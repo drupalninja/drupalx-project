@@ -15843,7 +15843,8 @@
         "drupal/gin_lb": 5,
         "drupal/node_revision_delete": 5,
         "drupal/viewsreference": 20,
-        "drupal/webp": 5
+        "drupal/webp": 5,
+        "drupalninja/drupalai": 10
     },
     "prefer-stable": true,
     "prefer-lowest": false,
