@@ -21,7 +21,10 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install dependencies
+      - name: Install Composer dependencies
+        run: composer install
+
+      - name: Install NPM dependencies
         run: npm install
         working-directory: ./web/themes/contrib/drupalx_theme
 
