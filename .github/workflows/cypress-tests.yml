@@ -43,7 +43,7 @@ jobs:
           DISPLAY: :99.0
 
       - name: Wait for Storybook to be ready
-        run: npx wait-on http://localhost:6006
+        run: npx wait-on --timeout 300000 http://localhost:6006
 
       - name: Run Cypress tests
         run: npm run cypress
