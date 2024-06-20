@@ -5045,16 +5045,16 @@
         },
         {
             "name": "drupalninja/drupalx_theme",
-            "version": "1.0.3-beta1",
+            "version": "1.0.4-beta1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupalninja/drupalx_theme.git",
-                "reference": "3da0a28084fb39704782fc6edcdf6450c2ff3780"
+                "reference": "d5578769fe2514282ae125391352c2c9ae9371bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupalninja/drupalx_theme/zipball/3da0a28084fb39704782fc6edcdf6450c2ff3780",
-                "reference": "3da0a28084fb39704782fc6edcdf6450c2ff3780",
+                "url": "https://api.github.com/repos/drupalninja/drupalx_theme/zipball/d5578769fe2514282ae125391352c2c9ae9371bf",
+                "reference": "d5578769fe2514282ae125391352c2c9ae9371bf",
                 "shasum": ""
             },
             "type": "drupal-theme",
@@ -5070,9 +5070,9 @@
             "description": "DrupalX Bootstrap, Storybook starter theme.",
             "support": {
                 "issues": "https://github.com/drupalninja/drupalx_theme/issues",
-                "source": "https://github.com/drupalninja/drupalx_theme/tree/1.0.3-beta1"
+                "source": "https://github.com/drupalninja/drupalx_theme/tree/1.0.4-beta1"
             },
-            "time": "2024-06-01T20:08:48+00:00"
+            "time": "2024-06-20T02:22:56+00:00"
         },
         {
             "name": "drush/drush",
