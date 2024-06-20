@@ -1,0 +1,48 @@
+name: Run Cypress Tests
+
+on:
+  push:
+    branches:
+      - 10.x
+  pull_request:
+    branches:
+      - 10.x
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    services:
+      xvfb:
+        image: cirrusci/xvfb:latest
+        options: --privileged
+        ports:
+          - 6006:6006
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./web/themes/contrib/drupalx_theme
+
+      - name: Start Storybook
+        run: npm run storybook
+        working-directory: ./web/themes/contrib/drupalx_theme &
+        env:
+          DISPLAY: :99.0
+
+      - name: Wait for Storybook to be ready
+        run: npx wait-on http://localhost:6006
+
+      - name: Run Cypress tests
+        run: npm run cypress
+        working-directory: ./web/themes/contrib/drupalx_theme
+        env:
+          DISPLAY: :99.0
