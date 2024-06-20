@@ -16,10 +16,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Cache Node modules
+        uses: actions/cache@v2
+        with:
+          path: ./web/themes/contrib/drupalx_theme/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: "20"
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
         run: composer install
@@ -37,7 +53,7 @@ jobs:
           DISPLAY: :99.0
 
       - name: Start Storybook
-        run: npm run storybook
+        run: npm run storybook &
         working-directory: ./web/themes/contrib/drupalx_theme
         env:
           DISPLAY: :99.0
