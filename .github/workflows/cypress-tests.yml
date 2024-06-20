@@ -38,7 +38,7 @@ jobs:
 
       - name: Start Storybook
         run: npm run storybook
-        working-directory: ./web/themes/contrib/drupalx_theme &
+        working-directory: ./web/themes/contrib/drupalx_theme
         env:
           DISPLAY: :99.0
 
