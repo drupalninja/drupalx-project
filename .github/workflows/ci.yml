@@ -1,4 +1,4 @@
-name: Install
+name: CI Tests
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
       fail-fast: false
 
       matrix:
-        php-versions: ["8.1", "8.2"]
+        php-versions: ["8.2"]
         drupal-release: ["stable"]
         composer-channel: ["stable", "snapshot"]
         # Drupal 10.x-dev tests fail on PHP 8.3.
@@ -84,6 +84,27 @@ jobs:
 
       - name: Run a single unit test to verify the testing setup
         run: ./vendor/bin/phpunit -c ./web/core ./web/core/modules/user/tests/src/Unit/UserAccessControlHandlerTest.php
+
+      - name: Install NPM dependencies
+        run: npm install
+        working-directory: ./tests/cypress
+
+      - name: Install Xvfb
+        run: sudo apt-get install -y xvfb
+
+      - name: Start Xvfb
+        run: Xvfb :99 -screen 0 1280x1024x24 &
+        env:
+          DISPLAY: :99.0
+
+      - name: Copy Cypress configuration
+        run: cp tests/cypress/cypress.config.js.shippable tests/cypress/cypress.config.js
+
+      - name: Run Cypress tests
+        run: npm run cypress
+        working-directory: ./tests/cypress
+        env:
+          DISPLAY: :99.0
 
   # Using outdated Composer version to test the Composer version constraint.
   test-composer:
