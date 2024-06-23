@@ -20,7 +20,7 @@ jobs:
       fail-fast: false
 
       matrix:
-        php-versions: ["8.1", "8.2"]
+        php-versions: ["8.2"]
         drupal-release: ["stable"]
         composer-channel: ["stable", "snapshot"]
         # Drupal 10.x-dev tests fail on PHP 8.3.
