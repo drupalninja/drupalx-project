@@ -97,6 +97,9 @@ jobs:
         env:
           DISPLAY: :99.0
 
+      - name: Copy Cypress configuration
+        run: cp tests/cypress/cypress.config.js.shippable tests/cypress/cypress.config.js
+
       - name: Run Cypress tests
         run: npm run cypress
         working-directory: ./tests/cypress
