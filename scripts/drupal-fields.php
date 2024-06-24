@@ -23,12 +23,20 @@ foreach ($block_content_types as $block_content_type) {
   $field_definitions = \Drupal::service('entity_field.manager')->getFieldDefinitions('block_content', $block_content_type->id());
 
   foreach ($field_definitions as $field_name => $field_definition) {
-    // Print field name.
-    print "  Field Name: " . $field_name . "\n";
-    // Print field type.
-    print "  Field Type: " . $field_definition->getType() . "\n";
-    // Print if the field is required.
-    print "  Required: " . ($field_definition->isRequired() ? 'Yes' : 'No') . "\n";
+    // Check if the field is custom, or if it is 'title' or 'body'.
+    if (
+      $field_definition->getName() !== 'id' && $field_definition->getName() !== 'uuid' &&
+      ($field_definition->getName() == 'title' || $field_definition->getName() == 'body' ||
+        strpos($field_definition->getName(), 'field_') === 0)
+    ) {
+
+      // Print field name.
+      print "  Field Name: " . $field_name . "\n";
+      // Print field type.
+      print "  Field Type: " . $field_definition->getType() . "\n";
+      // Print if the field is required.
+      print "  Required: " . ($field_definition->isRequired() ? 'Yes' : 'No') . "\n";
+    }
   }
 
   print "\n";
