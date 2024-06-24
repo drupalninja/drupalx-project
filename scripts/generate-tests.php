@@ -116,7 +116,7 @@ foreach ($components as $component_name) {
 
   print "Querying AI for component: {$component_name} ..." . PHP_EOL;
 
-  $ai_model = DrupalAiFactory::build('openai');
+  $ai_model = DrupalAiFactory::build('gemini');
 
   $prompt = str_replace('COMPONENT_FILES', $component_files, CYPRESS_PROMPT);
   $prompt = str_replace('COMPONENT_INSTRUCTIONS', 'Write a cypress test for this component.', $prompt);
