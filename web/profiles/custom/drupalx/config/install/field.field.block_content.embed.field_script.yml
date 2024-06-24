@@ -16,7 +16,7 @@ third_party_settings:
     full_html: '0'
     plain_text: '0'
 _core:
-  default_config_hash: ADMrFFpQeiPxMrEKDBAsBedMBr6LtxvQFuz1v6EXpu0
+  default_config_hash: GwY904tPMjat3tMq5nxo1HP2rwypSiRswk706adaBV4
 id: block_content.embed.field_script
 field_name: field_script
 entity_type: block_content

@@ -6,7 +6,7 @@ dependencies:
     - block_content.type.gallery
     - field.storage.block_content.field_title
 _core:
-  default_config_hash: G8Dn3_9ZAZ9GcNRNOT-fBjz0fhOIy6eIWcGlcLKdiVo
+  default_config_hash: 2Y27MaWVqUJ2J1AR7OeerSnqNC4AOxxRO3BxM5yEwPw
 id: block_content.gallery.field_title
 field_name: field_title
 entity_type: block_content

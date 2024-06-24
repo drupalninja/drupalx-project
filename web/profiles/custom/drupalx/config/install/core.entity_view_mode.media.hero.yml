@@ -5,7 +5,7 @@ dependencies:
   module:
     - media
 _core:
-  default_config_hash: YWHCiRGCn082VLxwqpCildQ93NbbDgm2dCxe_Q7493A
+  default_config_hash: UTPhFGL-F63CmJwHO7h0IEOy51TgfAaVSTBADn56Cp0
 id: media.hero
 label: Hero
 description: ''

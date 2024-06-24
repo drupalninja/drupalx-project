@@ -10,7 +10,7 @@ dependencies:
     - paragraphs
     - paragraphs_features
 _core:
-  default_config_hash: ajcu2Sdv-RWi4hZhBUyQw32AEIc12wGAU0EGjsApSRI
+  default_config_hash: JemEk9i-_ZhW8UC-j_1VBzH0zSjCa_vOguilbYKKrME
 id: block_content.card_group.default
 targetEntityType: block_content
 bundle: card_group
