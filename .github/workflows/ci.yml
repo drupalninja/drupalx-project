@@ -22,14 +22,11 @@ jobs:
       matrix:
         php-versions: ["8.3"]
         drupal-release: ["stable"]
-        composer-channel: ["stable", "snapshot"]
+        composer-channel: ["stable"]
         include:
           - php-versions: "8.3"
             drupal-release: "stable"
             composer-channel: "stable"
-          - php-versions: "8.3"
-            drupal-release: "stable"
-            composer-channel: "snapshot"
 
     steps:
       - name: Dump matrix context
