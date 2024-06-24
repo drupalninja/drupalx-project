@@ -17,10 +17,10 @@ jobs:
   build:
     runs-on: "ubuntu-20.04"
     strategy:
-      fail-fast: false
+      fail-fast: true
 
       matrix:
-        php-versions: ["8.2"]
+        php-versions: []
         drupal-release: ["stable"]
         composer-channel: ["stable", "snapshot"]
         # Drupal 10.x-dev tests fail on PHP 8.3.
