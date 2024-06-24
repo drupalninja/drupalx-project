@@ -95,14 +95,15 @@ jobs:
       - name: Copy Cypress configuration
         run: cp tests/cypress/cypress.config.js.shippable tests/cypress/cypress.config.js
 
-      - name: Set up Drush alias
-        run: echo 'alias drush="vendor/bin/drush"' >> $GITHUB_ENV
+      - name: Add Drush to PATH
+        run: echo "${{ github.workspace }}/vendor/bin" >> $GITHUB_PATH
 
       - name: Run Cypress tests
         run: npm run cypress
         working-directory: ./tests/cypress
         env:
           DISPLAY: :99.0
+          drushCommand: drush
 
   # Using outdated Composer version to test the Composer version constraint.
   test-composer:
