@@ -16,5 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+// load and register the grep feature using "require" function
+// https://github.com/bahmutov/cy-grep
+const registerCypressGrep = require('@bahmutov/cy-grep')
+registerCypressGrep()
