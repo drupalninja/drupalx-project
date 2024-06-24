@@ -1,0 +1,8 @@
+{
+  "username": "editor",
+  "mail": "role-editor@example.com",
+  "password": "editor",
+  "roles": [
+    "editor"
+  ]
+}
