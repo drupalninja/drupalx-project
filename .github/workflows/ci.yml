@@ -17,21 +17,16 @@ jobs:
   build:
     runs-on: "ubuntu-20.04"
     strategy:
-      fail-fast: false
+      fail-fast: true
 
       matrix:
-        php-versions: ["8.2"]
+        php-versions: ["8.3"]
         drupal-release: ["stable"]
-        composer-channel: ["stable", "snapshot"]
-        # Drupal 10.x-dev tests fail on PHP 8.3.
-        # @see https://www.drupal.org/project/drupal/issues/3375693
+        composer-channel: ["stable"]
         include:
           - php-versions: "8.3"
             drupal-release: "stable"
             composer-channel: "stable"
-          - php-versions: "8.3"
-            drupal-release: "stable"
-            composer-channel: "snapshot"
 
     steps:
       - name: Dump matrix context
@@ -99,6 +94,7 @@ jobs:
 
       - name: Copy Cypress configuration
         run: cp tests/cypress/cypress.config.js.shippable tests/cypress/cypress.config.js
+
 
       - name: Run Cypress tests
         run: npm run cypress

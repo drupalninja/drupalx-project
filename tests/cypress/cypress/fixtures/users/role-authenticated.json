@@ -1,0 +1,6 @@
+{
+  "username": "cy-authenticated",
+  "mail": "role-authenticated@example.com",
+  "password": "password",
+  "roles": []
+}
