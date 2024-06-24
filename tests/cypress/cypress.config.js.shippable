@@ -8,7 +8,7 @@ module.exports = defineConfig({
     },
   },
   env: {
-    'drushCommand': '../../vendor/bin/drush --uri=http://127.0.0.1:8080'
+    'drushCommand': 'drush'
   },
   video: false
 });
