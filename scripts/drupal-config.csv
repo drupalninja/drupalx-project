@@ -1,0 +1,52 @@
+"Entity Type","Type ID","Type Label","Field Name","Field Type",Required
+block_content,accordion,Accordion,field_accordion_item,entity_reference_revisions,Yes
+block_content,accordion,Accordion,field_title,string,No
+block_content,card_group,"Card Group",field_card,entity_reference_revisions,Yes
+block_content,card_group,"Card Group",field_title,string,No
+block_content,carousel,Carousel,field_carousel_item,entity_reference_revisions,Yes
+block_content,embed,Embed,field_script,text_long,No
+block_content,embed,Embed,field_title,string,No
+block_content,form,Form,field_title,string,No
+block_content,form,Form,field_webform,webform,Yes
+block_content,gallery,Gallery,body,text_with_summary,No
+block_content,gallery,Gallery,field_media_item,entity_reference,Yes
+block_content,gallery,Gallery,field_title,string,No
+block_content,hero,Hero,field_heading,text,No
+block_content,hero,Hero,field_hero_layout,list_string,Yes
+block_content,hero,Hero,field_link,link,No
+block_content,hero,Hero,field_media,entity_reference,No
+block_content,hero,Hero,field_summary,text_long,No
+block_content,library,"Block Library",field_block,entity_reference,Yes
+block_content,media,Media,field_media,entity_reference,Yes
+block_content,media,Media,field_title,string,No
+block_content,quote,Quote,field_author,string,Yes
+block_content,quote,Quote,field_job_title,string,No
+block_content,quote,Quote,field_logo,entity_reference,No
+block_content,quote,Quote,field_quote,string,Yes
+block_content,quote,Quote,field_thumb,entity_reference,No
+block_content,sidebyside,Side-by-side,field_eyebrow,string,No
+block_content,sidebyside,Side-by-side,field_link,link,No
+block_content,sidebyside,Side-by-side,field_media,entity_reference,Yes
+block_content,sidebyside,Side-by-side,field_sidebyside_layout,list_string,Yes
+block_content,sidebyside,Side-by-side,field_summary,text_long,Yes
+block_content,sidebyside,Side-by-side,field_title,string,Yes
+block_content,text,Text,body,text_with_summary,Yes
+block_content,text,Text,field_link,link,No
+block_content,text,Text,field_title,string,No
+block_content,views,Views,field_link,link,No
+block_content,views,Views,field_title,string,No
+block_content,views,Views,field_views_ref,viewsreference,Yes
+paragraph,accordion_item,"Accordion item",field_body,text_with_summary,Yes
+paragraph,accordion_item,"Accordion item",field_link,link,No
+paragraph,accordion_item,"Accordion item",field_title,string,Yes
+paragraph,card,Card,field_link,link,No
+paragraph,card,Card,field_media,entity_reference,No
+paragraph,card,Card,field_summary,string_long,No
+paragraph,card,Card,field_title,string,Yes
+paragraph,carousel_item,"Carousel item",field_media,entity_reference,Yes
+paragraph,carousel_item,"Carousel item",field_summary,string_long,No
+paragraph,carousel_item,"Carousel item",field_title,string,No
+paragraph,stats_item,"Stats item",field_custom_icon,entity_reference,No
+paragraph,stats_item,"Stats item",field_icon,material_icons,No
+paragraph,stats_item,"Stats item",field_summary,string_long,Yes
+paragraph,stats_item,"Stats item",field_title,string,Yes
