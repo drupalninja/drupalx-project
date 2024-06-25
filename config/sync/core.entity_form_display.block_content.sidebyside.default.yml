@@ -15,7 +15,7 @@ dependencies:
     - media_library
     - text
 _core:
-  default_config_hash: 7EId4syd_SM3YTIoWlgHL20XrPwv8WH7lEvSvDQXvEA
+  default_config_hash: yv16XCi9OWO-EXZH1n1xewInv5JriJNY3Ys-brnQQ6s
 id: block_content.sidebyside.default
 targetEntityType: block_content
 bundle: sidebyside

@@ -15,7 +15,7 @@ third_party_settings:
     enabled: false
     allow_custom: false
 _core:
-  default_config_hash: IZ-GAPFv2RJtvA6rt30aKKBjNb0s_YXcnYIsFXTpvZA
+  default_config_hash: sd9QfqLpSMVmj2muWg6yBn1p_0hFaoCA8OsuqtzaS8g
 id: media.image.square
 targetEntityType: media
 bundle: image

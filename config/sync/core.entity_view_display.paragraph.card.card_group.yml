@@ -12,7 +12,7 @@ dependencies:
   module:
     - link
 _core:
-  default_config_hash: fEVvXqnUKcihHJkMHgkyxMuQ_sw7wrrs3pC5hox7j94
+  default_config_hash: 7vx0Dc5jve1bU-WzmNP75-rOhNmv5DiHZgh7rFOLkhg
 id: paragraph.card.card_group
 targetEntityType: paragraph
 bundle: card

@@ -9,7 +9,7 @@ dependencies:
   module:
     - media_library
 _core:
-  default_config_hash: ZlIOD-M-J3W7DmFAswT2dmPr6tKSqsAJWv2uLVkMBso
+  default_config_hash: tnOVllJlS0nVIjfGaSM3JiP1lyjRdRN16Dhzjx025P8
 id: block_content.media.default
 targetEntityType: block_content
 bundle: media

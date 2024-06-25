@@ -7,7 +7,7 @@ dependencies:
     - field.storage.block_content.field_logo
     - media.type.image
 _core:
-  default_config_hash: rnf-1_pC8yImRs_pwvNlIDvi5MG6E85-NIK89T6ioXU
+  default_config_hash: meiqE2fOOqaK7u4xweGiswEsKPNTEBafuJOyEaoefzg
 id: block_content.quote.field_logo
 field_name: field_logo
 entity_type: block_content

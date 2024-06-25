@@ -9,7 +9,7 @@ dependencies:
   module:
     - text
 _core:
-  default_config_hash: 02Gwn9YoHwWzwnZuOZKVKCd7RuYCh16RsviKFyPUAws
+  default_config_hash: SVbExmRM3y-JBW7gT21atvsmVlN-jGPK7d6St7OjlWU
 id: block_content.embed.default
 targetEntityType: block_content
 bundle: embed

@@ -22,7 +22,7 @@ third_party_settings:
     enabled: false
     allow_custom: false
 _core:
-  default_config_hash: GtzwOiUHlbwcJw4jWtfuuy4SkYYzLLBWT_csbJHxUnc
+  default_config_hash: yLOwTFF50LFZ_yXUpWWotKJMV8UiEzv0RaoNyL4mRjU
 id: node.article.carousel
 targetEntityType: node
 bundle: article

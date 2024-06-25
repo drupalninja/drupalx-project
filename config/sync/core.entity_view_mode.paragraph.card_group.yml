@@ -5,7 +5,7 @@ dependencies:
   module:
     - paragraphs
 _core:
-  default_config_hash: hAUegRhsRPYqYKcjTB6MMUfR_ekuM6iiY0ykdazrGuE
+  default_config_hash: s3dsO8GsDNpiHHK29Yvzc7L9MBiBf2n_KWCCyYQNPFo
 id: paragraph.card_group
 label: 'Card Group'
 description: ''

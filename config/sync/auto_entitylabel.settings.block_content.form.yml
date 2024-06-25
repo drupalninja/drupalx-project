@@ -1,5 +1,5 @@
 _core:
-  default_config_hash: KEJLLhxagXBpW99pV80H5HRQ4PPs_QzL39-fRryVxiE
+  default_config_hash: iBA0PiiYyZ2k0zGE5d9xPDRvjDRi3ncY7ACJEBur9BY
 status: 2
 pattern: 'Form: [block_content:field_title]'
 escape: false

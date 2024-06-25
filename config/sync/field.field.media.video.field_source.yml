@@ -6,7 +6,7 @@ dependencies:
     - field.storage.media.field_source
     - media.type.video
 _core:
-  default_config_hash: bGCa3HiZRIlMmgkUjrwSatCIx_P53pit82tk5bNttKg
+  default_config_hash: qms-nHo6_4Nz49SX4Zd5ywuHUF5uP25YcWKfbENJI-4
 id: media.video.field_source
 field_name: field_source
 entity_type: media

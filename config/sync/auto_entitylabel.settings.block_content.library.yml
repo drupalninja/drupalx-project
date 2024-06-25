@@ -1,5 +1,5 @@
 _core:
-  default_config_hash: t3iFKSsn3YtS2zrq5GktfRlM3hfP72hCIpyTRz_L-so
+  default_config_hash: _XSzfmPBWvauGtNBb1l92a0Y_ocIIJRk7UwoPEAOGhU
 status: 2
 pattern: "Block: [block_content:field_block:entity:info]\r\n            "
 escape: false

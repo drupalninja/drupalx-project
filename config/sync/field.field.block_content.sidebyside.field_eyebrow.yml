@@ -6,7 +6,7 @@ dependencies:
     - block_content.type.sidebyside
     - field.storage.block_content.field_eyebrow
 _core:
-  default_config_hash: zH2nEAwhjI7Po7CJH4kbqSamPw9oaLMlihtQm6y1Ds0
+  default_config_hash: OskTaxla-ARwrlG4NRVhxm7N3RsX9rP4JJvxBLmkvB4
 id: block_content.sidebyside.field_eyebrow
 field_name: field_eyebrow
 entity_type: block_content

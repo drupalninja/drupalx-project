@@ -8,7 +8,7 @@ dependencies:
   module:
     - entity_reference_revisions
 _core:
-  default_config_hash: ule4n4WyiVuPYUhGspe-xwTeRKqrCNZl8TgP0hg51hU
+  default_config_hash: 9zQuIVBO23ONsLDg2qa4JmkxidotYtCBCtZfafuA2kM
 id: block_content.carousel.default
 targetEntityType: block_content
 bundle: carousel

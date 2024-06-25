@@ -10,7 +10,7 @@ dependencies:
     - field.field.block_content.quote.field_quote
     - field.field.block_content.quote.field_thumb
 _core:
-  default_config_hash: MasuPIaS8t-d9Z9kQ2N6c9kElzE9VZLMPSH420XGA8w
+  default_config_hash: UWnMb34mtMIGbl3v16XLBWi1w7q9bggHUrTsOtc0nEE
 id: block_content.quote.default
 targetEntityType: block_content
 bundle: quote

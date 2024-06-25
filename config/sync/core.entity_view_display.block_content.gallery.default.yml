@@ -10,7 +10,7 @@ dependencies:
   module:
     - text
 _core:
-  default_config_hash: c2XVQtcE8WnqvNUpo4e-5yOq0e1jUb8C_AVcYKKUurM
+  default_config_hash: hsvKU2zNhx3wtv5CGVzKvE3T77Zrgsb2CCyEq5L843A
 id: block_content.gallery.default
 targetEntityType: block_content
 bundle: gallery

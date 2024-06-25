@@ -6,7 +6,7 @@ dependencies:
     - field.storage.paragraph.field_summary
     - paragraphs.paragraphs_type.stats_item
 _core:
-  default_config_hash: 0iGCuhFh4ZNQ9277N2wDgwWTPV68WDm-3JgLemcALn8
+  default_config_hash: UB4BQhc98TzwujxmAbkXnJCcautckTG_pkges4Bb84E
 id: paragraph.stats_item.field_summary
 field_name: field_summary
 entity_type: paragraph

@@ -17,7 +17,7 @@ dependencies:
     - block_content.type.views
     - field.storage.block_content.field_block
 _core:
-  default_config_hash: '--OrKSLHYJl3WmnjKCKPXsIIfS1rGvd2zWG7ADPCAbg'
+  default_config_hash: NeBzd0RSiOazooXXFRLEkDbAL-bIOwjMkSZQMFuThnU
 id: block_content.library.field_block
 field_name: field_block
 entity_type: block_content

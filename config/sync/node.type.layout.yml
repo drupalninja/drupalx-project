@@ -15,7 +15,7 @@ third_party_settings:
     minimum_revisions_to_keep: 3
     when_to_delete: 0
 _core:
-  default_config_hash: CQ9XuuEqT_HRB0D29db3VyOkMWY5Huy1XkYZp8mKUWM
+  default_config_hash: aXr3D4vFNmbxoxpx9y-n3_rvyRvPbSfha-UABW1IwpY
 name: 'Layout page'
 type: layout
 description: "The Layout Page empowers you to create dynamic and visually appealing page layouts using Layout Builder's intuitive drag-and-drop interface. Whether you're designing landing pages, product showcases, or blog layouts, this feature-rich tool offers unparalleled flexibility and customization options.\r\n\r\n"

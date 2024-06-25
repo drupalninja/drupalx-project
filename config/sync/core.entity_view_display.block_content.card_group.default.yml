@@ -9,7 +9,7 @@ dependencies:
   module:
     - entity_reference_revisions
 _core:
-  default_config_hash: KobaOi7Bn-g3D7K3htO1KhNoKul7ZrBElGvZ2CwQMYY
+  default_config_hash: ZntwMNYPCgJ19ZcnNZ9xK70O8Vc0__PlukLHOABmlT0
 id: block_content.card_group.default
 targetEntityType: block_content
 bundle: card_group

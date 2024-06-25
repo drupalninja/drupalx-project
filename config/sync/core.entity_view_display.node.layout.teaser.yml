@@ -13,7 +13,7 @@ dependencies:
   module:
     - user
 _core:
-  default_config_hash: _R75TeIO6-iuCdjOkcJSxWRa-Hc7wbHp7C5wBBYX8W8
+  default_config_hash: jbNSSPncyzzntOIyEQ3Oc9xMs_20NDgu5uaW3CO-xPI
 id: node.layout.teaser
 targetEntityType: node
 bundle: layout

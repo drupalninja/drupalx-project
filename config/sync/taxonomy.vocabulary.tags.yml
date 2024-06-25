@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: kC2BgffaAJIvXr6vNTxjlR41Ci6US-vfOIhRxM_tkA0
+  default_config_hash: XX4IDKoLiS1uKDzt1ZZgzrbWYVWDz2hOoqGKAbahsvg
 name: Tags
 vid: tags
 description: 'Use tags to group articles on similar topics into categories.'

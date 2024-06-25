@@ -10,7 +10,7 @@ dependencies:
   module:
     - svg_image_responsive
 _core:
-  default_config_hash: wOQwfu0pxwxvVZsS0VwCFRWF-JGR8suEduTjwrghvtw
+  default_config_hash: FBt6spTXWTjZBQjY2wVyg7MkGhPaB_UbW-gOhCGMy38
 id: media.image.hero
 targetEntityType: media
 bundle: image

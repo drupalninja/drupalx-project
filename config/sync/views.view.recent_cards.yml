@@ -11,7 +11,7 @@ dependencies:
     - taxonomy
     - user
 _core:
-  default_config_hash: 6IGvqCkUiNTo1BmzWe8PbMxyecMyR3Bc0SdoJS80L3c
+  default_config_hash: 0dvKmm83JKLmw1ouRb6AVfrD0APaYuLbfKd2FFIrQMw
 id: recent_cards
 label: 'Recent (Cards)'
 module: node

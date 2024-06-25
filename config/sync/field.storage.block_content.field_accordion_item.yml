@@ -7,7 +7,7 @@ dependencies:
     - entity_reference_revisions
     - paragraphs
 _core:
-  default_config_hash: PMYa-PRM5Gsydx_btgTaeMEBc67HZpMe4qUS8p2Pa68
+  default_config_hash: _4gmcMwDZs1Xhx8UwzgLDsRuv1H-fXLI0jkYbpRZj4Y
 id: block_content.field_accordion_item
 field_name: field_accordion_item
 entity_type: block_content

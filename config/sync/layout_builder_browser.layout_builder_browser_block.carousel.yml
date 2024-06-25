@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: mf7zmGqY945-Imqx13AZ72ClKzJJwZtF1zprzUIX8mI
+  default_config_hash: v4NyA5AihjHkROgRExPFlwPJF4gFm79sgkRST29gw2c
 id: carousel
 block_id: 'inline_block:carousel'
 category: media

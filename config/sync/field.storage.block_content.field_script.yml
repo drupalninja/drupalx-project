@@ -6,7 +6,7 @@ dependencies:
     - block_content
     - text
 _core:
-  default_config_hash: x-AptT2AbC940W9kYjw4_A-4oFGAtrKrwVdvdd2hVgs
+  default_config_hash: t2LAHUWzVWjnHULcdZoF9xiD00Lsmx57E4xV9YMQYRI
 id: block_content.field_script
 field_name: field_script
 entity_type: block_content
