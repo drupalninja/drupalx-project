@@ -5,7 +5,7 @@ dependencies:
   module:
     - block_content
 _core:
-  default_config_hash: 4xpffA_ghhMITf8Mp-DE6OXPS_shXxznOxF_sB9V9bQ
+  default_config_hash: NNhfyAa-Uo1B7uJAakOwXvMFBK_uUF41JZnsuKXCMv0
 id: block_content.field_job_title
 field_name: field_job_title
 entity_type: block_content

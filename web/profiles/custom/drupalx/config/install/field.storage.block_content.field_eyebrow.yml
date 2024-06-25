@@ -5,7 +5,7 @@ dependencies:
   module:
     - block_content
 _core:
-  default_config_hash: hM4i6WAVK-vpSZ4EiKqCKdNBR2d3qu_j0iRIwynTOOg
+  default_config_hash: teWDVqjfAZJALgRjSfrJ5mfPHeKOMpHWnvgV3hLw6gw
 id: block_content.field_eyebrow
 field_name: field_eyebrow
 entity_type: block_content

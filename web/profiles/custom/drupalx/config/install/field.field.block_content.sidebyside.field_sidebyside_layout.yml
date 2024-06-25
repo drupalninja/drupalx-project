@@ -8,14 +8,14 @@ dependencies:
   module:
     - options
 _core:
-  default_config_hash: D7Pr6H98FIh_4m-Z84VHkL59whWduovNG-d8wQVodPI
+  default_config_hash: kIeC0nPlWWkS1nETpVS_rMS0tz0gEfbwIQ7jy2QSOUU
 id: block_content.sidebyside.field_sidebyside_layout
 field_name: field_sidebyside_layout
 entity_type: block_content
 bundle: sidebyside
 label: Layout
 description: 'Select the display layout for this component.'
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

@@ -7,7 +7,7 @@ dependencies:
     - field.storage.block_content.field_logo
     - media.type.image
 _core:
-  default_config_hash: COD-I2QXen1Z2edOSBpIzO4Apy-amK7AyMwFtT-QMyw
+  default_config_hash: x1LG4ukV6hyoOUKzbjanT2eJyTcaPBtefSQYY0tcxh0
 id: block_content.quote.field_logo
 field_name: field_logo
 entity_type: block_content

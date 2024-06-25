@@ -3,8 +3,10 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: kJXocyQaUcu-UVt72C76xPV0vT6TyGw-DyiQkKnbVkw
+  default_config_hash: MmMV8LHVTDBCTlY_y7krqCR_IrxJYVvaI5HD7RUV-n4
 id: media
 label: Media
 weight: null
 opened: true
+image_path: null
+image_alt: null

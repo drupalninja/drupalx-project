@@ -7,7 +7,7 @@ dependencies:
     - field.storage.block_content.field_thumb
     - media.type.image
 _core:
-  default_config_hash: JG3eOUIB8SCenCVifJXmvfHHH2XCG6FajpQFRFifXaU
+  default_config_hash: '-umMfgSIT-P9tpkeBNl6D6_HWuGB41KQxE3pWiwok1g'
 id: block_content.quote.field_thumb
 field_name: field_thumb
 entity_type: block_content
