@@ -8,7 +8,7 @@ dependencies:
   module:
     - options
 _core:
-  default_config_hash: uRw_rVFA0hpNriJtuC3engc6u74486_CWc4M0mg2UiY
+  default_config_hash: aeq8aKwK2uMY_lbR6j2MLdjbM-438z1bEu9K2t-dfTA
 id: block_content.hero.field_hero_layout
 field_name: field_hero_layout
 entity_type: block_content

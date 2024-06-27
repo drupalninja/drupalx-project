@@ -9,7 +9,7 @@ dependencies:
   module:
     - webform
 _core:
-  default_config_hash: adN20Flgk-ZScK5sLa_xDy8JjxA7j0yf6Ttw0a0JjCU
+  default_config_hash: Zmxk2kQFZb-0CFaS4WpSzujCf9bDVVkABerNu91KBHU
 id: block_content.form.default
 targetEntityType: block_content
 bundle: form

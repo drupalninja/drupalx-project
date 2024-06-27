@@ -12,7 +12,7 @@ dependencies:
   module:
     - media_library
 _core:
-  default_config_hash: SeB2cBf83pSUmUl4EJ58neE3xY7LwqNW04UDzQ2RCQc
+  default_config_hash: qMCWgIFWo55zOv5Eb3nUuRypnMdv1Ue0wySPTUHKhuU
 id: block_content.quote.default
 targetEntityType: block_content
 bundle: quote

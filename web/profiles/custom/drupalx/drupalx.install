@@ -714,6 +714,82 @@ function drupalx_install_content() {
     $node->save();
   }
 
+  // Kitchen sink layout with minimum fields.
+  $node = Node::create([
+    'type' => 'layout',
+    'title' => 'Kitchen Sink Layout (Required Fields Only)',
+    'field_hide_page_title' => FALSE,
+    'uid' => 1,
+    'status' => 1,
+    'field_thumbnail' => [
+      'target_id' => $media_items['card']->id(),
+    ],
+    'path' => [
+      'alias' => '/kitchen-sink-min',
+      'pathauto' => 0,
+    ],
+  ]);
+
+  $node->save();
+
+  $blocks = [];
+
+  // Minimum hero block.
+  $hero_info = [
+    'layout' => 'image_top',
+    'media' => $media_items['card'],
+  ];
+
+  $blocks[] = _drupalx_create_hero($hero_info);
+  $blocks[] = _drupalx_create_min_card_group('stat');
+  $blocks[] = _drupalx_create_min_text();
+  $blocks[] = _drupalx_create_min_media($media_items);
+  $blocks[] = _drupalx_create_min_gallery($media_items);
+  $blocks[] = _drupalx_create_min_form();
+  $blocks[] = _drupalx_create_min_carousel($media_items);
+  $blocks[] = _drupalx_create_min_card_group('card');
+  $blocks[] = _drupalx_create_min_accordion();
+  $blocks[] = _drupalx_create_min_quote();
+
+  // Create 50/50 blocks.
+  $info_sidebyside = [
+    [
+      'title' => 'DrupalX Rapid Development',
+      'summary' => 'The DrupalX template offers top-tier development tools and components for building a site quickly and efficiently.',
+      'layout' => 'right',
+      'media' => $media_items['card'],
+    ],
+  ];
+
+  foreach ($info_sidebyside as $info) {
+    $blocks[] = _drupalx_create_sidebyside($info);
+  }
+
+  $section = new Section('layout_onecol');
+
+  // Create block entities and add them to the layout.
+  foreach ($blocks as $block) {
+    $block->save();
+
+    $component = new SectionComponent(
+      $block->uuid(),
+      'content',
+      [
+        'id' => 'inline_block:' . $block->bundle(),
+        'label' => $block->label(),
+        'provider' => 'layout_builder',
+        'label_display' => '0',
+        'view_mode' => 'default',
+        'block_revision_id' => $block->getRevisionId(),
+      ]
+    );
+    $section->appendComponent($component);
+  }
+
+  // Add the section to the layout.
+  $node->get('layout_builder__layout')->appendItem($section);
+  $node->save();
+
   // Kitchen sink layout.
   $node = Node::create([
     'type' => 'layout',
@@ -922,15 +998,18 @@ function _drupalx_create_hero(array $hero_info) {
 
   $block = BlockContent::create([
     'type' => 'hero',
-    'info' => 'Hero: ' . strip_tags($hero_info['heading']),
+    'info' => 'Hero: ' . (!empty($hero_info['heading']) ? $hero_info['heading'] : 'No heading'),
     'field_media' => $hero_info['media'],
-    'field_heading' => [
-      'value' => $hero_info['heading'],
-      'format' => 'restricted_html',
-    ],
     'field_hero_layout' => $hero_info['layout'],
     'reusable' => FALSE,
   ]);
+
+  if (!empty($hero_info['heading'])) {
+    $block->set('field_heading', [
+      'value' => $hero_info['heading'],
+      'format' => 'restricted_html',
+    ]);
+  }
 
   if (!empty($hero_info['summary'])) {
     $block->set('field_summary', [
@@ -960,14 +1039,17 @@ function _drupalx_create_sidebyside(array $info = []) {
   $block = BlockContent::create([
     'type' => 'sidebyside',
     'field_title' => $info['title'],
-    'field_eyebrow' => $info['eyebrow'],
-    'field_media' => [
-      'target_id' => $info['media']->id(),
-    ],
+    'field_eyebrow' => !empty($info['eyebrow']) ? $info['eyebrow'] : '',
     'field_summary' => $info['summary'],
     'field_sidebyside_layout' => $info['layout'],
     'reusable' => FALSE,
   ]);
+
+  if (!empty($info['media'])) {
+    $block->set('field_media', [
+      'target_id' => $info['media']->id(),
+    ]);
+  }
 
   if (!empty($info['link'])) {
     $block->set('field_link', $info['link']);
@@ -999,6 +1081,25 @@ function _drupalx_create_quote($media_items) {
     'field_quote' => 'Bringing people together under a shared passion is at the heart of what Drupal does',
     'field_author' => 'Dries Buytaert',
     'field_job_title' => 'Drupal Founder, Acquia CTO/Co-Founder',
+    'reusable' => FALSE,
+  ]);
+
+  return $block;
+}
+
+/**
+ * Create a Quote block with minimum fields.
+ *
+ * @return \Drupal\block_content\Entity\BlockContent
+ *   The Quote block.
+ */
+function _drupalx_create_min_quote() {
+
+  // Create Quote block.
+  $block = BlockContent::create([
+    'type' => 'quote',
+    'field_quote' => 'Bringing people together under a shared passion is at the heart of what Drupal does',
+    'field_author' => 'Dries Buytaert',
     'reusable' => FALSE,
   ]);
 
@@ -1047,6 +1148,44 @@ function _drupalx_create_accordion() {
         'value' => '<p>' . $info['answer'] . '</p>',
       ],
       'field_link' => $info['link'] ?? NULL,
+    ]);
+
+    $paragraph->save();
+
+    $block->get('field_accordion_item')->appendItem($paragraph);
+  }
+
+  return $block;
+}
+
+/**
+ * Create a "minimum" Accordion block.
+ *
+ * @return \Drupal\block_content\Entity\BlockContent
+ *   The Accordion block.
+ */
+function _drupalx_create_min_accordion() {
+  // Create a minimal Accordion block with no title and only one question.
+  $block = BlockContent::create([
+    'type' => 'accordion',
+    'reusable' => FALSE,
+  ]);
+
+  $block->save();
+
+  $faq_headings = [
+    'What is DrupalX?' => 'DrupalX is a comprehensive system that provides a robust starting point for designers and developers to fully customize components.',
+  ];
+
+  foreach ($faq_headings as $heading => $answer) {
+    $paragraph = Paragraph::create([
+      'type' => 'accordion_item',
+      'field_title' => $heading,
+      'field_body' => [
+        'format' => 'full_html',
+        'summary' => '',
+        'value' => '<p>' . $answer . '</p>',
+      ],
     ]);
 
     $paragraph->save();
@@ -1138,6 +1277,55 @@ function _drupalx_create_card_group($media_items, $type = 'card', $title = '') {
 }
 
 /**
+ * Create a Card Group block with minimum fields.
+ *
+ * @param string $type
+ *   The type of card to create.
+ *
+ * @return \Drupal\block_content\Entity\BlockContent
+ *   The Card Group block.
+ */
+function _drupalx_create_min_card_group($type = 'card') {
+  $block = BlockContent::create([
+    'type' => 'card_group',
+    'reusable' => FALSE,
+  ]);
+
+  $card_items = [
+    [
+      'title' => 'Storybook.js',
+      'summary' => 'Learn how Storybook integration allows you to develop and test UI components in isolation.',
+      'link' => [
+        'uri' => 'https://storybook.js.org/',
+        'title' => 'Learn more',
+      ],
+      'icon' => 'storybook',
+    ],
+  ];
+
+  foreach ($card_items as $info) {
+    if ($type == 'card') {
+      $paragraph = Paragraph::create([
+        'type' => 'card',
+        'field_title' => $info['title'],
+      ]);
+    } else {
+      $paragraph = Paragraph::create([
+        'type' => 'stats_item',
+        'field_title' => $info['title'],
+        'field_summary' => $info['summary'],
+      ]);
+    }
+
+    $paragraph->save();
+
+    $block->get('field_card')->appendItem($paragraph);
+  }
+
+  return $block;
+}
+
+/**
  * Generate a carousel based on the provided media items.
  *
  * @param array $media_items
@@ -1189,6 +1377,49 @@ function _drupalx_create_carousel($media_items) {
 }
 
 /**
+ * Generate a carousel with minimum fields.
+ *
+ * @param array $media_items
+ *   An array of media items to be used in the carousel.
+ *
+ * @return \Drupal\block_content\Entity\BlockContent
+ *   The Carousel block.
+ */
+function _drupalx_create_min_carousel($media_items) {
+  $block = BlockContent::create([
+    'type' => 'carousel',
+    'reusable' => FALSE,
+  ]);
+
+  $carousel_items = [
+    [
+      'thumb' => 'stars',
+    ],
+    [
+      'thumb' => 'stars',
+    ],
+    [
+      'thumb' => 'stars',
+    ],
+  ];
+
+  foreach ($carousel_items as $item) {
+    $paragraph = Paragraph::create([
+      'type' => 'carousel_item',
+      'field_media' => [
+        'target_id' => $media_items[$item['thumb']]->id(),
+      ],
+    ]);
+
+    $paragraph->save();
+
+    $block->get('field_carousel_item')->appendItem($paragraph);
+  }
+
+  return $block;
+}
+
+/**
  * Create an Embed block.
  *
  * @return \Drupal\block_content\Entity\BlockContent
@@ -1226,6 +1457,22 @@ function _drupalx_create_form() {
 }
 
 /**
+ * Create an Form block with minimum fields.
+ *
+ * @return \Drupal\block_content\Entity\BlockContent
+ *   The Form block.
+ */
+function _drupalx_create_min_form() {
+  $block = BlockContent::create([
+    'type' => 'form',
+    'field_webform' => 'contact',
+    'reusable' => FALSE,
+  ]);
+
+  return $block;
+}
+
+/**
  * Create an Gallery block.
  *
  * @param array $media_items
@@ -1241,6 +1488,27 @@ function _drupalx_create_gallery($media_items) {
     'type' => 'gallery',
     'body' => 'lorem ipsum dolor sit amet consectetur adipiscing elit',
     'field_title' => 'Example Gallery',
+    'field_media_item' => $gallery_items,
+    'reusable' => FALSE,
+  ]);
+
+  return $block;
+}
+
+/**
+ * Create an Gallery block with minimum fields.
+ *
+ * @param array $media_items
+ *   An array of media items to display in the gallery.
+ *
+ * @return \Drupal\block_content\Entity\BlockContent
+ *   The Gallery block.
+ */
+function _drupalx_create_min_gallery($media_items) {
+  $gallery_items = array_fill(0, 8, $media_items['card']);
+
+  $block = BlockContent::create([
+    'type' => 'gallery',
     'field_media_item' => $gallery_items,
     'reusable' => FALSE,
   ]);
@@ -1269,6 +1537,25 @@ function _drupalx_create_media($media_items) {
 }
 
 /**
+ * Create an Media block with minimum fields.
+ *
+ * @param array $media_items
+ *   An array of media items.
+ *
+ * @return \Drupal\block_content\Entity\BlockContent
+ *   The Media block.
+ */
+function _drupalx_create_min_media($media_items) {
+  $block = BlockContent::create([
+    'type' => 'media',
+    'field_media' => $media_items['card'],
+    'reusable' => FALSE,
+  ]);
+
+  return $block;
+}
+
+/**
  * Create a Text block.
  *
  * @return \Drupal\block_content\Entity\BlockContent
@@ -1285,6 +1572,26 @@ function _drupalx_create_text() {
     'field_link' => [
       'uri' => 'internal:/',
       'title' => 'Read more',
+    ],
+    'reusable' => FALSE,
+  ]);
+
+  return $block;
+}
+
+
+/**
+ * Create a Text block with minimum fields.
+ *
+ * @return \Drupal\block_content\Entity\BlockContent
+ *   The Text block.
+ */
+function _drupalx_create_min_text() {
+  $block = BlockContent::create([
+    'type' => 'text',
+    'body' => [
+      'value' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mauris mi, aliquam in orci at, finibus malesuada elit. Vivamus ex ante, imperdiet nec odio ac, sollicitudin fermentum velit. Nunc vestibulum massa est, eu auctor libero pellentesque eu. Cras id augue a lacus imperdiet convallis dictum vel diam. Fusce ut ex ac sem condimentum ornare. Nam at rutrum enim. Quisque convallis augue in nisi interdum, ac suscipit elit sollicitudin.</p><p>Nulla velit purus, varius quis velit aliquet, lobortis venenatis mauris. In non ligula eget ex semper pulvinar. Aliquam aliquet hendrerit auctor. Duis bibendum placerat risus, non commodo magna ornare id. Morbi eget nulla hendrerit, molestie nisl eget, semper odio. Mauris mollis risus sit amet ligula mattis vehicula. Donec maximus condimentum lacus, quis porttitor risus fermentum id. Duis semper neque in interdum pulvinar. Nam venenatis interdum libero. Proin dictum blandit ante sollicitudin laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas in pharetra ligula.</p>',
+      'format' => 'full_html',
     ],
     'reusable' => FALSE,
   ]);

@@ -6,7 +6,7 @@ dependencies:
     - paragraphs
     - text
 _core:
-  default_config_hash: lL5QGea0MvTMDsQg9-6B2PnaiDrUxo-Z0D5QTYZs42U
+  default_config_hash: HKBncIgzp_QCjLUy4ENkSUeAxebUmbcBqlxD5_a9-5o
 id: paragraph.field_body
 field_name: field_body
 entity_type: paragraph

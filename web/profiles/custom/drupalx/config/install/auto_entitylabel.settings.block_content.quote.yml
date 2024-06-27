@@ -1,5 +1,5 @@
 _core:
-  default_config_hash: 5uYSUKFIjBqCaq28nVf52gq_JgtpNOhmpRSoemvvH8g
+  default_config_hash: mFdlZ5XTPnGdfi1PYavitmAdicA_iBMqs3hl8_mSFeo
 status: 2
 pattern: 'Quote: [block_content:field_author]'
 escape: false

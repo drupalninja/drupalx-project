@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: i_R6M6nAGnaHt_bS-_r18hM1humVzRIBEDOnVgDolmk
+  default_config_hash: 6BgeprpxT3kzaXGVZfG1ndhvDdyBwq9atUtsy-OQ8w8
 id: media
 label: Media
 revision: 0

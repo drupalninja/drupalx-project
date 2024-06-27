@@ -9,7 +9,7 @@ dependencies:
   module:
     - text
 _core:
-  default_config_hash: 8icnOpwHWgdt-rpa9B_rfKFDysq1MPXEDUhm-XKPdjY
+  default_config_hash: ApsVbQvJ4rXKPvlsfMxPYPW2wgKrNVF2BxaPxBng4dY
 id: block_content.hero.field_heading
 field_name: field_heading
 entity_type: block_content

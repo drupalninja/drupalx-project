@@ -8,14 +8,14 @@ dependencies:
   module:
     - text
 _core:
-  default_config_hash: mG2fPhqYjyfvAsAws0Y_rJ3XoPOtnmPcdZCKTTQDeZ0
+  default_config_hash: Xt6vYzVbD5JMkx7G-OsuUhC0ghfEMQ2mFJR42pGgHEg
 id: block_content.text.body
 field_name: body
 entity_type: block_content
 bundle: text
 label: Body
 description: ''
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''

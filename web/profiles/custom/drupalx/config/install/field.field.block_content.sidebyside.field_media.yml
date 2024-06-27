@@ -7,14 +7,14 @@ dependencies:
     - field.storage.block_content.field_media
     - media.type.image
 _core:
-  default_config_hash: KFVEsGJvHMWxfBLzORMZUAVLzYip-e-T8RgLSCeN0Rs
+  default_config_hash: 8fZoTo_mB5HsxpxEnwzgTlFJylW7BNgiHGNn6MyYmjs
 id: block_content.sidebyside.field_media
 field_name: field_media
 entity_type: block_content
 bundle: sidebyside
 label: Media
 description: 'Embed a media item from the media library.'
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
