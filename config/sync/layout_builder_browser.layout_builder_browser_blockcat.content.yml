@@ -1,0 +1,12 @@
+uuid: dad65ce3-88d9-45fc-8ba5-96107a25ef0b
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Z4JYbXDuU25RD-iaMX8zIGdxZ1RInv70_x5wckbZ6HQ
+id: content
+label: Content
+weight: null
+opened: true
+image_path: null
+image_alt: null

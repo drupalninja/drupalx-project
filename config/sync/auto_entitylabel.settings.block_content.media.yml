@@ -1,0 +1,11 @@
+_core:
+  default_config_hash: ap9Q_eyraHeb8Mc0Rsn7cf5sS9msUHwJa-O_U70F8aM
+status: 2
+pattern: 'Media: [block_content:field_title]'
+escape: false
+preserve_titles: false
+save: false
+chunk: 50
+dependencies:
+  config:
+    - block_content.type.media
