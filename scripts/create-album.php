@@ -34,7 +34,7 @@ if ($response) {
     // Create new components using the page and the example component.
     $prompt = 'Using the accordion component as an example, create a
       Bootstrap 5 album component (using create_files tool) with .twig,
-      .stories.js (category Editorial), .scss if needed and in the drupalx_theme
+      .stories.js (category Editorial), and .scss in the drupalx_theme
       at components/album.';
 
     // Generate the components.
