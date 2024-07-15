@@ -1,18 +1,17 @@
-uuid: 4a34d9db-e7b4-4af6-a365-da804d6b722e
+uuid: 2a9568ad-677a-48c5-80c8-a1fe470a593b
 langcode: en
 status: true
 dependencies:
   module:
     - paragraphs
-    - media
 _core:
-  default_config_hash: UGExZZn5REnQ7RjA41XgHCfEBCf-XK01sZRiQJmjXHs
-id: paragraph.field_media
-field_name: field_media
+  default_config_hash: iuKHSPERqJjmu3nISZ7wAPly54yetLJNGWL0H4Ygh34
+id: paragraph.field_block
+field_name: field_block
 entity_type: paragraph
 type: entity_reference
 settings:
-  target_type: media
+  target_type: paragraph
 module: core
 locked: false
 cardinality: 1

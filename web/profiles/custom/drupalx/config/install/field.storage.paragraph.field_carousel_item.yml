@@ -1,14 +1,14 @@
-uuid: 3bf52167-ca8f-4eed-83a1-cc5f0e2d3927
+uuid: d2702784-50ef-48bd-afa1-ee732e3ed067
 langcode: en
 status: true
 dependencies:
   module:
-    - paragraphs
     - entity_reference_revisions
+    - paragraphs
 _core:
-  default_config_hash: 5BqmW0iWSgOf8NXbQw1ScIHTxJVqypOUPt5hX-8HEkM
-id: paragraph.field_card
-field_name: field_card
+  default_config_hash: UE2DOVros5iRPb1T6IRTnPF1-SEn3XeXoN04O19bYXs
+id: paragraph.field_carousel_item
+field_name: field_carousel_item
 entity_type: paragraph
 type: entity_reference_revisions
 settings:

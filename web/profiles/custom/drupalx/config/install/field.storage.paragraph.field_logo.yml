@@ -1,4 +1,4 @@
-uuid: 4a34d9db-e7b4-4af6-a365-da804d6b722e
+uuid: 5a2e68b9-2bbe-4ca0-8b34-800aa53af00d
 langcode: en
 status: true
 dependencies:
@@ -6,9 +6,9 @@ dependencies:
     - paragraphs
     - media
 _core:
-  default_config_hash: UGExZZn5REnQ7RjA41XgHCfEBCf-XK01sZRiQJmjXHs
-id: paragraph.field_media
-field_name: field_media
+  default_config_hash: SLx6jfAPf4Bs2HJjPFH-mGS55Z9dB6VBEJxHSHnPBF0
+id: paragraph.field_logo
+field_name: field_logo
 entity_type: paragraph
 type: entity_reference
 settings:

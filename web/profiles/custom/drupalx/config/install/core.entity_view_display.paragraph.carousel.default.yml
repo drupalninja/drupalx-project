@@ -1,0 +1,27 @@
+uuid: 175e867a-8cb6-4edd-9bf4-d9eea7eba726
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.carousel
+    - field.field.paragraph.carousel.field_carousel_item
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: wr3DN7FN-1W06DyT6Wm5Hc1j0TESRaQEKBSadU-W6qw
+id: paragraph.carousel.default
+targetEntityType: paragraph
+bundle: carousel
+mode: default
+content:
+  field_carousel_item:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

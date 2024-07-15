@@ -1,4 +1,4 @@
-uuid: 01694652-b065-479f-9066-dbf0a0dfa00c
+uuid: 172a5677-c10d-4c36-9331-5cccdcbbcbb1
 langcode: en
 status: true
 dependencies:
@@ -6,9 +6,9 @@ dependencies:
     - paragraphs
     - text
 _core:
-  default_config_hash: v5pwaT8QHAQwBtbRaKFhqvy2JzWCHnXQ4uU_ajyRCeo
-id: paragraph.field_summary
-field_name: field_summary
+  default_config_hash: 4Tq23Fa7I4ExiOn7QTnP8x_zCrRVBJ8cZhV4msuVtF4
+id: paragraph.field_script
+field_name: field_script
 entity_type: paragraph
 type: text_long
 settings: {  }

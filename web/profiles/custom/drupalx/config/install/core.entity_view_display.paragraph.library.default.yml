@@ -1,0 +1,25 @@
+uuid: 05518722-fafa-489c-841d-7c5bf7ae9fb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.library
+    - field.field.paragraph.library.field_block
+_core:
+  default_config_hash: Iaw1PeREoLEkXd6pO9KaFxzVFfI8PM-csVj7qBNgGxE
+id: paragraph.library.default
+targetEntityType: paragraph
+bundle: library
+mode: default
+content:
+  field_block:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true
