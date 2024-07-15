@@ -11,7 +11,7 @@ use Drupal\drupalai\Commands\DrupalAiChat;
 $scrape_url = 'https://getbootstrap.com/docs/5.3/examples/album/';
 
 // Model name.
-$model_name = 'claude-3-haiku-20240307';
+$model_name = 'llama3-70b-8192';
 
 // Create a new chat instance.
 $ai_chat = new DrupalAiChat($model_name);
