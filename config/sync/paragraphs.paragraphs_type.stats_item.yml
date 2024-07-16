@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: xk-6x6EcsoeXlKiL_BbvtUh7YqOakdBX7IeH_wXFWwc
+  default_config_hash: QN_hih_pfrJneHuq8p8LJwvvFzwApI92AvCTUrgUsl4
 id: stats_item
 label: 'Stats item'
 icon_uuid: null

@@ -7,11 +7,13 @@ dependencies:
     - node.type.layout
   module:
     - entity_reference_revisions
+_core:
+  default_config_hash: QivQzVhZzCaGT-2wFE6fUPVDGR4QjMcJFwg8dhIHbVA
 id: node.layout.field_content
 field_name: field_content
 entity_type: node
 bundle: layout
-label: Content
+label: Components
 description: ''
 required: true
 translatable: false

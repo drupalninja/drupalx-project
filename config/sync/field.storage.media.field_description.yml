@@ -6,7 +6,7 @@ dependencies:
     - media
     - text
 _core:
-  default_config_hash: cIf1kdbGozBsvDZCTNnYjJtVM1hi2rWMPwBYc3ajg1A
+  default_config_hash: _7WL3SYmmCQsZLlS2IM6aJmCtzuDzykyNoBmSEWJAHs
 id: media.field_description
 field_name: field_description
 entity_type: media

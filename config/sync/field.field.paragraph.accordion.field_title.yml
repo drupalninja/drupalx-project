@@ -6,7 +6,7 @@ dependencies:
     - field.storage.paragraph.field_title
     - paragraphs.paragraphs_type.accordion
 _core:
-  default_config_hash: jaH98Jetqk-9DLKJUKW5gGpJhq_gy3JV0DakW1x24ik
+  default_config_hash: Ztz9oASPAXxgd9JJmaFkViJWOqK-0erKJrzUFjc7OK4
 id: paragraph.accordion.field_title
 field_name: field_title
 entity_type: paragraph

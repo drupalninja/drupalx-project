@@ -1,4 +1,4 @@
-uuid: 8fc2044e-1e8c-48b2-8434-afe512eae584
+uuid: e74cd481-a977-4e71-acca-795103d3a7b4
 langcode: en
 status: true
 dependencies:
@@ -34,12 +34,6 @@ content:
     third_party_settings: {  }
   language:
     weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  path:
-    type: path
-    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -49,10 +49,10 @@ third_party_settings:
         open: false
         description: ''
         required_fields: true
-    group_components:
+    group_content:
       children:
         - field_content
-      label: Components
+      label: Content
       region: content
       parent_name: ''
       weight: 2
@@ -65,7 +65,7 @@ third_party_settings:
         description: ''
         required_fields: true
 _core:
-  default_config_hash: NKhZcm8uMnu6gY4_1OibjFQ9NnKm0eohNSOUEpHVjho
+  default_config_hash: IJJCmQ7otrmb-em5SHnWb7IDc3HKGYJtvFPxQoGYaM8
 id: node.layout.default
 targetEntityType: node
 bundle: layout

@@ -31,10 +31,11 @@ module:
   file: 0
   filter: 0
   gin_login: 0
-  gin_toolbar: 0
   guardr_core: 0
   image: 0
+  inline_block_title_automatic: 0
   js_cookie: 0
+  layout_builder: 0
   layout_discovery: 0
   link: 0
   linkit: 0

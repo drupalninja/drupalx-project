@@ -6,6 +6,8 @@ dependencies:
     - entity_reference_revisions
     - node
     - paragraphs
+_core:
+  default_config_hash: PZNzMxEJaFVPcDBbh9ZXEWYHEXzb0Yx3uh4ESOt_Du0
 id: node.field_content
 field_name: field_content
 entity_type: node

@@ -6,7 +6,7 @@ dependencies:
     - field.field.paragraph.library.field_block
     - paragraphs.paragraphs_type.library
 _core:
-  default_config_hash: 9cqdjB22bgoi63p4kZR3aF9KpwC_oom5Jd5oxZHrxko
+  default_config_hash: xrzVgTItHYpZlYWzMBzHekLguHhpo5_1p_aczKwIu9Y
 id: paragraph.library.default
 targetEntityType: paragraph
 bundle: library

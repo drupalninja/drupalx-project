@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: lssaA5JDomrNICoGSKE03SjigWVVsikjx5SHq_KbtqQ
+  default_config_hash: sznSZtV2ny6jyrrUH2Z0useaav6A8PPChU4eYRDacPc
 id: accordion_item
 label: 'Accordion item'
 icon_uuid: null

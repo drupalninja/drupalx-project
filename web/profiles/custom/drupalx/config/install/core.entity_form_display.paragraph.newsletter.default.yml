@@ -5,7 +5,7 @@ dependencies:
   config:
     - paragraphs.paragraphs_type.newsletter
 _core:
-  default_config_hash: 5mYnLXFdtzwS-bzFLLiYLJojIycVxUjSbr7KBzPszWY
+  default_config_hash: lSTOV9CM53Du4q1y5lD8yZ3ULcX8yb9R-N9Dq4htA4w
 id: paragraph.newsletter.default
 targetEntityType: paragraph
 bundle: newsletter

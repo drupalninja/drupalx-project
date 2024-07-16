@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: ruMpRlh15LP04GahLYZczNWqFdPFOay_sNfG6M12-bc
+  default_config_hash: S6S5Jdm8aoA1fCGNR24DSSHEOaxqdtqA7_f7wzpKXuY
 id: quote
 label: Quote
 icon_uuid: null

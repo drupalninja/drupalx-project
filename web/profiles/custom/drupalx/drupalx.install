@@ -447,6 +447,147 @@ function drupalx_install_content() {
   // Create media items.
   $media_items = _drupalx_create_media_items();
 
+  // Create 404 page.
+  $node = Node::create([
+    'type' => 'page',
+    'title' => 'Oops! Page not found',
+    'uid' => 1,
+    'status' => 1,
+    'promote' => 1,
+    'sticky' => 1,
+    'body' => [
+      'value' => "<p>We're sorry, but the page you requested could not be found. Please check the URL and try again, or click the button below to return to the homepage.</p>
+      <a href=\"/\">Return to homepage</a>",
+      'format' => 'full_html',
+    ],
+    'path' => [
+      'alias' => '/page/page-not-found',
+      'pathauto' => 0,
+    ],
+  ]);
+
+  $node->save();
+
+  // Create 403 page.
+  $node = Node::create([
+    'type' => 'page',
+    'title' => 'Access denied',
+    'uid' => 1,
+    'status' => 1,
+    'promote' => 1,
+    'sticky' => 1,
+    'body' => [
+      'value' => "<p>We're sorry, but you do not have permission to access this page. Please contact the site administrator if you believe this is an error, or click the button below to return to the homepage.</p>
+      <a href=\"/\">Return to homepage</a>",
+      'format' => 'full_html',
+    ],
+    'path' => [
+      'alias' => '/page/access-denied',
+      'pathauto' => 0,
+    ],
+  ]);
+
+  $node->save();
+
+  // Create Privacy page.
+  $node = Node::create([
+    'type' => 'page',
+    'title' => 'Privacy Policy',
+    'uid' => 1,
+    'status' => 1,
+    'promote' => 1,
+    'sticky' => 1,
+    'field_media' => [
+      'target_id' => $media_items['card']->id(),
+    ],
+    'body' => [
+      'value' => '<p>This Privacy Policy describes how we collect, use, and disclose information about you when you use our website and any related services (collectively, the "Services").</p>
+      <p>&nbsp;</p>
+      <h3>Information We Collect</h3>
+      <p>We may collect information about you when you use our Services, including:</p>
+      <ul>
+        <li>Information you provide to us, such as your name, email address, and other contact information.</li>
+        <li>Information we collect automatically, such as your IP address, browser type, and device type.</li>
+        <li>Information we collect from third-party sources, such as social media platforms and marketing partners.</li>
+      </ul>
+      <p>&nbsp;</p>
+      <h3>How We Use Your Information</h3>
+      <p>We may use your information to:</p>
+      <ul>
+        <li>Provide and improve our Services.</li>
+        <li>Respond to your inquiries and requests.</li>
+        <li>Send you marketing communications.</li>
+        <li>Comply with our legal and regulatory obligations.</li>
+      </ul>
+      <p>We may also share your information with third parties for the purposes described in this Privacy Policy.</p>
+      <p>&nbsp;</p>
+      <h3>How We Protect Your Information</h3>
+      <p>We take reasonable measures to protect your information from unauthorized access, use, and disclosure. However, no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
+      <p>&nbsp;</p>
+      <h3>Your Choices</h3>
+      <p>You may have certain rights and choices with respect to your information, such as the right to access and correct your information. Please contact us using the information below if you have any questions or would like to exercise your rights.</p>
+      <p>&nbsp;</p>
+      <h3>Contact Us</h3>
+      <p>If you have any questions or concerns about our Privacy Policy, please <a href="/contact-us">contact us</a>.</p>',
+      'format' => 'full_html',
+    ],
+    'path' => [
+      'alias' => '/privacy',
+      'pathauto' => 0,
+    ],
+  ]);
+
+  $node->save();
+
+  // Create Terms of Use page.
+  $node = Node::create([
+    'type' => 'page',
+    'title' => 'Terms of Use',
+    'uid' => 1,
+    'status' => 1,
+    'promote' => 1,
+    'sticky' => 1,
+    'field_media' => [
+      'target_id' => $media_items['card']->id(),
+    ],
+    'body' => [
+      'value' => '<p>Welcome to our website (the "Site"). By accessing or using the Site, you agree to be bound by these Terms of Use (the "Agreement"). If you do not agree to these terms, you should not access or use the Site.</p>
+      <p>&nbsp;</p>
+      <h3>Use of the Site</h3>
+      <p>You may use the Site only for lawful purposes and in accordance with this Agreement. You agree not to use the Site:</p>
+      <ul>
+        <li>In any way that violates any applicable federal, state, local, or international law or regulation.</li>
+        <li>To transmit, or procure the sending of, any advertising or promotional material, including any "junk mail," "chain letter," "spam," or any other similar solicitation.</li>
+        <li>To impersonate or attempt to impersonate us, our employees, another user, or any other person or entity.</li>
+      </ul>
+      <p>&nbsp;</p>
+      <h3>Intellectual Property</h3>
+      <p>The Site and its entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio) are owned by us, our licensors, or other providers of such material and are protected by United States and international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
+      <p>&nbsp;</p>
+      <h3>Disclaimer of Warranties</h3>
+      <p>The Site and its contents are provided "as is" and without warranties of any kind, whether express or implied. We do not warrant that the Site or any of its functions will be uninterrupted or error-free, that defects will be corrected, or that the Site or the servers that make it available are free of viruses or other harmful components.</p>
+      <p>&nbsp;</p>
+      <h3>Limitation of Liability</h3>
+      <p>In no event will we be liable for any damages of any kind arising out of or in connection with your use of the Site, including but not limited to direct, indirect, incidental, consequential, or punitive damages, even if we have been advised of the possibility of such damages.</p>
+      <p>&nbsp;</p>
+      <h3>Indemnification</h3>
+      <p>You agree to indemnify and hold us and our affiliates, licensors, and service providers harmless from any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys\' fees) arising out of or relating to your violation of this Agreement or your use of the Site, including, but not limited to, your User Contributions, any use of the Site\'s content, services, and products other than as expressly authorized in this Agreement, or your use of any information obtained from the Site.</p>
+      <p>&nbsp;</p>
+      <h3>Changes to this Agreement</h3>
+      <p>We may revise and update this Agreement from time to time in our sole discretion. All changes are effective immediately when we post them, and apply to all access to and use of the Site thereafter. Your continued use of the Site following the posting of revised Agreement means that you accept and agree to the changes.</p>
+      <p>&nbsp;</p>
+      <h3>Contact Us</h3>
+      <p>If you have any questions or concerns about these Terms of Use, please <a href="/contact-us">contact us</a>.</p>',
+      'format' => 'full_html',
+    ],
+    'path' => [
+      'alias' => '/terms-of-use',
+      'pathauto' => 0,
+    ],
+  ]);
+
+  $node->save();
+
   // Create homepage node.
   $node = Node::create([
     'type' => 'layout',

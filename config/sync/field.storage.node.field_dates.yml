@@ -6,7 +6,7 @@ dependencies:
     - datetime_range
     - node
 _core:
-  default_config_hash: cQx_aymph0p65dkWgU0KSm21qfBMWqX8eFOGd1nxqHo
+  default_config_hash: p0PPxOHPZGjSO2xMO9ddRdBCHdrCJSowKAuPf2CAKB4
 id: node.field_dates
 field_name: field_dates
 entity_type: node

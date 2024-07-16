@@ -1,31 +1,29 @@
-uuid: 8fa67074-b905-450e-9727-fa49f30b5655
+uuid: 2b045e7d-0a00-4842-ace6-4484fd67d841
 langcode: en
 status: true
 dependencies: {  }
 _core:
   default_config_hash: Eu8CvZYqHh4Zx02qu1Xf9a7QC3JnDQTOZmSWkD8h4ic
-machine_name: default
 name: Default
+machine_name: default
 description: ''
 assignments:
   alter:
-    enabled: true
-    weight: 0
     core: true
     uuid: true
     user_permissions: true
-  base:
     enabled: true
-    weight: -2
+    weight: 0
+  base:
     types:
       config:
         comment_type: comment_type
         node_type: node_type
       content:
         user: user
-  core:
     enabled: true
-    weight: 5
+    weight: -2
+  core:
     types:
       config:
         date_format: date_format
@@ -36,12 +34,12 @@ assignments:
         responsive_image_style: responsive_image_style
         user_role: user_role
         entity_view_mode: entity_view_mode
+    enabled: true
+    weight: 5
   dependency:
     enabled: true
     weight: 15
   exclude:
-    enabled: true
-    weight: -5
     types:
       config:
         features_bundle: features_bundle
@@ -51,6 +49,8 @@ assignments:
       profile: true
       namespace: true
       namespace_any: false
+    enabled: true
+    weight: -5
   existing:
     enabled: true
     weight: 12
@@ -61,16 +61,14 @@ assignments:
     enabled: true
     weight: 0
   optional:
-    enabled: true
-    weight: 0
     types:
       config: {  }
+    enabled: true
+    weight: 0
   packages:
     enabled: true
     weight: -20
   profile:
-    enabled: true
-    weight: 10
     curated: true
     standard:
       files: true
@@ -83,9 +81,9 @@ assignments:
         migration: migration
         shortcut_set: shortcut_set
         tour: tour
-  site:
     enabled: true
-    weight: 7
+    weight: 10
+  site:
     types:
       config:
         action: action
@@ -96,5 +94,7 @@ assignments:
         taxonomy_vocabulary: taxonomy_vocabulary
         editor: editor
         filter_format: filter_format
+    enabled: true
+    weight: 7
 profile_name: ''
 is_profile: false

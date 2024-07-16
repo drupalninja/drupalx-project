@@ -1,4 +1,4 @@
-uuid: f509594e-d772-42ec-93ba-d81f8b0fa811
+uuid: b540fa5d-fe45-430b-9309-284998922c8e
 langcode: en
 status: true
 dependencies:
@@ -16,12 +16,120 @@ base_table: login_history
 base_field: uid
 display:
   default:
+    display_plugin: default
     id: default
     display_title: Master
-    display_plugin: default
     position: 0
     display_options:
-      title: 'Login history'
+      access:
+        type: perm
+        options:
+          perm: 'view all login histories'
+      cache:
+        type: none
+        options: {  }
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_comment: ''
+          query_tags: {  }
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        type: full
+        options:
+          items_per_page: 50
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+          pagination_heading_level: h4
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            login: login
+            name: name
+            hostname: hostname
+            one_time: one_time
+            user_agent: user_agent
+          info:
+            login:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            hostname:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: priority-medium
+            one_time:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: priority-low
+            user_agent:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: priority-low
+          default: login
+          empty_table: false
+      row:
+        type: fields
+        options:
+          inline: {  }
+          separator: ''
+          hide_empty: false
+          default_field_elements: true
       fields:
         login:
           id: login
@@ -30,9 +138,6 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: null
-          entity_field: null
-          plugin_id: date
           label: Date
           exclude: false
           alter:
@@ -77,6 +182,9 @@ display:
           date_format: short
           custom_date_format: ''
           timezone: ''
+          entity_type: null
+          entity_field: null
+          plugin_id: date
         name:
           id: name
           table: users_field_data
@@ -84,9 +192,6 @@ display:
           relationship: uid
           group_type: group
           admin_label: ''
-          entity_type: user
-          entity_field: name
-          plugin_id: field
           label: Username
           exclude: false
           alter:
@@ -142,6 +247,9 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          entity_type: user
+          entity_field: name
+          plugin_id: field
         hostname:
           id: hostname
           table: login_history
@@ -149,7 +257,6 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: standard
           label: 'IP Address'
           exclude: false
           alter:
@@ -191,6 +298,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
+          plugin_id: standard
         one_time:
           id: one_time
           table: login_history
@@ -198,7 +306,6 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: boolean
           label: 'One-time login?'
           exclude: false
           alter:
@@ -244,6 +351,7 @@ display:
           type_custom_true: 'One-time login'
           type_custom_false: 'Regular login'
           not: false
+          plugin_id: boolean
         user_agent:
           id: user_agent
           table: login_history
@@ -251,7 +359,6 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: standard
           label: 'User Agent'
           exclude: false
           alter:
@@ -293,119 +400,12 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-      pager:
-        type: full
-        options:
-          offset: 0
-          pagination_heading_level: h4
-          items_per_page: 50
-          total_pages: null
-          id: 0
-          tags:
-            next: ››
-            previous: ‹‹
-            first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          quantity: 9
-      exposed_form:
-        type: basic
-        options:
-          submit_button: Apply
-          reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-      access:
-        type: perm
-        options:
-          perm: 'view all login histories'
-      cache:
-        type: none
-        options: {  }
-      empty: {  }
-      sorts: {  }
-      arguments: {  }
+          plugin_id: standard
       filters: {  }
-      style:
-        type: table
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-          columns:
-            login: login
-            name: name
-            hostname: hostname
-            one_time: one_time
-            user_agent: user_agent
-          default: login
-          info:
-            login:
-              sortable: true
-              default_sort_order: desc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            name:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            hostname:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-medium
-            one_time:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-low
-            user_agent:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-low
-          override: true
-          sticky: false
-          summary: ''
-          empty_table: false
-          caption: ''
-          description: ''
-      row:
-        type: fields
-        options:
-          default_field_elements: true
-          inline: {  }
-          separator: ''
-          hide_empty: false
-      query:
-        type: views_query
-        options:
-          query_comment: ''
-          disable_sql_rewrite: false
-          distinct: false
-          replica: false
-          query_tags: {  }
+      sorts: {  }
+      header: {  }
+      footer: {  }
+      empty: {  }
       relationships:
         uid:
           id: uid
@@ -414,11 +414,11 @@ display:
           relationship: none
           group_type: group
           admin_label: 'User from Login History'
-          plugin_id: standard
           required: false
-      header: {  }
-      footer: {  }
+          plugin_id: standard
+      arguments: {  }
       display_extenders: {  }
+      title: 'Login history'
     cache_metadata:
       max-age: -1
       contexts:
@@ -428,14 +428,14 @@ display:
         - user.permissions
       tags: {  }
   login_history_report:
+    display_plugin: page
     id: login_history_report
     display_title: Report
-    display_plugin: page
     position: 1
     display_options:
-      display_description: ''
       display_extenders: {  }
       path: admin/reports/login-history
+      display_description: ''
     cache_metadata:
       max-age: -1
       contexts:
@@ -445,15 +445,13 @@ display:
         - user.permissions
       tags: {  }
   login_history_user_report:
+    display_plugin: page
     id: login_history_user_report
     display_title: 'User Report'
-    display_plugin: page
     position: 2
     display_options:
-      access:
-        type: perm
-        options:
-          perm: 'view own login history'
+      display_extenders: {  }
+      path: user/%/login-history
       arguments:
         uid:
           id: uid
@@ -462,9 +460,6 @@ display:
           relationship: uid
           group_type: group
           admin_label: ''
-          entity_type: user
-          entity_field: uid
-          plugin_id: user_uid
           default_action: 'not found'
           exception:
             value: all
@@ -478,8 +473,8 @@ display:
           summary_options:
             base_path: ''
             count: true
-            override: false
             items_per_page: 25
+            override: false
           summary:
             sort_order: asc
             number_of_records: 0
@@ -496,12 +491,17 @@ display:
             roles: {  }
           break_phrase: false
           not: false
+          entity_type: user
+          entity_field: uid
+          plugin_id: user_uid
       defaults:
-        access: false
         arguments: false
+        access: false
+      access:
+        type: perm
+        options:
+          perm: 'view own login history'
       display_description: ''
-      display_extenders: {  }
-      path: user/%/login-history
     cache_metadata:
       max-age: -1
       contexts:

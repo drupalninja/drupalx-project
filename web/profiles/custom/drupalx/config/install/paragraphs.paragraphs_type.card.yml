@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: qqcpSfkYCQJHD9UhF_mHz7LGOesndL41-rxefQncPSQ
+  default_config_hash: giGA4oT1AzL71m4LXnIPAz9Ge9-ws01Q24eYnK6gx5k
 id: card
 label: Card
 icon_uuid: null

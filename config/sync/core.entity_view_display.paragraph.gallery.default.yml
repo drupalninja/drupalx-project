@@ -10,7 +10,7 @@ dependencies:
   module:
     - text
 _core:
-  default_config_hash: 5NjTuHtKvUOwO3gFoavLVQG9sSvoxaCDAxjK1CZtV9k
+  default_config_hash: 8KcFVKFnUH_WodOrjZfvJfA5KoGscFBST32XsfP5jz4
 id: paragraph.gallery.default
 targetEntityType: paragraph
 bundle: gallery

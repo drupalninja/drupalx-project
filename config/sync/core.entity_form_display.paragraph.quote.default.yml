@@ -12,7 +12,7 @@ dependencies:
   module:
     - media_library
 _core:
-  default_config_hash: LYP39ytcElgb8uBWmpp9GSa5xtCVtmQDxj13-PstLyc
+  default_config_hash: nnFfDp4mR7WWfCXs3Wp12-CKxMNmLSiZjvS7XeHi0SQ
 id: paragraph.quote.default
 targetEntityType: paragraph
 bundle: quote
