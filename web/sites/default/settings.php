@@ -286,7 +286,7 @@ $databases = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '';
+$settings['hash_salt'] = 'U_FWC-34sj1lL_lPXz03EANz6RArPXSvd1WSIOmrzCIdExNVfYl2V80KYzz7EvOLCbksVYjy9A';
 
 /**
  * Deployment identifier.
@@ -892,3 +892,15 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
+$databases['default']['default'] = array (
+  'database' => 'db',
+  'username' => 'db',
+  'password' => 'db',
+  'prefix' => '',
+  'host' => 'db',
+  'port' => 3306,
+  'isolation_level' => 'READ COMMITTED',
+  'driver' => 'mysql',
+  'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
+  'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
+);

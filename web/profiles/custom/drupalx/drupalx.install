@@ -414,12 +414,20 @@ function drupalx_install_content() {
   // Create media items.
   $media_items = _drupalx_create_media_items();
 
-  // Create main content node.
+  // Kitchen sink layout.
   $node = Node::create([
-    'type' => 'page',
-    'title' => 'DrupalX Content',
+    'type' => 'layout',
+    'title' => 'Kitchen Sink Layout',
+    'field_hide_page_title' => TRUE,
     'uid' => 1,
     'status' => 1,
+    'field_thumbnail' => [
+      'target_id' => $media_items['card']->id(),
+    ],
+    'path' => [
+      'alias' => '/kitchen-sink',
+      'pathauto' => 0,
+    ],
   ]);
 
   // Create and append paragraphs.
