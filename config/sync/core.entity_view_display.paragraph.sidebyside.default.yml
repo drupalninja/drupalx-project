@@ -15,7 +15,7 @@ dependencies:
     - options
     - text
 _core:
-  default_config_hash: kKiExZEbFpoFFgTJBd581JWq2TenUfOtb4Vk8zxkmxg
+  default_config_hash: d2D38UfT46iP2fO7wPRgX-TXLUo8Cl999YEpQ9U9mts
 id: paragraph.sidebyside.default
 targetEntityType: paragraph
 bundle: sidebyside

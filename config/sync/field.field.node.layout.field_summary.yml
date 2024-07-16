@@ -6,7 +6,7 @@ dependencies:
     - field.storage.node.field_summary
     - node.type.layout
 _core:
-  default_config_hash: s0-ISK4GFO4SDDeTJ29LUWzQDD238FbTrhIW9ehGipk
+  default_config_hash: ZuvkDtSQCETXf_CkFK9nRoH5l6xvHYqdrsWNnBVlZ20
 id: node.layout.field_summary
 field_name: field_summary
 entity_type: node

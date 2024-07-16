@@ -12,7 +12,7 @@ dependencies:
     - material_icons
     - media_library
 _core:
-  default_config_hash: ANBrq8QU4qOPlSCezXkdUp2kBDo78kdl1AraOgl6Ni0
+  default_config_hash: uZhQ57sFgsS1XTgj2vEzdyu4XeWgupK34cGRr5Cmios
 id: paragraph.stats_item.default
 targetEntityType: paragraph
 bundle: stats_item

@@ -98,19 +98,43 @@ function _drupalx_create_media_items() {
 
 /**
  * Create a Hero paragraph.
+ *
+ * @param array $hero_info
+ *   The hero info.
+ *
+ * @return \Drupal\paragraphs\Entity\Paragraph
+ *   The Hero paragraph.
  */
-function _drupalx_create_hero_paragraph($media_items) {
+function _drupalx_create_hero_paragraph(array $hero_info) {
   $paragraph = Paragraph::create([
     'type' => 'hero',
-    'field_media' => $media_items['card'],
-    'field_hero_layout' => 'image_top',
-    'field_heading' => 'The Ultimate CMS Starter Kit for Enterprise Developers',
-    'field_summary' => 'DrupalX provides a comprehensive foundation for rapid development.',
-    'field_link' => [
-      'uri' => 'https://drupalx.netlify.app/',
-      'title' => 'See our demo',
+    'field_media' => [
+      'target_id' => $hero_info['media']->id(),
     ],
+    'field_hero_layout' => $hero_info['layout'],
   ]);
+
+  if (!empty($hero_info['heading'])) {
+    $paragraph->set('field_heading', [
+      'value' => $hero_info['heading'],
+      'format' => 'restricted_html',
+    ]);
+  }
+
+  if (!empty($hero_info['summary'])) {
+    $paragraph->set('field_summary', [
+      'value' => $hero_info['summary'],
+      'format' => 'basic_html',
+    ]);
+  }
+
+  if (!empty($hero_info['link'])) {
+    $paragraph->set('field_link', [
+      'uri' => $hero_info['link']['uri'],
+      'title' => $hero_info['link']['title'],
+    ]);
+  }
+
   $paragraph->save();
   return $paragraph;
 }
@@ -403,6 +427,26 @@ function _drupalx_create_sidebyside_paragraph(array $info = []) {
 }
 
 /**
+ * Create an Articles paragraph.
+ *
+ * @return \Drupal\paragraphs\Entity\Paragraph
+ *   The Articles paragraph.
+ */
+function _drupalx_create_articles_paragraph() {
+  $paragraph = Paragraph::create([
+    'type' => 'views',
+    'field_title' => '',
+    'field_views_ref' => [
+      'target_id' => 'recent_cards',
+      'display_id' => 'block_1',
+    ],
+  ]);
+
+  $paragraph->save();
+  return $paragraph;
+}
+
+/**
  * Implements hook_install_tasks().
  */
 function drupalx_install_tasks(&$install_state) {
@@ -621,6 +665,7 @@ function drupalx_install_content() {
     'summary' => '',
     'layout' => 'image_top',
   ];
+
   $paragraphs[] = _drupalx_create_hero_paragraph($hero_info);
 
   // Card group paragraph.
@@ -690,7 +735,7 @@ function drupalx_install_content() {
 
   // Create and append paragraphs.
   $paragraphs = [
-    _drupalx_create_hero_paragraph($media_items),
+    _drupalx_create_hero_paragraph($hero_info),
     _drupalx_create_card_group_paragraph($media_items),
     _drupalx_create_text_paragraph(),
     _drupalx_create_media_paragraph($media_items),
@@ -727,10 +772,250 @@ function drupalx_install_content() {
     ],
   ];
 
+  // Create Contact us page node.
+  $node = Node::create([
+    'type' => 'layout',
+    'title' => 'Contact Us',
+    'uid' => 1,
+    'status' => 1,
+    'promote' => 1,
+    'sticky' => 1,
+    'body' => [
+      'value' => '',
+      'format' => 'full_html',
+    ],
+    'field_hide_page_title' => TRUE,
+    'path' => [
+      'alias' => '/contact',
+      'pathauto' => 0,
+    ],
+  ]);
+
+  // Create and add paragraphs to field_content.
+  $paragraphs = [];
+
+  // Hero paragraph.
+  $hero_info = [
+    'media' => $media_items['card'],
+    'heading' => "Contact Us",
+    'summary' => 'Have a question about DrupalX? We\'re here to help! Drop us a message and we\'ll get back to you soon.',
+    'layout' => 'image_top',
+  ];
+  $paragraphs[] = _drupalx_create_hero_paragraph($hero_info);
+
+  // Form paragraph.
+  $form_paragraph = Paragraph::create([
+    'type' => 'form',
+    'field_title' => '',
+    'field_webform' => [
+      'target_id' => 'contact_us',
+    ],
+  ]);
+
+  $form_paragraph->save();
+  $paragraphs[] = $form_paragraph;
+
+  // Add paragraphs to field_content.
+  foreach ($paragraphs as $paragraph) {
+    $node->field_content[] = [
+      'target_id' => $paragraph->id(),
+      'target_revision_id' => $paragraph->getRevisionId(),
+    ];
+  }
+
+  $node->save();
+
   foreach ($info_sidebyside as $info) {
     $paragraphs[] = _drupalx_create_sidebyside_paragraph($info);
   }
 
+  foreach ($paragraphs as $paragraph) {
+    $node->field_content[] = [
+      'target_id' => $paragraph->id(),
+      'target_revision_id' => $paragraph->getRevisionId(),
+    ];
+  }
+
+  $node->save();
+
+  // Create Features layout node.
+  $node = Node::create([
+    'type' => 'layout',
+    'title' => 'Features',
+    'uid' => 1,
+    'status' => 1,
+    'promote' => 1,
+    'sticky' => 1,
+    'body' => [
+      'value' => '',
+      'format' => 'full_html',
+    ],
+    'field_hide_page_title' => TRUE,
+    'path' => [
+      'alias' => '/features',
+      'pathauto' => 0,
+    ],
+  ]);
+
+  // Create and add paragraphs to field_content.
+  $paragraphs = [];
+
+  // Hero paragraph.
+  $hero_info = [
+    'media' => $media_items['card'],
+    'heading' => "DrupalX Features",
+    'summary' => '<p>DrupalX is a comprehensive system that provides a robust starting point for designers and developers to fully customize components.</p>',
+    'layout' => 'image_bottom',
+  ];
+
+  $paragraphs[] = _drupalx_create_hero_paragraph($hero_info);
+
+  // Side by side paragraphs.
+  $info_sidebyside = [
+    [
+      'title' => 'Ultimate Flexibility',
+      'eyebrow' => 'Customizable Components',
+      'summary' => 'Each component in DrupalX is fully customizable, allowing you to create a unique site tailored to your organization\'s needs.',
+      'layout' => 'right',
+      'media' => $media_items['card'],
+    ],
+    [
+      'title' => 'Easy Content Management',
+      'eyebrow' => 'User-Friendly Editing',
+      'summary' => 'Utilize over a dozen built-in layout builder components for seamless content management, powered by Bootstrap 5.',
+      'layout' => 'left',
+      'media' => $media_items['card'],
+    ],
+    [
+      'title' => 'Accessibility First',
+      'eyebrow' => 'WCAG 2.0 AA Standard',
+      'summary' => 'Our solution adheres to WCAG 2.0 AA accessibility guidelines out of the box, ensuring an inclusive experience.',
+      'layout' => 'right',
+      'media' => $media_items['card'],
+    ],
+  ];
+
+  foreach ($info_sidebyside as $info) {
+    $paragraphs[] = _drupalx_create_sidebyside_paragraph($info);
+  }
+
+  // Add paragraphs to field_content.
+  foreach ($paragraphs as $paragraph) {
+    $node->field_content[] = [
+      'target_id' => $paragraph->id(),
+      'target_revision_id' => $paragraph->getRevisionId(),
+    ];
+  }
+
+  $node->save();
+
+  // Create Get Started layout node.
+  $node = Node::create([
+    'type' => 'layout',
+    'title' => 'Get Started',
+    'uid' => 1,
+    'status' => 1,
+    'promote' => 1,
+    'sticky' => 1,
+    'body' => [
+      'value' => '',
+      'format' => 'full_html',
+    ],
+    'field_hide_page_title' => TRUE,
+    'path' => [
+      'alias' => '/get-started',
+      'pathauto' => 0,
+    ],
+  ]);
+
+  // Create and add paragraphs to field_content.
+  $paragraphs = [];
+
+  // Hero paragraph.
+  $hero_info = [
+    'media' => $media_items['card'],
+    'heading' => "Get Started",
+    'summary' => 'Whether you\'re a designer or a developer, DrupalX provides the perfect foundation to start customizing to your specific needs.',
+    'layout' => 'image_bottom',
+  ];
+
+  $paragraphs[] = _drupalx_create_hero_paragraph($hero_info);
+
+  // Side by side paragraphs.
+  $info_sidebyside = [
+    [
+      'title' => 'DrupalX for Designers',
+      'eyebrow' => 'Bootstrap UI Kits',
+      'summary' => 'Leverage a variety of Figma community templates built on Bootstrap 5 to jumpstart your design process.',
+      'layout' => 'right',
+      'link' => [
+        'uri' => 'https://www.figma.com/community/search?resource_type=mixed&sort_by=relevancy&query=bootstrap+5&editor_type=all&price=all&creators=all',
+        'title' => 'Browse Figma UI kits',
+      ],
+      'media' => $media_items['card'],
+    ],
+    [
+      'title' => 'DrupalX for Developers',
+      'eyebrow' => 'Project Template',
+      'summary' => 'Visit our GitHub repository to download the DrupalX project template and start building your site today.',
+      'layout' => 'left',
+      'link' => [
+        'uri' => 'https://github.com/drupalninja/drupalx-project',
+        'title' => 'Find out more',
+      ],
+      'media' => $media_items['card'],
+    ],
+  ];
+
+  foreach ($info_sidebyside as $info) {
+    $paragraphs[] = _drupalx_create_sidebyside_paragraph($info);
+  }
+
+  // Add paragraphs to field_content.
+  foreach ($paragraphs as $paragraph) {
+    $node->field_content[] = [
+      'target_id' => $paragraph->id(),
+      'target_revision_id' => $paragraph->getRevisionId(),
+    ];
+  }
+
+  $node->save();
+
+  // Create Articles layout node.
+  $node = Node::create([
+    'type' => 'layout',
+    'title' => 'Articles',
+    'uid' => 1,
+    'status' => 1,
+    'promote' => 1,
+    'sticky' => 1,
+    'body' => [
+      'value' => '',
+      'format' => 'full_html',
+    ],
+    'field_hide_page_title' => TRUE,
+    'path' => [
+      'alias' => '/articles',
+      'pathauto' => 0,
+    ],
+  ]);
+
+  // Create and add paragraphs to field_content.
+  $paragraphs = [];
+
+  // Hero paragraph.
+  $hero_info = [
+    'media' => $media_items['card'],
+    'heading' => "DrupalX Articles",
+    'layout' => 'image_top',
+  ];
+
+  $paragraphs[] = _drupalx_create_hero_paragraph($hero_info);
+
+  // Articles paragraph.
+  $paragraphs[] = _drupalx_create_articles_paragraph();
+
+  // Add paragraphs to field_content.
   foreach ($paragraphs as $paragraph) {
     $node->field_content[] = [
       'target_id' => $paragraph->id(),

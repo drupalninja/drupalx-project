@@ -9,7 +9,7 @@ dependencies:
   module:
     - entity_reference_revisions
 _core:
-  default_config_hash: 1rBp1RxJaDnSm_QcxRgkGvSvMZUMjXA6nGNfFQNZgVQ
+  default_config_hash: q9HytRFMGoLioduWAcUIOBc0h1kbSLSGoQFCCsBWkyQ
 id: paragraph.card_group.default
 targetEntityType: paragraph
 bundle: card_group

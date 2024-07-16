@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: b0W0St-mLi_jGR0-94wu5hbJuPW8O3oLkoBuQlm6HJc
+  default_config_hash: RAnm_a415FW7DIdpodR38aKMnZ2YnYO59KL_RIZ3Wjk
 name: 4_3_small
 label: '4:3 Small (420x 315)'
 effects:

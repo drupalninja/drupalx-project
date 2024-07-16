@@ -61,11 +61,11 @@ third_party_settings:
         classes: ''
         show_empty_fields: false
         id: ''
-        open: false
+        open: true
         description: ''
         required_fields: true
 _core:
-  default_config_hash: IJJCmQ7otrmb-em5SHnWb7IDc3HKGYJtvFPxQoGYaM8
+  default_config_hash: MzSoDarK4ZXzew_Ze6RXDnohvWg5-ggOgJJ7ChwFLro
 id: node.layout.default
 targetEntityType: node
 bundle: layout

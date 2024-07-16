@@ -18,7 +18,7 @@ dependencies:
     - paragraphs.paragraphs_type.text
     - paragraphs.paragraphs_type.views
 _core:
-  default_config_hash: oO0Z1IpSEJ886H4JaaAnLmNlZR2AfioVdzaOiNlCw2s
+  default_config_hash: lcZXLjQ_pe6SSfTnzRKLsAj47ds51yWi9GHoiKizD3Y
 id: paragraph.library.field_block
 field_name: field_block
 entity_type: paragraph

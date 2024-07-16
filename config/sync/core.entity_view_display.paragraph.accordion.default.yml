@@ -9,7 +9,7 @@ dependencies:
   module:
     - entity_reference_revisions
 _core:
-  default_config_hash: IrxQZsldO9ANOFc_b9W_-6DBwWXfa0Uehg-9UnndHNc
+  default_config_hash: Hidpqrn63M4i4KXhKdFHtn_avZRZgg4VP-DTUCdlb8M
 id: paragraph.accordion.default
 targetEntityType: paragraph
 bundle: accordion

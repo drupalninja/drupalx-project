@@ -77,8 +77,9 @@ third_party_settings:
       format_type: details
       format_settings:
         classes: ''
+        show_empty_fields: false
         id: ''
-        open: true
+        open: false
         description: ''
         required_fields: true
     group_taxonomy_tabs:

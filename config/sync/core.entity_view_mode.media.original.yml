@@ -5,7 +5,7 @@ dependencies:
   module:
     - media
 _core:
-  default_config_hash: 0z0awkXmUL165FNox84TwWv5JYH8oQkXCWgEYNy7noA
+  default_config_hash: XOr11m4-eMAPFJLEavx8w76-2BVS0HCzdF6syfNrqzU
 id: media.original
 label: Original
 description: ''
