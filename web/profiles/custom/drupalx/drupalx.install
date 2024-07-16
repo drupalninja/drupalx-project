@@ -370,6 +370,39 @@ function _drupalx_create_quote_paragraph($media_items) {
 }
 
 /**
+ * Create a Side-by-side paragraph.
+ *
+ * @param array $info
+ *   The paragraph info.
+ *
+ * @return \Drupal\paragraphs\Entity\Paragraph
+ *   The created paragraph entity.
+ */
+function _drupalx_create_sidebyside_paragraph(array $info = []) {
+  // Create 50/50 paragraph.
+  $paragraph = Paragraph::create([
+    'type' => 'sidebyside',
+    'field_title' => $info['title'],
+    'field_eyebrow' => !empty($info['eyebrow']) ? $info['eyebrow'] : '',
+    'field_summary' => $info['summary'],
+    'field_sidebyside_layout' => $info['layout'],
+  ]);
+
+  if (!empty($info['media'])) {
+    $paragraph->set('field_media', [
+      'target_id' => $info['media']->id(),
+    ]);
+  }
+
+  if (!empty($info['link'])) {
+    $paragraph->set('field_link', $info['link']);
+  }
+
+  $paragraph->save();
+  return $paragraph;
+}
+
+/**
  * Implements hook_install_tasks().
  */
 function drupalx_install_tasks(&$install_state) {
@@ -414,6 +447,90 @@ function drupalx_install_content() {
   // Create media items.
   $media_items = _drupalx_create_media_items();
 
+  // Create homepage node.
+  $node = Node::create([
+    'type' => 'layout',
+    'title' => 'DrupalX - The Enterprise CMS Starter',
+    'uid' => 1,
+    'status' => 1,
+    'promote' => 1,
+    'sticky' => 1,
+    'body' => [
+      'value' => '',
+      'format' => 'full_html',
+    ],
+    'field_hide_page_title' => TRUE,
+    'path' => [
+      'alias' => '/welcome',
+      'pathauto' => 0,
+    ],
+  ]);
+
+  // Create and add paragraphs to field_content.
+  $paragraphs = [];
+
+  // Hero paragraph.
+  $hero_info = [
+    'link' => [
+      'uri' => 'https://drupalx.netlify.app/',
+      'title' => 'See our demo',
+    ],
+    'media' => $media_items['card'],
+    'heading' => 'The <strong>Ultimate</strong> CMS Starter Kit for <strong>Enterprise</strong> Developers',
+    'summary' => '',
+    'layout' => 'image_top',
+  ];
+  $paragraphs[] = _drupalx_create_hero_paragraph($hero_info);
+
+  // Card group paragraph.
+  $paragraphs[] = _drupalx_create_card_group_paragraph($media_items, 'stat', '');
+
+  // Side by side paragraphs.
+  $info_sidebyside = [
+    [
+      'title' => 'DrupalX Rapid Development',
+      'eyebrow' => 'DrupalX Features',
+      'link' => [
+        'uri' => 'internal:/features',
+        'title' => 'Explore features',
+      ],
+      'summary' => 'The DrupalX template offers top-tier development tools and components for building a site quickly and efficiently.',
+      'layout' => 'right',
+      'media' => $media_items['card'],
+    ],
+    [
+      'title' => 'DrupalX Content Management',
+      'eyebrow' => 'DrupalX Content',
+      'link' => [
+        'uri' => 'internal:/articles',
+        'title' => 'Read DrupalX articles',
+      ],
+      'summary' => 'DrupalX provides a user-friendly editing experience with fully integrated layout builder components for seamless content management.',
+      'layout' => 'left',
+      'media' => $media_items['card'],
+    ],
+  ];
+
+  foreach ($info_sidebyside as $info) {
+    $paragraphs[] = _drupalx_create_sidebyside_paragraph($info);
+  }
+
+  // Quote paragraph.
+  $paragraphs[] = _drupalx_create_quote_paragraph($media_items);
+
+  // Accordion paragraph.
+  $paragraphs[] = _drupalx_create_accordion_paragraph();
+
+  // Add paragraphs to field_content.
+  foreach ($paragraphs as $paragraph) {
+    $node->field_content[] = [
+      'target_id' => $paragraph->id(),
+      'target_revision_id' => $paragraph->getRevisionId(),
+    ];
+  }
+
+  $node->save();
+
   // Kitchen sink layout.
   $node = Node::create([
     'type' => 'layout',
@@ -442,6 +559,36 @@ function drupalx_install_content() {
     _drupalx_create_accordion_paragraph(),
     _drupalx_create_quote_paragraph($media_items),
   ];
+
+  // Side by side paragraphs.
+  $info_sidebyside = [
+    [
+      'title' => 'DrupalX Rapid Development',
+      'eyebrow' => 'DrupalX Features',
+      'link' => [
+        'uri' => 'internal:/features',
+        'title' => 'Explore features',
+      ],
+      'summary' => 'The DrupalX template offers top-tier development tools and components for building a site quickly and efficiently.',
+      'layout' => 'right',
+      'media' => $media_items['card'],
+    ],
+    [
+      'title' => 'DrupalX Content Management',
+      'eyebrow' => 'DrupalX Content',
+      'link' => [
+        'uri' => 'internal:/articles',
+        'title' => 'Read DrupalX articles',
+      ],
+      'summary' => 'DrupalX provides a user-friendly editing experience with fully integrated layout builder components for seamless content management.',
+      'layout' => 'left',
+      'media' => $media_items['card'],
+    ],
+  ];
+
+  foreach ($info_sidebyside as $info) {
+    $paragraphs[] = _drupalx_create_sidebyside_paragraph($info);
+  }
 
   foreach ($paragraphs as $paragraph) {
     $node->field_content[] = [
