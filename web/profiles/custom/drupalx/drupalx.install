@@ -2,903 +2,15 @@
 
 /**
  * @file
- * Install methods for drupalx profile.
+ * Install, update, and uninstall functions for the DrupalX profile.
  */
 
-use Drupal\block_content\Entity\BlockContent;
-use Drupal\layout_builder\Section;
-use Drupal\layout_builder\SectionComponent;
 use Drupal\media\Entity\Media;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
 use Drupal\node\Entity\Node;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\user\Entity\User;
-
-/**
- * Implements hook_install_tasks().
- */
-function drupalx_install_tasks(&$install_state) {
-  $tasks = [
-    'drupalx_install_content' => [
-      'display_name' => t('Install default content'),
-      'type' => 'normal',
-    ],
-  ];
-
-  return $tasks;
-}
-
-/**
- * Callback function to install default profile content.
- *
- * @see drupalx_install_tasks()
- */
-function drupalx_install_content() {
-
-  // Create an editor user.
-  $user = User::create([
-    'name' => 'editor',
-    'mail' => '',
-    'roles' => ['editor'],
-    'status' => 1,
-  ]);
-
-  $user->save();
-
-  // Create newsletter block.
-  $block_content = _drupalx_create_newsletter();
-  $block_content->save();
-
-  $tag_ids = [];
-
-  $tag_names = [
-    'New feature',
-    'Announcement',
-    'Article',
-  ];
-
-  // Create tags.
-  foreach ($tag_names as $tag_name) {
-    $term = Term::create([
-      'vid' => 'tags',
-      'name' => $tag_name,
-    ]);
-    $term->save();
-    $tag_ids[] = $term->id();
-  }
-
-  $media_names = [
-    'card' => 'card.png',
-    'stars' => 'stars.jpg',
-    'bootstrap' => 'bootstrap.svg',
-    'storybook' => 'storybook.svg',
-    'bootswatch' => 'bootswatch.svg',
-    'quote-logo' => 'quote-logo.svg',
-    'quote-thumb' => 'dries.jpg',
-  ];
-
-  $media_items = [];
-
-  foreach ($media_names as $media_name => $file_name) {
-    $image_path = \Drupal::service('extension.list.profile')->getPath('drupalx') . '/images/' . $file_name;
-    $data = file_get_contents($image_path);
-    $file = \Drupal::service('file.repository')->writeData($data, 'public://' . $file_name);
-    $media = Media::create([
-      'bundle' => 'image',
-      'name' => $media_name,
-      'field_image' => [
-        'target_id' => $file->id(),
-        'alt' => $media_name,
-        'title' => $media_name,
-      ],
-    ]);
-
-    $media->save();
-    $media_items[$media_name] = $media;
-  }
-
-  // Create 404 page.
-  $node = Node::create([
-    'type' => 'page',
-    'title' => 'Oops! Page not found',
-    'uid' => 1,
-    'status' => 1,
-    'promote' => 1,
-    'sticky' => 1,
-    'body' => [
-      'value' => "<p>We're sorry, but the page you requested could not be found. Please check the URL and try again, or click the button below to return to the homepage.</p>
-        <a href=\"/\">Return to homepage</a>",
-      'format' => 'full_html',
-    ],
-    'path' => [
-      'alias' => '/page/page-not-found',
-      'pathauto' => 0,
-    ],
-  ]);
-
-  $node->save();
-
-  // Create 403 page.
-  $node = Node::create([
-    'type' => 'page',
-    'title' => 'Access denied',
-    'uid' => 1,
-    'status' => 1,
-    'promote' => 1,
-    'sticky' => 1,
-    'body' => [
-      'value' => "<p>We're sorry, but you do not have permission to access this page. Please contact the site administrator if you believe this is an error, or click the button below to return to the homepage.</p>
-        <a href=\"/\">Return to homepage</a>",
-      'format' => 'full_html',
-    ],
-    'path' => [
-      'alias' => '/page/access-denied',
-      'pathauto' => 0,
-    ],
-  ]);
-
-  $node->save();
-
-  // Create Privacy page.
-  $node = Node::create([
-    'type' => 'page',
-    'title' => 'Privacy Policy',
-    'uid' => 1,
-    'status' => 1,
-    'promote' => 1,
-    'sticky' => 1,
-    'field_media' => [
-      'target_id' => $media_items['card']->id(),
-    ],
-    'body' => [
-      'value' => '<p>This Privacy Policy describes how we collect, use, and disclose information about you when you use our website and any related services (collectively, the "Services").</p>
-      <p>&nbsp;</p>
-      <h3>Information We Collect</h3>
-      <p>We may collect information about you when you use our Services, including:</p>
-      <ul>
-        <li>Information you provide to us, such as your name, email address, and other contact information.</li>
-        <li>Information we collect automatically, such as your IP address, browser type, and device type.</li>
-        <li>Information we collect from third-party sources, such as social media platforms and marketing partners.</li>
-      </ul>
-      <p>&nbsp;</p>
-      <h3>How We Use Your Information</h3>
-      <p>We may use your information to:</p>
-      <ul>
-        <li>Provide and improve our Services.</li>
-        <li>Respond to your inquiries and requests.</li>
-        <li>Send you marketing communications.</li>
-        <li>Comply with our legal and regulatory obligations.</li>
-      </ul>
-      <p>We may also share your information with third parties for the purposes described in this Privacy Policy.</p>
-      <p>&nbsp;</p>
-      <h3>How We Protect Your Information</h3>
-      <p>We take reasonable measures to protect your information from unauthorized access, use, and disclosure. However, no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
-      <p>&nbsp;</p>
-      <h3>Your Choices</h3>
-      <p>You may have certain rights and choices with respect to your information, such as the right to access and correct your information. Please contact us using the information below if you have any questions or would like to exercise your rights.</p>
-      <p>&nbsp;</p>
-      <h3>Contact Us</h3>
-      <p>If you have any questions or concerns about our Privacy Policy, please <a href="/contact-us">contact us</a>.</p>',
-      'format' => 'full_html',
-    ],
-    'path' => [
-      'alias' => '/privacy',
-      'pathauto' => 0,
-    ],
-  ]);
-
-  $node->save();
-
-  // Create Terms of Use page.
-  $node = Node::create([
-    'type' => 'page',
-    'title' => 'Terms of Use',
-    'uid' => 1,
-    'status' => 1,
-    'promote' => 1,
-    'sticky' => 1,
-    'field_media' => [
-      'target_id' => $media_items['card']->id(),
-    ],
-    'body' => [
-      'value' => '<p>Welcome to our website (the "Site"). By accessing or using the Site, you agree to be bound by these Terms of Use (the "Agreement"). If you do not agree to these terms, you should not access or use the Site.</p>
-      <p>&nbsp;</p>
-      <h3>Use of the Site</h3>
-      <p>You may use the Site only for lawful purposes and in accordance with this Agreement. You agree not to use the Site:</p>
-      <ul>
-        <li>In any way that violates any applicable federal, state, local, or international law or regulation.</li>
-        <li>To transmit, or procure the sending of, any advertising or promotional material, including any "junk mail," "chain letter," "spam," or any other similar solicitation.</li>
-        <li>To impersonate or attempt to impersonate us, our employees, another user, or any other person or entity.</li>
-      </ul>
-      <p>&nbsp;</p>
-      <h3>Intellectual Property</h3>
-      <p>The Site and its entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio) are owned by us, our licensors, or other providers of such material and are protected by United States and international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
-      <p>&nbsp;</p>
-      <h3>Disclaimer of Warranties</h3>
-      <p>The Site and its contents are provided "as is" and without warranties of any kind, whether express or implied. We do not warrant that the Site or any of its functions will be uninterrupted or error-free, that defects will be corrected, or that the Site or the servers that make it available are free of viruses or other harmful components.</p>
-      <p>&nbsp;</p>
-      <h3>Limitation of Liability</h3>
-      <p>In no event will we be liable for any damages of any kind arising out of or in connection with your use of the Site, including but not limited to direct, indirect, incidental, consequential, or punitive damages, even if we have been advised of the possibility of such damages.</p>
-      <p>&nbsp;</p>
-      <h3>Indemnification</h3>
-      <p>You agree to indemnify and hold us and our affiliates, licensors, and service providers harmless from any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys\' fees) arising out of or relating to your violation of this Agreement or your use of the Site, including, but not limited to, your User Contributions, any use of the Site\'s content, services, and products other than as expressly authorized in this Agreement, or your use of any information obtained from the Site.</p>
-      <p>&nbsp;</p>
-      <h3>Changes to this Agreement</h3>
-      <p>We may revise and update this Agreement from time to time in our sole discretion. All changes are effective immediately when we post them, and apply to all access to and use of the Site thereafter. Your continued use of the Site following the posting of revised Agreement means that you accept and agree to the changes.</p>
-      <p>&nbsp;</p>
-      <h3>Contact Us</h3>
-      <p>If you have any questions or concerns about these Terms of Use, please <a href="/contact-us">contact us</a>.</p>',
-      'format' => 'full_html',
-    ],
-    'path' => [
-      'alias' => '/terms-of-use',
-      'pathauto' => 0,
-    ],
-  ]);
-
-  $node->save();
-
-  // Create Contact us layout node.
-  $node = Node::create([
-    'type' => 'layout',
-    'title' => 'Contact Us',
-    'uid' => 1,
-    'status' => 1,
-    'promote' => 1,
-    'sticky' => 1,
-    'body' => [
-      'value' => '',
-      'format' => 'full_html',
-    ],
-    'field_hide_page_title' => TRUE,
-    'path' => [
-      'alias' => '/contact',
-      'pathauto' => 0,
-    ],
-  ]);
-
-  $node->save();
-
-  $section = new Section('layout_onecol');
-
-  // Create a hero block.
-  $hero_info = [
-    'media' => $media_items['card'],
-    'heading' => "Contact Us",
-    'summary' => 'Have a question about DrupalX? We’re here to help! Drop us a message and we’ll get back to you soon.',
-    'layout' => 'image_top',
-  ];
-
-  $hero_block = _drupalx_create_hero($hero_info);
-  $hero_block->save();
-
-  // Append hero block to the section.
-  $component = new SectionComponent(
-    $hero_block->uuid(),
-    'content',
-    [
-      'id' => 'inline_block:' . $hero_block->bundle(),
-      'label' => $hero_block->label(),
-      'provider' => 'layout_builder',
-      'label_display' => '0',
-      'block_revision_id' => $hero_block->getRevisionId(),
-    ]
-  );
-  $section->appendComponent($component);
-
-  // Create a form block.
-  $block = BlockContent::create([
-    'type' => 'form',
-    'info' => 'Form: Contact Us',
-    'field_title' => '',
-    'field_webform' => 'contact_us',
-    'reusable' => FALSE,
-  ]);
-
-  $block->save();
-
-  // Append block to the layout.
-  $component = new SectionComponent(
-    $block->uuid(),
-    'content',
-    [
-      'id' => 'inline_block:' . $block->bundle(),
-      'label' => $block->label(),
-      'provider' => 'layout_builder',
-      'label_display' => '0',
-      'block_revision_id' => $block->getRevisionId(),
-    ]
-  );
-  $section->appendComponent($component);
-
-  // Add the section to the layout.
-  $node->get('layout_builder__layout')->appendItem($section);
-  $node->save();
-
-  // Create homepage layout node.
-  $node = Node::create([
-    'type' => 'layout',
-    'title' => 'DrupalX - The Enterprise CMS Starter',
-    'uid' => 1,
-    'status' => 1,
-    'promote' => 1,
-    'sticky' => 1,
-    'body' => [
-      'value' => '',
-      'format' => 'full_html',
-    ],
-    'field_hide_page_title' => TRUE,
-    'path' => [
-      'alias' => '/welcome',
-      'pathauto' => 0,
-    ],
-  ]);
-
-  $node->save();
-
-  $section = new Section('layout_onecol');
-
-  $blocks = [];
-
-  $hero_info = [
-    'link' => [
-      'uri' => 'https://drupalx.netlify.app/',
-      'title' => 'See our demo',
-    ],
-    'media' => $media_items['card'],
-    'heading' => 'The <strong>Ultimate</strong> CMS Starter Kit for <strong>Enterprise</strong> Developers',
-    'summary' => '',
-    'layout' => 'image_top',
-  ];
-
-  $blocks[] = _drupalx_create_hero($hero_info);
-  $blocks[] = _drupalx_create_card_group($media_items, 'stat', '');
-
-  // Create 50/50 blocks.
-  $info_sidebyside = [
-    [
-      'title' => 'DrupalX Rapid Development',
-      'eyebrow' => 'DrupalX Features',
-      'link' => [
-        'uri' => 'internal:/features',
-        'title' => 'Explore features',
-      ],
-      'summary' => 'The DrupalX template offers top-tier development tools and components for building a site quickly and efficiently.',
-      'layout' => 'right',
-      'media' => $media_items['card'],
-    ],
-    [
-      'title' => 'DrupalX Content Management',
-      'eyebrow' => 'DrupalX Content',
-      'link' => [
-        'uri' => 'internal:/articles',
-        'title' => 'Read DrupalX articles',
-      ],
-      'summary' => 'DrupalX provides a user-friendly editing experience with fully integrated layout builder components for seamless content management.',
-      'layout' => 'left',
-      'media' => $media_items['card'],
-    ],
-  ];
-
-  foreach ($info_sidebyside as $info) {
-    $blocks[] = _drupalx_create_sidebyside($info);
-  }
-
-  $blocks[] = _drupalx_create_quote($media_items);
-  $blocks[] = _drupalx_create_accordion();
-
-  // Create block entities and add them to the layout.
-  foreach ($blocks as $block) {
-    $block->save();
-
-    $component = new SectionComponent(
-      $block->uuid(),
-      'content',
-      [
-        'id' => 'inline_block:' . $block->bundle(),
-        'label' => $block->label(),
-        'provider' => 'layout_builder',
-        'label_display' => '0',
-        'view_mode' => 'default',
-        'block_revision_id' => $block->getRevisionId(),
-      ]
-    );
-    $section->appendComponent($component);
-  }
-
-  // Add the section to the layout.
-  $node->get('layout_builder__layout')->appendItem($section);
-  $node->save();
-
-  // Create Features page layout node.
-  $node = Node::create([
-    'type' => 'layout',
-    'title' => 'Features',
-    'uid' => 1,
-    'status' => 1,
-    'promote' => 1,
-    'sticky' => 1,
-    'body' => [
-      'value' => '',
-      'format' => 'full_html',
-    ],
-    'field_hide_page_title' => TRUE,
-    'path' => [
-      'alias' => '/features',
-      'pathauto' => 0,
-    ],
-  ]);
-
-  $node->save();
-
-  $section = new Section('layout_onecol');
-
-  $blocks = [];
-
-  $hero_info = [
-    'media' => $media_items['card'],
-    'heading' => "DrupalX Features",
-    'summary' => '<p>DrupalX is a comprehensive system that provides a robust starting point for designers and developers to fully customize components.</p>',
-    'layout' => 'image_bottom',
-  ];
-
-  $blocks[] = _drupalx_create_hero($hero_info);
-
-  // Create 50/50 blocks.
-  $info_sidebyside = [
-    [
-      'title' => 'Ultimate Flexibility',
-      'eyebrow' => 'Customizable Components',
-      'summary' => 'Each component in DrupalX is fully customizable, allowing you to create a unique site tailored to your organization’s needs.',
-      'layout' => 'right',
-      'media' => $media_items['card'],
-    ],
-    [
-      'title' => 'Easy Content Management',
-      'eyebrow' => 'User-Friendly Editing',
-      'summary' => 'Utilize over a dozen built-in layout builder components for seamless content management, powered by Bootstrap 5.',
-      'layout' => 'left',
-      'media' => $media_items['card'],
-    ],
-    [
-      'title' => 'Accessibility First',
-      'eyebrow' => 'WCAG 2.0 AA Standard',
-      'summary' => 'Our solution adheres to WCAG 2.0 AA accessibility guidelines out of the box, ensuring an inclusive experience.',
-      'layout' => 'right',
-      'media' => $media_items['card'],
-    ],
-  ];
-
-  foreach ($info_sidebyside as $info) {
-    $blocks[] = _drupalx_create_sidebyside($info);
-  }
-
-  // Create block entities and add them to the layout.
-  foreach ($blocks as $block) {
-    $block->save();
-
-    $component = new SectionComponent(
-      $block->uuid(),
-      'content',
-      [
-        'id' => 'inline_block:' . $block->bundle(),
-        'label' => $block->label(),
-        'provider' => 'layout_builder',
-        'label_display' => '0',
-        'view_mode' => 'default',
-        'block_revision_id' => $block->getRevisionId(),
-      ]
-    );
-    $section->appendComponent($component);
-  }
-
-  // Add the section to the layout.
-  $node->get('layout_builder__layout')->appendItem($section);
-  $node->save();
-
-  // Create Get Started page layout node.
-  $node = Node::create([
-    'type' => 'layout',
-    'title' => 'Get Started',
-    'uid' => 1,
-    'status' => 1,
-    'promote' => 1,
-    'sticky' => 1,
-    'body' => [
-      'value' => '',
-      'format' => 'full_html',
-    ],
-    'field_hide_page_title' => TRUE,
-    'path' => [
-      'alias' => '/get-started',
-      'pathauto' => 0,
-    ],
-  ]);
-
-  $node->save();
-
-  $section = new Section('layout_onecol');
-
-  $blocks = [];
-
-  $hero_info = [
-    'media' => $media_items['card'],
-    'heading' => "Get Started",
-    'summary' => 'Whether you’re a designer or a developer, DrupalX provides the perfect foundation to start customizing to your specific needs.',
-    'layout' => 'image_bottom',
-  ];
-
-  $blocks[] = _drupalx_create_hero($hero_info);
-
-  // Create 50/50 blocks.
-  $info_sidebyside = [
-    [
-      'title' => 'DrupalX for Designers',
-      'eyebrow' => 'Bootstrap UI Kits',
-      'summary' => 'Leverage a variety of Figma community templates built on Bootstrap 5 to jumpstart your design process.',
-      'layout' => 'right',
-      'link' => [
-        'uri' => 'https://www.figma.com/community/search?resource_type=mixed&sort_by=relevancy&query=bootstrap+5&editor_type=all&price=all&creators=all',
-        'title' => 'Browse Figma UI kits',
-      ],
-      'media' => $media_items['card'],
-    ],
-    [
-      'title' => 'DrupalX for Developers',
-      'eyebrow' => 'Project Template',
-      'summary' => 'Visit our GitHub repository to download the DrupalX project template and start building your site today.',
-      'layout' => 'left',
-      'link' => [
-        'uri' => 'https://github.com/drupalninja/drupalx-project',
-        'title' => 'Find out more',
-      ],
-      'media' => $media_items['card'],
-    ],
-  ];
-
-  foreach ($info_sidebyside as $info) {
-    $blocks[] = _drupalx_create_sidebyside($info);
-  }
-
-  // Create block entities and add them to the layout.
-  foreach ($blocks as $block) {
-    $block->save();
-
-    $component = new SectionComponent(
-      $block->uuid(),
-      'content',
-      [
-        'id' => 'inline_block:' . $block->bundle(),
-        'label' => $block->label(),
-        'provider' => 'layout_builder',
-        'label_display' => '0',
-        'view_mode' => 'default',
-        'block_revision_id' => $block->getRevisionId(),
-      ]
-    );
-    $section->appendComponent($component);
-  }
-
-  // Add the section to the layout.
-  $node->get('layout_builder__layout')->appendItem($section);
-  $node->save();
-
-  // Create Articles page layout node.
-  $node = Node::create([
-    'type' => 'layout',
-    'title' => 'Articles',
-    'uid' => 1,
-    'status' => 1,
-    'promote' => 1,
-    'sticky' => 1,
-    'body' => [
-      'value' => '',
-      'format' => 'full_html',
-    ],
-    'field_hide_page_title' => TRUE,
-    'path' => [
-      'alias' => '/articles',
-      'pathauto' => 0,
-    ],
-  ]);
-
-  $node->save();
-
-  $section = new Section('layout_onecol');
-
-  $blocks = [];
-
-  $hero_info = [
-    'media' => $media_items['card'],
-    'heading' => "DrupalX Articles",
-    'layout' => 'image_top',
-  ];
-
-  $blocks[] = _drupalx_create_hero($hero_info);
-  $blocks[] = _drupalx_create_articles();
-
-  // Create block entities and add them to the layout.
-  foreach ($blocks as $block) {
-    $block->save();
-
-    $component = new SectionComponent(
-      $block->uuid(),
-      'content',
-      [
-        'id' => 'inline_block:' . $block->bundle(),
-        'label' => $block->label(),
-        'provider' => 'layout_builder',
-        'label_display' => '0',
-        'block_revision_id' => $block->getRevisionId(),
-      ]
-    );
-    $section->appendComponent($component);
-  }
-
-  // Add the section to the layout.
-  $node->get('layout_builder__layout')->appendItem($section);
-  $node->save();
-
-  $titles = [
-    'Article title 1' => [
-      'thumb' => 'card',
-      'hero' => 'card',
-    ],
-    'Article title 2' => [
-      'thumb' => 'card',
-      'hero' => 'card',
-    ],
-    'Article title 3' => [
-      'thumb' => 'card',
-      'hero' => 'card',
-    ],
-    'Article title 4' => [
-      'thumb' => 'card',
-      'hero' => 'card',
-    ],
-    'Article title 5' => [
-      'thumb' => 'card',
-      'hero' => 'card',
-    ],
-    'Article title 6' => [
-      'thumb' => 'card',
-      'hero' => 'card',
-    ],
-  ];
-
-  // Create article nodes.
-  foreach ($titles as $title => $info) {
-    $node = Node::create([
-      'type' => 'article',
-      'title' => $title,
-      'uid' => 1,
-      'status' => 1,
-      'promote' => 1,
-      'sticky' => 1,
-      'field_subhead' => 'Why DrupalX',
-      'field_media' => [
-        'target_id' => $media_items[$info['hero']]->id(),
-      ],
-      'field_thumbnail' => [
-        'target_id' => $media_items[$info['thumb']]->id(),
-      ],
-      'field_tags' => [
-        [
-          'target_id' => $tag_ids[1],
-        ],
-        [
-          'target_id' => $tag_ids[2],
-        ],
-      ],
-      'field_summary' => 'Lorem ipsum dolor sit amet consectetur. Congue vel sagittis eu ullamcorper vel. Et et dui est ante tempor egestas pellentesque odio. Ornare erat lacus commodo porttitor ut enim. Ultricies mauris blandit in fermentum fringilla mollis risus ut.',
-      'field_lead' => [
-        'value' => '<p>Lorem ipsum dolor sit amet consectetur. Congue vel sagittis eu ullamcorper vel. Et et dui est ante tempor egestas pellentesque odio. Ornare erat lacus commodo porttitor ut enim. Ultricies mauris blandit in fermentum fringilla mollis risus ut. Nam eget eu suspendisse ut fermentum nascetur pretium lectus. Odio amet amet nam viverra hendrerit diam et. Nibh nunc in senectus odio tempor vitae id. Sit ut sit porta nisl enim.</p>',
-        'format' => 'full_html',
-      ],
-      'body' => [
-        'value' => '<h2>Lorem ipsum dolor sit amet</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>&nbsp;</p>
-          <h3>Vestibulum ante ipsum primis</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <drupal-media data-align="center" data-caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." data-entity-type="media" data-entity-uuid="' . $media_items['card']->uuid() . '" data-view-mode=""></drupal-media>
-          <h3>Curabitur vel sem sit amet</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <drupal-media data-align="center" data-caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." data-entity-type="media" data-entity-uuid="' . $media_items['card']->uuid() . '" data-view-mode=""></drupal-media>',
-        'format' => 'full_html',
-      ],
-    ]);
-
-    $node->save();
-  }
-
-  // Kitchen sink layout with minimum fields.
-  $node = Node::create([
-    'type' => 'layout',
-    'title' => 'Kitchen Sink Layout (Required Fields Only)',
-    'field_hide_page_title' => FALSE,
-    'uid' => 1,
-    'status' => 1,
-    'field_thumbnail' => [
-      'target_id' => $media_items['card']->id(),
-    ],
-    'path' => [
-      'alias' => '/kitchen-sink-min',
-      'pathauto' => 0,
-    ],
-  ]);
-
-  $node->save();
-
-  $blocks = [];
-
-  // Minimum hero block.
-  $hero_info = [
-    'layout' => 'image_top',
-    'media' => $media_items['card'],
-  ];
-
-  $blocks[] = _drupalx_create_hero($hero_info);
-  $blocks[] = _drupalx_create_min_card_group('stat');
-  $blocks[] = _drupalx_create_min_text();
-  $blocks[] = _drupalx_create_min_media($media_items);
-  $blocks[] = _drupalx_create_min_gallery($media_items);
-  $blocks[] = _drupalx_create_min_form();
-  $blocks[] = _drupalx_create_min_carousel($media_items);
-  $blocks[] = _drupalx_create_min_card_group('card');
-  $blocks[] = _drupalx_create_min_accordion();
-  $blocks[] = _drupalx_create_min_quote();
-
-  // Create 50/50 blocks.
-  $info_sidebyside = [
-    [
-      'title' => 'DrupalX Rapid Development',
-      'summary' => 'The DrupalX template offers top-tier development tools and components for building a site quickly and efficiently.',
-      'layout' => 'right',
-      'media' => $media_items['card'],
-    ],
-  ];
-
-  foreach ($info_sidebyside as $info) {
-    $blocks[] = _drupalx_create_sidebyside($info);
-  }
-
-  $section = new Section('layout_onecol');
-
-  // Create block entities and add them to the layout.
-  foreach ($blocks as $block) {
-    $block->save();
-
-    $component = new SectionComponent(
-      $block->uuid(),
-      'content',
-      [
-        'id' => 'inline_block:' . $block->bundle(),
-        'label' => $block->label(),
-        'provider' => 'layout_builder',
-        'label_display' => '0',
-        'view_mode' => 'default',
-        'block_revision_id' => $block->getRevisionId(),
-      ]
-    );
-    $section->appendComponent($component);
-  }
-
-  // Add the section to the layout.
-  $node->get('layout_builder__layout')->appendItem($section);
-  $node->save();
-
-  // Kitchen sink layout.
-  $node = Node::create([
-    'type' => 'layout',
-    'title' => 'Kitchen Sink Layout',
-    'field_hide_page_title' => TRUE,
-    'uid' => 1,
-    'status' => 1,
-    'field_thumbnail' => [
-      'target_id' => $media_items['card']->id(),
-    ],
-    'path' => [
-      'alias' => '/kitchen-sink',
-      'pathauto' => 0,
-    ],
-  ]);
-
-  $node->save();
-
-  $blocks = [];
-
-  $hero_info = [
-    'media' => $media_items['card'],
-    'heading' => "Kitchen Sink Page",
-    'summary' => 'This page demonstrates all of the components that ship with DrupalX.',
-    'link' => [
-      'uri' => 'https://drupalx.netlify.app/',
-      'title' => 'See our demo',
-    ],
-    'layout' => 'image_top',
-  ];
-
-  $blocks[] = _drupalx_create_hero($hero_info);
-  $blocks[] = _drupalx_create_card_group($media_items, 'stat', 'Discover DrupalX');
-  $blocks[] = _drupalx_create_text();
-  $blocks[] = _drupalx_create_media($media_items);
-  $blocks[] = _drupalx_create_gallery($media_items);
-  $blocks[] = _drupalx_create_form();
-  $blocks[] = _drupalx_create_embed();
-  $blocks[] = _drupalx_create_carousel($media_items);
-  $blocks[] = _drupalx_create_card_group($media_items, 'card', 'Discover DrupalX');
-  $blocks[] = _drupalx_create_accordion();
-  $blocks[] = _drupalx_create_quote($media_items);
-
-  $blocks[] = BlockContent::create([
-    'type' => 'newsletter',
-    'info' => 'Newsletter',
-    'reusable' => FALSE,
-  ]);
-
-  // Create 50/50 blocks.
-  $info_sidebyside = [
-    [
-      'title' => 'DrupalX Rapid Development',
-      'eyebrow' => 'DrupalX Features',
-      'link' => [
-        'uri' => 'internal:/features',
-        'title' => 'Explore features',
-      ],
-      'summary' => 'The DrupalX template offers top-tier development tools and components for building a site quickly and efficiently.',
-      'layout' => 'right',
-      'media' => $media_items['card'],
-    ],
-    [
-      'title' => 'DrupalX Content Management',
-      'eyebrow' => 'DrupalX Content',
-      'link' => [
-        'uri' => 'internal:/articles',
-        'title' => 'Read DrupalX articles',
-      ],
-      'summary' => 'DrupalX provides a user-friendly editing experience with fully integrated layout builder components for seamless content management.',
-      'layout' => 'left',
-      'media' => $media_items['card'],
-    ],
-  ];
-
-  foreach ($info_sidebyside as $info) {
-    $blocks[] = _drupalx_create_sidebyside($info);
-  }
-
-  $blocks[] = _drupalx_create_articles();
-
-  $section = new Section('layout_onecol');
-
-  // Create block entities and add them to the layout.
-  foreach ($blocks as $block) {
-    $block->save();
-
-    $component = new SectionComponent(
-      $block->uuid(),
-      'content',
-      [
-        'id' => 'inline_block:' . $block->bundle(),
-        'label' => $block->label(),
-        'provider' => 'layout_builder',
-        'label_display' => '0',
-        'view_mode' => 'default',
-        'block_revision_id' => $block->getRevisionId(),
-      ]
-    );
-    $section->appendComponent($component);
-  }
-
-  // Add the section to the layout.
-  $node->get('layout_builder__layout')->appendItem($section);
-  $node->save();
-
-  // Create menu items.
-  _drupalx_create_menus();
-}
 
 /**
  * Create menu items.
@@ -948,272 +60,68 @@ function _drupalx_create_menu_link($title, $uri, $menu_name, $expanded, $weight)
 }
 
 /**
- * Create a Newsletter block.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Newsletter block.
+ * Create media items.
  */
-function _drupalx_create_newsletter() {
-  // Create Newsletter block.
-  $block = BlockContent::create([
-    'type' => 'newsletter',
-    'info' => 'Newsletter',
-    'uuid' => 'affdecfe-f74e-45cb-b4b1-2f527341bc8b',
-  ]);
+function _drupalx_create_media_items() {
+  $media_names = [
+    'card' => 'card.png',
+    'stars' => 'stars.jpg',
+    'bootstrap' => 'bootstrap.svg',
+    'storybook' => 'storybook.svg',
+    'bootswatch' => 'bootswatch.svg',
+    'quote-logo' => 'quote-logo.svg',
+    'quote-thumb' => 'dries.jpg',
+  ];
 
-  return $block;
+  $media_items = [];
+
+  foreach ($media_names as $media_name => $file_name) {
+    $image_path = \Drupal::service('extension.list.profile')->getPath('drupalx') . '/images/' . $file_name;
+    $data = file_get_contents($image_path);
+    $file = \Drupal::service('file.repository')->writeData($data, 'public://' . $file_name);
+    $media = Media::create([
+      'bundle' => 'image',
+      'name' => $media_name,
+      'field_image' => [
+        'target_id' => $file->id(),
+        'alt' => $media_name,
+        'title' => $media_name,
+      ],
+    ]);
+
+    $media->save();
+    $media_items[$media_name] = $media;
+  }
+
+  return $media_items;
 }
 
 /**
- * Create a Articles block.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Articles block.
+ * Create a Hero paragraph.
  */
-function _drupalx_create_articles() {
-  $block = BlockContent::create([
-    'type' => 'views',
-    'info' => 'Views: Articles',
-    'title' => '',
-    'field_views_ref' => [
-      'target_id' => 'recent_cards',
-      'display_id' => 'block_1',
-    ],
-    'reusable' => FALSE,
-  ]);
-
-  return $block;
-}
-
-/**
- * Create a Hero block.
- *
- * @param array $hero_info
- *   The hero info.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Hero block.
- */
-function _drupalx_create_hero(array $hero_info) {
-
-  $block = BlockContent::create([
+function _drupalx_create_hero_paragraph($media_items) {
+  $paragraph = Paragraph::create([
     'type' => 'hero',
-    'info' => 'Hero: ' . (!empty($hero_info['heading']) ? $hero_info['heading'] : 'No heading'),
-    'field_media' => $hero_info['media'],
-    'field_hero_layout' => $hero_info['layout'],
-    'reusable' => FALSE,
+    'field_media' => $media_items['card'],
+    'field_hero_layout' => 'image_top',
+    'field_heading' => 'The Ultimate CMS Starter Kit for Enterprise Developers',
+    'field_summary' => 'DrupalX provides a comprehensive foundation for rapid development.',
+    'field_link' => [
+      'uri' => 'https://drupalx.netlify.app/',
+      'title' => 'See our demo',
+    ],
   ]);
-
-  if (!empty($hero_info['heading'])) {
-    $block->set('field_heading', [
-      'value' => $hero_info['heading'],
-      'format' => 'restricted_html',
-    ]);
-  }
-
-  if (!empty($hero_info['summary'])) {
-    $block->set('field_summary', [
-      'value' => $hero_info['summary'],
-      'format' => 'basic_html',
-    ]);
-  }
-
-  if (!empty($hero_info['link'])) {
-    $block->set('field_link', [
-      'uri' => $hero_info['link']['uri'],
-      'title' => $hero_info['link']['title'],
-    ]);
-  }
-
-  return $block;
+  $paragraph->save();
+  return $paragraph;
 }
 
 /**
- * Create a Side-by-side block.
- *
- * @param array $info
- *   The block info.
+ * Create a Card Group paragraph.
  */
-function _drupalx_create_sidebyside(array $info = []) {
-  // Create 50/50 block.
-  $block = BlockContent::create([
-    'type' => 'sidebyside',
-    'field_title' => $info['title'],
-    'field_eyebrow' => !empty($info['eyebrow']) ? $info['eyebrow'] : '',
-    'field_summary' => $info['summary'],
-    'field_sidebyside_layout' => $info['layout'],
-    'reusable' => FALSE,
-  ]);
-
-  if (!empty($info['media'])) {
-    $block->set('field_media', [
-      'target_id' => $info['media']->id(),
-    ]);
-  }
-
-  if (!empty($info['link'])) {
-    $block->set('field_link', $info['link']);
-  }
-
-  return $block;
-}
-
-/**
- * Create a Quote block.
- *
- * @param array $media_items
- *   An array of media items to display in the group.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Quote block.
- */
-function _drupalx_create_quote($media_items) {
-
-  // Create Quote block.
-  $block = BlockContent::create([
-    'type' => 'quote',
-    'field_logo' => [
-      'target_id' => $media_items['quote-logo']->id(),
-    ],
-    'field_thumb' => [
-      'target_id' => $media_items['quote-thumb']->id(),
-    ],
-    'field_quote' => 'Bringing people together under a shared passion is at the heart of what Drupal does',
-    'field_author' => 'Dries Buytaert',
-    'field_job_title' => 'Drupal Founder, Acquia CTO/Co-Founder',
-    'reusable' => FALSE,
-  ]);
-
-  return $block;
-}
-
-/**
- * Create a Quote block with minimum fields.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Quote block.
- */
-function _drupalx_create_min_quote() {
-
-  // Create Quote block.
-  $block = BlockContent::create([
-    'type' => 'quote',
-    'field_quote' => 'Bringing people together under a shared passion is at the heart of what Drupal does',
-    'field_author' => 'Dries Buytaert',
-    'reusable' => FALSE,
-  ]);
-
-  return $block;
-}
-
-/**
- * Create an Accordion block.
- */
-function _drupalx_create_accordion() {
-  // Create Accordion block.
-  $block = BlockContent::create([
-    'type' => 'accordion',
-    'field_title' => 'Frequently Asked Questions',
-    'reusable' => FALSE,
-  ]);
-
-  $block->save();
-
-  $faq_headings = [
-    'What is included with DrupalX?' => [
-      'answer' => 'DrupalX includes pre-built Layout Builder blocks integrated with a starter theme built on Bootstrap 5. It also features Material Icons and is fully supported by Storybook, providing a comprehensive and cohesive development environment.',
-    ],
-    'How much can I customize?' => [
-      'answer' => 'Everything in DrupalX can be customized. You can adjust configurations, modify every Storybook component, and alter or remove any Bootstrap inclusion to suit your specific needs.',
-    ],
-    'Is DrupalX accessible?' => [
-      'answer' => 'Yes, DrupalX adheres to WCAG 2.0 AA accessibility guidelines.',
-    ],
-    'Can I see examples of other sites created with DrupalX?' => [
-      'answer' => 'Of course. Explore how DrupalX can be used across various types of sites.',
-      'link' => [
-        'uri' => 'internal:/articles',
-        'title' => 'Read DrupalX articles',
-      ],
-    ],
-  ];
-
-  foreach ($faq_headings as $heading => $info) {
-    $paragraph = Paragraph::create([
-      'type' => 'accordion_item',
-      'field_title' => $heading,
-      'field_body' => [
-        'format' => 'full_html',
-        'summary' => '',
-        'value' => '<p>' . $info['answer'] . '</p>',
-      ],
-      'field_link' => $info['link'] ?? NULL,
-    ]);
-
-    $paragraph->save();
-
-    $block->get('field_accordion_item')->appendItem($paragraph);
-  }
-
-  return $block;
-}
-
-/**
- * Create a "minimum" Accordion block.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Accordion block.
- */
-function _drupalx_create_min_accordion() {
-  // Create a minimal Accordion block with no title and only one question.
-  $block = BlockContent::create([
-    'type' => 'accordion',
-    'reusable' => FALSE,
-  ]);
-
-  $block->save();
-
-  $faq_headings = [
-    'What is DrupalX?' => 'DrupalX is a comprehensive system that provides a robust starting point for designers and developers to fully customize components.',
-  ];
-
-  foreach ($faq_headings as $heading => $answer) {
-    $paragraph = Paragraph::create([
-      'type' => 'accordion_item',
-      'field_title' => $heading,
-      'field_body' => [
-        'format' => 'full_html',
-        'summary' => '',
-        'value' => '<p>' . $answer . '</p>',
-      ],
-    ]);
-
-    $paragraph->save();
-
-    $block->get('field_accordion_item')->appendItem($paragraph);
-  }
-
-  return $block;
-}
-
-/**
- * Create a Card Group block.
- *
- * @param array $media_items
- *   An array of media items to display in the group.
- * @param string $type
- *   The type of card to create.
- * @param string $title
- *   The title of the card group.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Card Group block.
- */
-function _drupalx_create_card_group($media_items, $type = 'card', $title = '') {
-  $block = BlockContent::create([
+function _drupalx_create_card_group_paragraph($media_items) {
+  $paragraph = Paragraph::create([
     'type' => 'card_group',
-    'field_title' => $title,
-    'reusable' => FALSE,
+    'field_title' => 'Discover DrupalX',
   ]);
 
   $card_items = [
@@ -1226,118 +134,138 @@ function _drupalx_create_card_group($media_items, $type = 'card', $title = '') {
       ],
       'icon' => 'storybook',
     ],
-    [
-      'title' => 'Bootstrap 5',
-      'summary' => 'Understand how Bootstrap is used in DrupalX for responsive and mobile-first web development.',
-      'link' => [
-        'uri' => 'https://getbootstrap.com/',
-        'title' => 'Learn more',
-      ],
-      'icon' => 'bootstrap',
-    ],
-    [
-      'title' => 'Bootswatch',
-      'summary' => 'Explore the Bootswatch themes integrated into DrupalX for rapid and customizable styling.',
-      'link' => [
-        'uri' => 'https://bootswatch.com/',
-        'title' => 'Learn more',
-      ],
-      'icon' => 'bootswatch',
-    ],
+    // Add more card items...
   ];
 
   foreach ($card_items as $info) {
-    if ($type == 'card') {
-      $paragraph = Paragraph::create([
-        'type' => 'card',
-        'field_title' => $info['title'],
-        'field_media' => [
-          'target_id' => $media_items['card']->id(),
-        ],
-        'field_summary' => $info['summary'],
-        'field_link' => $info['link'] ?? NULL,
-      ]);
-    } else {
-      $paragraph = Paragraph::create([
-        'type' => 'stats_item',
-        'field_title' => $info['title'],
-        'field_custom_icon' => [
-          'target_id' => $media_items[$info['icon']]->id(),
-        ],
-        'field_summary' => $info['summary'],
-      ]);
-    }
-
-    $paragraph->save();
-
-    $block->get('field_card')->appendItem($paragraph);
+    $card_paragraph = Paragraph::create([
+      'type' => 'card',
+      'field_title' => $info['title'],
+      'field_media' => $media_items['card'],
+      'field_summary' => $info['summary'],
+      'field_link' => $info['link'],
+    ]);
+    $card_paragraph->save();
+    $paragraph->field_card[] = [
+      'target_id' => $card_paragraph->id(),
+      'target_revision_id' => $card_paragraph->getRevisionId(),
+    ];
   }
 
-  return $block;
+  $paragraph->save();
+  return $paragraph;
 }
 
 /**
- * Create a Card Group block with minimum fields.
- *
- * @param string $type
- *   The type of card to create.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Card Group block.
+ * Create article nodes.
  */
-function _drupalx_create_min_card_group($type = 'card') {
-  $block = BlockContent::create([
-    'type' => 'card_group',
-    'reusable' => FALSE,
+function _drupalx_create_article_nodes($media_items, $tag_ids) {
+  $titles = [
+    'Article title 1',
+    'Article title 2',
+    'Article title 3',
+    'Article title 4',
+    'Article title 5',
+    'Article title 6',
+  ];
+
+  foreach ($titles as $title) {
+    $node = Node::create([
+      'type' => 'article',
+      'title' => $title,
+      'uid' => 1,
+      'status' => 1,
+      'promote' => 1,
+      'sticky' => 1,
+      'field_subhead' => 'Why DrupalX',
+      'field_media' => $media_items['card'],
+      'field_thumbnail' => $media_items['card'],
+      'field_tags' => [
+        ['target_id' => $tag_ids[1]],
+        ['target_id' => $tag_ids[2]],
+      ],
+      'field_summary' => 'Lorem ipsum dolor sit amet consectetur...',
+      'field_lead' => [
+        'value' => '<p>Lorem ipsum dolor sit amet consectetur...</p>',
+        'format' => 'full_html',
+      ],
+      'body' => [
+        'value' => '<h2>Lorem ipsum dolor sit amet</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>',
+        'format' => 'full_html',
+      ],
+    ]);
+    $node->save();
+  }
+}
+
+/**
+ * Create a Text paragraph.
+ */
+function _drupalx_create_text_paragraph() {
+  $paragraph = Paragraph::create([
+    'type' => 'text',
+    'field_title' => 'Example Text',
+    'field_body' => [
+      'value' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mauris mi, aliquam in orci at, finibus malesuada elit. Vivamus ex ante, imperdiet nec odio ac, sollicitudin fermentum velit. Nunc vestibulum massa est, eu auctor libero pellentesque eu.</p><p>Nulla velit purus, varius quis velit aliquet, lobortis venenatis mauris. In non ligula eget ex semper pulvinar. Aliquam aliquet hendrerit auctor. Duis bibendum placerat risus, non commodo magna ornare id.</p>',
+      'format' => 'full_html',
+    ],
+    'field_link' => [
+      'uri' => 'internal:/',
+      'title' => 'Read more',
+    ],
   ]);
-
-  $card_items = [
-    [
-      'title' => 'Storybook.js',
-      'summary' => 'Learn how Storybook integration allows you to develop and test UI components in isolation.',
-      'link' => [
-        'uri' => 'https://storybook.js.org/',
-        'title' => 'Learn more',
-      ],
-      'icon' => 'storybook',
-    ],
-  ];
-
-  foreach ($card_items as $info) {
-    if ($type == 'card') {
-      $paragraph = Paragraph::create([
-        'type' => 'card',
-        'field_title' => $info['title'],
-      ]);
-    } else {
-      $paragraph = Paragraph::create([
-        'type' => 'stats_item',
-        'field_title' => $info['title'],
-        'field_summary' => $info['summary'],
-      ]);
-    }
-
-    $paragraph->save();
-
-    $block->get('field_card')->appendItem($paragraph);
-  }
-
-  return $block;
+  $paragraph->save();
+  return $paragraph;
 }
 
 /**
- * Generate a carousel based on the provided media items.
- *
- * @param array $media_items
- *   An array of media items to be used in the carousel.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Carousel block.
+ * Create a Media paragraph.
  */
-function _drupalx_create_carousel($media_items) {
-  $block = BlockContent::create([
+function _drupalx_create_media_paragraph($media_items) {
+  $paragraph = Paragraph::create([
+    'type' => 'media',
+    'field_title' => 'Example Media',
+    'field_media' => $media_items['card'],
+  ]);
+  $paragraph->save();
+  return $paragraph;
+}
+
+/**
+ * Create a Gallery paragraph.
+ */
+function _drupalx_create_gallery_paragraph($media_items) {
+  $gallery_items = array_fill(0, 8, $media_items['card']);
+
+  $paragraph = Paragraph::create([
+    'type' => 'gallery',
+    'field_body' => 'Lorem ipsum dolor sit amet consectetur adipiscing elit',
+    'field_title' => 'Example Gallery',
+    'field_media_item' => $gallery_items,
+  ]);
+  $paragraph->save();
+  return $paragraph;
+}
+
+/**
+ * Create a Form paragraph.
+ */
+function _drupalx_create_form_paragraph() {
+  $paragraph = Paragraph::create([
+    'type' => 'form',
+    'field_webform' => 'contact',
+    'field_title' => 'Example Form',
+  ]);
+  $paragraph->save();
+  return $paragraph;
+}
+
+/**
+ * Create a Carousel paragraph.
+ */
+function _drupalx_create_carousel_paragraph($media_items) {
+  $paragraph = Paragraph::create([
     'type' => 'carousel',
-    'reusable' => FALSE,
   ]);
 
   $carousel_items = [
@@ -1359,242 +287,166 @@ function _drupalx_create_carousel($media_items) {
   ];
 
   foreach ($carousel_items as $item) {
-    $paragraph = Paragraph::create([
+    $carousel_item = Paragraph::create([
       'type' => 'carousel_item',
       'field_title' => $item['title'],
-      'field_media' => [
-        'target_id' => $media_items[$item['thumb']]->id(),
-      ],
+      'field_media' => $media_items[$item['thumb']],
       'field_summary' => $item['summary'],
     ]);
-
-    $paragraph->save();
-
-    $block->get('field_carousel_item')->appendItem($paragraph);
+    $carousel_item->save();
+    $paragraph->field_carousel_item[] = [
+      'target_id' => $carousel_item->id(),
+      'target_revision_id' => $carousel_item->getRevisionId(),
+    ];
   }
 
-  return $block;
+  $paragraph->save();
+  return $paragraph;
 }
 
 /**
- * Generate a carousel with minimum fields.
- *
- * @param array $media_items
- *   An array of media items to be used in the carousel.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Carousel block.
+ * Create an Accordion paragraph.
  */
-function _drupalx_create_min_carousel($media_items) {
-  $block = BlockContent::create([
-    'type' => 'carousel',
-    'reusable' => FALSE,
+function _drupalx_create_accordion_paragraph() {
+  $paragraph = Paragraph::create([
+    'type' => 'accordion',
+    'field_title' => 'Frequently Asked Questions',
   ]);
 
-  $carousel_items = [
-    [
-      'thumb' => 'stars',
+  $faq_headings = [
+    'What is included with DrupalX?' => [
+      'answer' => 'DrupalX includes pre-built Layout Builder blocks integrated with a starter theme built on Bootstrap 5. It also features Material Icons and is fully supported by Storybook, providing a comprehensive and cohesive development environment.',
     ],
-    [
-      'thumb' => 'stars',
+    'How much can I customize?' => [
+      'answer' => 'Everything in DrupalX can be customized. You can adjust configurations, modify every Storybook component, and alter or remove any Bootstrap inclusion to suit your specific needs.',
     ],
-    [
-      'thumb' => 'stars',
+    'Is DrupalX accessible?' => [
+      'answer' => 'Yes, DrupalX adheres to WCAG 2.0 AA accessibility guidelines.',
+    ],
+    'Can I see examples of other sites created with DrupalX?' => [
+      'answer' => 'Of course. Explore how DrupalX can be used across various types of sites.',
+      'link' => [
+        'uri' => 'internal:/articles',
+        'title' => 'Read DrupalX articles',
+      ],
     ],
   ];
 
-  foreach ($carousel_items as $item) {
-    $paragraph = Paragraph::create([
-      'type' => 'carousel_item',
-      'field_media' => [
-        'target_id' => $media_items[$item['thumb']]->id(),
+  foreach ($faq_headings as $heading => $info) {
+    $accordion_item = Paragraph::create([
+      'type' => 'accordion_item',
+      'field_title' => $heading,
+      'field_body' => [
+        'value' => '<p>' . $info['answer'] . '</p>',
+        'format' => 'full_html',
       ],
+      'field_link' => $info['link'] ?? NULL,
     ]);
-
-    $paragraph->save();
-
-    $block->get('field_carousel_item')->appendItem($paragraph);
+    $accordion_item->save();
+    $paragraph->field_accordion_item[] = [
+      'target_id' => $accordion_item->id(),
+      'target_revision_id' => $accordion_item->getRevisionId(),
+    ];
   }
 
-  return $block;
+  $paragraph->save();
+  return $paragraph;
 }
 
 /**
- * Create an Embed block.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Embed block.
+ * Create a Quote paragraph.
  */
-function _drupalx_create_embed() {
-  $block = BlockContent::create([
-    'type' => 'embed',
-    'field_script' => [
-      'value' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50704.05332036616!2d-122.12246645666515!3d37.413396126075966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb7495bec0189%3A0x7c17d44a466baf9b!2sMountain%20View%2C%20CA!5e0!3m2!1sen!2sus!4v1716313314254!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
-      'format' => 'scripts',
+function _drupalx_create_quote_paragraph($media_items) {
+  $paragraph = Paragraph::create([
+    'type' => 'quote',
+    'field_logo' => $media_items['quote-logo'],
+    'field_thumb' => $media_items['quote-thumb'],
+    'field_quote' => 'Bringing people together under a shared passion is at the heart of what Drupal does',
+    'field_author' => 'Dries Buytaert',
+    'field_job_title' => 'Drupal Founder, Acquia CTO/Co-Founder',
+  ]);
+  $paragraph->save();
+  return $paragraph;
+}
+
+/**
+ * Implements hook_install_tasks().
+ */
+function drupalx_install_tasks(&$install_state) {
+  $tasks = [
+    'drupalx_install_content' => [
+      'display_name' => t('Install default content'),
+      'type' => 'normal',
     ],
-    'field_title' => 'Example Map',
-    'reusable' => FALSE,
-  ]);
+  ];
 
-  return $block;
+  return $tasks;
 }
 
 /**
- * Create an Form block.
+ * Callback function to install default profile content.
  *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Form block.
+ * @see drupalx_install_tasks()
  */
-function _drupalx_create_form() {
-  $block = BlockContent::create([
-    'type' => 'form',
-    'field_webform' => 'contact',
-    'field_title' => 'Example Form',
-    'reusable' => FALSE,
+function drupalx_install_content() {
+  // Create an editor user.
+  $user = User::create([
+    'name' => 'editor',
+    'mail' => '',
+    'roles' => ['editor'],
+    'status' => 1,
+  ]);
+  $user->save();
+
+  $tag_ids = [];
+  $tag_names = ['New feature', 'Announcement', 'Article'];
+
+  // Create tags.
+  foreach ($tag_names as $tag_name) {
+    $term = Term::create([
+      'vid' => 'tags',
+      'name' => $tag_name,
+    ]);
+    $term->save();
+    $tag_ids[] = $term->id();
+  }
+
+  // Create media items.
+  $media_items = _drupalx_create_media_items();
+
+  // Create main content node.
+  $node = Node::create([
+    'type' => 'page',
+    'title' => 'DrupalX Content',
+    'uid' => 1,
+    'status' => 1,
   ]);
 
-  return $block;
-}
+  // Create and append paragraphs.
+  $paragraphs = [
+    _drupalx_create_hero_paragraph($media_items),
+    _drupalx_create_card_group_paragraph($media_items),
+    _drupalx_create_text_paragraph(),
+    _drupalx_create_media_paragraph($media_items),
+    _drupalx_create_gallery_paragraph($media_items),
+    _drupalx_create_form_paragraph(),
+    _drupalx_create_carousel_paragraph($media_items),
+    _drupalx_create_accordion_paragraph(),
+    _drupalx_create_quote_paragraph($media_items),
+  ];
 
-/**
- * Create an Form block with minimum fields.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Form block.
- */
-function _drupalx_create_min_form() {
-  $block = BlockContent::create([
-    'type' => 'form',
-    'field_webform' => 'contact',
-    'reusable' => FALSE,
-  ]);
+  foreach ($paragraphs as $paragraph) {
+    $node->field_content[] = [
+      'target_id' => $paragraph->id(),
+      'target_revision_id' => $paragraph->getRevisionId(),
+    ];
+  }
 
-  return $block;
-}
+  $node->save();
 
-/**
- * Create an Gallery block.
- *
- * @param array $media_items
- *   An array of media items to display in the gallery.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Gallery block.
- */
-function _drupalx_create_gallery($media_items) {
-  $gallery_items = array_fill(0, 8, $media_items['card']);
+  // Create article nodes.
+  _drupalx_create_article_nodes($media_items, $tag_ids);
 
-  $block = BlockContent::create([
-    'type' => 'gallery',
-    'body' => 'lorem ipsum dolor sit amet consectetur adipiscing elit',
-    'field_title' => 'Example Gallery',
-    'field_media_item' => $gallery_items,
-    'reusable' => FALSE,
-  ]);
-
-  return $block;
-}
-
-/**
- * Create an Gallery block with minimum fields.
- *
- * @param array $media_items
- *   An array of media items to display in the gallery.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Gallery block.
- */
-function _drupalx_create_min_gallery($media_items) {
-  $gallery_items = array_fill(0, 8, $media_items['card']);
-
-  $block = BlockContent::create([
-    'type' => 'gallery',
-    'field_media_item' => $gallery_items,
-    'reusable' => FALSE,
-  ]);
-
-  return $block;
-}
-
-/**
- * Create an Media block.
- *
- * @param array $media_items
- *   An array of media items.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Media block.
- */
-function _drupalx_create_media($media_items) {
-  $block = BlockContent::create([
-    'type' => 'media',
-    'field_title' => 'Example Media',
-    'field_media' => $media_items['card'],
-    'reusable' => FALSE,
-  ]);
-
-  return $block;
-}
-
-/**
- * Create an Media block with minimum fields.
- *
- * @param array $media_items
- *   An array of media items.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Media block.
- */
-function _drupalx_create_min_media($media_items) {
-  $block = BlockContent::create([
-    'type' => 'media',
-    'field_media' => $media_items['card'],
-    'reusable' => FALSE,
-  ]);
-
-  return $block;
-}
-
-/**
- * Create a Text block.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Text block.
- */
-function _drupalx_create_text() {
-  $block = BlockContent::create([
-    'type' => 'text',
-    'field_title' => 'Example Text',
-    'body' => [
-      'value' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mauris mi, aliquam in orci at, finibus malesuada elit. Vivamus ex ante, imperdiet nec odio ac, sollicitudin fermentum velit. Nunc vestibulum massa est, eu auctor libero pellentesque eu. Cras id augue a lacus imperdiet convallis dictum vel diam. Fusce ut ex ac sem condimentum ornare. Nam at rutrum enim. Quisque convallis augue in nisi interdum, ac suscipit elit sollicitudin.</p><p>Nulla velit purus, varius quis velit aliquet, lobortis venenatis mauris. In non ligula eget ex semper pulvinar. Aliquam aliquet hendrerit auctor. Duis bibendum placerat risus, non commodo magna ornare id. Morbi eget nulla hendrerit, molestie nisl eget, semper odio. Mauris mollis risus sit amet ligula mattis vehicula. Donec maximus condimentum lacus, quis porttitor risus fermentum id. Duis semper neque in interdum pulvinar. Nam venenatis interdum libero. Proin dictum blandit ante sollicitudin laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas in pharetra ligula.</p>',
-      'format' => 'full_html',
-    ],
-    'field_link' => [
-      'uri' => 'internal:/',
-      'title' => 'Read more',
-    ],
-    'reusable' => FALSE,
-  ]);
-
-  return $block;
-}
-
-
-/**
- * Create a Text block with minimum fields.
- *
- * @return \Drupal\block_content\Entity\BlockContent
- *   The Text block.
- */
-function _drupalx_create_min_text() {
-  $block = BlockContent::create([
-    'type' => 'text',
-    'body' => [
-      'value' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mauris mi, aliquam in orci at, finibus malesuada elit. Vivamus ex ante, imperdiet nec odio ac, sollicitudin fermentum velit. Nunc vestibulum massa est, eu auctor libero pellentesque eu. Cras id augue a lacus imperdiet convallis dictum vel diam. Fusce ut ex ac sem condimentum ornare. Nam at rutrum enim. Quisque convallis augue in nisi interdum, ac suscipit elit sollicitudin.</p><p>Nulla velit purus, varius quis velit aliquet, lobortis venenatis mauris. In non ligula eget ex semper pulvinar. Aliquam aliquet hendrerit auctor. Duis bibendum placerat risus, non commodo magna ornare id. Morbi eget nulla hendrerit, molestie nisl eget, semper odio. Mauris mollis risus sit amet ligula mattis vehicula. Donec maximus condimentum lacus, quis porttitor risus fermentum id. Duis semper neque in interdum pulvinar. Nam venenatis interdum libero. Proin dictum blandit ante sollicitudin laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas in pharetra ligula.</p>',
-      'format' => 'full_html',
-    ],
-    'reusable' => FALSE,
-  ]);
-
-  return $block;
+  // Create menu items.
+  _drupalx_create_menus();
 }
