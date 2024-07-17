@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Install, update, and uninstall functions for the DrupalX profile.
+ * Install, update, and uninstall functions for the drupalx_graphql profile.
  */
 
 use Drupal\Component\Utility\Crypt;
@@ -17,7 +17,7 @@ use Drupal\user\Entity\User;
 /**
  * Create menu items.
  */
-function _drupalx_create_menus() {
+function _drupalx_graphql_create_menus() {
   // Main menu items.
   $main_menu_items = [
     ['title' => 'Home', 'uri' => 'internal:/welcome', 'expanded' => TRUE],
@@ -37,20 +37,20 @@ function _drupalx_create_menus() {
   // Create main menu links.
   $weight = 0;
   foreach ($main_menu_items as $item) {
-    _drupalx_create_menu_link($item['title'], $item['uri'], 'main', $item['expanded'], $weight++);
+    _drupalx_graphql_create_menu_link($item['title'], $item['uri'], 'main', $item['expanded'], $weight++);
   }
 
   // Create footer menu links.
   $weight = 0;
   foreach ($footer_menu_items as $item) {
-    _drupalx_create_menu_link($item['title'], $item['uri'], 'footer', $item['expanded'], $weight++);
+    _drupalx_graphql_create_menu_link($item['title'], $item['uri'], 'footer', $item['expanded'], $weight++);
   }
 }
 
 /**
  * Helper function to create and save a menu link.
  */
-function _drupalx_create_menu_link($title, $uri, $menu_name, $expanded, $weight) {
+function _drupalx_graphql_create_menu_link($title, $uri, $menu_name, $expanded, $weight) {
   $menu_link = MenuLinkContent::create([
     'title' => $title,
     'link' => ['uri' => $uri],
@@ -64,7 +64,7 @@ function _drupalx_create_menu_link($title, $uri, $menu_name, $expanded, $weight)
 /**
  * Create media items.
  */
-function _drupalx_create_media_items() {
+function _drupalx_graphql_create_media_items() {
   $media_names = [
     'card' => 'card.png',
     'stars' => 'stars.jpg',
@@ -78,7 +78,7 @@ function _drupalx_create_media_items() {
   $media_items = [];
 
   foreach ($media_names as $media_name => $file_name) {
-    $image_path = \Drupal::service('extension.list.profile')->getPath('drupalx') . '/images/' . $file_name;
+    $image_path = \Drupal::service('extension.list.profile')->getPath('drupalx_graphql') . '/images/' . $file_name;
     $data = file_get_contents($image_path);
     $file = \Drupal::service('file.repository')->writeData($data, 'public://' . $file_name);
     $media = Media::create([
@@ -107,7 +107,7 @@ function _drupalx_create_media_items() {
  * @return \Drupal\paragraphs\Entity\Paragraph
  *   The Hero paragraph.
  */
-function _drupalx_create_hero_paragraph(array $hero_info) {
+function _drupalx_graphql_create_hero_paragraph(array $hero_info) {
   $paragraph = Paragraph::create([
     'type' => 'hero',
     'field_media' => [
@@ -144,10 +144,10 @@ function _drupalx_create_hero_paragraph(array $hero_info) {
 /**
  * Create a Card Group paragraph.
  */
-function _drupalx_create_card_group_paragraph($media_items) {
+function _drupalx_graphql_create_card_group_paragraph($media_items) {
   $paragraph = Paragraph::create([
     'type' => 'card_group',
-    'field_title' => 'Discover DrupalX',
+    'field_title' => 'Discover drupalx_graphql',
   ]);
 
   $card_items = [
@@ -185,7 +185,7 @@ function _drupalx_create_card_group_paragraph($media_items) {
 /**
  * Create article nodes.
  */
-function _drupalx_create_article_nodes($media_items, $tag_ids) {
+function _drupalx_graphql_create_article_nodes($media_items, $tag_ids) {
   $titles = [
     'Article title 1',
     'Article title 2',
@@ -203,7 +203,7 @@ function _drupalx_create_article_nodes($media_items, $tag_ids) {
       'status' => 1,
       'promote' => 1,
       'sticky' => 1,
-      'field_subhead' => 'Why DrupalX',
+      'field_subhead' => 'Why drupalx_graphql',
       'field_media' => $media_items['card'],
       'field_thumbnail' => $media_items['card'],
       'field_tags' => [
@@ -227,7 +227,7 @@ function _drupalx_create_article_nodes($media_items, $tag_ids) {
 /**
  * Create a Text paragraph.
  */
-function _drupalx_create_text_paragraph() {
+function _drupalx_graphql_create_text_paragraph() {
   $paragraph = Paragraph::create([
     'type' => 'text',
     'field_title' => 'Example Text',
@@ -247,7 +247,7 @@ function _drupalx_create_text_paragraph() {
 /**
  * Create a Media paragraph.
  */
-function _drupalx_create_media_paragraph($media_items) {
+function _drupalx_graphql_create_media_paragraph($media_items) {
   $paragraph = Paragraph::create([
     'type' => 'media',
     'field_title' => 'Example Media',
@@ -260,7 +260,7 @@ function _drupalx_create_media_paragraph($media_items) {
 /**
  * Create a Gallery paragraph.
  */
-function _drupalx_create_gallery_paragraph($media_items) {
+function _drupalx_graphql_create_gallery_paragraph($media_items) {
   $gallery_items = array_fill(0, 8, $media_items['card']);
 
   $paragraph = Paragraph::create([
@@ -276,7 +276,7 @@ function _drupalx_create_gallery_paragraph($media_items) {
 /**
  * Create a Form paragraph.
  */
-function _drupalx_create_form_paragraph() {
+function _drupalx_graphql_create_form_paragraph() {
   $paragraph = Paragraph::create([
     'type' => 'form',
     'field_webform' => 'contact',
@@ -289,7 +289,7 @@ function _drupalx_create_form_paragraph() {
 /**
  * Create a Carousel paragraph.
  */
-function _drupalx_create_carousel_paragraph($media_items) {
+function _drupalx_graphql_create_carousel_paragraph($media_items) {
   $paragraph = Paragraph::create([
     'type' => 'carousel',
   ]);
@@ -333,27 +333,27 @@ function _drupalx_create_carousel_paragraph($media_items) {
 /**
  * Create an Accordion paragraph.
  */
-function _drupalx_create_accordion_paragraph() {
+function _drupalx_graphql_create_accordion_paragraph() {
   $paragraph = Paragraph::create([
     'type' => 'accordion',
     'field_title' => 'Frequently Asked Questions',
   ]);
 
   $faq_headings = [
-    'What is included with DrupalX?' => [
-      'answer' => 'DrupalX includes pre-built Layout Builder blocks integrated with a starter theme built on Bootstrap 5. It also features Material Icons and is fully supported by Storybook, providing a comprehensive and cohesive development environment.',
+    'What is included with drupalx_graphql?' => [
+      'answer' => 'drupalx_graphql includes pre-built Layout Builder blocks integrated with a starter theme built on Bootstrap 5. It also features Material Icons and is fully supported by Storybook, providing a comprehensive and cohesive development environment.',
     ],
     'How much can I customize?' => [
-      'answer' => 'Everything in DrupalX can be customized. You can adjust configurations, modify every Storybook component, and alter or remove any Bootstrap inclusion to suit your specific needs.',
+      'answer' => 'Everything in drupalx_graphql can be customized. You can adjust configurations, modify every Storybook component, and alter or remove any Bootstrap inclusion to suit your specific needs.',
     ],
-    'Is DrupalX accessible?' => [
-      'answer' => 'Yes, DrupalX adheres to WCAG 2.0 AA accessibility guidelines.',
+    'Is drupalx_graphql accessible?' => [
+      'answer' => 'Yes, drupalx_graphql adheres to WCAG 2.0 AA accessibility guidelines.',
     ],
-    'Can I see examples of other sites created with DrupalX?' => [
-      'answer' => 'Of course. Explore how DrupalX can be used across various types of sites.',
+    'Can I see examples of other sites created with drupalx_graphql?' => [
+      'answer' => 'Of course. Explore how drupalx_graphql can be used across various types of sites.',
       'link' => [
         'uri' => 'internal:/articles',
-        'title' => 'Read DrupalX articles',
+        'title' => 'Read drupalx_graphql articles',
       ],
     ],
   ];
@@ -382,7 +382,7 @@ function _drupalx_create_accordion_paragraph() {
 /**
  * Create a Quote paragraph.
  */
-function _drupalx_create_quote_paragraph($media_items) {
+function _drupalx_graphql_create_quote_paragraph($media_items) {
   $paragraph = Paragraph::create([
     'type' => 'quote',
     'field_logo' => $media_items['quote-logo'],
@@ -404,7 +404,7 @@ function _drupalx_create_quote_paragraph($media_items) {
  * @return \Drupal\paragraphs\Entity\Paragraph
  *   The created paragraph entity.
  */
-function _drupalx_create_sidebyside_paragraph(array $info = []) {
+function _drupalx_graphql_create_sidebyside_paragraph(array $info = []) {
   // Create 50/50 paragraph.
   $paragraph = Paragraph::create([
     'type' => 'sidebyside',
@@ -434,7 +434,7 @@ function _drupalx_create_sidebyside_paragraph(array $info = []) {
  * @return \Drupal\paragraphs\Entity\Paragraph
  *   The Articles paragraph.
  */
-function _drupalx_create_articles_paragraph() {
+function _drupalx_graphql_create_articles_paragraph() {
   $paragraph = Paragraph::create([
     'type' => 'views',
     'field_title' => '',
@@ -451,13 +451,13 @@ function _drupalx_create_articles_paragraph() {
 /**
  * Implements hook_install_tasks().
  */
-function drupalx_install_tasks(&$install_state) {
+function drupalx_graphql_install_tasks(&$install_state) {
   $tasks = [
-    'drupalx_install_content' => [
+    'drupalx_graphql_install_content' => [
       'display_name' => t('Install default content'),
       'type' => 'normal',
     ],
-    'drupalx_tasks_simple_oauth' => [
+    'drupalx_graphql_tasks_simple_oauth' => [
       'display_name' => t('Install Simple OAuth module'),
       'type' => 'normal',
     ],
@@ -469,9 +469,9 @@ function drupalx_install_tasks(&$install_state) {
 /**
  * Callback function to install default profile content.
  *
- * @see drupalx_install_tasks()
+ * @see drupalx_graphql_install_tasks()
  */
-function drupalx_install_content() {
+function drupalx_graphql_install_content() {
   // Create an editor user.
   $user = User::create([
     'name' => 'editor',
@@ -495,7 +495,7 @@ function drupalx_install_content() {
   }
 
   // Create media items.
-  $media_items = _drupalx_create_media_items();
+  $media_items = _drupalx_graphql_create_media_items();
 
   // Create 404 page.
   $node = Node::create([
@@ -641,7 +641,7 @@ function drupalx_install_content() {
   // Create homepage node.
   $node = Node::create([
     'type' => 'layout',
-    'title' => 'DrupalX - The Enterprise CMS Starter',
+    'title' => 'drupalx_graphql - The Enterprise CMS Starter',
     'uid' => 1,
     'status' => 1,
     'promote' => 1,
@@ -663,7 +663,7 @@ function drupalx_install_content() {
   // Hero paragraph.
   $hero_info = [
     'link' => [
-      'uri' => 'https://drupalx.netlify.app/',
+      'uri' => 'https://drupalx_graphql.netlify.app/',
       'title' => 'See our demo',
     ],
     'media' => $media_items['card'],
@@ -672,46 +672,46 @@ function drupalx_install_content() {
     'layout' => 'image_top',
   ];
 
-  $paragraphs[] = _drupalx_create_hero_paragraph($hero_info);
+  $paragraphs[] = _drupalx_graphql_create_hero_paragraph($hero_info);
 
   // Card group paragraph.
-  $paragraphs[] = _drupalx_create_card_group_paragraph($media_items, 'stat', '');
+  $paragraphs[] = _drupalx_graphql_create_card_group_paragraph($media_items, 'stat', '');
 
   // Side by side paragraphs.
   $info_sidebyside = [
     [
-      'title' => 'DrupalX Rapid Development',
-      'eyebrow' => 'DrupalX Features',
+      'title' => 'drupalx_graphql Rapid Development',
+      'eyebrow' => 'drupalx_graphql Features',
       'link' => [
         'uri' => 'internal:/features',
         'title' => 'Explore features',
       ],
-      'summary' => 'The DrupalX template offers top-tier development tools and components for building a site quickly and efficiently.',
+      'summary' => 'The drupalx_graphql template offers top-tier development tools and components for building a site quickly and efficiently.',
       'layout' => 'right',
       'media' => $media_items['card'],
     ],
     [
-      'title' => 'DrupalX Content Management',
-      'eyebrow' => 'DrupalX Content',
+      'title' => 'drupalx_graphql Content Management',
+      'eyebrow' => 'drupalx_graphql Content',
       'link' => [
         'uri' => 'internal:/articles',
-        'title' => 'Read DrupalX articles',
+        'title' => 'Read drupalx_graphql articles',
       ],
-      'summary' => 'DrupalX provides a user-friendly editing experience with fully integrated layout builder components for seamless content management.',
+      'summary' => 'drupalx_graphql provides a user-friendly editing experience with fully integrated layout builder components for seamless content management.',
       'layout' => 'left',
       'media' => $media_items['card'],
     ],
   ];
 
   foreach ($info_sidebyside as $info) {
-    $paragraphs[] = _drupalx_create_sidebyside_paragraph($info);
+    $paragraphs[] = _drupalx_graphql_create_sidebyside_paragraph($info);
   }
 
   // Quote paragraph.
-  $paragraphs[] = _drupalx_create_quote_paragraph($media_items);
+  $paragraphs[] = _drupalx_graphql_create_quote_paragraph($media_items);
 
   // Accordion paragraph.
-  $paragraphs[] = _drupalx_create_accordion_paragraph();
+  $paragraphs[] = _drupalx_graphql_create_accordion_paragraph();
 
   // Add paragraphs to field_content.
   foreach ($paragraphs as $paragraph) {
@@ -741,45 +741,45 @@ function drupalx_install_content() {
 
   // Create and append paragraphs.
   $paragraphs = [
-    _drupalx_create_hero_paragraph($hero_info),
-    _drupalx_create_card_group_paragraph($media_items),
-    _drupalx_create_text_paragraph(),
-    _drupalx_create_media_paragraph($media_items),
-    _drupalx_create_gallery_paragraph($media_items),
-    _drupalx_create_form_paragraph(),
-    _drupalx_create_carousel_paragraph($media_items),
-    _drupalx_create_accordion_paragraph(),
-    _drupalx_create_quote_paragraph($media_items),
+    _drupalx_graphql_create_hero_paragraph($hero_info),
+    _drupalx_graphql_create_card_group_paragraph($media_items),
+    _drupalx_graphql_create_text_paragraph(),
+    _drupalx_graphql_create_media_paragraph($media_items),
+    _drupalx_graphql_create_gallery_paragraph($media_items),
+    _drupalx_graphql_create_form_paragraph(),
+    _drupalx_graphql_create_carousel_paragraph($media_items),
+    _drupalx_graphql_create_accordion_paragraph(),
+    _drupalx_graphql_create_quote_paragraph($media_items),
   ];
 
   // Side by side paragraphs.
   $info_sidebyside = [
     [
-      'title' => 'DrupalX Rapid Development',
-      'eyebrow' => 'DrupalX Features',
+      'title' => 'drupalx_graphql Rapid Development',
+      'eyebrow' => 'drupalx_graphql Features',
       'link' => [
         'uri' => 'internal:/features',
         'title' => 'Explore features',
       ],
-      'summary' => 'The DrupalX template offers top-tier development tools and components for building a site quickly and efficiently.',
+      'summary' => 'The drupalx_graphql template offers top-tier development tools and components for building a site quickly and efficiently.',
       'layout' => 'right',
       'media' => $media_items['card'],
     ],
     [
-      'title' => 'DrupalX Content Management',
-      'eyebrow' => 'DrupalX Content',
+      'title' => 'drupalx_graphql Content Management',
+      'eyebrow' => 'drupalx_graphql Content',
       'link' => [
         'uri' => 'internal:/articles',
-        'title' => 'Read DrupalX articles',
+        'title' => 'Read drupalx_graphql articles',
       ],
-      'summary' => 'DrupalX provides a user-friendly editing experience with fully integrated layout builder components for seamless content management.',
+      'summary' => 'drupalx_graphql provides a user-friendly editing experience with fully integrated layout builder components for seamless content management.',
       'layout' => 'left',
       'media' => $media_items['card'],
     ],
   ];
 
   foreach ($info_sidebyside as $info) {
-    $paragraphs[] = _drupalx_create_sidebyside_paragraph($info);
+    $paragraphs[] = _drupalx_graphql_create_sidebyside_paragraph($info);
   }
 
   foreach ($paragraphs as $paragraph) {
@@ -817,10 +817,10 @@ function drupalx_install_content() {
   $hero_info = [
     'media' => $media_items['card'],
     'heading' => "Contact Us",
-    'summary' => 'Have a question about DrupalX? We\'re here to help! Drop us a message and we\'ll get back to you soon.',
+    'summary' => 'Have a question about drupalx_graphql? We\'re here to help! Drop us a message and we\'ll get back to you soon.',
     'layout' => 'image_top',
   ];
-  $paragraphs[] = _drupalx_create_hero_paragraph($hero_info);
+  $paragraphs[] = _drupalx_graphql_create_hero_paragraph($hero_info);
 
   // Form paragraph.
   $form_paragraph = Paragraph::create([
@@ -845,7 +845,7 @@ function drupalx_install_content() {
   $node->save();
 
   foreach ($info_sidebyside as $info) {
-    $paragraphs[] = _drupalx_create_sidebyside_paragraph($info);
+    $paragraphs[] = _drupalx_graphql_create_sidebyside_paragraph($info);
   }
 
   foreach ($paragraphs as $paragraph) {
@@ -882,19 +882,19 @@ function drupalx_install_content() {
   // Hero paragraph.
   $hero_info = [
     'media' => $media_items['card'],
-    'heading' => "DrupalX Features",
-    'summary' => '<p>DrupalX is a comprehensive system that provides a robust starting point for designers and developers to fully customize components.</p>',
+    'heading' => "drupalx_graphql Features",
+    'summary' => '<p>drupalx_graphql is a comprehensive system that provides a robust starting point for designers and developers to fully customize components.</p>',
     'layout' => 'image_bottom',
   ];
 
-  $paragraphs[] = _drupalx_create_hero_paragraph($hero_info);
+  $paragraphs[] = _drupalx_graphql_create_hero_paragraph($hero_info);
 
   // Side by side paragraphs.
   $info_sidebyside = [
     [
       'title' => 'Ultimate Flexibility',
       'eyebrow' => 'Customizable Components',
-      'summary' => 'Each component in DrupalX is fully customizable, allowing you to create a unique site tailored to your organization\'s needs.',
+      'summary' => 'Each component in drupalx_graphql is fully customizable, allowing you to create a unique site tailored to your organization\'s needs.',
       'layout' => 'right',
       'media' => $media_items['card'],
     ],
@@ -915,7 +915,7 @@ function drupalx_install_content() {
   ];
 
   foreach ($info_sidebyside as $info) {
-    $paragraphs[] = _drupalx_create_sidebyside_paragraph($info);
+    $paragraphs[] = _drupalx_graphql_create_sidebyside_paragraph($info);
   }
 
   // Add paragraphs to field_content.
@@ -954,16 +954,16 @@ function drupalx_install_content() {
   $hero_info = [
     'media' => $media_items['card'],
     'heading' => "Get Started",
-    'summary' => 'Whether you\'re a designer or a developer, DrupalX provides the perfect foundation to start customizing to your specific needs.',
+    'summary' => 'Whether you\'re a designer or a developer, drupalx_graphql provides the perfect foundation to start customizing to your specific needs.',
     'layout' => 'image_bottom',
   ];
 
-  $paragraphs[] = _drupalx_create_hero_paragraph($hero_info);
+  $paragraphs[] = _drupalx_graphql_create_hero_paragraph($hero_info);
 
   // Side by side paragraphs.
   $info_sidebyside = [
     [
-      'title' => 'DrupalX for Designers',
+      'title' => 'drupalx_graphql for Designers',
       'eyebrow' => 'Bootstrap UI Kits',
       'summary' => 'Leverage a variety of Figma community templates built on Bootstrap 5 to jumpstart your design process.',
       'layout' => 'right',
@@ -974,12 +974,12 @@ function drupalx_install_content() {
       'media' => $media_items['card'],
     ],
     [
-      'title' => 'DrupalX for Developers',
+      'title' => 'drupalx_graphql for Developers',
       'eyebrow' => 'Project Template',
-      'summary' => 'Visit our GitHub repository to download the DrupalX project template and start building your site today.',
+      'summary' => 'Visit our GitHub repository to download the drupalx_graphql project template and start building your site today.',
       'layout' => 'left',
       'link' => [
-        'uri' => 'https://github.com/drupalninja/drupalx-project',
+        'uri' => 'https://github.com/drupalninja/drupalx_graphql-project',
         'title' => 'Find out more',
       ],
       'media' => $media_items['card'],
@@ -987,7 +987,7 @@ function drupalx_install_content() {
   ];
 
   foreach ($info_sidebyside as $info) {
-    $paragraphs[] = _drupalx_create_sidebyside_paragraph($info);
+    $paragraphs[] = _drupalx_graphql_create_sidebyside_paragraph($info);
   }
 
   // Add paragraphs to field_content.
@@ -1025,14 +1025,14 @@ function drupalx_install_content() {
   // Hero paragraph.
   $hero_info = [
     'media' => $media_items['card'],
-    'heading' => "DrupalX Articles",
+    'heading' => "drupalx_graphql Articles",
     'layout' => 'image_top',
   ];
 
-  $paragraphs[] = _drupalx_create_hero_paragraph($hero_info);
+  $paragraphs[] = _drupalx_graphql_create_hero_paragraph($hero_info);
 
   // Articles paragraph.
-  $paragraphs[] = _drupalx_create_articles_paragraph();
+  $paragraphs[] = _drupalx_graphql_create_articles_paragraph();
 
   // Add paragraphs to field_content.
   foreach ($paragraphs as $paragraph) {
@@ -1045,16 +1045,16 @@ function drupalx_install_content() {
   $node->save();
 
   // Create article nodes.
-  _drupalx_create_article_nodes($media_items, $tag_ids);
+  _drupalx_graphql_create_article_nodes($media_items, $tag_ids);
 
   // Create menu items.
-  _drupalx_create_menus();
+  _drupalx_graphql_create_menus();
 }
 
 /**
  * Callback function to generate Consumers.
  */
-function drupalx_tasks_simple_oauth() {
+function drupalx_graphql_tasks_simple_oauth() {
   $random = new Random();
   $consumerStorage = \Drupal::entityTypeManager()->getStorage('consumer');
 
