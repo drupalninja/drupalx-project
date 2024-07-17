@@ -15,7 +15,6 @@
         "drupal/admin_toolbar": "^3.4",
         "drupal/admin_toolbar_tools": "^3.4",
         "drupal/allowed_formats": "^3.0",
-        "drupal/claro_media_library_theme": "^1.0@alpha",
         "drupal/core-composer-scaffold": "^10.3",
         "drupal/core-recommended": "^10.3",
         "drupal/features": "^3.14",

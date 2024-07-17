@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e8197e8b8f5629eb2899cf50d0880c19",
+    "content-hash": "b1e4ee42c63384883002aa3edf2c2776",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1699,50 +1699,6 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/autologout",
                 "issues": "https://www.drupal.org/project/issues/autologout"
-            }
-        },
-        {
-            "name": "drupal/claro_media_library_theme",
-            "version": "1.0.0-alpha7",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/claro_media_library_theme.git",
-                "reference": "1.0.0-alpha7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/claro_media_library_theme-1.0.0-alpha7.zip",
-                "reference": "1.0.0-alpha7",
-                "shasum": "1166998fa9d7cf64d387f8da8f3b18ecbaedff72"
-            },
-            "require": {
-                "drupal/core": "^8 || ^9 || ^10"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "1.0.0-alpha7",
-                    "datestamp": "1683018505",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "dataweb",
-                    "homepage": "https://www.drupal.org/user/2873593"
-                }
-            ],
-            "description": "Add Claro Media Library templates to active theme registry so that Claro templates and hooks are used when loading a Media Library in whatever theme.",
-            "homepage": "https://www.drupal.org/project/claro_media_library_theme",
-            "support": {
-                "source": "https://git.drupalcode.org/project/claro_media_library_theme"
             }
         },
         {
@@ -16523,7 +16479,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/claro_media_library_theme": 15,
         "drupal/gin": 5,
         "drupal/node_revision_delete": 5,
         "drupal/viewsreference": 20,

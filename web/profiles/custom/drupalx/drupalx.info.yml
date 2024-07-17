@@ -1,6 +1,6 @@
 name: DrupalX GraphQL
 type: profile
-description: 'Build a custom site without pre-configured functionality. Suitable for advanced users.'
+description: 'Build a custom site Drupal site that is intended to integrate with a GraphQL frontend.'
 core: 8.x
 core_version_requirement: '^8 || ^9 || ^10'
 install:
@@ -9,7 +9,6 @@ install:
   - allowed_formats
   - block
   - ckeditor5
-  - claro_media_library_theme
   - content_moderation
   - contextual
   - datetime_range
@@ -17,11 +16,12 @@ install:
   - entity_reference_revisions
   - features
   - field
-  - field_ui
   - field_group
+  - field_ui
   - file
   - filter
   - gin_login
+  - graphql_compose_preview
   - guardr_core
   - image
   - link
@@ -41,6 +41,7 @@ install:
   - pathauto
   - redirect
   - responsive_image
+  - simple_oauth
   - svg_image
   - svg_image_responsive
   - system
@@ -54,8 +55,7 @@ install:
   - webform
   - webform_ui
   - webp
-  - graphql_compose_preview
-  - simple_oauth
+
 themes:
   - olivero
   - gin
