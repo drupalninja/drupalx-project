@@ -11,7 +11,7 @@ third_party_settings:
     paragraphs_categories:
       media: media
 _core:
-  default_config_hash: oEDCXoJB3sqDDNCrbLZmgVj72GYecQjKWlqTAlttJQk
+  default_config_hash: hAO1zzl1z_iAIl_RaAVn-6lHclVk5HxZU98wshv2KR4
 id: carousel
 label: Carousel
 icon_uuid: b638f1bb-2997-4a0a-b1fb-1210223c3b93

@@ -6,7 +6,7 @@ dependencies:
     - media
     - node
 _core:
-  default_config_hash: f4Ui8JXVDzQdCUpbRPEGmfTZKphZPEwdn9kceZHDjaU
+  default_config_hash: YUo3Qs1EMp8xN5SxvHiJvoMMRjFdo3FBdtWknpO-lBI
 id: node.field_media
 field_name: field_media
 entity_type: node

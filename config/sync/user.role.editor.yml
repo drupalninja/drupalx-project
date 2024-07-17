@@ -18,7 +18,7 @@ dependencies:
     - taxonomy
     - toolbar
 _core:
-  default_config_hash: 2NGa0iIIjsIqvw1uiKYlt4HeRWkKGooe_cJYcez-Fg4
+  default_config_hash: Gh_KSp_HtiTRTXIM_dKFrYUDXB_wOfV7ktFpniJa04I
 id: editor
 label: Editor
 weight: 2

@@ -12,7 +12,7 @@ dependencies:
     - link
     - media_library
 _core:
-  default_config_hash: Jxl37lbgke9lZbFQNexl2-9HBYGq5AfRzTj_3f6_fMU
+  default_config_hash: xd0PgFuPbdJDRgRRIfUH3wjrZ7-fKrak2uhWjWpfrW4
 id: paragraph.card.default
 targetEntityType: paragraph
 bundle: card

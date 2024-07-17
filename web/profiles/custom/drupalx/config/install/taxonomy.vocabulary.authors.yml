@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 _core:
-  default_config_hash: BVVCDTgPF7mK8dhyeFp1EW-EA34j9IbqMfK0cuuO46w
+  default_config_hash: zfvzN5L8Zoukyc4Of0rV0WDR-OU9mjiQ4GKrOXPR0Mc
 name: Authors
 vid: authors
 description: 'Content authors.'

@@ -7,7 +7,7 @@ dependencies:
     - image
     - media
 _core:
-  default_config_hash: NEKBuZF9SdQ-aanRFOtP1F3sNOcOl4SRDj5yaoGJlCY
+  default_config_hash: 4zeIAZmPE9v3zh6tVFv23txYmezswgrjB2mKg_V_mZY
 id: media.field_image
 field_name: field_image
 entity_type: media

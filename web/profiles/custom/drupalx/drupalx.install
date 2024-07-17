@@ -772,6 +772,19 @@ function drupalx_install_content() {
     ],
   ];
 
+  foreach ($info_sidebyside as $info) {
+    $paragraphs[] = _drupalx_create_sidebyside_paragraph($info);
+  }
+
+  foreach ($paragraphs as $paragraph) {
+    $node->field_content[] = [
+      'target_id' => $paragraph->id(),
+      'target_revision_id' => $paragraph->getRevisionId(),
+    ];
+  }
+
+  $node->save();
+
   // Create Contact us page node.
   $node = Node::create([
     'type' => 'layout',

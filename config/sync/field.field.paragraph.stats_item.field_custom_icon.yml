@@ -7,7 +7,7 @@ dependencies:
     - media.type.image
     - paragraphs.paragraphs_type.stats_item
 _core:
-  default_config_hash: jHu7OeHkmsPqDqYPtAddTbxRYuRaZBtjuXHiXd3CbrU
+  default_config_hash: Zmamatjs7Aha_Y5kXTt2o-GXehKlxf6Wm8m-KPvrNPY
 id: paragraph.stats_item.field_custom_icon
 field_name: field_custom_icon
 entity_type: paragraph

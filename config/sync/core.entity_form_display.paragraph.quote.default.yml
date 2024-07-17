@@ -12,7 +12,7 @@ dependencies:
   module:
     - media_library
 _core:
-  default_config_hash: SobveTqAdJubdzmSdOdHM36tA07CnNGip46gB0sbwus
+  default_config_hash: eK7O6XQurRG1pcLJ95AAR7oOdCuj310lclYDHX-tpug
 id: paragraph.quote.default
 targetEntityType: paragraph
 bundle: quote

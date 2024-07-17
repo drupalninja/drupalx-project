@@ -6,7 +6,7 @@ dependencies:
     - field.storage.paragraph.field_summary
     - paragraphs.paragraphs_type.card
 _core:
-  default_config_hash: iqTiJL1n-mlMp7JthO8piBXSgbRHwMLhQU-A_f7NgdA
+  default_config_hash: '-wTtyn_HGIZs0RiQA-Z_n9oVEQhW6onp42TJX7tfdc0'
 id: paragraph.card.field_summary
 field_name: field_summary
 entity_type: paragraph

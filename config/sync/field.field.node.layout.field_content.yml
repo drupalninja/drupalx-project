@@ -15,12 +15,13 @@ dependencies:
     - paragraphs.paragraphs_type.media
     - paragraphs.paragraphs_type.newsletter
     - paragraphs.paragraphs_type.quote
+    - paragraphs.paragraphs_type.sidebyside
     - paragraphs.paragraphs_type.text
     - paragraphs.paragraphs_type.views
   module:
     - entity_reference_revisions
 _core:
-  default_config_hash: zW6vNsQ67EV_AI4NrEAajvK8twtojVtgYy58v_m60Hs
+  default_config_hash: 2ZAFCTYGlnFRmu8pDRaOEw6i5-BvbEjYoR4n6DUnhJg
 id: node.layout.field_content
 field_name: field_content
 entity_type: node
@@ -45,6 +46,7 @@ settings:
       media: media
       newsletter: newsletter
       quote: quote
+      sidebyside: sidebyside
       text: text
       views: views
     negate: 0
@@ -90,7 +92,7 @@ settings:
         enabled: true
       sidebyside:
         weight: 33
-        enabled: false
+        enabled: true
       stats_item:
         weight: 34
         enabled: false

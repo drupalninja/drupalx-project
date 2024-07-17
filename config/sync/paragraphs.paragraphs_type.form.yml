@@ -9,9 +9,9 @@ dependencies:
 third_party_settings:
   paragraphs_ee:
     paragraphs_categories:
-      other: other
+      content: content
 _core:
-  default_config_hash: IZF6H56RgONOZrQrQ-1PtCT0nlT4PM1UxBDYUcYojIk
+  default_config_hash: f_9ct9eysGA6C-ZA_ituS8KKSek2SDcoeVbxo9YAU8Q
 id: form
 label: Form
 icon_uuid: 883003f0-cb50-46a7-b9cb-1242d63f4eab

@@ -16,7 +16,7 @@ third_party_settings:
     full_html: '0'
     plain_text: '0'
 _core:
-  default_config_hash: piHJT1ttgHEgzyPaD3sWMZMk_n4dC3Jy-mJLA5NeqlU
+  default_config_hash: _8irFYNLlY8dbBKzK5ZIQ2pz_R3MiemJnYJ5Ulz0XEY
 id: paragraph.accordion_item.field_body
 field_name: field_body
 entity_type: paragraph
