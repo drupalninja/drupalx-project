@@ -70,7 +70,6 @@ function _drupalx_graphql_create_media_items() {
     'stars' => 'stars.jpg',
     'bootstrap' => 'bootstrap.svg',
     'storybook' => 'storybook.svg',
-    'bootswatch' => 'bootswatch.svg',
     'quote-logo' => 'quote-logo.svg',
     'quote-thumb' => 'dries.jpg',
   ];
