@@ -15,6 +15,20 @@ use Drupal\taxonomy\Entity\Term;
 use Drupal\user\Entity\User;
 
 /**
+ * Implements hook_install_tasks().
+ */
+function drupalx_graphql_install_tasks(&$install_state) {
+  $tasks = [
+    // Content tasks.
+    'drupalx_graphql_install_content' => [],
+    // Create consumers and keys.
+    'drupalx_graphql_tasks_simple_oauth' => [],
+  ];
+
+  return $tasks;
+}
+
+/**
  * Create menu items.
  */
 function _drupalx_graphql_create_menus() {
@@ -448,27 +462,7 @@ function _drupalx_graphql_create_articles_paragraph() {
 }
 
 /**
- * Implements hook_install_tasks().
- */
-function drupalx_graphql_install_tasks(&$install_state) {
-  $tasks = [
-    'drupalx_graphql_install_content' => [
-      'display_name' => t('Install default content'),
-      'type' => 'normal',
-    ],
-    'drupalx_graphql_tasks_simple_oauth' => [
-      'display_name' => t('Install Simple OAuth module'),
-      'type' => 'normal',
-    ],
-  ];
-
-  return $tasks;
-}
-
-/**
  * Callback function to install default profile content.
- *
- * @see drupalx_graphql_install_tasks()
  */
 function drupalx_graphql_install_content() {
   // Create an editor user.
@@ -476,6 +470,15 @@ function drupalx_graphql_install_content() {
     'name' => 'editor',
     'mail' => '',
     'roles' => ['editor'],
+    'status' => 1,
+  ]);
+  $user->save();
+
+  // Create a previewer user.
+  $user = User::create([
+    'name' => 'previewer',
+    'mail' => '',
+    'roles' => ['previewer'],
     'status' => 1,
   ]);
   $user->save();
