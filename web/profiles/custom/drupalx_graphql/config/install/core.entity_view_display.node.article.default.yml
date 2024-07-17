@@ -17,7 +17,7 @@ dependencies:
     - text
     - user
 _core:
-  default_config_hash: XcQtqdEcLUdsX4VABJqZ1gyYEQImBsjRxcy5iU2CWeI
+  default_config_hash: nlvrGL7E4gKi1ZBeiLGlPcBmP181Yn6o0OJN7yodjcg
 id: node.article.default
 targetEntityType: node
 bundle: article
@@ -80,4 +80,5 @@ hidden:
   field_summary: true
   field_thumbnail: true
   links: true
+  preview_token: true
   search_api_excerpt: true

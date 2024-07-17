@@ -9,7 +9,7 @@ dependencies:
   module:
     - text
 _core:
-  default_config_hash: ri4g7VOcXo53HBv7sKckMqiH8AuzeA2kdT9DcGOdBF8
+  default_config_hash: Tmhh0gMOXgroeFg3F31KBHsTaPj99ROs3zvxDNaDEGY
 id: paragraph.embed.default
 targetEntityType: paragraph
 bundle: embed

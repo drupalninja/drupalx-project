@@ -12,6 +12,7 @@ install:
   - content_moderation
   - contextual
   - datetime_range
+  - decoupled_preview_iframe
   - editor
   - entity_reference_revisions
   - features
@@ -21,6 +22,16 @@ install:
   - file
   - filter
   - gin_login
+  - graphql
+  - graphql_compose
+  - graphql_compose_edges
+  - graphql_compose_image_style
+  - graphql_compose_menus
+  - graphql_compose_metatags
+  - graphql_compose_preview
+  - graphql_compose_routes
+  - graphql_compose_users
+  - graphql_compose_views
   - graphql_compose_preview
   - guardr_core
   - image

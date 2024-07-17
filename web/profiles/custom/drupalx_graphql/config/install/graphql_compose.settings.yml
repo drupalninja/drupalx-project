@@ -1,0 +1,340 @@
+_core:
+  default_config_hash: DX-lesmXyfXeJcXZLaIztRbPAjMiUpW9mSeM-GqSyb4
+entity_config:
+  image_style:
+    16_9_large_2x:
+      enabled: false
+    16_9_xlarge:
+      enabled: false
+    1_1_large:
+      enabled: false
+    1_1_medium:
+      enabled: false
+    1_1_small:
+      enabled: false
+    4_3_large:
+      enabled: false
+    4_3_large_2x:
+      enabled: false
+    4_3_medium:
+      enabled: false
+    4_3_small:
+      enabled: false
+    hero_l:
+      enabled: false
+    hero_l_x2:
+      enabled: false
+    hero_m:
+      enabled: false
+    hero_m_x2:
+      enabled: false
+    hero_s:
+      enabled: false
+    hero_s_x2:
+      enabled: false
+    large:
+      enabled: false
+    linkit_result_thumbnail:
+      enabled: false
+    media_library:
+      enabled: false
+    medium:
+      enabled: false
+    thumbnail:
+      enabled: false
+    wide:
+      enabled: false
+  media:
+    image:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    video:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+  menu:
+    account:
+      enabled: false
+    admin:
+      enabled: false
+    footer:
+      enabled: false
+    main:
+      enabled: true
+      menu_route_enabled: true
+    tools:
+      enabled: false
+  node:
+    article:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    layout:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    page:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+  paragraph:
+    accordion:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    accordion_item:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    card:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    card_group:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    carousel:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    carousel_item:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    embed:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    form:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    gallery:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    hero:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    media:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    newsletter:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    quote:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    sidebyside:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    stats_item:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    text:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+    views:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+  taxonomy_term:
+    authors:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+    tags:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+      routes_enabled: true
+  user:
+    user:
+      enabled: true
+      query_load_enabled: true
+      edges_enabled: true
+field_config:
+  media:
+    image:
+      field_image:
+        enabled: true
+    video:
+      field_source:
+        enabled: true
+  node:
+    article:
+      body:
+        enabled: true
+      field_authors:
+        enabled: true
+      field_lead:
+        enabled: true
+      field_media:
+        enabled: true
+      field_subhead:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_tags:
+        enabled: true
+      field_thumbnail:
+        enabled: true
+    layout:
+      field_content:
+        enabled: true
+      field_hide_page_title:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_thumbnail:
+        enabled: true
+    page:
+      body:
+        enabled: true
+      field_media:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_thumbnail:
+        enabled: true
+  paragraph:
+    accordion:
+      field_accordion_item:
+        enabled: true
+      field_title:
+        enabled: true
+    accordion_item:
+      field_body:
+        enabled: true
+      field_link:
+        enabled: true
+      field_title:
+        enabled: true
+    card:
+      field_link:
+        enabled: true
+      field_media:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_title:
+        enabled: true
+    card_group:
+      field_card:
+        enabled: true
+      field_title:
+        enabled: true
+    carousel:
+      field_carousel_item:
+        enabled: true
+    carousel_item:
+      field_media:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_title:
+        enabled: true
+    embed:
+      field_script:
+        enabled: true
+      field_title:
+        enabled: true
+    form:
+      field_title:
+        enabled: true
+    gallery:
+      field_body:
+        enabled: true
+      field_media_item:
+        enabled: true
+      field_title:
+        enabled: true
+    hero:
+      field_heading:
+        enabled: true
+      field_hero_layout:
+        enabled: true
+      field_link:
+        enabled: true
+      field_media:
+        enabled: true
+      field_summary:
+        enabled: true
+    media:
+      field_media:
+        enabled: true
+      field_title:
+        enabled: true
+    quote:
+      field_author:
+        enabled: true
+      field_job_title:
+        enabled: true
+      field_logo:
+        enabled: true
+      field_quote:
+        enabled: true
+      field_thumb:
+        enabled: true
+    sidebyside:
+      field_eyebrow:
+        enabled: true
+      field_link:
+        enabled: true
+      field_media:
+        enabled: true
+      field_sidebyside_layout:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_title:
+        enabled: true
+    stats_item:
+      field_custom_icon:
+        enabled: true
+      field_summary:
+        enabled: true
+      field_title:
+        enabled: true
+    text:
+      field_body:
+        enabled: true
+      field_link:
+        enabled: true
+      field_title:
+        enabled: true
+    views:
+      field_link:
+        enabled: true
+      field_title:
+        enabled: true
+settings:
+  exclude_unpublished: true
+  expose_entity_ids: false
+  field_required_override: false
+  schema_description: 'GraphQL Compose'
+  schema_version: '1'
+  simple_queries: true
+  simple_unions: true
+  site_name: false
+  site_slogan: false
+  site_front: true
+  svg_image: true
+  svg_filesize: 100
+  inflector_langcode: en
+  inflector_singularize: true

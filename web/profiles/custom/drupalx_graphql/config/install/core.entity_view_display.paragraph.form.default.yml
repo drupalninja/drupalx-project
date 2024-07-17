@@ -9,7 +9,7 @@ dependencies:
   module:
     - webform
 _core:
-  default_config_hash: vypAVmKKgyLymoUIr_vfy33saYJjvTJ207D0sgv3sbc
+  default_config_hash: hVR-xXBC9ssT1A7kIgzlTKn9J6wDJV5gkk5Qx-yk0LQ
 id: paragraph.form.default
 targetEntityType: paragraph
 bundle: form

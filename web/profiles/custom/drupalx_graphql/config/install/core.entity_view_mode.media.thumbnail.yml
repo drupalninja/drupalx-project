@@ -5,7 +5,7 @@ dependencies:
   module:
     - media
 _core:
-  default_config_hash: 9Ik_QECfta-sfdpdVM_ng6zYji98fYrueNjt9as2eJM
+  default_config_hash: 5g-IwgwUXcbN5tQwH2V-807JDYVnqCD1QO5dJZO4vpo
 id: media.thumbnail
 label: Thumbnail
 description: ''

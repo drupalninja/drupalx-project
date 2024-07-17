@@ -11,7 +11,7 @@ third_party_settings:
     paragraphs_categories:
       other: other
 _core:
-  default_config_hash: XYdAWGizInsx_DUuK1QCE0Oi8HmfXB4jlMCup83gd4s
+  default_config_hash: wVQVCC095sYTCSA-VlEUz4MfDWLhuDFGHO4fGFYTQFo
 id: newsletter
 label: Newsletter
 icon_uuid: 58cddb9c-5c2e-4ca4-ad7f-f332c0bb2588

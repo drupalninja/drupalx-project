@@ -13,7 +13,7 @@ dependencies:
     - text
     - user
 _core:
-  default_config_hash: otwSx8uuSB8HieI3xqLs4Qo12VFwNTryFp9jMh46hpk
+  default_config_hash: Ee0aQySG_qbSgy-zkO8WtmEFhPNyIK44i7TwB2HLbQM
 id: node.page.default
 targetEntityType: node
 bundle: page
@@ -40,4 +40,5 @@ hidden:
   field_summary: true
   field_thumbnail: true
   links: true
+  preview_token: true
   search_api_excerpt: true

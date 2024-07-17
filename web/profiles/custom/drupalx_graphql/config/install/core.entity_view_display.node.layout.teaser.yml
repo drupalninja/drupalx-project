@@ -13,7 +13,7 @@ dependencies:
   module:
     - user
 _core:
-  default_config_hash: LeMxqhriQyCmnVzhPVJg-0fYwrrFmXUHWgAWOutDHOM
+  default_config_hash: 3wUMFLEovc6910RQW4IWqu7PCebNZv2InCd2pR-4iRU
 id: node.layout.teaser
 targetEntityType: node
 bundle: layout
@@ -40,4 +40,5 @@ hidden:
   field_hide_page_title: true
   field_meta_tags: true
   links: true
+  preview_token: true
   search_api_excerpt: true

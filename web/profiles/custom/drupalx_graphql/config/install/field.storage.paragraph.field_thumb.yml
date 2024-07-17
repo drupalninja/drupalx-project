@@ -6,7 +6,7 @@ dependencies:
     - media
     - paragraphs
 _core:
-  default_config_hash: 50-AT_GUd859stHVOq0K47f0tLIMP1dCilkJ2ionYR8
+  default_config_hash: q4f79_rmqZKNX8u5LUXEnAZM-6P_VJa2PgQu_CDZyq0
 id: paragraph.field_thumb
 field_name: field_thumb
 entity_type: paragraph

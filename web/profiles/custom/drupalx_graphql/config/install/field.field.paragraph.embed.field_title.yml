@@ -6,7 +6,7 @@ dependencies:
     - field.storage.paragraph.field_title
     - paragraphs.paragraphs_type.embed
 _core:
-  default_config_hash: Rb6WJRVSJzcLvkWNFVQYAwKtR-U4WFdSAaHWgclcmSg
+  default_config_hash: mbpDdqj7y8oNkMHg7KJmSLAaIpOjqTd3HKa0eFnrA58
 id: paragraph.embed.field_title
 field_name: field_title
 entity_type: paragraph

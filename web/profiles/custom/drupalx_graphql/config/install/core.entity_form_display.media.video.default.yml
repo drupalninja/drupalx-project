@@ -9,7 +9,7 @@ dependencies:
     - media
     - path
 _core:
-  default_config_hash: ts2jT6e5bHRf34XPDEsWITHzHSarcu3pf0Gh-pE6mVM
+  default_config_hash: iZmRF_Lt82gYaYVBuRU9wZYjt1VoEkxHBFE2l8K5SPk
 id: media.video.default
 targetEntityType: media
 bundle: video

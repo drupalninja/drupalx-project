@@ -8,7 +8,7 @@ dependencies:
   module:
     - options
 _core:
-  default_config_hash: i9tPqAZ2iIQz4jLnaUU-6tjPxHxBx12qHgm9vlZchrY
+  default_config_hash: JYIZX7fiXz4JHs5EUW5fBcfkcAfUZ3SJTIpqw1lkhrc
 id: paragraph.hero.field_hero_layout
 field_name: field_hero_layout
 entity_type: paragraph

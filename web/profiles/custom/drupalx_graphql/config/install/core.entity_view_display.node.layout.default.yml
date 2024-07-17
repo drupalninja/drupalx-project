@@ -13,7 +13,7 @@ dependencies:
     - entity_reference_revisions
     - user
 _core:
-  default_config_hash: 1uiL62SBXDHDgMjIVSbDGj4crOUrlWSHLqSSbIf11ZQ
+  default_config_hash: fJHBTKkVRkpeZNJFokCFwIe56lIk19wa7lJmZVKo1yM
 id: node.layout.default
 targetEntityType: node
 bundle: layout
@@ -34,4 +34,5 @@ hidden:
   field_summary: true
   field_thumbnail: true
   links: true
+  preview_token: true
   search_api_excerpt: true
