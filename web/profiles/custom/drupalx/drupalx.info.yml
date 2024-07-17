@@ -1,4 +1,4 @@
-name: DrupalX
+name: DrupalX GraphQL
 type: profile
 description: 'Build a custom site without pre-configured functionality. Suitable for advanced users.'
 core: 8.x
@@ -7,16 +7,12 @@ install:
   - admin_toolbar
   - admin_toolbar_tools
   - allowed_formats
-  - auto_entitylabel
   - block
-  - block_content
-  - block_content_template
   - ckeditor5
   - claro_media_library_theme
-  - components
   - content_moderation
+  - contextual
   - datetime_range
-  - drupalx_bootswatch
   - editor
   - entity_reference_revisions
   - features
@@ -28,7 +24,6 @@ install:
   - gin_login
   - guardr_core
   - image
-  - inline_block_title_automatic
   - link
   - linkit
   - material_icons
@@ -53,8 +48,6 @@ install:
   - taxonomy_access_fix
   - text
   - toolbar
-  - twig_field_value
-  - twig_tweak
   - user
   - views
   - viewsreference
@@ -64,6 +57,5 @@ install:
   - graphql_compose_preview
   - simple_oauth
 themes:
-  - stable9
-  - drupalx_theme
+  - olivero
   - gin
