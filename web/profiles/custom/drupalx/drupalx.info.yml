@@ -61,6 +61,8 @@ install:
   - webform
   - webform_ui
   - webp
+  - graphql_compose_preview
+  - simple_oauth
 themes:
   - stable9
   - drupalx_theme
