@@ -1,9 +1,9 @@
-# DrupalX Enterprise Starter Template
+# DrupalX GraphQL Enterprise Starter Template
 
-[![CI](https://github.com/drupalninja/drupalx-project/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/drupalninja/drupalx-project/actions/workflows/ci.yml)
+[![CI](https://github.com/drupalninja/drupalx-graphql/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/drupalninja/drupalx-graphql/actions/workflows/ci.yml)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
-This project template leverages the DrupalX Starter Kit distribution, featuring enhanced editorial capabilities, the DrupalX Theme Starter, and additional improvements through contributed modules.
+This project template leverages the DrupalX GraphQL Starter Kit distribution, featuring enhanced editorial capabilities, and additional improvements through contributed modules.
 
 ## What does the template do?
 
@@ -19,7 +19,7 @@ This project template leverages the DrupalX Starter Kit distribution, featuring 
 Create your project:
 
 ```bash
-composer create-project drupalninja/drupalx-project:10.x-dev some-dir --no-interaction
+composer create-project drupalninja/drupalx-graphql:10.x-dev some-dir --no-interaction
 ```
 
 Configure DDEV (follow prompts).
