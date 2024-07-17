@@ -6,7 +6,7 @@ dependencies:
     - material_icons
     - paragraphs
 _core:
-  default_config_hash: OATPzZAujuRsjXUGGJcQPzjO_sKRaNSOTxO6Ijo4LkM
+  default_config_hash: jPb4H2VZ4zECEh9kYDdaBhgsn2o8ks2jpVwoFNq001o
 id: paragraph.field_icon
 field_name: field_icon
 entity_type: paragraph

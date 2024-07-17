@@ -1,9 +1,14 @@
 uuid: 7c64d0c1-73d1-4795-b36b-3c391e0a04c3
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories: {  }
 _core:
-  default_config_hash: MLUSHQzLSHALx5DSSIAT-gneUc9UBcEQEpzv5kqLjuw
+  default_config_hash: GlyOv_pdmakX_jgpnUL_pVK8MPE9_qkFReiYc56tE7o
 id: card
 label: Card
 icon_uuid: null

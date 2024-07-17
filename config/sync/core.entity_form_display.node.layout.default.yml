@@ -14,6 +14,7 @@ dependencies:
     - media_library
     - metatag
     - paragraphs
+    - paragraphs_ee
     - paragraphs_features
     - path
 third_party_settings:
@@ -65,7 +66,7 @@ third_party_settings:
         description: ''
         required_fields: true
 _core:
-  default_config_hash: MzSoDarK4ZXzew_Ze6RXDnohvWg5-ggOgJJ7ChwFLro
+  default_config_hash: B0OGGIGIzpuu0PfUo3llJZ1L5b-pSNmxZCKAmS-cMAY
 id: node.layout.default
 targetEntityType: node
 bundle: layout
@@ -88,7 +89,7 @@ content:
       closed_mode: summary
       autocollapse: none
       closed_mode_threshold: 0
-      add_mode: dropdown
+      add_mode: modal
       form_display_mode: default
       default_paragraph_type: _none
       features:
@@ -97,11 +98,15 @@ content:
         convert: '0'
         duplicate: '0'
     third_party_settings:
+      paragraphs_ee:
+        paragraphs_ee:
+          dialog_off_canvas: false
+          dialog_style: tiles
       paragraphs_features:
         add_in_between: false
         add_in_between_link_count: 3
         delete_confirmation: false
-        show_drag_and_drop: true
+        show_drag_and_drop: false
         show_collapse_all: false
   field_group_jumpnav:
     weight: 50

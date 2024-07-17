@@ -80,6 +80,7 @@ module:
   password_policy: 10
   views: 10
   paragraphs: 11
+  paragraphs_ee: 15
   drupalx: 1000
 theme:
   stable9: 0

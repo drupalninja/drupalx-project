@@ -77,8 +77,9 @@ third_party_settings:
       format_type: details
       format_settings:
         classes: ''
+        show_empty_fields: false
         id: ''
-        open: true
+        open: false
         description: ''
         required_fields: true
     group_taxonomy_tabs:
@@ -123,7 +124,7 @@ third_party_settings:
         description: ''
         required_fields: true
 _core:
-  default_config_hash: sGfju97QKkCUxgTO1ti4q_t6mPuHOEJQZkw9Hm-WxRU
+  default_config_hash: ROAOjJAmwgWsERL64qKfzgH--1ItRPC6gNlIGM7SwaI
 id: node.article.default
 targetEntityType: node
 bundle: article

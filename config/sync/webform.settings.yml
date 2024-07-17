@@ -1,5 +1,5 @@
 _core:
-  default_config_hash: Gw_DjU53-aWorpAZwMrBB4BAbND70Lw7A9C0h2mh5Zg
+  default_config_hash: eZgcriT-utjDI1pjl-24jYFW2DmCxMXaFSnJd0XoU-0
 settings:
   default_status: open
   default_categories: {  }
@@ -17,7 +17,7 @@ settings:
   default_delete_button_label: Delete
   default_form_submit_once: false
   default_form_confidential_message: 'This form is confidential. You must <a href="[site:login-url]/logout?destination=[current-page:url:relative]">Log out</a> to submit it.'
-  default_form_access_denied_message: 'Please login to access this form.'
+  default_form_access_denied_message: 'Please log in to access this form.'
   default_form_disable_back: false
   default_form_submit_back: false
   default_form_unsaved: false
@@ -55,7 +55,7 @@ settings:
   default_confirmation_back_label: 'Back to form'
   default_confirmation_noindex: true
   default_submission_label: '[webform_submission:submitted-to]: Submission #[webform_submission:serial]'
-  default_submission_access_denied_message: 'Please login to access this submission.'
+  default_submission_access_denied_message: 'Please log in to access this submission.'
   default_submission_exception_message: 'Unable to process this submission. Please contact the site administrator.'
   default_submission_locked_message: 'This submission has been locked.'
   default_submission_log: false
@@ -201,7 +201,7 @@ html_editor:
 file:
   file_public: false
   file_private_redirect: true
-  file_private_redirect_message: 'Please login to access the uploaded file.'
+  file_private_redirect_message: 'Please log in to access the uploaded file.'
   default_max_filesize: ''
   default_managed_file_extensions: 'gif jpg jpeg png bmp eps tif pict psd txt rtf html odf pdf doc docx ppt pptx xls xlsx xml avi mov mp3 mp4 ogg wav bz2 dmg gz jar rar sit svg tar zip'
   default_audio_file_extensions: 'mp3 ogg wav'

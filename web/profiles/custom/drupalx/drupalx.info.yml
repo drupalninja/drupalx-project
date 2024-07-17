@@ -40,6 +40,7 @@ install:
   - node_revision_delete
   - options
   - paragraphs
+  - paragraphs_ee
   - paragraphs_features
   - path
   - pathauto

@@ -7,7 +7,7 @@ dependencies:
     - media.type.image
     - paragraphs.paragraphs_type.quote
 _core:
-  default_config_hash: QI_4-HbEvqp0G1Qc-9bN9gkpakQXDeXkuHGSK_o0G9w
+  default_config_hash: k6h3Qb420IU90cygRxGl5y2L1N40UopaS87cfyubqhc
 id: paragraph.quote.field_thumb
 field_name: field_thumb
 entity_type: paragraph

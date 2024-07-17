@@ -13,7 +13,7 @@ dependencies:
   module:
     - user
 _core:
-  default_config_hash: eWOox7VTcJ-W1A21LgETzn4zDM4axxKSMi9auxtRbFo
+  default_config_hash: 7kyYZpj0iZhqtMCaIKqCM6cW1FCGQKK2BNP4lx2lJIE
 id: node.page.teaser
 targetEntityType: node
 bundle: page

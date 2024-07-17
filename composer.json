@@ -36,6 +36,8 @@
         "drupal/metatag": "^2.0",
         "drupal/node_revision_delete": "^2.0@RC",
         "drupal/paragraphs": "^1.17",
+        "drupal/paragraphs_browser": "^1.2",
+        "drupal/paragraphs_ee": "^10.0",
         "drupal/paragraphs_features": "^2.0",
         "drupal/pathauto": "^1.12",
         "drupal/redirect": "^1.9",

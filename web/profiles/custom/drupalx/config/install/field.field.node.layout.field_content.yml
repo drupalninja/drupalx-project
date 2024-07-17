@@ -5,10 +5,22 @@ dependencies:
   config:
     - field.storage.node.field_content
     - node.type.layout
+    - paragraphs.paragraphs_type.accordion
+    - paragraphs.paragraphs_type.card_group
+    - paragraphs.paragraphs_type.carousel
+    - paragraphs.paragraphs_type.embed
+    - paragraphs.paragraphs_type.form
+    - paragraphs.paragraphs_type.gallery
+    - paragraphs.paragraphs_type.hero
+    - paragraphs.paragraphs_type.media
+    - paragraphs.paragraphs_type.newsletter
+    - paragraphs.paragraphs_type.quote
+    - paragraphs.paragraphs_type.text
+    - paragraphs.paragraphs_type.views
   module:
     - entity_reference_revisions
 _core:
-  default_config_hash: QivQzVhZzCaGT-2wFE6fUPVDGR4QjMcJFwg8dhIHbVA
+  default_config_hash: zW6vNsQ67EV_AI4NrEAajvK8twtojVtgYy58v_m60Hs
 id: node.layout.field_content
 field_name: field_content
 entity_type: node
@@ -22,12 +34,24 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    target_bundles: null
+    target_bundles:
+      accordion: accordion
+      card_group: card_group
+      carousel: carousel
+      embed: embed
+      form: form
+      gallery: gallery
+      hero: hero
+      media: media
+      newsletter: newsletter
+      quote: quote
+      text: text
+      views: views
     negate: 0
     target_bundles_drag_drop:
       accordion:
         weight: 19
-        enabled: false
+        enabled: true
       accordion_item:
         weight: 20
         enabled: false
@@ -36,37 +60,34 @@ settings:
         enabled: false
       card_group:
         weight: 22
-        enabled: false
+        enabled: true
       carousel:
         weight: 23
-        enabled: false
+        enabled: true
       carousel_item:
         weight: 24
         enabled: false
       embed:
         weight: 25
-        enabled: false
+        enabled: true
       form:
         weight: 26
-        enabled: false
+        enabled: true
       gallery:
         weight: 27
-        enabled: false
+        enabled: true
       hero:
         weight: 28
-        enabled: false
-      library:
-        weight: 29
-        enabled: false
+        enabled: true
       media:
         weight: 30
-        enabled: false
+        enabled: true
       newsletter:
         weight: 31
-        enabled: false
+        enabled: true
       quote:
         weight: 32
-        enabled: false
+        enabled: true
       sidebyside:
         weight: 33
         enabled: false
@@ -75,8 +96,8 @@ settings:
         enabled: false
       text:
         weight: 35
-        enabled: false
+        enabled: true
       views:
         weight: 36
-        enabled: false
+        enabled: true
 field_type: entity_reference_revisions

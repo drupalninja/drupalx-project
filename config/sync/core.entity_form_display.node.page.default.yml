@@ -42,8 +42,9 @@ third_party_settings:
       format_type: details
       format_settings:
         classes: ''
+        show_empty_fields: false
         id: ''
-        open: true
+        open: false
         description: ''
         required_fields: true
     group_content:
@@ -62,7 +63,7 @@ third_party_settings:
         description: ''
         required_fields: true
 _core:
-  default_config_hash: 5B9FC0xumIRL_s0qu7KqPeMEdjhiKmJkb6HPnnfP6k4
+  default_config_hash: x7KMDET_r4LJTT0vyrFy_xrUnpguQfEFMqfgtj8SPg8
 id: node.page.default
 targetEntityType: node
 bundle: page
