@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1e4ee42c63384883002aa3edf2c2776",
+    "content-hash": "35e956a07349704de153f4a03de4df4f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2187,6 +2187,59 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/ctools",
                 "issues": "https://www.drupal.org/project/issues/ctools"
+            }
+        },
+        {
+            "name": "drupal/decoupled_preview_iframe",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/decoupled_preview_iframe.git",
+                "reference": "1.0.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/decoupled_preview_iframe-1.0.5.zip",
+                "reference": "1.0.5",
+                "shasum": "7baa7e2b15850931197d49692bd065ff4724388a"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.5",
+                    "datestamp": "1717635969",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "apmsooner",
+                    "homepage": "https://www.drupal.org/user/593202"
+                },
+                {
+                    "name": "jmolivas",
+                    "homepage": "https://www.drupal.org/user/678770"
+                }
+            ],
+            "description": "Preview Drupal content from your decoupled front-end site via an Iframe with the content from your FE application.",
+            "homepage": "https://www.drupal.org/project/decoupled_preview_iframe",
+            "keywords": [
+                "Decoupled",
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/decoupled_preview_iframe",
+                "issues": "https://www.drupal.org/project/issues/decoupled_preview_iframe"
             }
         },
         {

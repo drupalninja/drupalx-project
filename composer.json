@@ -17,6 +17,7 @@
         "drupal/allowed_formats": "^3.0",
         "drupal/core-composer-scaffold": "^10.3",
         "drupal/core-recommended": "^10.3",
+        "drupal/decoupled_preview_iframe": "^1.0",
         "drupal/features": "^3.14",
         "drupal/field_group": "^3.4",
         "drupal/gin": "^3.0@RC",
@@ -124,7 +125,11 @@
         "patchLevel": {
             "drupal/core": "-p2"
         },
-        "patches": {}
+        "patches": {
+            "drupal/decoupled_preview_iframe": {
+                "#3462154: Missing $build['#node]": "https://www.drupal.org/files/issues/2024-07-17/decoupled_preview_iframe-3462154-missing-node-key.patch"
+            }
+        }
     },
     "scripts": {
         "pre-install-cmd": [
