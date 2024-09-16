@@ -10,8 +10,7 @@ tasks:
       ddev composer install
       ddev . drush si -y --verbose drupalx
       ddev . drush webform-libraries-download
-      sed -i "s/| exec '/| ddev exec php '/" .git/hooks/commit-msg
-      sed -i "s/| exec '/| ddev exec php '/" .git/hooks/pre-commit
+      ddev . drush uli
     command: |
       ddev start -y
       gp ports await 8080 && gp preview $(gp url 8080)
