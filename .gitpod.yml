@@ -1,0 +1,54 @@
+image: drupalpod/drupalpod-gitpod-base:latest
+
+tasks:
+  - init: |
+      if [ ! -f .ddev/config.yaml ]; then
+        ddev config --docroot=web --project-name="drupalx-project" --project-type=drupal10 --webserver-type="nginx-fpm" --create-docroot
+      fi
+      ddev stop -a
+      ddev start -y
+      ddev composer install
+      ddev . drush si -y --verbose drupalx
+      ddev . drush webform-libraries-download
+      sed -i "s/| exec '/| ddev exec php '/" .git/hooks/commit-msg
+      sed -i "s/| exec '/| ddev exec php '/" .git/hooks/pre-commit
+    command: |
+      ddev start -y
+      gp ports await 8080 && gp preview $(gp url 8080)
+
+vscode:
+  extensions:
+    - felixfbecker.php-debug
+    - wongjn.php-sniffer
+    - neilbrayfield.php-docblocker
+    - bmewburn.vscode-intelephense-client
+    - mblode.twig-language-2
+
+ports:
+  - port: 3306
+    onOpen: ignore
+  - port: 6942
+    onOpen: ignore
+  - port: 8027
+    onOpen: ignore
+  - port: 8036
+    onOpen: ignore
+  - port: 8080
+    onOpen: ignore
+  - port: 8443
+    onOpen: ignore
+  - port: 9003
+    onOpen: ignore
+  - port: 9999
+    onOpen: open-browser
+
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: true
+    addCheck: true
+    addComment: false
+    addBadge: true
+    addLabel: true
