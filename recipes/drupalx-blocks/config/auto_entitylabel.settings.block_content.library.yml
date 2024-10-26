@@ -1,0 +1,11 @@
+_core:
+  default_config_hash: _XSzfmPBWvauGtNBb1l92a0Y_ocIIJRk7UwoPEAOGhU
+status: 2
+pattern: "Block: [block_content:field_block:entity:info]\r\n            "
+escape: false
+preserve_titles: false
+save: false
+chunk: 50
+dependencies:
+  config:
+    - block_content.type.library

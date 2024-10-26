@@ -50,7 +50,7 @@
         "drupalninja/drupalx_bootswatch": "^1.0",
         "drupalninja/drupalx_gin": "^1.0",
         "drupalninja/drupalx_theme": "^1.0",
-        "drush/drush": "^11 || ^12",
+        "drush/drush": "^11 || ^12 || ^13",
         "oomphinc/composer-installers-extender": "^2.0",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.2"
@@ -91,7 +91,8 @@
             "ergebnis/composer-normalize": true,
             "oomphinc/composer-installers-extender": true,
             "php-http/discovery": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "tbachert/spi": true
         },
         "discard-changes": true,
         "sort-packages": true

@@ -1,0 +1,11 @@
+_core:
+  default_config_hash: MKgYSl1Kh4Gbxea69XQVpLKhpEkKIoUrZj-PSB7Oai4
+status: 2
+pattern: 'Accordion: [block_content:field_title]'
+escape: false
+preserve_titles: false
+save: false
+chunk: 50
+dependencies:
+  config:
+    - block_content.type.accordion

@@ -1,0 +1,25 @@
+name: 'DrupalX Blocks'
+description: 'DrupalX block types.'
+type: 'Site'
+
+install:
+  # Core
+  - link
+  - media
+  - media_library
+  - options
+  - text
+  # Contrib
+  - auto_entitylabel
+  - block_content_template
+  - gin_lb
+  - inline_block_title_automatic
+  - layout_builder_browser
+  - layout_builder_modal
+  - layout_builder_restrictions
+  - material_icons
+  - paragraphs
+  - paragraphs_features
+  - viewsreference
+  - webform
+  - webform_ui

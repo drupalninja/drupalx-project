@@ -1,0 +1,13 @@
+uuid: 2c9d7a3a-2c60-42bd-a057-bb85951c58b2
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 7I0JEeojJLg_6ToDraiRjQff3wNgjP567258zeQ0V34
+id: gallery
+block_id: 'inline_block:gallery'
+category: media
+label: Gallery
+weight: -97
+image_path: /profiles/custom/drupalx/images/gallery.png
+image_alt: ''

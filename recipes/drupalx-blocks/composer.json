@@ -1,0 +1,34 @@
+{
+  "name": "drupalninja/drupalx-blocks",
+  "description": "Block types used in the DrupalX distribution recipe.",
+  "keywords": [
+    "recipe",
+    "drupal recipe",
+    "drupal decoupled",
+    "drupal decoupled recipe"
+  ],
+  "type": "drupal-recipe",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Jay Callicott",
+      "role": "Project Lead"
+    }
+  ],
+  "require": {
+    "drupal/auto_entitylabel": "^3.0",
+    "drupal/block_content_template": "^1.5",
+    "drupal/gin_lb": "^1.0@RC",
+    "drupal/inline_block_title_automatic": "^1.1",
+    "drupal/layout_builder_browser": "^1.6",
+    "drupal/layout_builder_modal": "^1.2",
+    "drupal/layout_builder_restrictions": "^3.0",
+    "drupal/material_icons": "^2.0",
+    "drupal/paragraphs": "^1.17",
+    "drupal/paragraphs_features": "^2.0",
+    "drupal/viewfield": "^3.0@beta",
+    "drupal/viewsreference": "2.x-dev",
+    "drupal/webform": "^6.2",
+    "drupal/webform_ui": "^6.2"
+  }
+}

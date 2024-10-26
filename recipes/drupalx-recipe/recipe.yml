@@ -1,0 +1,213 @@
+name: 'DrupalX'
+description: 'Drupal installation for DrupalX recipe'
+type: 'Site'
+recipes:
+  # Core recipes with basic functionality
+  # Adding tags vocabulary and taxonomy field to article
+  - core/recipes/tags_taxonomy
+  # Adding format editors
+  - core/recipes/basic_html_format_editor
+  - core/recipes/full_html_format_editor
+  - core/recipes/restricted_html_format
+  # Adding user roles
+  - core/recipes/administrator_role
+  - core/recipes/content_editor_role
+  # Adding core recommended maintenance modules
+  - core/recipes/core_recommended_maintenance
+  # Add DrupalX blocks recipe
+  - ../recipes/drupalx-blocks
+
+install:
+  # Core
+  - allowed_formats
+  - block
+  - block_content
+  - ckeditor5
+  - components
+  - config
+  - content_moderation
+  - contextual
+  - datetime
+  - datetime_range
+  - editor
+  - entity_reference_revisions
+  - features
+  - field
+  - field_ui
+  - file
+  - filter
+  - help
+  - history
+  - image
+  - language
+  - layout_builder
+  - layout_builder_restrictions
+  - layout_discovery
+  - link
+  - media
+  - media_library
+  - menu_link_content
+  - menu_ui
+  - node
+  - options
+  - path
+  - shortcut
+  - system
+  - taxonomy
+  - text
+  - toolbar
+  - views
+  - views_ui
+  # Contrib
+  - admin_toolbar
+  - admin_toolbar_tools
+  - admin_toolbar_search
+  - auto_entitylabel
+  - block_content_template
+  - claro_media_library_theme
+  - drupalx_bootswatch
+  - drupalx_gin
+  - field_group
+  - gin
+  - gin_lb
+  - gin_login
+  - gin_toolbar
+  - guardr_core
+  - inline_block_title_automatic
+  - layout_builder_browser
+  - layout_builder_modal
+  - linkit
+  - material_icons
+  - metatag
+  - node_revision_delete
+  - paragraphs
+  - paragraphs_features
+  - pathauto
+  - redirect
+  - responsive_image
+  - svg_image
+  - svg_image_responsive
+  - taxonomy_access_fix
+  - twig_field_value
+  - twig_tweak
+  - viewsreference
+  - webform
+  - webform_ui
+  - webp
+
+config:
+  import:
+    content_moderation: '*'
+    shortcut: '*'
+    editor: '*'
+    file: '*'
+    field_ui: '*'
+    media_library:
+      - core.entity_view_mode.media.media_library
+      - core.entity_form_mode.media.media_library
+      - image.style.media_library
+      - views.view.media_library
+    media:
+      - core.entity_view_mode.media.full
+      - system.action.media_delete_action
+      - system.action.media_publish_action
+      - system.action.media_save_action
+      - system.action.media_unpublish_action
+      - views.view.media
+    image:
+      - image.style.medium
+      - image.style.large
+      - image.style.thumbnail
+    menu_ui: '*'
+    node:
+      - views.view.content
+      - views.view.content_recent
+    datetime: '*'
+    datetime_range: '*'
+    views: '*'
+    views_ui: '*'
+    user:
+      - views.view.user_admin_people
+    #contrib
+    admin_toolbar: '*'
+    admin_toolbar_tools: '*'
+    admin_toolbar_search: '*'
+    field_group: '*'
+    gin:
+      - gin.settings
+      - block.block.gin_breadcrumbs
+      - block.block.gin_content
+      - block.block.gin_help
+      - block.block.gin_local_actions
+      - block.block.gin_messages
+      - block.block.gin_page_title
+      - block.block.gin_primary_local_tasks
+    gin_toolbar: '*'
+    gin_login: '*'
+    linkit: '*'
+    metatag: '*'
+    node_revision_delete: '*'
+    pathauto: '*'
+    redirect: '*'
+    responsive_image: '*'
+    svg_image: '*'
+    svg_image_responsive: '*'
+    taxonomy_access_fix: '*'
+    webp: '*'
+
+  actions:
+    # Set home page
+    system.site:
+      simple_config_update:
+        page.front: /user
+    # Set and unset Gin blocks.
+    block.block.gin_admin:
+      simple_config_update:
+        status: false
+    block.block.gin_branding:
+      simple_config_update:
+        status: false
+    block.block.gin_local_actions:
+      simple_config_update:
+        region: content
+        weight: -10
+    block.block.gin_local_tasks:
+      simple_config_update:
+        status: false
+    block.block.gin_page_title:
+      simple_config_update:
+        region: header
+        weight: -10
+    block.block.gin_primary_local_tasks:
+      simple_config_update:
+        region: header
+        weight: -5
+        settings.secondary: true
+    block.block.gin_tools:
+      simple_config_update:
+        status: false
+    # Update the admin theme to Gin in Theme settings.
+    node.settings:
+      simple_config_update:
+        use_admin_theme: true
+    system.theme:
+      simple_config_update:
+        admin: 'gin'
+        default: 'gin'
+    # Set metatag defaults.
+    metatag.metatag_defaults.global:
+      simple_config_update:
+        tags.canonical_url: '[current-page:url]'
+        tags.title: '[current-page:title] | [site:name]'
+    metatag.metatag_defaults.node:
+      simple_config_update:
+        tags.abstract: '[node:summary]'
+        tags.canonical_url: '[node:url]'
+        tags.description: '[node:summary]'
+    # Set permissions for content editor role.
+    user.role.content_editor:
+      ensure_exists:
+        id: content_editor
+      grantPermissions:
+        - 'use text format basic_html'
+        - 'use text format full_html'
