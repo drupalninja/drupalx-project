@@ -1,0 +1,30 @@
+uuid: 2fa2cbbf-e814-4739-9852-0151ec8dd49d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media_item
+    - paragraphs.paragraphs_type.gallery
+_core:
+  default_config_hash: lz_Ofj5uFfjKdNcOWludMeK2SqhUC9n2p3yGofnYqqI
+id: paragraph.gallery.field_media_item
+field_name: field_media_item
+entity_type: paragraph
+bundle: gallery
+label: 'Media items'
+description: 'Add collection of media library items.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

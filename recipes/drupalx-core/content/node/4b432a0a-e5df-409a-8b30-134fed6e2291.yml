@@ -1,0 +1,172 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 4b432a0a-e5df-409a-8b30-134fed6e2291
+  bundle: landing
+  default_langcode: en
+  depends:
+    9a33874e-ce03-4f0f-9c6e-164a416d574c: media
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Get Started'
+  created:
+    -
+      value: 1724541785
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Get Started | DrupalX'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: '/get-started'
+  path:
+    -
+      alias: /get-started
+      langcode: en
+      pathauto: 0
+  field_content:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: c8176009-9da1-4dee-bfec-b62de0677704
+          bundle: hero
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1724541785
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_heading:
+            -
+              value: 'Get Started'
+              format: restricted_html
+          field_hero_layout:
+            -
+              value: image_bottom
+          field_media:
+            -
+              entity: 9a33874e-ce03-4f0f-9c6e-164a416d574c
+          field_summary:
+            -
+              value: "Whether you're a designer or a developer, DrupalX provides the perfect foundation to start customizing to your specific needs."
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: bb5372ae-c92c-4c33-931c-b482e0da2561
+          bundle: sidebyside
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1724541785
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_eyebrow:
+            -
+              value: 'Bootstrap UI Kits'
+          field_link:
+            -
+              uri: 'https://www.figma.com/community/search?resource_type=mixed&sort_by=relevancy&query=bootstrap+5&editor_type=all&price=all&creators=all'
+              title: 'Browse Figma UI kits'
+              options: {  }
+          field_media:
+            -
+              entity: 9a33874e-ce03-4f0f-9c6e-164a416d574c
+          field_sidebyside_layout:
+            -
+              value: right
+          field_summary:
+            -
+              value: 'Leverage a variety of Figma community templates built on Bootstrap 5 to jumpstart your design process.'
+              format: ''
+          field_title:
+            -
+              value: 'DrupalX for Designers'
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 395c7d84-b5a9-4cc4-8a45-ea73935d0e56
+          bundle: sidebyside
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1724541785
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_eyebrow:
+            -
+              value: 'Project Template'
+          field_link:
+            -
+              uri: 'https://github.com/drupalninja/drupalx-graphql'
+              title: 'Find out more'
+              options: {  }
+          field_media:
+            -
+              entity: 9a33874e-ce03-4f0f-9c6e-164a416d574c
+          field_sidebyside_layout:
+            -
+              value: left
+          field_summary:
+            -
+              value: 'Visit our GitHub repository to download the DrupalX project template and start building your site today.'
+              format: ''
+          field_title:
+            -
+              value: 'DrupalX for Developers'
+  field_hide_page_title:
+    -
+      value: true

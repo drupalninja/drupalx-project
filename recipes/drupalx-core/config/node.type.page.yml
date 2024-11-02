@@ -1,0 +1,25 @@
+uuid: a4b926ee-e581-4473-968a-132afeae4d9d
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - node_revision_delete
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+  node_revision_delete:
+    minimum_age_to_delete: 0
+    minimum_revisions_to_keep: 3
+    when_to_delete: 0
+_core:
+  default_config_hash: L3in4WzPomL6PSsEXAAuhThHfRCUPUP86miokUKgnko
+name: 'Basic page'
+type: page
+description: "The Basic Page serves as a platform for displaying static content on your website, such as an 'About Us' page, contact information, or general company information. It provides a simple and straightforward layout to convey essential information to visitors."
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

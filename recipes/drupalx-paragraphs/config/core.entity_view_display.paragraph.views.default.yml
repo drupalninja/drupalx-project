@@ -1,0 +1,51 @@
+uuid: 65dc6804-0dd9-44b9-a38d-3ef997393b72
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.views.field_link
+    - field.field.paragraph.views.field_title
+    - field.field.paragraph.views.field_views_ref
+    - paragraphs.paragraphs_type.views
+  module:
+    - link
+    - viewfield
+_core:
+  default_config_hash: jAgeWkbLV_SyEnb-RA7zmPiTX1dOAMoA-lpWTckX5n8
+id: paragraph.views.default
+targetEntityType: paragraph
+bundle: views
+mode: default
+content:
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_views_ref:
+    type: viewfield_default
+    label: above
+    settings:
+      view_title: hidden
+      always_build_output: false
+      empty_view_title: hidden
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  search_api_excerpt: true

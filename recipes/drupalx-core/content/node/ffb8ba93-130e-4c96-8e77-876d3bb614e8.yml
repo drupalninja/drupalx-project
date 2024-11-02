@@ -1,0 +1,59 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: ffb8ba93-130e-4c96-8e77-876d3bb614e8
+  bundle: page
+  default_langcode: en
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Access denied'
+  created:
+    -
+      value: 1724541785
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: true
+  revision_translation_affected:
+    -
+      value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Access denied | DrupalX'
+    -
+      tag: meta
+      attributes:
+        name: description
+        content: "We're sorry, but you do not have permission to access this page. Please contact the site administrator if you believe this is an error, or click the button below to return to the homepage. Return to homepage"
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: '/access-denied'
+  path:
+    -
+      alias: /access-denied
+      langcode: en
+      pathauto: 0
+  body:
+    -
+      value: |-
+        <p>We're sorry, but you do not have permission to access this page. Please contact the site administrator if you believe this is an error, or click the button below to return to the homepage.</p>
+              <a href="/">Return to homepage</a>
+      format: full_html
+      summary: ''

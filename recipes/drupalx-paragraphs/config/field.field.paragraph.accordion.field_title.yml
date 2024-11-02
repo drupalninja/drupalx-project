@@ -1,0 +1,21 @@
+uuid: b47be471-4d01-4f76-9ba8-fc48155fa2b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.accordion
+_core:
+  default_config_hash: gIec_J2K37zzZU2INv641EDnkQ6ORChygmEsLlI8gMA
+id: paragraph.accordion.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: accordion
+label: Title
+description: 'Provide the primary heading for the accordion.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

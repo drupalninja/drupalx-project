@@ -1,0 +1,17 @@
+uuid: a414486e-6aa9-4c84-b5b5-086582888935
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: jUlVwUP15E3EELSOrNdTv2uJthP2iyr3UHOSzenR9hU
+name: herosx2
+label: 'Hero Small 2x'
+effects:
+  724a1494-fcb6-4e09-bfed-cb011d938e65:
+    uuid: 724a1494-fcb6-4e09-bfed-cb011d938e65
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1440
+      height: 1104
+      anchor: center-center

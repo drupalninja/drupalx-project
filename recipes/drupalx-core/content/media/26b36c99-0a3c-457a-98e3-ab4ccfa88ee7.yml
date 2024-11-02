@@ -1,0 +1,47 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 26b36c99-0a3c-457a-98e3-ab4ccfa88ee7
+  bundle: image
+  default_langcode: en
+  depends:
+    e0fff741-28a5-4bec-ac1b-cfd4e915524d: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: graphql.png
+  created:
+    -
+      value: 1727532586
+  revision_translation_affected:
+    -
+      value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: '| Drush Site-Install'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: '/user'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_image:
+    -
+      entity: e0fff741-28a5-4bec-ac1b-cfd4e915524d
+      alt: 'GraphQL logo'
+      title: ''
+      width: 1804
+      height: 568

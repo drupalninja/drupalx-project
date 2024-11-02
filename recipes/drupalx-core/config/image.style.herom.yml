@@ -1,0 +1,17 @@
+uuid: eef5a5e3-c5bc-4f2e-9577-e71d53e0e5f3
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: mMvgA8Jh34Kj7zS4CerllBv5CU0T0UWG9pwQHoAYO1A
+name: herom
+label: 'Hero Medium'
+effects:
+  65d75b07-0995-4f83-a29d-74cd1a3b5f05:
+    uuid: 65d75b07-0995-4f83-a29d-74cd1a3b5f05
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 980
+      height: 487
+      anchor: center-center

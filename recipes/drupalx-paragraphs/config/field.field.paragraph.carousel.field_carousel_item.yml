@@ -1,0 +1,54 @@
+uuid: fd338748-4625-44fb-b48f-dc6e20b9d278
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_carousel_item
+    - paragraphs.paragraphs_type.carousel
+    - paragraphs.paragraphs_type.carousel_item
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: WCGndz-URAyScWGDsRabrlrqAiH7UggkIkW8SdyTF7Y
+id: paragraph.carousel.field_carousel_item
+field_name: field_carousel_item
+entity_type: paragraph
+bundle: carousel
+label: 'Carousel item'
+description: 'Build a collection of items for the carousel component.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      carousel_item: carousel_item
+    negate: 0
+    target_bundles_drag_drop:
+      accordion_item:
+        weight: 10
+        enabled: false
+      card:
+        weight: 11
+        enabled: false
+      carousel_item:
+        weight: 16
+        enabled: true
+      map:
+        weight: 13
+        enabled: false
+      media:
+        weight: 14
+        enabled: false
+      quote:
+        weight: 15
+        enabled: false
+      text:
+        weight: 17
+        enabled: false
+      view:
+        weight: 18
+        enabled: false
+field_type: entity_reference_revisions

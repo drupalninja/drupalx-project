@@ -1,0 +1,17 @@
+uuid: e453c86a-7230-4648-a05b-afd1ee5185f3
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: _AzzipJ_Nf3FWS5pVSkjU-zYK__HPzJjFddSzdgCWoU
+name: i11medium
+label: '1:1 Medium (400 x 400)'
+effects:
+  d4ae36f2-bbef-4247-93bd-c2e68e6c0429:
+    uuid: d4ae36f2-bbef-4247-93bd-c2e68e6c0429
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 400
+      height: 400
+      anchor: center-center

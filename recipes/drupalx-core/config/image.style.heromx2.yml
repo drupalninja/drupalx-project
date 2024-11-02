@@ -1,0 +1,17 @@
+uuid: 7ef70d94-8763-40a8-ad94-3668089f25d9
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: fJI7ibwzDFVhRlEgN3x7uZwihNDR_EYB5GKXVMlJMhA
+name: heromx2
+label: 'Hero Medium 2x'
+effects:
+  63781f86-33ce-48d5-9189-f6ccd90a4ebc:
+    uuid: 63781f86-33ce-48d5-9189-f6ccd90a4ebc
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1960
+      height: 975
+      anchor: center-center

@@ -1,0 +1,30 @@
+uuid: 7f829ec8-6746-4fe2-889d-ea282f89d782
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media
+    - paragraphs.paragraphs_type.hero
+_core:
+  default_config_hash: 8mN5DZHKGzlet8w4zHUNIzMdnQXM-jAqZdh5ERJQAv4
+id: paragraph.hero.field_media
+field_name: field_media
+entity_type: paragraph
+bundle: hero
+label: Media
+description: 'Featured media item for the hero.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

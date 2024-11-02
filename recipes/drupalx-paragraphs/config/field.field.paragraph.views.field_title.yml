@@ -1,0 +1,21 @@
+uuid: c0db97c6-dd36-4e63-8bbd-e913cc366dea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.views
+_core:
+  default_config_hash: Ocw05v0Hz-CAmArD_rqbwkp8IpKTdQN9S16jC2vl9Vc
+id: paragraph.views.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: views
+label: Title
+description: 'Provide the primary heading for the list view.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

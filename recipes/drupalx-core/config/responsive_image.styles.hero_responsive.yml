@@ -1,0 +1,47 @@
+uuid: 5e09bf2a-59d1-4370-ab8c-b03b833e620b
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.herol
+    - image.style.herolx2
+    - image.style.herom
+    - image.style.heromx2
+    - image.style.heros
+    - image.style.herosx2
+  module:
+    - toolbar
+_core:
+  default_config_hash: E3U75Q3ZhjfC5Wcmjv_bJhlLHnrYJRaa8nHiAnDNUV8
+id: hero_responsive
+label: 'Hero Responsive'
+image_style_mappings:
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - herol
+        - herolx2
+    breakpoint_id: toolbar.wide
+    multiplier: 1x
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - herom
+        - heromx2
+    breakpoint_id: toolbar.standard
+    multiplier: 1x
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - heros
+        - herosx2
+    breakpoint_id: toolbar.narrow
+    multiplier: 1x
+breakpoint_group: toolbar
+fallback_image_style: herol

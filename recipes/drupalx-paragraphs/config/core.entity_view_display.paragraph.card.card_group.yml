@@ -1,0 +1,58 @@
+uuid: 15002881-0a30-4fb8-9f4e-44bca2b4a814
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.card_group
+    - field.field.paragraph.card.field_link
+    - field.field.paragraph.card.field_media
+    - field.field.paragraph.card.field_summary
+    - field.field.paragraph.card.field_title
+    - paragraphs.paragraphs_type.card
+  module:
+    - link
+_core:
+  default_config_hash: wgWQhIa5padODp1r4jx3H5fxNAItQ50PZhZxgOkaiQs
+id: paragraph.card.card_group
+targetEntityType: paragraph
+bundle: card
+mode: card_group
+content:
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_media:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

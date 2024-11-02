@@ -1,0 +1,21 @@
+uuid: 96c3970f-e362-464a-b7a6-7f44843c0842
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.logo_collection
+_core:
+  default_config_hash: aNYBTUALxwoFck2uhSayooxF7rNStIBTEVfXjMjQu4A
+id: paragraph.logo_collection.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: logo_collection
+label: Title
+description: 'Provide the primary heading for the collection.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

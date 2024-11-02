@@ -1,0 +1,22 @@
+uuid: ee6ebea9-d8c1-4f7e-9ac4-4b5d7cec28cc
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+_core:
+  default_config_hash: GWjXBUzQ2w9m8jBMZ0rIXhTrRgocgqefTEQwdT5IjzM
+id: paragraph.field_pricing_cards
+field_name: field_pricing_cards
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 3
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,12 @@
+uuid: 58729933-4a0d-4d27-ac73-6695cc7962e4
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: yLCZ4eGBTVFsobigGhq3Dvk9kLgh_Bqu3oKULs5MXiY
+id: other
+label: Other
+description:
+  value: ''
+  format: basic_html
+weight: 0

@@ -1,0 +1,21 @@
+uuid: f733e243-8b2f-4303-9247-54c9c27a17c2
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - text
+_core:
+  default_config_hash: 2yF3-QJJX1joTE_c51NWKswXUXqcRWKwclxYepkv8io
+id: media.field_description
+field_name: field_description
+entity_type: media
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

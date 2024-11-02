@@ -1,0 +1,44 @@
+uuid: bff9233f-0c62-4a24-b9a9-4fc05feaa948
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_card
+    - paragraphs.paragraphs_type.card
+    - paragraphs.paragraphs_type.card_group
+    - paragraphs.paragraphs_type.stats_item
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: CBsAgfdDvroiZXtJC5IF4k1D2GKU5NiqQwSWVciQts8
+id: paragraph.card_group.field_card
+field_name: field_card
+entity_type: paragraph
+bundle: card_group
+label: Card
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      stats_item: stats_item
+      card: card
+    negate: 0
+    target_bundles_drag_drop:
+      accordion_item:
+        weight: 5
+        enabled: false
+      card:
+        weight: 22
+        enabled: true
+      carousel_item:
+        weight: 7
+        enabled: false
+      stats_item:
+        weight: 8
+        enabled: true
+field_type: entity_reference_revisions

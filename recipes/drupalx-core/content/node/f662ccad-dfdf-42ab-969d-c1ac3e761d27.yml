@@ -1,0 +1,85 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: f662ccad-dfdf-42ab-969d-c1ac3e761d27
+  bundle: page
+  default_langcode: en
+  depends:
+    9a33874e-ce03-4f0f-9c6e-164a416d574c: media
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Privacy Policy'
+  created:
+    -
+      value: 1724541785
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: true
+  revision_translation_affected:
+    -
+      value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Privacy Policy | DrupalX'
+    -
+      tag: meta
+      attributes:
+        name: description
+        content: "This Privacy Policy describes how we collect, use, and disclose information about you when you use our website and any related services (collectively, the \"Services\"). \_ Information We Collect We may collect information about you when you use our Services, including:"
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: '/privacy'
+  path:
+    -
+      alias: /privacy
+      langcode: en
+      pathauto: 0
+  body:
+    -
+      value: |-
+        <p>This Privacy Policy describes how we collect, use, and disclose information about you when you use our website and any related services (collectively, the "Services").</p>
+              <h3>Information We Collect</h3>
+              <p>We may collect information about you when you use our Services, including:</p>
+              <ul>
+                <li>Information you provide to us, such as your name, email address, and other contact information.</li>
+                <li>Information we collect automatically, such as your IP address, browser type, and device type.</li>
+                <li>Information we collect from third-party sources, such as social media platforms and marketing partners.</li>
+              </ul>
+              <h3>How We Use Your Information</h3>
+              <p>We may use your information to:</p>
+              <ul>
+                <li>Provide and improve our Services.</li>
+                <li>Respond to your inquiries and requests.</li>
+                <li>Send you marketing communications.</li>
+                <li>Comply with our legal and regulatory obligations.</li>
+              </ul>
+              <p>We may also share your information with third parties for the purposes described in this Privacy Policy.</p>
+              <h3>How We Protect Your Information</h3>
+              <p>We take reasonable measures to protect your information from unauthorized access, use, and disclosure. However, no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
+              <h3>Your Choices</h3>
+              <p>You may have certain rights and choices with respect to your information, such as the right to access and correct your information. Please contact us using the information below if you have any questions or would like to exercise your rights.</p>
+              <h3>Contact Us</h3>
+              <p>If you have any questions or concerns about our Privacy Policy, please <a href="/contact-us">contact us</a>.</p>
+      format: full_html
+      summary: ''
+  field_media:
+    -
+      entity: 9a33874e-ce03-4f0f-9c6e-164a416d574c

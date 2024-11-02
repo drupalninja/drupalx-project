@@ -4,6 +4,8 @@
 
 ddev start
 ddev composer install
-ddev . drush si -y --verbose drupalx
-ddev . drush webform-libraries-download
-open $DDEV_PRIMARY_URL
+ddev drush site:install minimal --verbose -y
+ddev drush recipe ../recipes/drupalx-core
+ddev drush recipe ../recipes/drupalx-standard
+#ddev drush webform-libraries-download
+ddev drush cr

@@ -1,0 +1,33 @@
+uuid: 1a7dda10-c62b-402c-9229-28f3c7093bd5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.video.field_source
+    - media.type.video
+  module:
+    - media
+_core:
+  default_config_hash: bMzNLkYkAqNraspL_dUhr2w7-GXJ6S4bVGmqYxFR1c4
+id: media.video.default
+targetEntityType: media
+bundle: video
+mode: default
+content:
+  field_source:
+    type: oembed
+    label: visually_hidden
+    settings:
+      max_width: 0
+      max_height: 0
+      loading:
+        attribute: eager
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

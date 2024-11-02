@@ -1,0 +1,17 @@
+uuid: 06c7b88d-aa40-459a-bac4-087bbb6fadcd
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: yyX6rExXMNe-o9tARDGBo6jUooNN7VU5IZ9A7RimU_A
+name: i43large
+label: '4:3 Large (800 x 600)'
+effects:
+  0d48265d-3edb-40fa-a566-7fd33b6b5cf8:
+    uuid: 0d48265d-3edb-40fa-a566-7fd33b6b5cf8
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 800
+      height: 600
+      anchor: center-center

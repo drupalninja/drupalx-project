@@ -1,0 +1,17 @@
+uuid: 507c6936-ce53-4594-98f0-b1793d819e75
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: '-XAxwUQd360JsrpH0qJiQDSZAelmdRL_1o3MvD1VZ70'
+name: herol
+label: 'Hero Large'
+effects:
+  5982e31c-0259-4b4b-bf01-0f708b50f482:
+    uuid: 5982e31c-0259-4b4b-bf01-0f708b50f482
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 766
+      height: 381
+      anchor: center-center

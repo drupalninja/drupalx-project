@@ -1,0 +1,49 @@
+uuid: 81f3f0b7-c00a-47ee-80ab-fd69533bfd44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_views_ref
+    - paragraphs.paragraphs_type.views
+  module:
+    - viewfield
+_core:
+  default_config_hash: rPJ9z8EwNb8iRtZqIdaN5GjGenk_K7xg9AXFRK1AB1w
+id: paragraph.views.field_views_ref
+field_name: field_views_ref
+entity_type: paragraph
+bundle: views
+label: 'Views Reference'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  force_default: false
+  allowed_views:
+    content: '0'
+    files: '0'
+    frontpage: '0'
+    login_history: '0'
+    media: '0'
+    media_library: '0'
+    moderated_content: '0'
+    user_admin_people: '0'
+    recent_cards: '0'
+    content_recent: '0'
+    redirect: '0'
+    taxonomy_term: '0'
+    who_s_new: '0'
+    who_s_online: '0'
+  allowed_display_types:
+    graphql: graphql
+    block: '0'
+    default: '0'
+    feed: '0'
+    page: '0'
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: viewfield

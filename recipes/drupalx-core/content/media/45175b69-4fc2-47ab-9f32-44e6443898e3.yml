@@ -1,0 +1,47 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 45175b69-4fc2-47ab-9f32-44e6443898e3
+  bundle: image
+  default_langcode: en
+  depends:
+    fa0df093-96cd-4dfe-ac7b-cb54f72f8d83: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: placeholder.png
+  created:
+    -
+      value: 1727555484
+  revision_translation_affected:
+    -
+      value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: '| Drush Site-Install'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: '/user'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_image:
+    -
+      entity: fa0df093-96cd-4dfe-ac7b-cb54f72f8d83
+      alt: Placeholder
+      title: ''
+      width: 1313
+      height: 739

@@ -1,0 +1,17 @@
+uuid: f6cf1a4c-0134-4626-89c0-d22db5b5f677
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories: {  }
+_core:
+  default_config_hash: DYUMZGryeGkX0REC6KJ0qOsxz0UcAIcin06JzN5PjrI
+id: pricing_card
+label: 'Pricing card'
+icon_uuid: null
+icon_default: null
+description: 'Card with basic information and bullets about a product or service.'
+behavior_plugins: {  }

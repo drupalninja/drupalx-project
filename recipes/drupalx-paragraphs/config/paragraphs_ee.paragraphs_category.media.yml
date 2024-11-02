@@ -1,0 +1,12 @@
+uuid: c4cb8f44-20a8-4d67-9e07-565e10dd3cbc
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: DmgkPvkbTLJKLyLPJQ14Z4WKIV_W4NOI7ikYD0lO6gQ
+id: media
+label: Media
+description:
+  value: ''
+  format: basic_html
+weight: 0

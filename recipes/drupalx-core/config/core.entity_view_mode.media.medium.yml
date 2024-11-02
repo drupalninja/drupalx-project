@@ -1,0 +1,13 @@
+uuid: 4e7b5757-c2b5-4762-993e-fd5a49696e96
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: NWO6MEDWrgZF4YASAN0_wh70pvWVXQ6vYMVPUhTWQAw
+id: media.medium
+label: Medium
+description: ''
+targetEntityType: media
+cache: true

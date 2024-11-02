@@ -1,0 +1,29 @@
+uuid: 263046ae-9c10-46fe-b94a-3fe42b8f85dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.i169large2x
+    - image.style.i169xlarge
+    - image.style.large
+    - image.style.medium
+    - image.style.thumbnail
+_core:
+  default_config_hash: JKM0fJsfECTDG4rnPVEx8926iSNityH0dsK56xjdGUk
+id: 16_9_images
+label: '16:9 Images'
+image_style_mappings:
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - i169large2x
+        - i169xlarge
+        - large
+        - medium
+        - thumbnail
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+breakpoint_group: responsive_image
+fallback_image_style: i169xlarge

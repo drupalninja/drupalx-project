@@ -1,0 +1,17 @@
+uuid: 139242b4-ea79-46d6-a23f-eb2b7427b592
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: MPsxpjsZWneygg5euH_cuIl4Dq1ALYvcXKFfEXHM710
+name: herolx2
+label: 'Hero Large 2x'
+effects:
+  a666fdda-dfec-4c5b-aa2a-c67a294bfcb3:
+    uuid: a666fdda-dfec-4c5b-aa2a-c67a294bfcb3
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1536
+      height: 764
+      anchor: center-center

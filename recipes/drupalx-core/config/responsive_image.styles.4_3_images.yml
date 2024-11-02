@@ -1,0 +1,27 @@
+uuid: 671ed904-fa11-4867-a6a6-ba53e1924807
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.i43large
+    - image.style.i43large2x
+    - image.style.i43medium
+    - image.style.i43small
+_core:
+  default_config_hash: bkNA5TGi-rRTdkxeY3gLy9rPrwh3q3eY7j3jC4hl_iY
+id: 4_3_images
+label: '4:3 Images'
+image_style_mappings:
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: '(min-width:720px) 33vw, 100vw'
+      sizes_image_styles:
+        - i43large
+        - i43large2x
+        - i43medium
+        - i43small
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+breakpoint_group: responsive_image
+fallback_image_style: i43small

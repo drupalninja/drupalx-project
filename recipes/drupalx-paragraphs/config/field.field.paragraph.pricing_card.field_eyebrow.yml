@@ -1,0 +1,21 @@
+uuid: 1f892553-9548-44fd-9d48-7470249f93cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eyebrow
+    - paragraphs.paragraphs_type.pricing_card
+_core:
+  default_config_hash: h61W759BgQWnCNdbGrOFrQeRhW2qp9P14GR6v7FSMBI
+id: paragraph.pricing_card.field_eyebrow
+field_name: field_eyebrow
+entity_type: paragraph
+bundle: pricing_card
+label: Eyebrow
+description: 'Provide a short label for this content.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

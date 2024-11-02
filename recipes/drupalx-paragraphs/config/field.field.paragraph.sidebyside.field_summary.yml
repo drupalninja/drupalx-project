@@ -1,0 +1,32 @@
+uuid: 91436af1-9e3f-44f5-9ae0-b755cb306292
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary
+    - paragraphs.paragraphs_type.sidebyside
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    basic_html: '0'
+    restricted_html: '0'
+    scripts: '0'
+    full_html: '0'
+    plain_text: '0'
+_core:
+  default_config_hash: MiTMIt7723zcwUl5KQWv95tbKOPby0F_algxHJs2D9A
+id: paragraph.sidebyside.field_summary
+field_name: field_summary
+entity_type: paragraph
+bundle: sidebyside
+label: Summary
+description: 'Provide a brief description of the content being featured.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

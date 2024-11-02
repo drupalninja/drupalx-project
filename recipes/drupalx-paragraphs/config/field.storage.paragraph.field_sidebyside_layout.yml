@@ -1,0 +1,29 @@
+uuid: ebc7ddd2-2933-40bb-84e1-2bfb241c1c06
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: Qd_kczKxivSTh-wXAxghqDL5Z6T218NsogKHsHTIJYU
+id: paragraph.field_sidebyside_layout
+field_name: field_sidebyside_layout
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: left
+      label: 'Media Left'
+    -
+      value: right
+      label: 'Media Right'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

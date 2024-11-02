@@ -1,0 +1,16 @@
+uuid: 180e66ec-f35e-445c-aab1-351fcd296345
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: QvPqtTf-oAxbc1nN3e2kOQxX7n6OFA62uueSC-taDOk
+id: image
+label: Image
+description: 'Basic image media type.'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_image
+  gather_exif: false
+field_map: {  }

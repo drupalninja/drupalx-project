@@ -1,0 +1,17 @@
+uuid: 7c64d0c1-73d1-4795-b36b-3c391e0a04c3
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories: {  }
+_core:
+  default_config_hash: w5iBJTMKBtLHX6VAD8DTFIbANU8i_UQ3AzjdDKelH5M
+id: card
+label: Card
+icon_uuid: null
+icon_default: null
+description: 'A teaser to a piece of content, local or external.'
+behavior_plugins: {  }

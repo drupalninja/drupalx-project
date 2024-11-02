@@ -1,0 +1,17 @@
+uuid: a40498ce-3813-4719-90ea-8027fde767cb
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: PTRxfiynDrebwKCvEt_VBY6JLU7MMiUQV-FMOA-q5vc
+name: i43small
+label: '4:3 Small (420x 315)'
+effects:
+  d58fe0dc-7c68-4192-91af-92ea7b00c279:
+    uuid: d58fe0dc-7c68-4192-91af-92ea7b00c279
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 420
+      height: 315
+      anchor: center-center

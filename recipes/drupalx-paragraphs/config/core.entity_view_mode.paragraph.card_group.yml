@@ -1,0 +1,13 @@
+uuid: 21db6f85-54bc-4bcc-b818-4ab3b4181481
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: zC5QaI_HgwoAXn_wDnmSUdEhk_zq030m276hx-AWbTI
+id: paragraph.card_group
+label: 'Card Group'
+description: ''
+targetEntityType: paragraph
+cache: true

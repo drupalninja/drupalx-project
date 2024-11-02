@@ -1,0 +1,17 @@
+uuid: 99a80bb8-bc7a-4c72-839b-40f10b4c50c9
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: SpXpdYSNNT3vwCqV4taa4wnXvQBs1x6FjSXDhccSzto
+name: i43large2x
+label: '4:3 Large 2x (1280 x 960)'
+effects:
+  ff887816-ffa3-4bcb-9ece-0479ba26bf50:
+    uuid: ff887816-ffa3-4bcb-9ece-0479ba26bf50
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1280
+      height: 960
+      anchor: center-center

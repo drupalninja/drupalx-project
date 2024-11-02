@@ -1,0 +1,12 @@
+uuid: 64db9b76-d7ae-4228-9c0c-faaff68463de
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: J-5yMd_YHviyPOZXLnqf2XDuM9uwT6klEn3zb76YWKE
+id: stats_item
+label: 'Stats item'
+icon_uuid: null
+icon_default: null
+description: 'A list of title + summaries that belong to the stats block.'
+behavior_plugins: {  }

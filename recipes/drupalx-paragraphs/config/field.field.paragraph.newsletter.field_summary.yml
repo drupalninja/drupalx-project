@@ -1,0 +1,26 @@
+uuid: 0e30d2da-adf0-4b74-8263-dd7cc383bda2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary
+    - filter.format.basic_html
+    - paragraphs.paragraphs_type.newsletter
+  module:
+    - text
+_core:
+  default_config_hash: CTlBwg3sf9Qn_LNrMgyXX1-h9D7mtRF4GELn9x72X3g
+id: paragraph.newsletter.field_summary
+field_name: field_summary
+entity_type: paragraph
+bundle: newsletter
+label: Summary
+description: 'Newsletter summary.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

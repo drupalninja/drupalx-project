@@ -1,0 +1,17 @@
+uuid: 4781e9af-8a97-493e-afa9-ad8608626752
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: JOgziyWjUsmeBseJb-n1ndv0ZpB51ePxxVJJ45t1g3I
+name: i11large
+label: '1:1 Large (800 x 800)'
+effects:
+  d2813a8e-0575-41d9-9682-ab4694631f65:
+    uuid: d2813a8e-0575-41d9-9682-ab4694631f65
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 800
+      height: 800
+      anchor: center-center

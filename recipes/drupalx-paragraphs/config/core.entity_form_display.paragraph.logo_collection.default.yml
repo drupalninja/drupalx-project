@@ -1,0 +1,35 @@
+uuid: 7aca4d22-cd07-4d8e-91e8-b22a2e16fe34
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.logo_collection.field_media_item
+    - field.field.paragraph.logo_collection.field_title
+    - paragraphs.paragraphs_type.logo_collection
+  module:
+    - media_library
+_core:
+  default_config_hash: f7ASDyogiK9PmrIVcoWj2_-jUw4-W5vM1hKS6P7FGHk
+id: paragraph.logo_collection.default
+targetEntityType: paragraph
+bundle: logo_collection
+mode: default
+content:
+  field_media_item:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,21 @@
+uuid: 3466b77e-7322-4fcb-b163-4bc038cc5145
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subhead
+    - node.type.article
+_core:
+  default_config_hash: nA9j_nwG87TfGzv0FDQEFWwCHjK91kzQkOFbNimZ8VI
+id: node.article.field_subhead
+field_name: field_subhead
+entity_type: node
+bundle: article
+label: Subhead
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

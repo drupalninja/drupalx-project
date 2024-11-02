@@ -1,0 +1,514 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: c3575d66-3e81-4bd0-8fbe-7ac67b938687
+  bundle: landing
+  default_langcode: en
+  depends:
+    4b432a0a-e5df-409a-8b30-134fed6e2291: node
+    a9f34d11-cbfb-4f78-916d-8fd8c006f728: node
+    9a33874e-ce03-4f0f-9c6e-164a416d574c: media
+    84e378f2-dd00-459d-9018-4c89353b9eee: media
+    14bbf672-441a-408e-bf08-7706894962d3: media
+    7b34a142-7b7f-4ac4-952f-e31d8b83d82f: media
+    2033cf4f-ec32-4689-878f-9410fa8e22d0: media
+    346f015d-a9d3-49bd-bb34-267ee5259720: media
+    26b36c99-0a3c-457a-98e3-ab4ccfa88ee7: media
+    7028d67c-8d2e-4db6-bd43-6e7726384291: media
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'DrupalX - AI-Powered Lightning Fast Development'
+  created:
+    -
+      value: 1724541785
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'DrupalX - AI-Powered Lightning Fast Development | Drush Site-Install'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: '/welcome'
+  path:
+    -
+      alias: /welcome
+      langcode: en
+      pathauto: 0
+  field_content:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 9627102d-ac79-4040-b137-662a4e97a1c5
+          bundle: hero
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1724541785
+          behavior_settings:
+            -
+              value: {  }
+          field_heading:
+            -
+              value: '<strong>Empower</strong> Your Web Development with <strong>DrupalX</strong>'
+              format: restricted_html
+          field_hero_layout:
+            -
+              value: image_top
+          field_link:
+            -
+              target_uuid: 4b432a0a-e5df-409a-8b30-134fed6e2291
+              title: Start
+              options: {  }
+          field_link2:
+            -
+              target_uuid: a9f34d11-cbfb-4f78-916d-8fd8c006f728
+              title: Explore
+              options: {  }
+          field_media:
+            -
+              entity: 9a33874e-ce03-4f0f-9c6e-164a416d574c
+          field_summary:
+            -
+              value: "<p>Experience the next-gen platform that seamlessly integrates Drupal's powerful CMS with innovative front-end technologies. Elevate your projects with unmatched flexibility and performance.</p>"
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: e513b14e-b9b2-4f90-b556-f6f1e4796dd9
+          bundle: sidebyside
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1724541785
+          behavior_settings:
+            -
+              value: {  }
+          field_features:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: d4f67c3f-d1a1-4faa-8ab4-479a5ccfafc0
+                  bundle: stats_item
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1727384459
+                  behavior_settings:
+                    -
+                      value: {  }
+                  field_icon:
+                    -
+                      value: hub
+                  field_summary:
+                    -
+                      value: 'Harness the power of headless CMS to separate the front and back-end for optimal flexibility.'
+                      format: ''
+                  field_title:
+                    -
+                      value: 'Decoupled Architecture'
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 3a5c3475-cddd-4043-87be-f1d1e2227373
+                  bundle: stats_item
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1727384469
+                  behavior_settings:
+                    -
+                      value: {  }
+                  field_icon:
+                    -
+                      value: smart_toy
+                  field_summary:
+                    -
+                      value: 'Leverage cutting-edge AI assistants and smart code generators to accelerate your development.'
+                      format: ''
+                  field_title:
+                    -
+                      value: 'AI Development Tools'
+          field_media:
+            -
+              entity: 9a33874e-ce03-4f0f-9c6e-164a416d574c
+          field_sidebyside_layout:
+            -
+              value: right
+          field_summary:
+            -
+              value: "<p>Elevate Your Web Development with DrupalX's Cutting-Edge Features</p>"
+              format: basic_html
+          field_title:
+            -
+              value: 'Unmatched Advantages of DrupalX'
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 1d91a0bb-4542-4fbb-bfc2-dfd49eaa4153
+          bundle: card_group
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1727385157
+          behavior_settings:
+            -
+              value: {  }
+          field_card:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: f4580469-ab86-4f43-8c93-1fa2828a3673
+                  bundle: stats_item
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1727385163
+                  behavior_settings:
+                    -
+                      value: {  }
+                  field_icon:
+                    -
+                      value: integration_instructions
+                  field_summary:
+                    -
+                      value: 'Experience seamless integration and flexibility with our Decoupled Architecture.'
+                      format: ''
+                  field_title:
+                    -
+                      value: 'Unlock the Power of Modern Web Solutions Tailored for You'
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 34118e3d-8819-404d-96f6-df05672a9bc2
+                  bundle: stats_item
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1727385199
+                  behavior_settings:
+                    -
+                      value: {  }
+                  field_icon:
+                    -
+                      value: schema
+                  field_summary:
+                    -
+                      value: "Leverage the power of React and Node.js to dramatically improve your website's efficiency and speed."
+                      format: ''
+                  field_title:
+                    -
+                      value: 'Experience seamless integration and flexibility with our Decoupled Architecture.'
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: a7f738c7-2c47-4b45-b080-08efad83bdf6
+                  bundle: stats_item
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1727385223
+                  behavior_settings:
+                    -
+                      value: {  }
+                  field_icon:
+                    -
+                      value: speed
+                  field_summary:
+                    -
+                      value: 'Deliver lightning-quick load times and smooth interactions that keep your audience coming back.'
+                      format: ''
+                  field_title:
+                    -
+                      value: 'Achieve Blazing Fast Performance That Keeps Your Users Engaged and Satisfied'
+          field_title:
+            -
+              value: "Discover the Future of Web Development with DrupalX's Innovative Features"
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 2c7ae251-4296-49b7-8f17-ce3a6cab52e2
+          bundle: logo_collection
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1727442803
+          behavior_settings:
+            -
+              value: {  }
+          field_media_item:
+            -
+              entity: 84e378f2-dd00-459d-9018-4c89353b9eee
+            -
+              entity: 14bbf672-441a-408e-bf08-7706894962d3
+            -
+              entity: 7b34a142-7b7f-4ac4-952f-e31d8b83d82f
+            -
+              entity: 2033cf4f-ec32-4689-878f-9410fa8e22d0
+            -
+              entity: 346f015d-a9d3-49bd-bb34-267ee5259720
+            -
+              entity: 26b36c99-0a3c-457a-98e3-ab4ccfa88ee7
+            -
+              entity: 7028d67c-8d2e-4db6-bd43-6e7726384291
+          field_title:
+            -
+              value: 'Trusted Open Source Technology'
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 2ca38ce2-5d7b-4e6c-bea7-2fc5357f9b44
+          bundle: sidebyside
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1724541785
+          behavior_settings:
+            -
+              value: {  }
+          field_media:
+            -
+              entity: 9a33874e-ce03-4f0f-9c6e-164a416d574c
+          field_sidebyside_layout:
+            -
+              value: left
+          field_summary:
+            -
+              value: "<p>Join the DrupalX ecosystem to unlock new possibilities in web development. Our platform combines the best of Drupal's robust backend with cutting-edge frontend technologies, enabling you to create powerful, scalable, and innovative web solutions.</p>"
+              format: basic_html
+          field_title:
+            -
+              value: 'Elevate Your Web Development Skills with DrupalX'
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 75a62830-d9fb-43b0-9ac6-9a75fef27141
+          bundle: text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1727707542
+          behavior_settings:
+            -
+              value: {  }
+          field_body:
+            -
+              value: "<p>Start building faster, more efficient websites today. Explore DrupalX's capabilities and see how it can transform your development process.</p>"
+              format: basic_html
+              summary: ''
+          field_link:
+            -
+              target_uuid: 4b432a0a-e5df-409a-8b30-134fed6e2291
+              title: 'Get Started'
+              options: {  }
+          field_link2:
+            -
+              target_uuid: a9f34d11-cbfb-4f78-916d-8fd8c006f728
+              title: 'Learn More'
+              options: {  }
+          field_text_layout:
+            -
+              value: buttons-right
+          field_title:
+            -
+              value: 'Accelerate Your Web Development Journey'
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 87e65230-43e0-488f-82f1-505eb04bd3b3
+          bundle: newsletter
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1727729563
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_summary:
+            -
+              value: '<p>Get the latest product updates, feature releases, and optimization tips delivered straight to your inbox.</p>'
+              format: basic_html
+          field_title:
+            -
+              value: 'Stay Informed with DrupalX'
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 44ff5bf6-9846-449d-a618-1ec72d05bafc
+          bundle: sidebyside
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1727730047
+          behavior_settings:
+            -
+              value: {  }
+          field_features:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: b22d60c4-1de1-4ea2-9fbc-cb4816f3c39e
+                  bundle: stats_item
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1727730099
+                  behavior_settings:
+                    -
+                      value: {  }
+                  field_summary:
+                    -
+                      value: 'Explore our innovative tools designed to enhance your web development journey, from AI-assisted coding to seamless React integration.'
+                      format: ''
+                  field_title:
+                    -
+                      value: 'Key Features'
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: c0748cae-8c43-4352-b2cb-e8a98b489931
+                  bundle: stats_item
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1727730112
+                  behavior_settings:
+                    -
+                      value: {  }
+                  field_summary:
+                    -
+                      value: "Leverage DrupalX's powerful features to reduce development time and deliver high-performance websites faster than ever."
+                      format: ''
+                  field_title:
+                    -
+                      value: 'Accelerate Your Projects'
+          field_media:
+            -
+              entity: 9a33874e-ce03-4f0f-9c6e-164a416d574c
+          field_sidebyside_layout:
+            -
+              value: right
+          field_summary:
+            -
+              value: '<p>DrupalX offers a powerful blend of flexibility and performance, enabling seamless integration and unparalleled user experience.</p>'
+              format: basic_html
+          field_title:
+            -
+              value: 'Discover the Essential Features That Make DrupalX Stand Out in Web Development'
+  field_hide_page_title:
+    -
+      value: true

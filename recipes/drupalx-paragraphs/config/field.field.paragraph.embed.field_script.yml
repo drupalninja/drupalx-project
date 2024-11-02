@@ -1,0 +1,32 @@
+uuid: 08430f78-6506-4a81-abfd-c9947a4016ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_script
+    - paragraphs.paragraphs_type.embed
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    scripts: scripts
+    basic_html: '0'
+    restricted_html: '0'
+    full_html: '0'
+    plain_text: '0'
+_core:
+  default_config_hash: LDY9dVWCazyNkjKqBWVV-Zz7r7AIkfvi_JgLND1O20E
+id: paragraph.embed.field_script
+field_name: field_script
+entity_type: paragraph
+bundle: embed
+label: Script
+description: 'Paste the third-party script embed here.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

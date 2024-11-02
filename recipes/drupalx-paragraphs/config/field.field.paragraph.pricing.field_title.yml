@@ -1,0 +1,21 @@
+uuid: 65a3523b-214c-4250-b468-67a6275192f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.pricing
+_core:
+  default_config_hash: '-iPmyr6Z8aWlWETc9q8QDjqVQwEaswv7VRx4C-vkpEA'
+id: paragraph.pricing.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: pricing
+label: Title
+description: 'Provide the primary heading for the accordion.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

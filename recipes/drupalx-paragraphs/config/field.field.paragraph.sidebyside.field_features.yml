@@ -1,0 +1,86 @@
+uuid: 62a5e6db-08d0-4dab-a2ec-78a12f74d92b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_features
+    - paragraphs.paragraphs_type.bullet
+    - paragraphs.paragraphs_type.sidebyside
+    - paragraphs.paragraphs_type.stats_item
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: 6BHqDTQirFgRb-TmG690slSpyoKqp2-ChG6IjhQ2dQ4
+id: paragraph.sidebyside.field_features
+field_name: field_features
+entity_type: paragraph
+bundle: sidebyside
+label: Features
+description: 'Optional featured items to display within the content area. It is best to not mix items (ie bullets or stats) in the same component.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      bullet: bullet
+      stats_item: stats_item
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 17
+        enabled: false
+      accordion_item:
+        weight: 18
+        enabled: false
+      bullet:
+        weight: 21
+        enabled: true
+      card:
+        weight: 19
+        enabled: false
+      card_group:
+        weight: 20
+        enabled: false
+      carousel:
+        weight: 21
+        enabled: false
+      carousel_item:
+        weight: 22
+        enabled: false
+      embed:
+        weight: 23
+        enabled: false
+      gallery:
+        weight: 24
+        enabled: false
+      hero:
+        weight: 25
+        enabled: false
+      logo_collection:
+        weight: 29
+        enabled: false
+      media:
+        weight: 26
+        enabled: false
+      newsletter:
+        weight: 27
+        enabled: false
+      quote:
+        weight: 28
+        enabled: false
+      sidebyside:
+        weight: 29
+        enabled: false
+      stats_item:
+        weight: 30
+        enabled: true
+      text:
+        weight: 31
+        enabled: false
+      views:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,21 @@
+uuid: e58cee1c-6783-47c8-90b8-91ee6c795c36
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_suffix
+    - paragraphs.paragraphs_type.pricing_card
+_core:
+  default_config_hash: kpkyk65XG_3dg_fTPNL64TOP1EQFB0hb6yoF_au8wNc
+id: paragraph.pricing_card.field_suffix
+field_name: field_suffix
+entity_type: paragraph
+bundle: pricing_card
+label: 'Title Suffix'
+description: 'Optional suffix for the title'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

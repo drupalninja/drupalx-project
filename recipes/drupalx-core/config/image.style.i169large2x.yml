@@ -1,0 +1,17 @@
+uuid: 52b2c8c3-65bd-44b2-900a-8801d0fd54c6
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: '-ndg9L_PfDFZn0ojNcd4-qYiJPuLfEfaNYxRqc6BQ7I'
+name: i169large2x
+label: '16:9 Large 2x (1280 x 720)'
+effects:
+  6550ec71-2a16-4161-87a2-1442161846b5:
+    uuid: 6550ec71-2a16-4161-87a2-1442161846b5
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1280
+      height: 720
+      anchor: center-center

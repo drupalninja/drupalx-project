@@ -1,0 +1,25 @@
+uuid: 1d057e81-9985-4f33-aa03-dfabfe3e88a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_meta_tags
+    - node.type.page
+  module:
+    - metatag
+_core:
+  default_config_hash: mvTzPOE5XvUuSdcQjINee6XeUuVqIuPBgBtdTeUun8k
+id: node.page.field_meta_tags
+field_name: field_meta_tags
+entity_type: node
+bundle: page
+label: 'Meta tags'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'a:0:{}'
+default_value_callback: ''
+settings: {  }
+field_type: metatag

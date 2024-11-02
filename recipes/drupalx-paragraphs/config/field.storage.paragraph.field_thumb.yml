@@ -1,0 +1,22 @@
+uuid: e3b1b5b1-3bf7-4dcb-bf5a-a42b72d30d48
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - paragraphs
+_core:
+  default_config_hash: GMl5Is2MuSs_NY5mesA3Y5c0KRr-CEpckZJDPGxexPc
+id: paragraph.field_thumb
+field_name: field_thumb
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+uuid: d903c74c-3b8e-4339-9bf1-8ceff0ae0574
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icon
+    - paragraphs.paragraphs_type.bullet
+_core:
+  default_config_hash: VgD1-1BcMd5i4H1BuAsucyo-uFBZvzVc2Juy1K9zVG8
+id: paragraph.bullet.field_icon
+field_name: field_icon
+entity_type: paragraph
+bundle: bullet
+label: Icon
+description: 'Material icon name.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

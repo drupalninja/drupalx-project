@@ -1,0 +1,91 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: c4a5cb28-4bfb-400f-b444-f2ca82a3851b
+  bundle: article
+  default_langcode: en
+  depends:
+    9a33874e-ce03-4f0f-9c6e-164a416d574c: media
+    36c451a3-fbe0-40d1-b304-0394c3abf9cf: taxonomy_term
+    b11e264d-5851-4886-8049-ab39b127e21c: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Article title 1'
+  created:
+    -
+      value: 1724541785
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: true
+  revision_translation_affected:
+    -
+      value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Article title 1 | DrupalX'
+    -
+      tag: meta
+      attributes:
+        name: description
+        content: "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. \_"
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: '/article/article-title-1'
+  path:
+    -
+      alias: /article/article-title-1
+      langcode: en
+      pathauto: 1
+  body:
+    -
+      value: |-
+        <h2>Lorem ipsum dolor sit amet</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <h3>Vestibulum ante ipsum primis</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <drupal-media data-align="center" data-caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." data-entity-type="media" data-entity-uuid="9a33874e-ce03-4f0f-9c6e-164a416d574c" data-view-mode=""></drupal-media>
+                  <h3>Curabitur vel sem sit amet</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <drupal-media data-align="center" data-caption="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." data-entity-type="media" data-entity-uuid="9a33874e-ce03-4f0f-9c6e-164a416d574c" data-view-mode=""></drupal-media>
+      format: full_html
+      summary: ''
+  field_lead:
+    -
+      value: '<p>Lorem ipsum dolor sit amet consectetur. Congue vel sagittis eu ullamcorper vel. Et et dui est ante tempor egestas pellentesque odio. Ornare erat lacus commodo porttitor ut enim. Ultricies mauris blandit in fermentum fringilla mollis risus ut. Nam eget eu suspendisse ut fermentum nascetur pretium lectus. Odio amet amet nam viverra hendrerit diam et. Nibh nunc in senectus odio tempor vitae id. Sit ut sit porta nisl enim.</p>'
+      format: full_html
+  field_media:
+    -
+      entity: 9a33874e-ce03-4f0f-9c6e-164a416d574c
+  field_subhead:
+    -
+      value: 'Why DrupalX'
+  field_summary:
+    -
+      value: 'Lorem ipsum dolor sit amet consectetur. Congue vel sagittis eu ullamcorper vel. Et et dui est ante tempor egestas pellentesque odio. Ornare erat lacus commodo porttitor ut enim. Ultricies mauris blandit in fermentum fringilla mollis risus ut.'
+  field_tags:
+    -
+      entity: 36c451a3-fbe0-40d1-b304-0394c3abf9cf
+    -
+      entity: b11e264d-5851-4886-8049-ab39b127e21c
+  field_thumbnail:
+    -
+      entity: 9a33874e-ce03-4f0f-9c6e-164a416d574c

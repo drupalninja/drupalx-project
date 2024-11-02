@@ -1,0 +1,16 @@
+name: 'DrupalX Paragraphs'
+description: 'DrupalX paragraph types.'
+type: 'Site'
+
+install:
+  # Core
+  - link
+  - media
+  - media_library
+  - options
+  - text
+  # Contrib
+  - paragraphs
+  - paragraphs_features
+  - paragraphs_ee
+  - viewfield

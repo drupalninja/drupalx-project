@@ -1,0 +1,21 @@
+uuid: a024325a-e351-4558-97c3-9a50a82fd2d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.media
+_core:
+  default_config_hash: GHvz1i18aQdU7Ebikuz4HLi5erOh-gAoyRsNBFWc6Hs
+id: paragraph.media.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: media
+label: Title
+description: 'Provide the primary heading for an embedded media item.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

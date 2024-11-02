@@ -1,0 +1,17 @@
+uuid: 53f9b78d-1a7e-4023-b08d-70ce720487e5
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: krRqt3stnFtYY9U1H05hNqDIbY9yEf-h2_RBYzUoQXc
+name: i11small
+label: '1:1 Small'
+effects:
+  b784ff57-4083-477d-b950-143497182bef:
+    uuid: b784ff57-4083-477d-b950-143497182bef
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 200
+      height: 200
+      anchor: center-center

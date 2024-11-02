@@ -1,0 +1,21 @@
+uuid: a0f2723a-70a4-4b82-b41a-f0f3a936ce4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.embed
+_core:
+  default_config_hash: wSlzs2dcgZ2ECkElhJ1PeIkBjmRFlnlDwCuobcfkxl0
+id: paragraph.embed.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: embed
+label: Title
+description: 'Provide the primary heading for the embedded content.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

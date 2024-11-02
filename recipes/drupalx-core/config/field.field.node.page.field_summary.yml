@@ -1,0 +1,21 @@
+uuid: 1501fa43-d33e-48db-aa39-e0fd30e93216
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.page
+_core:
+  default_config_hash: lENhTuC87oHfkM3Bkef8NfKx97iXzoetXCBzJuU4aQw
+id: node.page.field_summary
+field_name: field_summary
+entity_type: node
+bundle: page
+label: Summary
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

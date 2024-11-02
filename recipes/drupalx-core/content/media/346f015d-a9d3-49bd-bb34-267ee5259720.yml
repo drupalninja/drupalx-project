@@ -1,0 +1,47 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 346f015d-a9d3-49bd-bb34-267ee5259720
+  bundle: image
+  default_langcode: en
+  depends:
+    b937e8ac-ac30-4351-ac29-21b1de7cdf2f: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: shadcn.png
+  created:
+    -
+      value: 1727532138
+  revision_translation_affected:
+    -
+      value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: '| Drush Site-Install'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: '/user'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_image:
+    -
+      entity: b937e8ac-ac30-4351-ac29-21b1de7cdf2f
+      alt: 'shadcn logo'
+      title: ''
+      width: 474
+      height: 106

@@ -1,0 +1,17 @@
+uuid: 730e6109-64f2-4c65-a8fc-8f0a0cebe023
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: peGqN83zL-QPW48yVX-lS2RsaDq4DLgzGb6P9_5I7Lg
+name: heros
+label: 'Hero Small'
+effects:
+  cbad684e-8e75-475a-9810-5e746ce24bfa:
+    uuid: cbad684e-8e75-475a-9810-5e746ce24bfa
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 720
+      height: 552
+      anchor: center-center

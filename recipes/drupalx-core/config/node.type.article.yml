@@ -1,0 +1,25 @@
+uuid: b0f3c04d-36d6-4067-a58c-ed26cc7ff25c
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - node_revision_delete
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+  node_revision_delete:
+    minimum_age_to_delete: 0
+    minimum_revisions_to_keep: 3
+    when_to_delete: 0
+_core:
+  default_config_hash: fQJE30W9TXQc1Ywf_FLPtN9cDIh5xe2ekUWlPZ82AhU
+name: Article
+type: article
+description: 'The Article content type represents a written piece published in a newspaper, magazine, or online platform. It serves as a platform for sharing information, insights, stories, or opinions on a specific topic, catering to diverse audiences and interests.'
+help: null
+new_revision: true
+preview_mode: 0
+display_submitted: false

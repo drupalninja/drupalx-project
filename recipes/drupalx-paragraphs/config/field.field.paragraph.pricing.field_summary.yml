@@ -1,0 +1,24 @@
+uuid: f8873228-0697-4da6-a853-673bcc7b7993
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary
+    - paragraphs.paragraphs_type.pricing
+  module:
+    - text
+_core:
+  default_config_hash: fsICv8U3GmXGATKP0B8ig8b732qEnsdL92l7Rzn_5RI
+id: paragraph.pricing.field_summary
+field_name: field_summary
+entity_type: paragraph
+bundle: pricing
+label: Summary
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

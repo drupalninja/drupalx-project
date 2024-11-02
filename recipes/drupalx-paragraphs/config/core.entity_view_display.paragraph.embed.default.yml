@@ -1,0 +1,34 @@
+uuid: 1193209b-2a81-45d2-83e2-557e5a04b208
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.embed.field_script
+    - field.field.paragraph.embed.field_title
+    - paragraphs.paragraphs_type.embed
+  module:
+    - text
+_core:
+  default_config_hash: RWgzfhybScivaQy0HzAEBD_UXjMolzoWVT7Yl7LZsGk
+id: paragraph.embed.default
+targetEntityType: paragraph
+bundle: embed
+mode: default
+content:
+  field_script:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

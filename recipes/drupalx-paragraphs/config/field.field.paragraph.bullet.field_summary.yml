@@ -1,0 +1,24 @@
+uuid: 54154d49-384b-4c34-9fdc-6e50376bfe4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary
+    - paragraphs.paragraphs_type.bullet
+  module:
+    - text
+_core:
+  default_config_hash: HguSqq7P9qG8FkvRcNcloFg3cgehHPCTPDJ9argATIs
+id: paragraph.bullet.field_summary
+field_name: field_summary
+entity_type: paragraph
+bundle: bullet
+label: Summary
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

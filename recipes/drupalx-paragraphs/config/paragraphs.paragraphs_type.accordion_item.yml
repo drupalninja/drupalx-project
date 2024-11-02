@@ -1,0 +1,17 @@
+uuid: 1f14bef8-b3ea-43be-bd25-81134eb052a6
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories: {  }
+_core:
+  default_config_hash: l9n8LXzoBtvRU-mlTCEbOwIkALrBOF9NTtiYm_5VJw4
+id: accordion_item
+label: 'Accordion item'
+icon_uuid: null
+icon_default: null
+description: 'Title, description pairing to be used inside of an accordion.'
+behavior_plugins: {  }

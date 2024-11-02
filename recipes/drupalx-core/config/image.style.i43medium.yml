@@ -1,0 +1,17 @@
+uuid: 8c237625-2471-483e-9d3c-6e3468962377
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: a52bCrSW8BuBOM_qydE4D5zFHc1WqeAkQN9JMbv6w3s
+name: i43medium
+label: '4:3 Medium (640 x 480)'
+effects:
+  40726c34-c520-4222-baf9-646a9570f9a3:
+    uuid: 40726c34-c520-4222-baf9-646a9570f9a3
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 640
+      height: 480
+      anchor: center-center

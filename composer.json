@@ -15,42 +15,29 @@
         "drupal/admin_toolbar": "^3.4",
         "drupal/admin_toolbar_tools": "^3.4",
         "drupal/allowed_formats": "^3.0",
-        "drupal/auto_entitylabel": "^3.0",
-        "drupal/block_content_template": "^1.5",
-        "drupal/claro_media_library_theme": "^1.0@alpha",
-        "drupal/components": "^3.0@beta",
         "drupal/core-composer-scaffold": "^10.3",
         "drupal/core-recommended": "^10.3",
+        "drupal/default_content": "^2.0@alpha",
         "drupal/features": "^3.14",
         "drupal/field_group": "^3.4",
         "drupal/gin": "^3.0@RC",
-        "drupal/gin_lb": "^1.0@RC",
         "drupal/gin_login": "^2.0",
-        "drupal/guardr_core": "^2.1",
-        "drupal/inline_block_title_automatic": "^1.1",
-        "drupal/layout_builder_browser": "^1.6",
-        "drupal/layout_builder_modal": "^1.2",
-        "drupal/layout_builder_restrictions": "^3.0",
         "drupal/linkit": "^6.1",
-        "drupal/material_icons": "^2.0",
         "drupal/metatag": "^2.0",
         "drupal/node_revision_delete": "^2.0@RC",
-        "drupal/paragraphs": "^1.17",
-        "drupal/paragraphs_features": "^2.0",
         "drupal/pathauto": "^1.12",
         "drupal/redirect": "^1.9",
         "drupal/svg_image_responsive": "^3.0",
         "drupal/taxonomy_access_fix": "^4.0",
+        "drupal/webp": "^1.0@RC",
+        "drupal/components": "^3.0@beta",
         "drupal/twig_field_value": "^2.0",
         "drupal/twig_tweak": "^3.3",
-        "drupal/viewsreference": "2.x-dev",
         "drupal/webform": "^6.2",
         "drupal/webform_ui": "^6.2",
-        "drupal/webp": "^1.0@RC",
-        "drupalninja/drupalx_bootswatch": "^1.0",
-        "drupalninja/drupalx_gin": "^1.0",
-        "drupalninja/drupalx_theme": "^1.0",
-        "drush/drush": "^11 || ^12",
+        "drupalninja/drupalx-paragraphs": "^1.0",
+        "drupalninja/drupalx_theme": "1.x-dev",
+        "drush/drush": "^11 || ^12 || ^13",
         "oomphinc/composer-installers-extender": "^2.0",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.2"
@@ -91,7 +78,8 @@
             "ergebnis/composer-normalize": true,
             "oomphinc/composer-installers-extender": true,
             "php-http/discovery": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "tbachert/spi": true
         },
         "discard-changes": true,
         "sort-packages": true
@@ -132,7 +120,11 @@
         "patchLevel": {
             "drupal/core": "-p2"
         },
-        "patches": {}
+        "patches": {
+            "drupal/core": {
+                "Suppress unexpected type error when Recipes are applied": "patches/recipes-unexpected-type.patch"
+            }
+        }
     },
     "scripts": {
         "pre-install-cmd": [

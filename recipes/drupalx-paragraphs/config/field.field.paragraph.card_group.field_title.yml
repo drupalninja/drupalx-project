@@ -1,0 +1,21 @@
+uuid: 75dae99f-33a1-407a-a7ea-68a9cd109c81
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.card_group
+_core:
+  default_config_hash: D0hyG82o-HpzUmm3LonFwFuy7QUF1HP61WJt6fmpuic
+id: paragraph.card_group.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: card_group
+label: Title
+description: 'Provide the primary heading for the card list.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,26 @@
+uuid: c87401cd-14e1-45de-905d-5112f5fd0415
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_lead
+    - filter.format.full_html
+    - node.type.article
+  module:
+    - text
+_core:
+  default_config_hash: Vh9bj04s8z-e99ldLrYqsG56d09e-sxD915VRyPSAzw
+id: node.article.field_lead
+field_name: field_lead
+entity_type: node
+bundle: article
+label: Lead
+description: 'Article lead paragraph.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text_long

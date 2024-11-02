@@ -1,0 +1,19 @@
+uuid: 7d55de5e-57ac-4346-bc9a-b99506cc8f39
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: RkGuN2Xlpl_O-SqOR03xGbdFdFoVewyPbbjxcxzssJE
+name: Scripts
+format: scripts
+weight: 0
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: false
+    weight: -10
+    settings:
+      allowed_html: ''
+      filter_html_help: true
+      filter_html_nofollow: false

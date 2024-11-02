@@ -1,0 +1,30 @@
+uuid: bc23f570-513e-4e08-8149-a36683783740
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_authors
+    - node.type.article
+    - taxonomy.vocabulary.authors
+_core:
+  default_config_hash: gT4murY2tT29UpbVZrpBDh4v5KrUAiDp-SXA48iDKrY
+id: node.article.field_authors
+field_name: field_authors
+entity_type: node
+bundle: article
+label: Authors
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      authors: authors
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

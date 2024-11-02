@@ -1,0 +1,17 @@
+uuid: e6310c9f-8b58-4caa-ba33-0b8a53073081
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: C7UhlQg0FLUta998D8J1fPkxF9abLHbB3Dpcws6A0Yg
+name: i169xlarge
+label: '16:9 Extra Large (720 x 405)'
+effects:
+  f21e3d77-58b0-4b5a-b01c-9a82b0a380ac:
+    uuid: f21e3d77-58b0-4b5a-b01c-9a82b0a380ac
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 720
+      height: 405
+      anchor: center-center

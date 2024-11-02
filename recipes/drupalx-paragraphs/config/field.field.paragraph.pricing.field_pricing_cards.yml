@@ -1,0 +1,96 @@
+uuid: 6e96aa60-fe46-4d78-b53e-ecba340fe7eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pricing_cards
+    - paragraphs.paragraphs_type.pricing
+    - paragraphs.paragraphs_type.pricing_card
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: NQBbOqB8cuB-dzbgCbKpM2kFOH0MhKVIp601fQ2Ne5k
+id: paragraph.pricing.field_pricing_cards
+field_name: field_pricing_cards
+entity_type: paragraph
+bundle: pricing
+label: 'Pricing cards'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      pricing_card: pricing_card
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 23
+        enabled: false
+      accordion_item:
+        weight: 24
+        enabled: false
+      bullet:
+        weight: 25
+        enabled: false
+      card:
+        weight: 26
+        enabled: false
+      card_compare:
+        weight: 27
+        enabled: false
+      card_group:
+        weight: 28
+        enabled: false
+      carousel:
+        weight: 29
+        enabled: false
+      carousel_item:
+        weight: 30
+        enabled: false
+      compare:
+        weight: 31
+        enabled: false
+      embed:
+        weight: 32
+        enabled: false
+      gallery:
+        weight: 33
+        enabled: false
+      hero:
+        weight: 34
+        enabled: false
+      logo_collection:
+        weight: 35
+        enabled: false
+      media:
+        weight: 36
+        enabled: false
+      newsletter:
+        weight: 37
+        enabled: false
+      pricing:
+        weight: 38
+        enabled: false
+      pricing_card:
+        weight: 39
+        enabled: true
+      quote:
+        weight: 40
+        enabled: false
+      sidebyside:
+        weight: 41
+        enabled: false
+      stats_item:
+        weight: 42
+        enabled: false
+      text:
+        weight: 43
+        enabled: false
+      views:
+        weight: 44
+        enabled: false
+field_type: entity_reference_revisions
