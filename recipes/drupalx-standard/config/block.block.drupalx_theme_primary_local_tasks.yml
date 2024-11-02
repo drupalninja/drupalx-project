@@ -1,6 +1,6 @@
-uuid: cd53fda6-0f36-4f84-9441-a381d6a5a544
+uuid: 77eb6ae1-d337-4a5d-a690-0f75430b9a4b
 langcode: en
-status: true
+status: false
 dependencies:
   theme:
     - drupalx_theme
@@ -8,8 +8,8 @@ _core:
   default_config_hash: Hh01DLj9k7UnNdPpOQXHZHW7GHf2OPNDQyCJF7_R9ac
 id: drupalx_theme_primary_local_tasks
 theme: drupalx_theme
-region: content
-weight: -6
+region: primary_menu
+weight: -5
 provider: null
 plugin: local_tasks_block
 settings:

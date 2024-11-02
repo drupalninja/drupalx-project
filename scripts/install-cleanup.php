@@ -11,7 +11,6 @@ $config_factory = $container->get('config.factory');
 $blocks = [
   'drupalx_theme_breadcrumbs',
   'drupalx_theme_help',
-  'drupalx_theme_primary_local_tasks',
   'drupalx_theme_page_title',
 ];
 

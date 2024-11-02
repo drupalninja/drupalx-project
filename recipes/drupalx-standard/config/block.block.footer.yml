@@ -9,7 +9,7 @@ dependencies:
   theme:
     - drupalx_theme
 _core:
-  default_config_hash: CbhEXKe1vcQAb-ZMVVOmZB4qByNyyJRq3CZfDwDZcPc
+  default_config_hash: UQZsoFvywNc_FVlgpeEdJrznqpFYnsgfVu__A0mde00
 id: footer
 theme: drupalx_theme
 region: footer

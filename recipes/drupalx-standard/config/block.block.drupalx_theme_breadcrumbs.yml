@@ -1,6 +1,6 @@
-uuid: 37fddbcb-468b-4dba-9026-8fb7e6c49a6c
+uuid: ad2c955a-c8b0-402c-a762-6c657d696147
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -11,7 +11,7 @@ _core:
 id: drupalx_theme_breadcrumbs
 theme: drupalx_theme
 region: primary_menu
-weight: -7
+weight: 0
 provider: null
 plugin: system_breadcrumb_block
 settings:

@@ -1,6 +1,6 @@
-uuid: e231cb62-a8dd-41ce-a86f-33037fef2246
+uuid: 8b8494b6-996b-4160-bdf3-3244fdeea348
 langcode: en
-status: false
+status: true
 dependencies:
   theme:
     - drupalx_theme
@@ -9,7 +9,7 @@ _core:
 id: drupalx_theme_local_tasks
 theme: drupalx_theme
 region: content
-weight: -2
+weight: -5
 provider: null
 plugin: local_tasks_block
 settings:

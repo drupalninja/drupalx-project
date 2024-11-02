@@ -5,11 +5,11 @@ dependencies:
   theme:
     - drupalx_theme
 _core:
-  default_config_hash: WQIf_w-Pkt4Vqc98YnjOTttgY77Vzc2U5292-4c927k
+  default_config_hash: lxmmdHiu5CUsbsnbxdkrfCvkQOt_gHpUiS3nVjJjUiM
 id: drupalx_theme_pagetitle
 theme: drupalx_theme
 region: content
-weight: -4
+weight: -6
 provider: null
 plugin: page_title_block
 settings:

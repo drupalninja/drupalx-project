@@ -9,7 +9,7 @@ dependencies:
   theme:
     - drupalx_theme
 _core:
-  default_config_hash: I0721-7XaCQ2BXG4PZsydsog9MF9GIAiNwkr8PEqPIQ
+  default_config_hash: r44-0td4SClvFd5lX5SiBWCfojhWKTyhgfltHYLc-gs
 id: drupalx_theme_mainnavigation
 theme: drupalx_theme
 region: primary_menu
