@@ -7,8 +7,6 @@ install:
   - drupalx_theme
   - twig_field_value
   - twig_tweak
-  - webform
-  - webform_ui
 
 config:
   actions:

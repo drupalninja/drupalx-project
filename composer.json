@@ -1,6 +1,6 @@
 {
     "name": "drupalninja/drupalx-project",
-    "description": "Enterprise developer template for Drupal projects with composer",
+    "description": "Standard DrupalX starter template for Drupal projects with composer",
     "license": "GPL-2.0-or-later",
     "type": "project",
     "authors": [
@@ -15,8 +15,6 @@
         "drupal/components": "^3.0@beta",
         "drupal/twig_field_value": "^2.0",
         "drupal/twig_tweak": "^3.3",
-        "drupal/webform": "^6.2",
-        "drupal/webform_ui": "^6.2",
         "drupalninja/drupalx-core": "^1.0",
         "drupalninja/drupalx-paragraphs": "^1.0",
         "drupalninja/drupalx_theme": "1.x-dev",
