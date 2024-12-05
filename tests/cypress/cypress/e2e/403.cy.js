@@ -1,6 +1,6 @@
 describe('403 Page', () => {
   beforeEach(() => {
-    cy.visit('/page/access-denied');
+    cy.visit('/access-denied');
   });
 
   it('should display the 403 page with title and message', () => {
