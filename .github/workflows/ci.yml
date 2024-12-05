@@ -74,9 +74,11 @@ jobs:
 
       - name: Apply DrupalX Core Recipe
         run: php core/scripts/drupal -v recipe ../recipes/drupalx-core
+        working-directory: ./web
 
       - name: Apply DrupalX Standard Recipe
         run: php core/scripts/drupal -v recipe ../recipes/drupalx-standard
+        working-directory: ./web
 
       - name: Clear Drupal caches
         run: ./vendor/bin/drush cr
