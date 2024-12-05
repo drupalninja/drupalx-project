@@ -1,0 +1,13 @@
+diff --git a/core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint/ValidKeysConstraintValidator.php b/core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint/ValidKeysConstraintValidator.php
+index 5fa4346898..7861211e13 100644
+--- a/core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint/ValidKeysConstraintValidator.php
++++ b/core/lib/Drupal/Core/Validation/Plugin/Validation/Constraint/ValidKeysConstraintValidator.php
+@@ -30,7 +30,7 @@ public function validate(mixed $value, Constraint $constraint) {
+       if ($value === NULL) {
+         return;
+       }
+-      throw new UnexpectedTypeException($value, 'array');
++      return; //throw new UnexpectedTypeException($value, 'array');
+     }
+ 
+     // Indexed arrays are invalid by definition. array_is_list() returns TRUE

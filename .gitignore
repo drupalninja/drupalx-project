@@ -28,3 +28,7 @@
 /.env
 /.editorconfig
 /.gitattributes
+
+# DrupalX composer recipes
+/recipes/drupalx-core
+/recipes/drupalx-paragraphs

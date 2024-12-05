@@ -1,0 +1,22 @@
+uuid: e8d1d884-ea11-45f8-a556-adc23b04fb8c
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - drupalx_theme
+_core:
+  default_config_hash: aeqlWs7HwctZeZC7ADcbxfqehJzBRfZKmuZz3DsH3_4
+id: drupalx_theme_messages
+theme: drupalx_theme
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

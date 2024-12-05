@@ -70,7 +70,21 @@ jobs:
         run: composer require --dev phpspec/prophecy-phpunit:^2
 
       - name: Install site
-        run: ./vendor/bin/drush site-install drupalx --verbose --yes --db-url=sqlite://tmp/site.sqlite
+        run: ./vendor/bin/drush site-install minimal --verbose --yes --db-url=sqlite://tmp/site.sqlite
+
+      - name: Apply DrupalX Core Recipe
+        run: php core/scripts/drupal -v recipe ../recipes/drupalx-core
+        working-directory: ./web
+
+      - name: Apply DrupalX Standard Recipe
+        run: php core/scripts/drupal -v recipe ../recipes/drupalx-standard
+        working-directory: ./web
+
+      - name: Clear Drupal caches
+        run: ./vendor/bin/drush cr
+
+      - name: Run install cleanup
+        run: ./vendor/bin/drush scr ../scripts/install-cleanup.php
 
       - name: Start server
         run: |

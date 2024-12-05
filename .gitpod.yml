@@ -8,9 +8,11 @@ tasks:
       ddev stop -a
       ddev start -y
       ddev composer install
-      ddev . drush si -y --verbose drupalx
-      ddev . drush webform-libraries-download
-      ddev . drush uli
+      ddev drush site:install minimal --verbose -y
+      ddev drush recipe ../recipes/drupalx-core
+      ddev drush recipe ../recipes/drupalx-standard
+      ddev drush cr
+      ddev drush scr ../scripts/install-cleanup.php
     command: |
       ddev start -y
       gp ports await 8080 && gp preview $(gp url 8080)

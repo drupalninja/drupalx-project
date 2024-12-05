@@ -1,0 +1,22 @@
+uuid: 0845064c-6c03-48cb-876c-0031a648f3ee
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - drupalx_theme
+_core:
+  default_config_hash: hBHXB7hC05XU7pDYzETt-GUcpFlogK1gkjyAsg0Ym58
+id: drupalx_theme_content
+theme: drupalx_theme
+region: content
+weight: -3
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

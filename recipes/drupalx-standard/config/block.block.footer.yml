@@ -1,0 +1,27 @@
+uuid: 511e8698-ad26-4040-b6c0-62f6fea1bc4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - drupalx_theme
+_core:
+  default_config_hash: UQZsoFvywNc_FVlgpeEdJrznqpFYnsgfVu__A0mde00
+id: footer
+theme: drupalx_theme
+region: footer
+weight: -10
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: Footer
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

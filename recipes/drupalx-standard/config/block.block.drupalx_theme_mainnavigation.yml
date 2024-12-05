@@ -1,0 +1,27 @@
+uuid: 9d068b87-5616-40e6-bf35-007b908b0d9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - drupalx_theme
+_core:
+  default_config_hash: r44-0td4SClvFd5lX5SiBWCfojhWKTyhgfltHYLc-gs
+id: drupalx_theme_mainnavigation
+theme: drupalx_theme
+region: primary_menu
+weight: -5
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: true
+visibility: {  }
