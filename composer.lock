@@ -3509,12 +3509,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupalninja/drupalx_theme.git",
-                "reference": "1e49017509d629e13196f419347a4b09ccb4966c"
+                "reference": "1e6964a78b8a7b7fb56f5882e3be2d5e2841950b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupalninja/drupalx_theme/zipball/1e49017509d629e13196f419347a4b09ccb4966c",
-                "reference": "1e49017509d629e13196f419347a4b09ccb4966c",
+                "url": "https://api.github.com/repos/drupalninja/drupalx_theme/zipball/1e6964a78b8a7b7fb56f5882e3be2d5e2841950b",
+                "reference": "1e6964a78b8a7b7fb56f5882e3be2d5e2841950b",
                 "shasum": ""
             },
             "default-branch": true,
@@ -3531,9 +3531,9 @@
             "description": "DrupalX Bootstrap, Storybook starter theme.",
             "support": {
                 "issues": "https://github.com/drupalninja/drupalx_theme/issues",
-                "source": "https://github.com/drupalninja/drupalx_theme/tree/1.x"
+                "source": "https://github.com/drupalninja/drupalx_theme/tree/1.19"
             },
-            "time": "2024-12-06T01:07:01+00:00"
+            "time": "2024-12-07T02:03:43+00:00"
         },
         {
             "name": "drush/drush",
