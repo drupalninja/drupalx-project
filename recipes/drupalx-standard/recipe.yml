@@ -4,6 +4,7 @@ type: 'Site'
 
 install:
   - components
+  - drupalx_ai
   - drupalx_theme
   - twig_field_value
   - twig_tweak
