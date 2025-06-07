@@ -4691,16 +4691,16 @@
         },
         {
             "name": "nextagencyio/drupalx-university",
-            "version": "1.0",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextagencyio/drupalx-university.git",
-                "reference": "ff4edf3d2d14b01cd43b3a014067b247afeb23d3"
+                "reference": "497e3cd766ceb17f6bfe97784676a97931f9bc89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextagencyio/drupalx-university/zipball/ff4edf3d2d14b01cd43b3a014067b247afeb23d3",
-                "reference": "ff4edf3d2d14b01cd43b3a014067b247afeb23d3",
+                "url": "https://api.github.com/repos/nextagencyio/drupalx-university/zipball/497e3cd766ceb17f6bfe97784676a97931f9bc89",
+                "reference": "497e3cd766ceb17f6bfe97784676a97931f9bc89",
                 "shasum": ""
             },
             "require": {
@@ -4720,22 +4720,22 @@
             "description": "University installation profile for DrupalX",
             "support": {
                 "issues": "https://github.com/nextagencyio/drupalx-university/issues",
-                "source": "https://github.com/nextagencyio/drupalx-university/tree/1.0"
+                "source": "https://github.com/nextagencyio/drupalx-university/tree/1.1"
             },
-            "time": "2025-06-07T14:50:50+00:00"
+            "time": "2025-06-07T18:15:29+00:00"
         },
         {
             "name": "nextagencyio/drupalx_setup",
-            "version": "1.0",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextagencyio/drupalx_setup.git",
-                "reference": "dfefe63f1878451bb4686ae0a21273f35db48e13"
+                "reference": "adb3a7ac2e592a87c96e189004ba10c719233bec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextagencyio/drupalx_setup/zipball/dfefe63f1878451bb4686ae0a21273f35db48e13",
-                "reference": "dfefe63f1878451bb4686ae0a21273f35db48e13",
+                "url": "https://api.github.com/repos/nextagencyio/drupalx_setup/zipball/adb3a7ac2e592a87c96e189004ba10c719233bec",
+                "reference": "adb3a7ac2e592a87c96e189004ba10c719233bec",
                 "shasum": ""
             },
             "require": {
@@ -4756,9 +4756,9 @@
             "description": "Provides initial setup form for DrupalX site configuration",
             "support": {
                 "issues": "https://github.com/nextagencyio/drupalx_setup/issues",
-                "source": "https://github.com/nextagencyio/drupalx_setup/tree/1.0"
+                "source": "https://github.com/nextagencyio/drupalx_setup/tree/1.1"
             },
-            "time": "2025-06-07T13:08:09+00:00"
+            "time": "2025-06-07T18:01:17+00:00"
         },
         {
             "name": "nikic/php-parser",
