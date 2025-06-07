@@ -15,11 +15,16 @@
         "drupal/components": "^3.0@beta",
         "drupal/twig_field_value": "^2.0",
         "drupal/twig_tweak": "^3.3",
-        "drupalninja/drupalx-core": "^1.0",
+        "drupalninja/drupalx-core": "^2.0",
         "drupalninja/drupalx-paragraphs": "^1.0",
         "drupalninja/drupalx_ai": "1.x-dev",
         "drupalninja/drupalx_theme": "1.x-dev",
         "drush/drush": "^11 || ^12 || ^13",
+        "nextagencyio/drupalx-demo": "^1.0",
+        "nextagencyio/drupalx-gov": "^1.0",
+        "nextagencyio/drupalx-nonprofit": "1.0",
+        "nextagencyio/drupalx-university": "^1.0",
+        "nextagencyio/drupalx_setup": "^1.0",
         "oomphinc/composer-installers-extender": "^2.0",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.2"
@@ -93,11 +98,15 @@
             ],
             "drush/Commands/contrib/{$name}": [
                 "type:drupal-drush"
+            ],
+            "recipes/{$name}": [
+                "type:drupal-recipe"
             ]
         },
         "installer-types": [
             "bower-asset",
-            "npm-asset"
+            "npm-asset",
+            "drupal-recipe"
         ],
         "patchLevel": {
             "drupal/core": "-p2"

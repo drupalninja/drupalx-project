@@ -11,9 +11,6 @@ install:
 
 config:
   actions:
-    system.site:
-      simple_config_update:
-        page.front: /node/16
     node.settings:
       simple_config_update:
         use_admin_theme: true
