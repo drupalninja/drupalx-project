@@ -5,8 +5,6 @@
 ddev start
 ddev composer install
 ddev drush site:install minimal --verbose -y
-# ddev drush en help -y
-# ddev drush theme:install gin drupalx_theme -y
 ddev drush recipe ../recipes/drupalx-core
 ddev drush recipe ../recipes/drupalx-standard
 ddev drush cr
