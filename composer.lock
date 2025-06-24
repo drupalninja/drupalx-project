@@ -3316,12 +3316,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextagencyio/drupalx-core.git",
-                "reference": "c9df6f16e490dd6256d71263da40da9121cc612f"
+                "reference": "82ea15ae3d02778c0d5d587c9352679631703e6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextagencyio/drupalx-core/zipball/c9df6f16e490dd6256d71263da40da9121cc612f",
-                "reference": "c9df6f16e490dd6256d71263da40da9121cc612f",
+                "url": "https://api.github.com/repos/nextagencyio/drupalx-core/zipball/82ea15ae3d02778c0d5d587c9352679631703e6d",
+                "reference": "82ea15ae3d02778c0d5d587c9352679631703e6d",
                 "shasum": ""
             },
             "require": {
@@ -3362,7 +3362,7 @@
                 "issues": "https://github.com/nextagencyio/drupalx-core/issues",
                 "source": "https://github.com/nextagencyio/drupalx-core/tree/3.x"
             },
-            "time": "2025-06-23T13:39:33+00:00"
+            "time": "2025-06-24T23:02:56+00:00"
         },
         {
             "name": "drupalninja/drupalx-paragraphs",
