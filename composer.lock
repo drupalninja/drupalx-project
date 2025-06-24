@@ -3450,12 +3450,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextagencyio/drupalx_theme.git",
-                "reference": "5b6c786919f02fe94f3733a9057fa92d6dff8cf9"
+                "reference": "b199b7c234f71147abcd9a863e0a96b2ab37cb72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextagencyio/drupalx_theme/zipball/5b6c786919f02fe94f3733a9057fa92d6dff8cf9",
-                "reference": "5b6c786919f02fe94f3733a9057fa92d6dff8cf9",
+                "url": "https://api.github.com/repos/nextagencyio/drupalx_theme/zipball/b199b7c234f71147abcd9a863e0a96b2ab37cb72",
+                "reference": "b199b7c234f71147abcd9a863e0a96b2ab37cb72",
                 "shasum": ""
             },
             "default-branch": true,
@@ -3472,9 +3472,9 @@
             "description": "DrupalX Bootstrap, Storybook starter theme.",
             "support": {
                 "issues": "https://github.com/nextagencyio/drupalx_theme/issues",
-                "source": "https://github.com/nextagencyio/drupalx_theme/tree/1.24"
+                "source": "https://github.com/nextagencyio/drupalx_theme/tree/1.25"
             },
-            "time": "2025-06-24T22:43:18+00:00"
+            "time": "2025-06-24T22:46:18+00:00"
         },
         {
             "name": "drush/drush",
