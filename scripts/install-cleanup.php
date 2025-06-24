@@ -12,6 +12,14 @@ $blocks = [
   'drupalx_theme_breadcrumbs',
   'drupalx_theme_help',
   'drupalx_theme_page_title',
+  'drupalx_theme_branding',
+  'drupalx_theme_tools',
+  'drupalx_theme_admin',
+  'drupalx_theme_primary_local_tasks',
+  'gin_branding',
+  'gin_tools',
+  'gin_admin',
+  'gin_primary_local_tasks',
 ];
 
 foreach ($blocks as $block) {
