@@ -1,0 +1,18 @@
+--- a/paragraphs_ee.module
++++ b/paragraphs_ee.module
+@@ -346,7 +346,13 @@ function template_preprocess_paragraphs_add_dialog__categorized(&$variables): v
+       continue;
+     }
+     // Add button to category.
+-    $grouped[$variables['element'][$element_key]['#paragraphs_category']][] = $variables['element'][$element_key];
++    $category = $variables['element'][$element_key]['#paragraphs_category'];
++    // Ensure category is a string, not an array.
++    if (is_array($category)) {
++      $category = reset($category);
++    }
++    if (isset($grouped[$category])) {
++      $grouped[$category][] = $variables['element'][$element_key];
++    }
+   }
+   $variables['wrapper_attributes'] = $variables['element']['#wrapper_attributes'];
+   $variables['dialog_attributes'] = $variables['element']['#dialog_attributes'];
