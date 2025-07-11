@@ -132,9 +132,6 @@
         "patches": {
             "drupal/core": {
                 "Suppress unexpected type error when Recipes are applied": "patches/recipes-unexpected-type.patch"
-            },
-            "drupal/paragraphs_ee": {
-                "Fix TypeError: Cannot access offset of type array on array": "patches/paragraphs_ee-fix-array-offset-error.patch"
             }
         }
     },
