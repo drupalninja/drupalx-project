@@ -120,7 +120,7 @@ jobs:
           chmod +x web/core/scripts/drupal
           echo "n" | web/core/scripts/drupal generate-theme --starterkit=drupalx_theme nameoftheme
           ./vendor/bin/drush theme:en nameoftheme
-          ./vendor/bin/drush config-set system.theme default nameoftheme -y
+          ./vendor/bin/drush config-set system.theme default nameoftheme -- -y
           ./vendor/bin/drush cr
           curl -sSf "$SIMPLETEST_BASE_URL" | grep -q "nameoftheme"
 
