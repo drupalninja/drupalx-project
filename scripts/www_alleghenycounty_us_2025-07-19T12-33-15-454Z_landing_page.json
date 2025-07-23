@@ -1,0 +1,225 @@
+{
+    "page_title": "Home - Allegheny County, PA",
+    "page_summary": "The official website of Allegheny County, PA, which provides information on services, licenses, records and permits for our citizens and businesses.",
+    "components": [
+        {
+            "type": "hero",
+            "weight": 0,
+            "fields": {
+                "field_heading": {
+                    "value": "<h1>Welcome to Allegheny County</h1>",
+                    "format": "restricted_html"
+                },
+                "field_hero_layout": "right",
+                "field_link": {
+                    "uri": "internal:/get-started",
+                    "title": "Get Started"
+                },
+                "field_link2": {
+                    "uri": "internal:/contact",
+                    "title": "Contact Us"
+                },
+                "field_media": {
+                    "type": "media",
+                    "alt": "Digital transformation illustration"
+                },
+                "field_summary": "Empower your business with our cutting-edge solutions and expert team."
+            }
+        },
+        {
+            "type": "card_group",
+            "weight": 1,
+            "fields": {
+                "field_title": "Services",
+                "field_card": [
+                    {
+                        "type": "card",
+                        "field_title": "Elections",
+                        "field_summary": "Discover information on election results, voter registration, polling locations, and more.",
+                        "field_link": {
+                            "uri": "internal:/Government/Elections",
+                            "title": "Learn more"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Elections services illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "Park Information",
+                        "field_summary": "View Allegheny County's nine beautiful parks, each with its own features and amenities.",
+                        "field_link": {
+                            "uri": "internal:/Parks-and-Events/Parks",
+                            "title": "Learn more"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Park information illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "Apply for a Career",
+                        "field_summary": "Browse available job postings and career opportunities with Allegheny County.",
+                        "field_link": {
+                            "uri": "internal:/Government/Employment",
+                            "title": "Learn more"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Career opportunities illustration"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "card_group",
+            "weight": 2,
+            "fields": {
+                "field_title": "I Want To\u2026",
+                "field_card": [
+                    {
+                        "type": "card",
+                        "field_title": "Family Division Fees",
+                        "field_summary": "Find information on family division fees.",
+                        "field_link": {
+                            "uri": "internal:/Government/Court-Related/Civil-and-Family-Court-Records/Fees/Family-Division-Fees",
+                            "title": "Learn more"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Family division fees illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "Contact the County Executive",
+                        "field_summary": "Contact the Office of County Executive Sara Innamorato.",
+                        "field_link": {
+                            "uri": "internal:/Government/Departments-and-Offices/County-Executive/Contact-the-County-Executive",
+                            "title": "Learn more"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Contact the County Executive illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "Property Assessments",
+                        "field_summary": "Look up property values and learn more about the county-wide reassessment.",
+                        "field_link": {
+                            "uri": "internal:/Services/Property-Assessments-and-Real-Estate/Property-Assessments",
+                            "title": "Learn more"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Property assessments illustration"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "carousel",
+            "weight": 3,
+            "fields": {
+                "field_carousel_item": [
+                    {
+                        "type": "carousel_item",
+                        "field_title": "Hometown Hoops",
+                        "field_summary": "Looking for a few good basketball coaches for the Hometown Hoops program; a free mini-camp series open to ages 9-18.",
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Hometown Hoops illustration"
+                        }
+                    },
+                    {
+                        "type": "carousel_item",
+                        "field_title": "Public Works is Hiring",
+                        "field_summary": "Public Works is hiring for various positions.",
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Public Works is Hiring illustration"
+                        }
+                    },
+                    {
+                        "type": "carousel_item",
+                        "field_title": "Annual Assessment Appeal",
+                        "field_summary": "Learn more about the annual assessment appeal process.",
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Annual Assessment Appeal illustration"
+                        }
+                    },
+                    {
+                        "type": "carousel_item",
+                        "field_title": "Summer Concert Series!",
+                        "field_summary": "Enjoy the summer concert series in Allegheny County parks.",
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Summer Concert Series illustration"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "card_group",
+            "weight": 4,
+            "fields": {
+                "field_title": "Featured",
+                "field_card": [
+                    {
+                        "type": "card",
+                        "field_title": "Dive In!",
+                        "field_summary": "It's Pool Season! Visit Boyce, North, South & Settlers Cabin Park pools this summer.",
+                        "field_link": {
+                            "uri": "internal:/Parks-and-Events/Activities/Swimming-and-Wave-Pools",
+                            "title": "Learn more"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Dive In illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "Tennis Lessons",
+                        "field_summary": "Play traditional or platform tennis and pickleball at the tennis courts in Allegheny County Parks.",
+                        "field_link": {
+                            "uri": "internal:/Parks-and-Events/Activities/Tennis-and-Pickleball",
+                            "title": "Learn more"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Tennis Lessons illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "Programs and Activities",
+                        "field_summary": "Find sports, programs, and activities for all ages and skill levels. Register today!",
+                        "field_link": {
+                            "uri": "internal:/anc.apm.activecommunities.com/alleghenyparks/activity/search",
+                            "title": "Learn more"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Programs and Activities illustration"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "source_html": "/var/www/html/scripts/www_alleghenycounty_us_2025-07-19T12-33-15-454Z.html",
+        "analysis_date": "2025-07-19T08:41:02-05:00",
+        "ai_model": "llama-3.3-70b-versatile",
+        "drupalx_ai_version": "1.0",
+        "analysis_type": "html_parsing"
+    }
+}

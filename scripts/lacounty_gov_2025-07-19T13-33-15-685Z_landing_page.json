@@ -1,0 +1,272 @@
+{
+    "page_title": "COUNTY OF LOS ANGELES",
+    "page_summary": "The official website of Los Angeles County, providing information and services to residents and visitors.",
+    "components": [
+        {
+            "type": "carousel",
+            "weight": 0,
+            "fields": {
+                "field_carousel_item": [
+                    {
+                        "type": "carousel_item",
+                        "field_title": "Express Lane for Rebuilding",
+                        "field_summary": "LA County is streamlining the process for rebuilding after the wildfires, residents can move into the express lane on their rebuilding journey by using several key tools.",
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Rebuilding illustration"
+                        },
+                        "field_link": {
+                            "uri": "internal:/recovery/express-lane-for-rebuilding",
+                            "title": "CLICK HERE"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "card_group",
+            "weight": 1,
+            "fields": {
+                "field_title": "Services",
+                "field_card": [
+                    {
+                        "type": "card",
+                        "field_title": "PAY",
+                        "field_summary": "Access County payment systems",
+                        "field_link": {
+                            "uri": "internal:/services/pay",
+                            "title": "PAY"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Payment illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "APPLY",
+                        "field_summary": "Get information or apply online",
+                        "field_link": {
+                            "uri": "internal:/services/apply-for",
+                            "title": "APPLY"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Application illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "REGISTER",
+                        "field_summary": "Register for services",
+                        "field_link": {
+                            "uri": "internal:/services/register-as-a",
+                            "title": "REGISTER"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Registration illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "REPORT",
+                        "field_summary": "Report issues or complaints",
+                        "field_link": {
+                            "uri": "internal:/services/report",
+                            "title": "REPORT"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Report illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "REQUEST",
+                        "field_summary": "Request important documents",
+                        "field_link": {
+                            "uri": "internal:/services/request-documents",
+                            "title": "REQUEST"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Request illustration"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "newsletter",
+            "weight": 2,
+            "fields": {
+                "field_title": "STAY UPDATED!",
+                "field_summary": "Click here to receive news and updates from Los Angeles County",
+                "field_link": {
+                    "uri": "internal:/public.govdelivery.com/accounts/CALACOUNTY/subscriber/new",
+                    "title": "SUBSCRIBE"
+                }
+            }
+        },
+        {
+            "type": "card_group",
+            "weight": 3,
+            "fields": {
+                "field_title": "LA County Newsroom",
+                "field_card": [
+                    {
+                        "type": "card",
+                        "field_title": "LA COUNTY ON YOUTUBE",
+                        "field_summary": "Watch videos from LA County",
+                        "field_link": {
+                            "uri": "internal:/youtube.com/channel/UCutBHggRFn38J-tfVGC2tBw",
+                            "title": "LA COUNTY ON YOUTUBE"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "YouTube illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "WATCH THE LA COUNTY CHANNEL",
+                        "field_summary": "Watch live board meetings and other programming",
+                        "field_link": {
+                            "uri": "internal:/youtube.com/live/-UjvTSiE9iA",
+                            "title": "WATCH THE LA COUNTY CHANNEL"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "LA County Channel illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "NEWS RELEASES",
+                        "field_summary": "Read the latest news releases from LA County",
+                        "field_link": {
+                            "uri": "internal:/newsroom/latest-news/news-releases",
+                            "title": "NEWS RELEASES"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "News releases illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "OPEN DATA PORTAL",
+                        "field_summary": "Explore open data from LA County",
+                        "field_link": {
+                            "uri": "internal:/data.lacounty.gov",
+                            "title": "OPEN DATA PORTAL"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Open data illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "LIVE BOARD MEETINGS",
+                        "field_summary": "Watch live board meetings",
+                        "field_link": {
+                            "uri": "internal:/bos.lacounty.gov/Board-Meeting/Live-Broadcast",
+                            "title": "LIVE BOARD MEETINGS"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Live board meetings illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "PUBLIC INFORMATION OFFICERS",
+                        "field_summary": "Contact public information officers",
+                        "field_link": {
+                            "uri": "internal:/newsroom/public-information/public-information-officers",
+                            "title": "PUBLIC INFORMATION OFFICERS"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Public information officers illustration"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "gallery",
+            "weight": 4,
+            "fields": {
+                "field_title": "PHOTOGRAPHY",
+                "field_media_item": [
+                    {
+                        "type": "media",
+                        "alt": "Photography"
+                    }
+                ],
+                "field_link": {
+                    "uri": "internal:/www.flickr.com/photos/160323049@N03/albums/with/72157713625550873",
+                    "title": "PHOTOGRAPHY"
+                }
+            }
+        },
+        {
+            "type": "card_group",
+            "weight": 5,
+            "fields": {
+                "field_title": "Resources",
+                "field_card": [
+                    {
+                        "type": "card",
+                        "field_title": "Ready LA County",
+                        "field_summary": "Get ready for emergencies",
+                        "field_link": {
+                            "uri": "internal:/ready.lacounty.gov",
+                            "title": "Ready LA County"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Ready LA County illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "Guide to County Services",
+                        "field_summary": "Download the guide to County services",
+                        "field_link": {
+                            "uri": "internal:/newsroom/public-information/guide-to-county-services",
+                            "title": "Guide to County Services"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "Guide to County Services illustration"
+                        }
+                    },
+                    {
+                        "type": "card",
+                        "field_title": "LA County Close-Up",
+                        "field_summary": "Watch LA County Close-Up",
+                        "field_link": {
+                            "uri": "internal:/newsroom/featured-content/la-county-close-up",
+                            "title": "LA County Close-Up"
+                        },
+                        "field_media": {
+                            "type": "media",
+                            "alt": "LA County Close-Up illustration"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "source_html": "/var/www/html/scripts/lacounty_gov_2025-07-19T13-33-15-685Z.html",
+        "analysis_date": "2025-07-19T09:30:47-05:00",
+        "ai_model": "llama-3.3-70b-versatile",
+        "drupalx_ai_version": "1.0",
+        "analysis_type": "html_parsing"
+    }
+}

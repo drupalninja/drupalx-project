@@ -13,7 +13,6 @@
         "composer/installers": "^2.1",
         "cweagans/composer-patches": "^1.7",
         "drupal/admin_toolbar": "^3.4",
-        "drupal/ai_provider_groq": "^1.1@RC",
         "drupal/allowed_formats": "^3.0",
         "drupal/components": "^3.0@beta",
         "drupal/field_group": "^3.4",
