@@ -3704,12 +3704,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextagencyio/drupalx_ai.git",
-                "reference": "73ec4b387526d12ad4a67ff3ccf0e5b0efe1315f"
+                "reference": "cda4cd7f895c83af0a2f6a069547f066685241c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextagencyio/drupalx_ai/zipball/73ec4b387526d12ad4a67ff3ccf0e5b0efe1315f",
-                "reference": "73ec4b387526d12ad4a67ff3ccf0e5b0efe1315f",
+                "url": "https://api.github.com/repos/nextagencyio/drupalx_ai/zipball/cda4cd7f895c83af0a2f6a069547f066685241c2",
+                "reference": "cda4cd7f895c83af0a2f6a069547f066685241c2",
                 "shasum": ""
             },
             "require": {
@@ -3736,7 +3736,7 @@
                 "issues": "https://github.com/nextagencyio/drupalx_ai/issues",
                 "source": "https://github.com/nextagencyio/drupalx_ai/tree/2.x"
             },
-            "time": "2025-07-07T23:08:26+00:00"
+            "time": "2025-07-23T01:49:38+00:00"
         },
         {
             "name": "drupalninja/drupalx_theme",

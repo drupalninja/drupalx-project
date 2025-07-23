@@ -15,7 +15,6 @@ $blocks = [
   'drupalx_theme_branding',
   'drupalx_theme_tools',
   'drupalx_theme_admin',
-  'drupalx_theme_primary_local_tasks',
   'gin_branding',
   'gin_tools',
   'gin_admin',
