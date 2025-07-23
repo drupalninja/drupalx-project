@@ -19,7 +19,6 @@ $blocks = [
   'gin_branding',
   'gin_tools',
   'gin_admin',
-  'gin_primary_local_tasks',
 ];
 
 foreach ($blocks as $block) {
