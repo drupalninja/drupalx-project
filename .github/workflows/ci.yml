@@ -118,7 +118,7 @@ jobs:
       - name: Test the starterkit generation
         run: |
           chmod +x web/core/scripts/drupal
-          web/core/scripts/drupal generate-theme --starterkit=drupalx_theme nameoftheme
+          echo "n" | web/core/scripts/drupal generate-theme --starterkit=drupalx_theme nameoftheme
           ./vendor/bin/drush theme:en nameoftheme
           ./vendor/bin/drush config-set system.theme default nameoftheme -y
           ./vendor/bin/drush cr
