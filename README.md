@@ -18,7 +18,7 @@ This project template leverages the DrupalX Starter Kit distribution, featuring 
 Create your project:
 
 ```bash
-composer create-project drupalninja/drupalx-project:10.x-dev some-dir --no-interaction
+composer create-project drupalninja/drupalx-project:11.x-dev some-dir --no-interaction
 ```
 
 Configure DDEV (follow prompts).
