@@ -1,0 +1,13 @@
+{
+    "name": "drupal/drupal_cms_search",
+    "description": "Adds a search to help visitors find content.",
+    "type": "drupal-recipe",
+    "license": ["GPL-2.0-or-later"],
+    "require": {
+        "drupal/canvas": "^1.2",
+        "drupal/eca": "^3.0.8",
+        "drupal/search_api": "^1.39",
+        "drupal/search_api_exclude": "^2"
+    },
+    "version": "2.1.3"
+}

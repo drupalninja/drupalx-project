@@ -1,0 +1,48 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Page hero'
+description: 'Inner-page banner — eyebrow, title, lede, optional photo band. Use on every non-home page.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - title
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+      examples:
+        - About
+    title:
+      type: string
+      title: Title
+      examples:
+        - 'Who we are'
+    lede:
+      type: string
+      title: Lede
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+      examples:
+        - '<p>Our mission and our people.</p>'
+    image:
+      type: object
+      title: Image
+      $ref: 'json-schema-definitions://canvas.module/image'
+      examples:
+        - src: 'https://placehold.co/1600x1000'
+          alt: 'Placeholder image'
+      default: ''
+    tone:
+      type: string
+      title: Tone
+      default: dark
+      enum:
+        - dark
+        - light
+      meta:enum:
+        dark: 'Dark (brand glow)'
+        light: 'Light (tint)'

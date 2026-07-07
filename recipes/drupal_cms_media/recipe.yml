@@ -1,0 +1,98 @@
+name: Media
+type: Drupal CMS
+description: 'Sets up basic media types configuration including responsive image styles, view modes, focal point-based cropping and SVG images, video support, and file uploads.'
+recipes:
+  - core/recipes/content_editor_role
+  - core/recipes/document_media_type
+  - core/recipes/image_media_type
+  - core/recipes/local_video_media_type
+  - core/recipes/remote_video_media_type
+  - drupal_cms_privacy_basic
+install:
+  - bpmn_io
+  - drupal_cms_helper
+  - eca_base
+  - eca_config
+  - eca_render
+  - eca_ui
+  - eca_user
+  - file
+  - focal_point
+  - media_file_delete
+  - media_library_bulk_upload
+  - modeler_api
+  - responsive_image
+  - svg_image
+  - token
+  - views
+config:
+  # Treat field storages strictly since they influence the database layout.
+  strict:
+    - field.storage.media.field_media_svg_image
+  import:
+    focal_point: '*'
+  actions:
+    core.entity_form_display.media.*.*:
+      setComponent:
+        name: name
+        options:
+          type: string_textfield
+          weight: -5
+      hideComponent: path
+    core.entity_form_display.media.image.*:
+      setComponent:
+        name: field_media_image
+        options:
+          type: image_focal_point
+          weight: 1
+          settings:
+            progress_indicator: throbber
+            preview_image_style: media_library
+            preview_link: true
+            offsets: '50,50'
+    core.entity_view_display.media.image.media_library:
+      setComponent:
+        name: thumbnail
+        options:
+          settings:
+            image_style: media_library_square_thumbnail
+    file.settings:
+      simpleConfigUpdate:
+        filename_sanitization.replace_whitespace: true
+    # These two Klaro apps get automatically enabled as soon as a remote video of the
+    # respective provider is created as a media entity. This is implemented by ECA with
+    # the eca.eca.remote_video_consent model, contained in the config directory.
+    klaro.klaro_app.vimeo:
+      disable: []
+    klaro.klaro_app.youtube:
+      disable: []
+    user.role.authenticated:
+      grantPermission: 'delete own files'
+    user.role.content_editor:
+      # We grant all relevant permissions explicitly so that we don't accidentally
+      # grant permissions we shouldn't, for other media types we don't know about.
+      grantPermissions:
+        - 'create document media'
+        - 'create image media'
+        - 'create remote_video media'
+        - 'create svg_image media'
+        - 'create video media'
+        - 'delete any document media'
+        - 'delete any image media'
+        - 'delete any remote_video media'
+        - 'delete any svg_image media'
+        - 'delete any video media'
+        - 'edit any image media'
+        - 'edit any image media'
+        - 'edit any remote_video media'
+        - 'edit any svg_image media'
+        - 'edit any video media'
+        - 'use media document bulk upload form'
+        - 'use media image bulk upload form'
+        - 'use media remote_video bulk upload form'
+        - 'use media svg_image bulk upload form'
+        - 'use media video bulk upload form'
+    # Disable the `files` view because it is not clear to most users what the
+    # difference is between "Files" and "Media". We favor media.
+    views.view.files:
+      disable: {}

@@ -1,0 +1,7 @@
+{% set open = open|default(false) %}
+<details class="faq-item"{% if open == true or open == 'true' %} open{% endif %}>
+  <summary>{{ heading }}</summary>
+  {% if body|default('') %}
+    <div class="faq-body">{{ body|raw }}</div>
+  {% endif %}
+</details>

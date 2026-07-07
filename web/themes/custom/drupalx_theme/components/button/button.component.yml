@@ -1,0 +1,99 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Button
+description: 'Pill button/link — primary, accent, ghost, or glass (over photo) variants, with an optional trailing Lucide icon.'
+status: stable
+group: DrupalX Primitives
+
+props:
+  type: object
+  required:
+    - label
+    - url
+  properties:
+    label:
+      type: string
+      title: Label
+      description: The text displayed inside the button.
+      examples:
+        - 'Get in touch'
+    url:
+      type: string
+      format: uri-reference
+      title: URL
+      description: Link target. Use a site-relative path (/contact) or an absolute URL.
+      default: ''
+      examples:
+        - /contact
+    variant:
+      type: string
+      title: Style variant
+      default: primary
+      enum:
+        - primary
+        - accent
+        - ghost
+        - glass
+      meta:enum:
+        primary: 'Primary (deep brand)'
+        accent: 'Accent (warm)'
+        ghost: 'Ghost (outline)'
+        glass: 'Glass (over photo)'
+      examples:
+        - primary
+    size:
+      type: string
+      title: Size
+      default: normal
+      enum:
+        - small
+        - normal
+        - large
+      meta:enum:
+        small: Small
+        normal: Normal
+        large: Large
+    icon:
+      type: string
+      title: 'Trailing icon'
+      description: 'Lucide icon after the label; ''none'' for no icon.'
+      default: none
+      enum:
+        - none
+        - arrow-right
+        - arrow-up-right
+        - chart-column
+        - building-2
+        - calendar
+        - check
+        - chevron-down
+        - chevron-right
+        - clock
+        - download
+        - external-link
+        - file-text
+        - flag
+        - folder
+        - globe
+        - graduation-cap
+        - heart-handshake
+        - info
+        - landmark
+        - leaf
+        - library
+        - lightbulb
+        - mail
+        - map
+        - map-pin
+        - megaphone
+        - menu
+        - newspaper
+        - phone
+        - search
+        - shield-check
+        - sparkles
+        - star
+        - triangle-alert
+        - users
+        - x
+      examples:
+        - arrow-right

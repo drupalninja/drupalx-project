@@ -1,0 +1,109 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.top-tasks
+  module:
+    - announcements_feed
+    - drupical
+    - layout_builder
+    - system
+id: welcome
+label: 'Welcome to your site'
+description: 'Presented to users when they complete the Drupal CMS install process.'
+layout:
+  -
+    layout_id: layout_twocol_section
+    layout_settings:
+      label: 'Content and tasks'
+      column_widths: 67-33
+      context_mapping: {  }
+    components:
+      cb457c1c-83c2-4a79-a09e-2c64a8bf8fb8:
+        uuid: cb457c1c-83c2-4a79-a09e-2c64a8bf8fb8
+        region: second
+        configuration:
+          id: 'system_menu_block:top-tasks'
+          label: 'Top tasks'
+          label_display: visible
+          provider: system
+          context_mapping: {  }
+          level: 1
+          depth: 1
+          expand_all_items: false
+        weight: 0
+        additional: {  }
+      911f9ec8-28b6-46a3-a002-c3b271ba8efb:
+        uuid: 911f9ec8-28b6-46a3-a002-c3b271ba8efb
+        region: first
+        configuration:
+          id: dashboard_placeholder
+          decorates: 'views_block:recent_pages-block_recent_pages'
+          label: ''
+          label_display: visible
+          provider: views
+          context_mapping: {  }
+          views_label: ''
+          items_per_page: null
+        weight: 1
+        additional: {  }
+      27befbfe-fa01-4708-913b-e93797dbd366:
+        uuid: 27befbfe-fa01-4708-913b-e93797dbd366
+        region: first
+        configuration:
+          id: dashboard_placeholder
+          decorates: 'views_block:recent_content-block_recent_content'
+          label: ''
+          label_display: visible
+          provider: views
+          context_mapping: {  }
+          views_label: ''
+          items_per_page: null
+        weight: 2
+        additional: {  }
+      dca0f1f8-6ec0-47ec-88de-4ca8dca54d89:
+        uuid: dca0f1f8-6ec0-47ec-88de-4ca8dca54d89
+        region: first
+        configuration:
+          id: dashboard_placeholder
+          decorates: 'views_block:a11y_tools_editoria11y_results-block_a11y_alerts'
+          label: ''
+          label_display: visible
+          provider: views
+          context_mapping: {  }
+          views_label: ''
+          items_per_page: null
+        weight: 3
+        additional: {  }
+    third_party_settings: {  }
+  -
+    layout_id: layout_twocol_section
+    layout_settings:
+      label: 'Announcements and Events'
+      column_widths: 50-50
+      context_mapping: {  }
+    components:
+      237ad3cf-cb2b-4991-a107-efafbef5f846:
+        uuid: 237ad3cf-cb2b-4991-a107-efafbef5f846
+        region: first
+        configuration:
+          id: announce_block
+          label: Announcements
+          label_display: visible
+          provider: announcements_feed
+          context_mapping: {  }
+        weight: 0
+        additional: {  }
+      f7bdc8cb-8be7-4cff-8124-ff0b45aefd36:
+        uuid: f7bdc8cb-8be7-4cff-8124-ff0b45aefd36
+        region: second
+        configuration:
+          id: events_block
+          label: 'Drupal Events'
+          label_display: visible
+          provider: drupical
+          context_mapping: {  }
+        weight: 0
+        additional: {  }
+    third_party_settings: {  }
+weight: 0

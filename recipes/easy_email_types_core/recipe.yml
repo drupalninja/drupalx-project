@@ -1,0 +1,12 @@
+name: 'Easy Email: Core Templates'
+description: 'Easy Email templates that replicate the content of emails sent by Drupal core.'
+type: 'Easy Email'
+recipes:
+  - easy_email_text_format
+install:
+  - easy_email
+  - easy_email_override
+config:
+  import:
+    easy_email: "*"
+    easy_email_override: "*"

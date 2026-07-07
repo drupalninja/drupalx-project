@@ -1,0 +1,20 @@
+{
+    "name": "drupal/drupal_cms_media",
+    "type": "drupal-recipe",
+    "description": "Sets up basic media types configuration including responsive image styles, view modes, focal point-based cropping and SVG images, video support, and file uploads.",
+    "license": ["GPL-2.0-or-later"],
+    "require": {
+        "drupal/bpmn_io": "^3",
+        "drupal/core": "^11.3.10",
+        "drupal/drupal_cms_helper": "^2",
+        "drupal/drupal_cms_privacy_basic": "^2",
+        "drupal/eca": "^3.0.4",
+        "drupal/focal_point": "^2",
+        "drupal/media_file_delete": "^1",
+        "drupal/media_library_bulk_upload": "^1",
+        "drupal/modeler_api": "^1",
+        "drupal/svg_image": "^3.1",
+        "drupal/token": "^1"
+    },
+    "version": "2.1.3"
+}

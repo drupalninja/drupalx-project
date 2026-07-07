@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - eca_config
+    - eca_user
+    - modeler_api
+third_party_settings:
+  modeler_api:
+    modeler_id: bpmn_io
+    data: 'hash:dac9c789f62e3ef88664f6355b0f9578'
+    label: 'Allow content to be excluded from search'
+    documentation: 'For new content types, allows editors to choose whether each item should be included in the search index.'
+    version: 1.0.0
+id: search_exclude
+weight: 0
+template: null
+events:
+  config__save_1_1:
+    plugin: 'config:save'
+    label: 'Content type created'
+    configuration:
+      config_name: node.type.
+      sync_mode: ''
+      write_mode: new
+    successors:
+      -
+        id: eca_switch_account_03kco41
+        condition: ''
+conditions: {  }
+gateways: {  }
+actions:
+  eca_config_action_0o4kqee:
+    label: 'Enable Search API Exclude'
+    plugin: eca_config_action
+    configuration:
+      action_id: 'entity_method:node.type:setThirdPartySetting'
+      config_name: '[config_name]'
+      data: "module: search_api_exclude\nkey: enabled\nvalue: true"
+    successors: {  }
+  eca_switch_account_03kco41:
+    label: 'Temporarily become administrator'
+    plugin: eca_switch_account
+    configuration:
+      user_id: '1'
+    successors:
+      -
+        id: eca_config_action_0o4kqee
+        condition: ''

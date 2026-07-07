@@ -1,0 +1,24 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 782360b7-0d73-4002-a283-84ef5a7cc20a
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 0
+  filename:
+    -
+      value: starter-750fe9444205e3c5.jpg
+  uri:
+    -
+      value: 'public://starter-demo/starter-750fe9444205e3c5.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 718977
+  status:
+    -
+      value: true

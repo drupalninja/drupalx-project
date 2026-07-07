@@ -1,0 +1,19 @@
+name: Accessibility Tools
+type: Drupal CMS
+description: Adds automated checks to help ensure content conforms to web accessibility guidelines.
+recipes:
+  - drupal_cms_content_type_base
+install:
+  - editoria11y
+  - views
+config:
+  strict: false
+  import:
+    editoria11y: '*'
+  actions:
+    editoria11y.settings:
+      simpleConfigUpdate:
+        # Map tiles contain no alt text.
+        # Skipping the map pane to limit reports
+        # where the fix is outwith editors control.
+        ignore_elements: '.leaflet-map-pane *'

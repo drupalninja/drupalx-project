@@ -1,0 +1,39 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Alert banner'
+description: 'Site-wide notice band — info / warning / emergency tones, optionally dismissible for the session.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - message
+  properties:
+    message:
+      type: string
+      title: Message
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples:
+        - '<p>Offices close at noon on Friday, July 3.</p>'
+    tone:
+      type: string
+      title: Tone
+      default: info
+      enum:
+        - info
+        - warning
+        - emergency
+      meta:enum:
+        info: Info
+        warning: Warning
+        emergency: Emergency
+    alert_id:
+      type: string
+      title: 'Alert id'
+      description: 'Session-dismiss key — change it to re-show a previously dismissed alert.'
+      default: default
+    dismissible:
+      type: boolean
+      title: Dismissible
+      default: true

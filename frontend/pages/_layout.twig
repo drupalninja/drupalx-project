@@ -1,0 +1,60 @@
+{#
+  Page shell for the static site build. Wraps a page's rendered component tree
+  in the full HTML document with the SHARED chrome partials — the same
+  templates/partials/_header.html.twig + _footer.html.twig the Drupal theme's
+  page.html.twig includes, fed the same { nav, site } contract. One markup
+  source for the chrome; two data feeders (pages.config.cjs here, the theme's
+  preprocess on the Drupal side).
+
+  Vars: title, nav, site, description, canonical, og_image, font_links,
+        is_front, content (pre-rendered HTML).
+#}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% set site_name = site.name|default('DrupalX Canvas') %}
+  {% set page_title = title and title != 'Home' ? title ~ ' | ' ~ site_name : site_name %}
+  <title>{{ page_title }}</title>
+  {% if description %}<meta name="description" content="{{ description }}">{% endif %}
+  {% if canonical %}<link rel="canonical" href="{{ canonical }}">{% endif %}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site_name }}">
+  <meta property="og:title" content="{{ page_title }}">
+  {% if description %}<meta property="og:description" content="{{ description }}">{% endif %}
+  {% if canonical %}<meta property="og:url" content="{{ canonical }}">{% endif %}
+  {% if og_image %}<meta property="og:image" content="{{ og_image }}">{% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"{{ site_name }}"{% if canonical %},"url":"{{ canonical }}"{% endif %}}</script>
+  <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  {# Same-origin variable-font preloads (files + @font-face ship in the theme's
+     committed dist — copied into this build). Never a Google Fonts CDN chain. #}
+  {% if font_links %}{{ font_links|raw }}{% endif %}
+  {# The theme's compiled Tailwind build — the SAME css Drupal loads. #}
+  <link rel="stylesheet" href="/css/global.css">
+</head>
+<body>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
+
+  {% include '@drupalx_theme/templates/partials/_header.html.twig' with {
+    nav: nav,
+    site: site,
+    is_front: is_front|default(false),
+  } only %}
+
+  {# No bottom padding — sections own their vertical rhythm, so a full-bleed
+     band butts cleanly against the footer. #}
+  <main id="main-content" role="main">
+    {{ content|raw }}
+  </main>
+
+  {% include '@drupalx_theme/templates/partials/_footer.html.twig' with {
+    nav: nav,
+    site: site,
+  } only %}
+
+  {# The theme's global JS — scroll-reveal, mobile nav, alert dismiss. #}
+  <script src="/js/global.js" defer></script>
+</body>
+</html>

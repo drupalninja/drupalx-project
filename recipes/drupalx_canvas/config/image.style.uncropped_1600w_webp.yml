@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: uncropped_1600w_webp
+label: 'Uncropped | 1600w | WebP'
+effects:
+  77dd94e6-387e-4745-a8f0-1916adbaba53:
+    uuid: 77dd94e6-387e-4745-a8f0-1916adbaba53
+    id: image_scale
+    weight: 1
+    data:
+      width: 1600
+      height: null
+      upscale: false
+  5bf2c2eb-b8ff-4706-9ab8-aaa3f7afdb95:
+    uuid: 5bf2c2eb-b8ff-4706-9ab8-aaa3f7afdb95
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp

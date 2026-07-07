@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies: {  }
+id: user_activation
+label: 'User: Account Activation'
+module: user
+key: status_activated
+easy_email_type: user_activation
+param_map:
+  -
+    source: account
+    destination: recipient_uid
+copied_fields:
+  from: false
+  reply_to: false
+  to: false
+  cc: false
+  bcc: false
+  subject: false
+  body_html: false
+  body_plain: false
+  attachments: false

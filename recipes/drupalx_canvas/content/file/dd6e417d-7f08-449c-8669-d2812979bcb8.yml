@@ -1,0 +1,24 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: dd6e417d-7f08-449c-8669-d2812979bcb8
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 0
+  filename:
+    -
+      value: starter-bbfd46109b0e821b.jpg
+  uri:
+    -
+      value: 'public://starter-demo/starter-bbfd46109b0e821b.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 186773
+  status:
+    -
+      value: true

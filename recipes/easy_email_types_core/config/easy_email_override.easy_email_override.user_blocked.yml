@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies: {  }
+id: user_blocked
+label: 'User: Account Blocked'
+module: user
+key: status_blocked
+easy_email_type: user_blocked
+param_map:
+  -
+    source: account
+    destination: recipient_uid
+copied_fields:
+  from: false
+  reply_to: false
+  to: false
+  cc: false
+  bcc: false
+  subject: false
+  body_html: false
+  body_plain: false
+  attachments: false

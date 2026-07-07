@@ -1,0 +1,38 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Rich text'
+description: 'Editorial prose block (typography plugin), prose or wide width.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - body
+  properties:
+    body:
+      type: string
+      title: Body
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples:
+        - '<p>Long-form editorial content.</p>'
+    width:
+      type: string
+      title: Width
+      default: prose
+      enum:
+        - prose
+        - wide
+      meta:enum:
+        prose: 'Prose (comfortable reading)'
+        wide: 'Wide (1340)'
+    tone:
+      type: string
+      title: Background
+      default: white
+      enum:
+        - white
+        - tint
+      meta:enum:
+        white: White
+        tint: 'Primary tint'

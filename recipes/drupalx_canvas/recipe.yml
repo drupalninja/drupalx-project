@@ -1,0 +1,14 @@
+name: 'DrupalX Canvas'
+description: 'DrupalX Canvas starter — layers the drupalx_theme Tailwind v4 SDC component library and the Canvas (Experience Builder) page-building setup on top of the Drupal CMS starter base. Ships the canvas.component.sdc.drupalx_theme.* configs plus a five-page demo site as default content.'
+# NOT `type: Site` — the drupal_cms_installer scans Site recipes as choosable
+# site templates and asserts each ships a screenshot.webp. This recipe is a
+# layer applied explicitly by `ddev install` AFTER the drupal_cms_starter base.
+type: 'Site addon'
+install:
+  - canvas
+  - canvas_full_html
+  - dx_image
+  # Themes install from the same list in D11 recipes (no separate key).
+  - drupalx_theme
+config:
+  strict: false

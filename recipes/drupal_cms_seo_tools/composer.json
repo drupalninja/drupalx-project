@@ -1,0 +1,33 @@
+{
+    "name": "drupal/drupal_cms_seo_tools",
+    "description": "Adds common search engine optimisation tools such as meta tags, XML sitemap, robots.txt management and more.",
+    "type": "drupal-recipe",
+    "license": ["GPL-2.0-or-later"],
+    "require": {
+        "drupal/bpmn_io": "^3",
+        "drupal/core": "^11.3.10",
+        "drupal/eca": "^3.0.5",
+        "drupal/field_group": "^3.6 || ^4",
+        "drupal/focal_point": "^2.1",
+        "drupal/metatag": "^2",
+        "drupal/modeler_api": "^1",
+        "drupal/seo_checklist": "^5.2.1",
+        "drupal/simple_sitemap": "^4.2.2",
+        "drupal/token_or": "^2.2",
+        "drupal/yoast_seo": "^2.1"
+    },
+    "suggest": {
+        "drupal/drupal_cms_google_analytics": "Adds tracking of website traffic using Google Analytics and Google Tag Manager.",
+        "drupal/drupal_cms_accessibility_tools": "Adds automated checks to help ensure content conforms to web accessibility guidelines."
+    },
+    "extra": {
+        "drupal-scaffold": {
+            "file-mapping": {
+                "[web-root]/robots.txt": {
+                    "append": "robots.append.txt"
+                }
+            }
+        }
+    },
+    "version": "2.1.3"
+}

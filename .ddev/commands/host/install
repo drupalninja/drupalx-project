@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+
+## Description: Clean install of the DrupalX site (Drupal CMS base + drupalx_canvas recipe + drupalx_theme + the five-page demo site)
+## Usage: install [--keep-db]
+## Example: "ddev install"
+## HostWorkingDir: true
+## CanRunGlobally: false
+
+set -euo pipefail
+
+KEEP_DB=0
+for arg in "$@"; do
+  case "$arg" in
+    --keep-db) KEEP_DB=1 ;;
+    *) echo "Unknown option: $arg"; exit 1 ;;
+  esac
+done
+
+RECIPE="/var/www/html/recipes/drupalx_canvas"
+
+# The demo pages ship as recipe default content with stable UUIDs. Used below
+# to set clean path aliases + the front page regardless of serial entity IDs.
+DEMO_PAGES="index=b40b42c6-564e-55fb-a32f-5f0b5168e40a about=cd89af5b-efbf-5a73-a945-eed9a307c514 services=d47f5031-e3ec-5226-94af-31ca7c954476 contact=f84ae181-469c-5c45-ab73-dbf78ca1be78 sections=11fe4274-13f8-561f-b9ec-8159a637991a"
+
+echo "==> DrupalX install starting"
+
+# ---------------------------------------------------------------------------
+# 1. Composer dependencies.
+# ---------------------------------------------------------------------------
+echo "==> [1/3] Installing Composer dependencies"
+ddev composer install --no-interaction 2>/dev/null || \
+  ddev exec "cd /var/www/html && COMPOSER_MEMORY_LIMIT=-1 composer install --no-interaction"
+
+# ---------------------------------------------------------------------------
+# 2. Base Drupal install — the Drupal CMS installer profile (Canvas, Gin,
+#    dashboard, media, pathauto — the base the recipe layers on).
+# ---------------------------------------------------------------------------
+if [ $KEEP_DB -eq 0 ]; then
+  echo "==> [2/3] Installing base Drupal (drupal_cms_installer profile)"
+  ddev drush site:install drupal_cms_installer \
+    --account-name=admin --account-pass=admin \
+    --site-name="DrupalX" -y 2>&1 \
+    | grep -vE "Deprecated|nullable|implicitly marking" || true
+else
+  echo "==> [2/3] --keep-db set, skipping site:install"
+fi
+
+# ---------------------------------------------------------------------------
+# 3. Apply the drupalx_canvas recipe: canvas modules, dx_image, drupalx_theme,
+#    the registered component configs, and the five-page demo site (pages,
+#    media, and the main menu import as default content).
+#    Drupal 11.4 removed `drush recipe`; core's runner is vendor/bin/dr.
+# ---------------------------------------------------------------------------
+echo "==> [3/3] Applying drupalx_canvas recipe (components + demo content)"
+ddev exec "cd /var/www/html && COMPOSER_MEMORY_LIMIT=-1 ./vendor/bin/dr recipe ${RECIPE}" 2>&1 \
+  | grep -vE "Deprecated|nullable|implicitly marking|block plugin was not found|^[░▓]|^\s*[0-9]+/[0-9]+" \
+  | grep -iE "applied successfully|error|exception" || true
+
+# ---------------------------------------------------------------------------
+# Activate drupalx_theme as the default front-end theme (Gin stays admin).
+# ---------------------------------------------------------------------------
+echo "==> Enabling drupalx_theme as the default theme"
+ddev drush theme:enable drupalx_theme -y 2>&1 \
+  | grep -vE "Deprecated|nullable|implicitly marking" | grep -iE "installed|already" || true
+ddev exec "cd /var/www/html && ./vendor/bin/drush php:eval '
+  \Drupal::configFactory()->getEditable(\"system.theme\")->set(\"default\", \"drupalx_theme\")->save();
+  print \"default theme set to drupalx_theme\n\";
+'" 2>&1 | grep -vE "Deprecated|nullable|implicitly marking" || true
+ddev drush cr 2>/dev/null || true
+
+# ---------------------------------------------------------------------------
+# The demo pages imported with the recipe. Remove the base install's own
+# starter Canvas page(s) so the demo set is all that remains, then give each
+# demo page its clean path alias and set the front page — by UUID, since
+# serial IDs vary between installs.
+# ---------------------------------------------------------------------------
+echo "==> Finalizing the demo site (aliases + front page)"
+ddev exec "cd /var/www/html && ./vendor/bin/drush php:eval '
+  \$keep = [];
+  foreach (array_filter(explode(\" \", \"${DEMO_PAGES}\")) as \$pair) {
+    list(, \$uuid) = explode(\"=\", \$pair);
+    \$keep[\$uuid] = TRUE;
+  }
+  \$storage = \Drupal::entityTypeManager()->getStorage(\"canvas_page\");
+  foreach (\$storage->loadMultiple() as \$page) {
+    if (empty(\$keep[\$page->uuid()])) {
+      print \"removing base-install page: \" . \$page->label() . \"\n\";
+      \$page->delete();
+    }
+  }
+  \$aliasStorage = \Drupal::entityTypeManager()->getStorage(\"path_alias\");
+  foreach (array_filter(explode(\" \", \"${DEMO_PAGES}\")) as \$pair) {
+    list(\$slug, \$uuid) = explode(\"=\", \$pair);
+    \$pages = \$storage->loadByProperties([\"uuid\" => \$uuid]);
+    foreach (\$pages as \$page) {
+      if (\$page->hasField(\"status\") && !\$page->get(\"status\")->value) { \$page->set(\"status\", TRUE)->save(); }
+      if (\$slug === \"index\") {
+        \Drupal::configFactory()->getEditable(\"system.site\")
+          ->set(\"page.front\", \"/page/\" . \$page->id())->save();
+        print \"front page -> /page/\" . \$page->id() . \" (\" . \$page->label() . \")\n\";
+        continue;
+      }
+      \$alias = \"/\" . \$slug;
+      foreach (\$aliasStorage->loadByProperties([\"alias\" => \$alias]) as \$old) { \$old->delete(); }
+      \$aliasStorage->create([\"path\" => \"/page/\" . \$page->id(), \"alias\" => \$alias, \"langcode\" => \"en\"])->save();
+      print \"alias \" . \$alias . \" -> /page/\" . \$page->id() . \"\n\";
+    }
+  }
+'" 2>&1 | grep -vE "Deprecated|nullable|implicitly marking" || true
+
+# Final cache rebuild AFTER content lands — Canvas's prop-shape caches must be
+# rebuilt once the components + pages exist or the editor edit-forms can 500.
+echo "==> Final cache rebuild"
+ddev drush cr 2>/dev/null || true
+
+echo ""
+echo "============================================================"
+echo " DrupalX install complete."
+ddev drush status --fields=drupal-version,bootstrap 2>/dev/null \
+  | grep -iE "version|bootstrap" | grep -v Deprecated || true
+PAGES=$(ddev drush php:eval 'print \Drupal::entityQuery("canvas_page")->accessCheck(FALSE)->count()->execute();' 2>/dev/null || echo "?")
+THEME=$(ddev drush php:eval 'print \Drupal::config("system.theme")->get("default");' 2>/dev/null || echo "?")
+echo " Theme:   ${THEME}"
+echo " Content: ${PAGES} Canvas page(s) — Home, About, Services, Contact + Component library (/sections)"
+echo " Login: admin / admin"
+echo "============================================================"

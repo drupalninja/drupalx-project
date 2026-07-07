@@ -1,0 +1,24 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 6d084594-74b9-4954-963a-968bc29f0f5e
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 0
+  filename:
+    -
+      value: starter-f5cf58a34a45a112.jpg
+  uri:
+    -
+      value: 'public://starter-demo/starter-f5cf58a34a45a112.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 143802
+  status:
+    -
+      value: true

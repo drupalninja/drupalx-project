@@ -1,0 +1,32 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: f1ea4969-5993-435d-9e4e-64edd91282d3
+  bundle: image
+  default_langcode: en
+  depends:
+    6d084594-74b9-4954-963a-968bc29f0f5e: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 0
+  name:
+    -
+      value: starter-f5cf58a34a45a112.jpg
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      langcode: en
+      alias: null
+  field_media_image:
+    -
+      alt: 'Team collaborating'
+      title: ''
+      width: 1200
+      height: 800
+      entity: 6d084594-74b9-4954-963a-968bc29f0f5e

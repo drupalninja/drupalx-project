@@ -1,0 +1,46 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Stats'
+description: 'Big-number proof band (numbers as graphic, tabular numerals). Fill the stats slot with Stat components.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+    title:
+      type: string
+      title: Title
+      default: ''
+      examples:
+        - 'Our impact'
+    tone:
+      type: string
+      title: Tone
+      default: dark
+      enum:
+        - dark
+        - light
+      meta:enum:
+        dark: 'Dark band'
+        light: 'Light (white)'
+    columns:
+      type: string
+      title: Columns
+      default: '4'
+      enum:
+        - '2'
+        - '3'
+        - '4'
+      meta:enum:
+        '2': '2 columns'
+        '3': '3 columns'
+        '4': '4 columns'
+
+slots:
+  stats:
+    title: Stats
+    description: 'Stat components (number + label).'

@@ -1,0 +1,140 @@
+_meta:
+  version: '1.0'
+  entity_type: canvas_page
+  uuid: f84ae181-469c-5c45-ab73-dbf78ca1be78
+  default_langcode: en
+  depends:
+    dd6e417d-7f08-449c-8669-d2812979bcb8: file
+    09d81235-fcbc-42c0-9099-c95a1c73523f: media
+default:
+  status:
+    -
+      value: true
+  owner:
+    -
+      target_id: 1
+  title:
+    -
+      value: Contact
+  components:
+    -
+      uuid: 90e1925e-7b5a-5524-abac-25ef6e481c3d
+      component_id: sdc.drupalx_theme.page_hero
+      inputs:
+        title: 'Get in touch'
+        eyebrow: Contact
+        lede:
+          value: '<p>Email, call, or stop by — we answer fastest on email.</p>'
+          format: canvas_full_html
+        tone: light
+    -
+      uuid: 1fc48320-3e5c-5b95-ad02-735be10cd1db
+      component_id: sdc.drupalx_theme.section_split
+      inputs:
+        eyebrow: 'Reach us'
+        title: 'We’d love to hear from you'
+        body:
+          value: |-
+            <p><strong>Email:</strong> hello@example.com<br>
+                         <strong>Phone:</strong> (555) 010-2030<br>
+                         <strong>Office:</strong> 123 Main Street, Anytown, USA</p>
+                         <p>Office hours are Monday–Friday, 9–5. For editor support on an existing site, include your site URL and we’ll route it straight to the on-call engineer.</p>
+          format: canvas_full_html
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: 09d81235-fcbc-42c0-9099-c95a1c73523f
+            target_type: media
+        media_side: right
+        tone: white
+    -
+      parent_uuid: 1fc48320-3e5c-5b95-ad02-735be10cd1db
+      slot: split_buttons
+      uuid: 62400432-f788-555d-9b7b-9b68ec6556bf
+      component_id: sdc.drupalx_theme.button
+      inputs:
+        label: 'Email us'
+        url:
+          uri: 'mailto:hello@example.com'
+          options: {  }
+        variant: primary
+        size: normal
+        icon: mail
+    -
+      uuid: 487c2bf1-3e91-5ce4-9691-51282e3a5eae
+      component_id: sdc.drupalx_theme.document_list
+      inputs:
+        eyebrow: Downloads
+        title: 'Before our first call'
+        more_label: ''
+        more_url:
+          uri: 'internal:/'
+          options: {  }
+        tone: tint
+    -
+      parent_uuid: 487c2bf1-3e91-5ce4-9691-51282e3a5eae
+      slot: documents
+      uuid: 52779fa1-2dca-52e2-a0c0-72a6195701d2
+      component_id: sdc.drupalx_theme.document_item
+      inputs:
+        title: 'Starter overview one-pager'
+        description: ''
+        url:
+          uri: 'internal:/about'
+          options: {  }
+        filetype: pdf
+        meta: 'PDF · 1.1 MB'
+    -
+      parent_uuid: 487c2bf1-3e91-5ce4-9691-51282e3a5eae
+      slot: documents
+      uuid: cc976b56-cbe6-5548-a612-a04f22fb89fa
+      component_id: sdc.drupalx_theme.document_item
+      inputs:
+        title: 'Engagement process & timeline'
+        description: ''
+        url:
+          uri: 'internal:/about'
+          options: {  }
+        filetype: doc
+        meta: 'DOC · 480 KB'
+    -
+      parent_uuid: 487c2bf1-3e91-5ce4-9691-51282e3a5eae
+      slot: documents
+      uuid: c8676776-19e5-5e92-86d3-d0c079003e38
+      component_id: sdc.drupalx_theme.document_item
+      inputs:
+        title: 'Component inventory worksheet'
+        description: ''
+        url:
+          uri: 'internal:/about'
+          options: {  }
+        filetype: xls
+        meta: 'XLS · 220 KB'
+    -
+      uuid: 0dcb5730-9c0a-5867-90f8-d3253408239f
+      component_id: sdc.drupalx_theme.section_cta
+      inputs:
+        eyebrow: ''
+        title: 'Prefer to see it live?'
+        body:
+          value: '<p>Twenty minutes, your content, our components.</p>'
+          format: canvas_full_html
+    -
+      parent_uuid: 0dcb5730-9c0a-5867-90f8-d3253408239f
+      slot: cta_buttons
+      uuid: 255c4832-3565-545a-8e90-d3fd4e2227be
+      component_id: sdc.drupalx_theme.button
+      inputs:
+        label: 'Book a demo'
+        url:
+          uri: 'mailto:hello@example.com'
+          options: {  }
+        variant: accent
+        size: normal
+        icon: calendar
+  path:
+    -
+      alias: /contact
+      langcode: en
+  revision_translation_affected:
+    -
+      value: true

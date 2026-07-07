@@ -1,0 +1,212 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - eca_base
+    - eca_config
+    - eca_content
+    - eca_misc
+    - eca_user
+    - modeler_api
+third_party_settings:
+  modeler_api:
+    modeler_id: bpmn_io
+    label: 'Automatically configure sitemap settings for content types'
+id: node_sitemap_settings
+weight: 0
+template: null
+events:
+  config__save_config:
+    plugin: 'config:save'
+    label: 'Create node bundle'
+    configuration:
+      config_name: node.type.
+      sync_mode: 'no'
+      write_mode: new
+    successors:
+      -
+        id: eca_switch_account_user
+        condition: eca_scalar_bundle
+  drupal__recipe_applied_tools:
+    plugin: 'drupal:recipe_applied'
+    label: 'SEO Tools applied'
+    configuration:
+      recipe_base_path: drupal_cms_seo_tools
+    successors:
+      -
+        id: eca_switch_account_1ghfkn0
+        condition: ''
+conditions:
+  eca_scalar_bundle:
+    plugin: eca_scalar
+    label: 'add type?'
+    configuration:
+      negate: true
+      left: '[current-page:url:path]'
+      right: /admin/structure/types/add
+      operator: equal
+      type: value
+      case: false
+  eca_scalar_empty:
+    plugin: eca_scalar
+    label: 'priority?'
+    configuration:
+      negate: false
+      left: '[priority]'
+      right: priority
+      operator: contains
+      type: value
+      case: false
+  eca_scalar_exists:
+    plugin: eca_scalar
+    label: 'not priority?'
+    configuration:
+      negate: true
+      left: '[priority]'
+      right: priority
+      operator: contains
+      type: value
+      case: false
+  eca_count_1:
+    plugin: eca_count
+    label: '>0?'
+    configuration:
+      negate: false
+      left: bundles
+      right: '0'
+      operator: greaterthan
+      type: numeric
+      case: false
+gateways:
+  Gateway_AND_1:
+    type: 0
+    successors:
+      -
+        id: eca_list_remove_id_1
+        condition: eca_count_1
+actions:
+  eca_token_set_value_token:
+    label: 'Remember bundle id'
+    plugin: eca_token_set_value
+    configuration:
+      token_name: bundle
+      token_value: '[config:type]'
+      use_yaml: false
+      validate_yaml: false
+    successors:
+      -
+        id: eca_config_read_bundle_1
+        condition: ''
+  eca_config_write_index:
+    label: 'Set index'
+    plugin: eca_config_write
+    configuration:
+      config_value: '1'
+      use_yaml: false
+      validate_yaml: false
+      save_config: true
+      config_name: 'simple_sitemap.bundle_settings.default.node.[bundle]'
+      config_key: index
+    successors:
+      -
+        id: eca_config_write_priority
+        condition: ''
+  eca_config_write_priority:
+    label: 'Set priority'
+    plugin: eca_config_write
+    configuration:
+      config_value: '0.9'
+      use_yaml: false
+      validate_yaml: false
+      save_config: true
+      config_name: 'simple_sitemap.bundle_settings.default.node.[bundle]'
+      config_key: priority
+    successors:
+      -
+        id: eca_config_write_changefreq
+        condition: ''
+  eca_config_write_changefreq:
+    label: 'Set changefreq'
+    plugin: eca_config_write
+    configuration:
+      config_value: daily
+      use_yaml: false
+      validate_yaml: false
+      save_config: true
+      config_name: 'simple_sitemap.bundle_settings.default.node.[bundle]'
+      config_key: changefreq
+    successors:
+      -
+        id: eca_config_write_images
+        condition: ''
+  eca_config_write_images:
+    label: 'Set include_images'
+    plugin: eca_config_write
+    configuration:
+      config_value: '0'
+      use_yaml: false
+      validate_yaml: false
+      save_config: true
+      config_name: 'simple_sitemap.bundle_settings.default.node.[bundle]'
+      config_key: include_images
+    successors:
+      -
+        id: Gateway_AND_1
+        condition: ''
+  eca_get_bundle_list_bundles:
+    label: 'Get bundles'
+    plugin: eca_get_bundle_list
+    configuration:
+      token_name: bundles
+      type: node
+      mode: ids
+    successors:
+      -
+        id: Gateway_AND_1
+        condition: ''
+  eca_list_remove_id_1:
+    label: 'Get next bundle ID'
+    plugin: eca_list_remove
+    configuration:
+      value: ''
+      token_name: bundle
+      method: first
+      index: ''
+      list_token: bundles
+    successors:
+      -
+        id: eca_config_read_bundle_1
+        condition: ''
+  eca_config_read_bundle_1:
+    label: 'Read sitemap setting'
+    plugin: eca_config_read
+    configuration:
+      token_name: priority
+      include_overridden: true
+      config_name: 'simple_sitemap.bundle_settings.default.node.[bundle]'
+      config_key: priority
+    successors:
+      -
+        id: eca_config_write_index
+        condition: eca_scalar_empty
+      -
+        id: Gateway_AND_1
+        condition: eca_scalar_exists
+  eca_switch_account_user:
+    label: 'Switch user'
+    plugin: eca_switch_account
+    configuration:
+      user_id: '1'
+    successors:
+      -
+        id: eca_token_set_value_token
+        condition: ''
+  eca_switch_account_1ghfkn0:
+    label: 'Switch user'
+    plugin: eca_switch_account
+    configuration:
+      user_id: '1'
+    successors:
+      -
+        id: eca_get_bundle_list_bundles
+        condition: ''

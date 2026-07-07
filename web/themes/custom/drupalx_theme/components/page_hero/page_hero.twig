@@ -1,0 +1,33 @@
+{#
+/**
+ * Section: Page hero — inner-page banner. Dark tone uses the brand-glow;
+ * with a photo, the image sits under a left-weighted panel gradient (copy
+ * stays AA-readable over the darkened side, photo shows through the right).
+ */
+#}
+{% set tone = tone|default('dark') %}
+{% set has_image = image.src|default('') is not empty %}
+{% set io = has_image ? dx_image(image, '100vw') : { srcset: null } %}
+
+<section class="full-bleed relative overflow-hidden {{ tone == 'dark' ? 'brand-glow' : 'bg-primary-50' }}">
+  {% if has_image %}
+    <img
+      src="{{ image.src }}" alt="{{ image.alt|default('') }}"
+      class="absolute inset-0 h-full w-full object-cover"
+      decoding="async"
+      {% if io.srcset %}srcset="{{ io.srcset }}" sizes="100vw"{% endif %}
+    >
+    <div class="absolute inset-0 bg-gradient-to-r from-primary-900/85 via-primary-900/60 to-primary-900/20" aria-hidden="true"></div>
+  {% endif %}
+  <div class="relative max-w-site mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+    <div class="max-w-3xl">
+      {% if eyebrow|default('') %}
+        <p class="eyebrow mb-3 {{ tone == 'dark' or has_image ? 'text-accent-300' : '' }}">{{ eyebrow }}</p>
+      {% endif %}
+      <h1 class="display-xl {{ tone == 'dark' or has_image ? 'text-white' : 'text-primary-800' }}">{{ title }}</h1>
+      {% if lede|default('') %}
+        <div class="mt-4 text-lg leading-relaxed {{ tone == 'dark' or has_image ? 'text-primary-100' : 'text-ink-500' }}">{{ lede|raw }}</div>
+      {% endif %}
+    </div>
+  </div>
+</section>

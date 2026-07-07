@@ -1,0 +1,7 @@
+# @todo Delete this file when https://www.drupal.org/i/3557220 is released.
+additional_trusted_composer_plugins:
+  # Added indirectly by `drupal/core-dev`.
+  - tbachert/spi
+  # Explicitly allowed by the Drupal CMS project template.
+  - drupal/site_template_helper
+include_unknown_files_in_project_root: false

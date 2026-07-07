@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: uncropped_1200w_webp
+label: 'Uncropped | 1200w | WebP'
+effects:
+  307d85b9-147b-48db-bf70-2946f3d054eb:
+    uuid: 307d85b9-147b-48db-bf70-2946f3d054eb
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: null
+      upscale: false
+  da4afbfd-c551-4a84-b577-baaa3317ecf5:
+    uuid: da4afbfd-c551-4a84-b577-baaa3317ecf5
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp

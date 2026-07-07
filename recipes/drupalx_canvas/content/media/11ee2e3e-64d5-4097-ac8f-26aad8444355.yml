@@ -1,0 +1,32 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 11ee2e3e-64d5-4097-ac8f-26aad8444355
+  bundle: image
+  default_langcode: en
+  depends:
+    ad430bdf-bc41-4b9a-b9ee-ca4e9a383fb0: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 0
+  name:
+    -
+      value: starter-324d526e1a74662e.jpg
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      langcode: en
+      alias: null
+  field_media_image:
+    -
+      alt: 'Team collaborating at a table'
+      title: ''
+      width: 1920
+      height: 1281
+      entity: ad430bdf-bc41-4b9a-b9ee-ca4e9a383fb0

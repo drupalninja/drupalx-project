@@ -1,0 +1,2 @@
+entity_saved_in_background_alert_message: 'The content has been modified elsewhere. As a result, autosaving has been disabled and autosaved states for the current page have been deleted. Autosave will be reactivated after reloading the page.'
+langcode: en

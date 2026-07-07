@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: uncropped_600w_webp
+label: 'Uncropped | 600w | WebP'
+effects:
+  e5267027-b558-48af-abe1-3edd8aa95234:
+    uuid: e5267027-b558-48af-abe1-3edd8aa95234
+    id: image_scale
+    weight: 1
+    data:
+      width: 600
+      height: null
+      upscale: false
+  cd39cbc2-25c5-4d42-baf1-bc5d375a440f:
+    uuid: cd39cbc2-25c5-4d42-baf1-bc5d375a440f
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp

@@ -1,0 +1,42 @@
+name: Forms
+type: Drupal CMS
+description: Adds a simple contact form, and tools for building forms.
+recipes:
+  - drupal_cms_anti_spam
+install:
+  - captcha
+  - editor
+  - filter
+  - views
+  - webform
+  - webform_ui
+config:
+  # If Webform's config already exists, we don't really care what it looks like.
+  strict: false
+  import:
+    system:
+      - system.menu.main
+    webform:
+      - system.action.webform_archive_action
+      - system.action.webform_close_action
+      - system.action.webform_delete_action
+      - system.action.webform_open_action
+      - system.action.webform_submission_delete_action
+      - system.action.webform_submission_make_lock_action
+      - system.action.webform_submission_make_sticky_action
+      - system.action.webform_submission_make_unlock_action
+      - system.action.webform_submission_make_unsticky_action
+      - system.action.webform_unarchive_action
+      - editor.editor.webform_default
+      - filter.format.webform_default
+      - views.view.webform_submissions
+  actions:
+    webform.settings:
+      simpleConfigUpdate:
+        # Prevent unnecessary JS for <details> elements being added to all pages
+        # with webforms.
+        settings.default_form_details_toggle: false
+        ui.details_save: false
+        # Hide promotional messages that Webform shows when it is installed, because
+        # they're confusing for users who don't know that Webform has been installed.
+        ui.promotions_disabled: true

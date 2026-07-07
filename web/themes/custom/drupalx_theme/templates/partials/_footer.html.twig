@@ -1,0 +1,81 @@
+{#
+/**
+ * @file
+ * Site footer — dark multi-column: identity, site nav, contact, legal bar.
+ *
+ * Data contract (same for Drupal preprocess AND the static build):
+ *   nav:  [{ title, url, children[] }]
+ *   site: { name, tagline?, footer: { blurb?, contact: { address?, phone?,
+ *          email? }?, legal? } }
+ */
+#}
+{% set name = site.name|default('DrupalX Canvas') %}
+{% set f = site.footer|default({}) %}
+{% set contact = f.contact|default({}) %}
+{% set year = f.year|default('2026') %}
+
+<footer class="bg-primary-900 text-primary-100">
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+
+      {# Identity #}
+      <div class="lg:col-span-2 max-w-md">
+        <a href="/" class="flex items-center gap-3" aria-label="{{ name }} — home">
+          <span class="w-10 h-10 rounded-xl bg-white/10 text-accent-300 inline-flex items-center justify-center">
+            <span class="dx-icon dx-icon--md" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/landmark.svg') -}}</span>
+          </span>
+          <span class="font-display font-semibold text-xl text-white">{{ name }}</span>
+        </a>
+        {% if f.blurb|default('') %}
+          <p class="mt-4 text-[0.95rem] leading-relaxed text-primary-200">{{ f.blurb }}</p>
+        {% endif %}
+      </div>
+
+      {# Site nav #}
+      <div>
+        <h2 class="text-xs font-bold uppercase tracking-[0.16em] text-accent-300">Explore</h2>
+        <ul class="mt-4 grid gap-2.5">
+          {% for item in nav %}
+            <li><a href="{{ item.url }}" class="text-[0.95rem] text-primary-100 hover:text-white hover:underline underline-offset-4">{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      {# Contact #}
+      <div>
+        <h2 class="text-xs font-bold uppercase tracking-[0.16em] text-accent-300">Contact</h2>
+        <ul class="mt-4 grid gap-3 text-[0.95rem]">
+          {% if contact.address|default('') %}
+            <li class="flex gap-2.5">
+              <span class="dx-icon dx-icon--sm mt-1 text-accent-300" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/map-pin.svg') -}}</span>
+              <span>{{ contact.address }}</span>
+            </li>
+          {% endif %}
+          {% if contact.phone|default('') %}
+            <li class="flex gap-2.5">
+              <span class="dx-icon dx-icon--sm mt-1 text-accent-300" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/phone.svg') -}}</span>
+              <a href="tel:{{ contact.phone|replace({' ': '', '(': '', ')': '', '-': ''}) }}" class="hover:text-white hover:underline underline-offset-4">{{ contact.phone }}</a>
+            </li>
+          {% endif %}
+          {% if contact.email|default('') %}
+            <li class="flex gap-2.5">
+              <span class="dx-icon dx-icon--sm mt-1 text-accent-300" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/mail.svg') -}}</span>
+              <a href="mailto:{{ contact.email }}" class="hover:text-white hover:underline underline-offset-4">{{ contact.email }}</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {# Legal bar #}
+  <div class="border-t border-white/10">
+    <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[0.85rem] text-primary-200">
+      <p>&copy; {{ year }} {{ name }}. {{ f.legal|default('All rights reserved.') }}</p>
+      <p class="flex items-center gap-2">
+        <span class="dx-icon dx-icon--sm text-accent-300" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/sparkles.svg') -}}</span>
+        Built with Drupal Canvas
+      </p>
+    </div>
+  </div>
+</footer>

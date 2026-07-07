@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.9_16_large
+    - field.field.media.image.field_media_image
+    - media.type.image
+    - responsive_image.styles.9_16_large
+  module:
+    - responsive_image
+id: media.image.9_16_large
+targetEntityType: media
+bundle: image
+mode: 9_16_large
+content:
+  field_media_image:
+    type: responsive_image
+    label: visually_hidden
+    settings:
+      responsive_image_style: 9_16_large
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

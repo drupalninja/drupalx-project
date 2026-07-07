@@ -1,0 +1,100 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Card
+description: 'Image- or icon-led spark-card with wayfinding color bar. Child of the Card grid slot.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - title
+  properties:
+    title:
+      type: string
+      title: Title
+      examples:
+        - 'Community development'
+    body:
+      type: string
+      title: Body
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+      examples:
+        - '<p>Grants, planning, and technical assistance.</p>'
+    url:
+      type: string
+      format: uri-reference
+      title: Link
+      default: ''
+      examples:
+        - /services
+    image:
+      type: object
+      title: Image
+      $ref: 'json-schema-definitions://canvas.module/image'
+      examples:
+        - src: 'https://placehold.co/1600x1000'
+          alt: 'Placeholder image'
+      default: ''
+    icon:
+      type: string
+      title: Icon
+      description: 'Lucide icon shown when there is no image; ''none'' hides it.'
+      default: none
+      enum:
+        - none
+        - arrow-right
+        - arrow-up-right
+        - chart-column
+        - building-2
+        - calendar
+        - check
+        - chevron-down
+        - chevron-right
+        - clock
+        - download
+        - external-link
+        - file-text
+        - flag
+        - folder
+        - globe
+        - graduation-cap
+        - heart-handshake
+        - info
+        - landmark
+        - leaf
+        - library
+        - lightbulb
+        - mail
+        - map
+        - map-pin
+        - megaphone
+        - menu
+        - newspaper
+        - phone
+        - search
+        - shield-check
+        - sparkles
+        - star
+        - triangle-alert
+        - users
+        - x
+    c:
+      type: string
+      title: 'Wayfinding color'
+      default: none
+      enum:
+        - none
+        - sky
+        - clay
+        - accent
+      meta:enum:
+        none: 'Primary (default)'
+        sky: Sky
+        clay: Clay
+        accent: Accent
+    more_label:
+      type: string
+      title: 'Read-more label'
+      default: 'Learn more'

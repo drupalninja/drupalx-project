@@ -1,0 +1,30 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Call to action'
+description: 'Full-bleed dark band with the brand glow — one strong ask. Fill the cta_buttons slot with Button components (use the accent or glass variants on dark).'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - title
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+    title:
+      type: string
+      title: Title
+      examples:
+        - 'Ready to work together?'
+    body:
+      type: string
+      title: Body
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+
+slots:
+  cta_buttons:
+    title: Buttons

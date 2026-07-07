@@ -1,0 +1,32 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: d3c36166-f2d5-4e4f-a948-a435f51c4e09
+  bundle: image
+  default_langcode: en
+  depends:
+    782360b7-0d73-4002-a283-84ef5a7cc20a: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 0
+  name:
+    -
+      value: starter-750fe9444205e3c5.jpg
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      langcode: en
+      alias: null
+  field_media_image:
+    -
+      alt: 'City skyline at dusk'
+      title: ''
+      width: 1920
+      height: 1181
+      entity: 782360b7-0d73-4002-a283-84ef5a7cc20a

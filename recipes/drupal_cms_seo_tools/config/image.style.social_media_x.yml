@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: social_media_x
+label: 'Social media - X (Twitter)'
+effects:
+  7de498f6-16e8-4f33-aa2b-afc30ad91155:
+    uuid: 7de498f6-16e8-4f33-aa2b-afc30ad91155
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1600
+      height: 900
+      crop_type: focal_point
+  94553ea6-7659-4f21-b586-3dd07fb21e88:
+    uuid: 94553ea6-7659-4f21-b586-3dd07fb21e88
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp

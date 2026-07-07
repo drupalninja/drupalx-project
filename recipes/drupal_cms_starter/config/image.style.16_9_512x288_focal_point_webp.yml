@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 16_9_512x288_focal_point_webp
+label: '16:9 | 512x288 | Focal Point | WebP'
+effects:
+  1cc316bd-d2dd-43d7-8991-ffdb80cbae61:
+    uuid: 1cc316bd-d2dd-43d7-8991-ffdb80cbae61
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 512
+      height: 288
+      crop_type: focal_point
+  f2ff37ae-8653-413e-b59b-acf81331c414:
+    uuid: f2ff37ae-8653-413e-b59b-acf81331c414
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp

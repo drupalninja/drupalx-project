@@ -1,0 +1,40 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Accordion
+description: 'FAQ / disclosure list (native details/summary — no JS). Fill the items slot with Accordion item components.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+    title:
+      type: string
+      title: Title
+      default: ''
+      examples:
+        - 'Frequently asked questions'
+    lede:
+      type: string
+      title: Lede
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+    tone:
+      type: string
+      title: Background
+      default: tint
+      enum:
+        - white
+        - tint
+      meta:enum:
+        white: White
+        tint: 'Primary tint'
+
+slots:
+  items:
+    title: Items
+    description: 'Accordion item components.'

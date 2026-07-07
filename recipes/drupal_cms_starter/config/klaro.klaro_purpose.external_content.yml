@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: external_content
+label: 'Embedded external content'
+description: ''
+weight: 6

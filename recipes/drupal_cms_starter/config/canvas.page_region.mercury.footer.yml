@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.block.system_menu_block.footer
+    - canvas.component.sdc.mercury.footer
+  theme:
+    - mercury
+id: mercury.footer
+theme: mercury
+region: footer
+component_tree:
+  '0:bd25d2aa-d623-479e-86c7-89ecffdd3dfa':
+    uuid: bd25d2aa-d623-479e-86c7-89ecffdd3dfa
+    component_id: sdc.mercury.footer
+    component_version: d696cea1796b650e
+    inputs:
+      align: true
+  '0:footer_utility_first:0:c792f1a5-fd27-40de-8d91-12b2ced91e61':
+    parent_uuid: bd25d2aa-d623-479e-86c7-89ecffdd3dfa
+    slot: footer_utility_first
+    uuid: c792f1a5-fd27-40de-8d91-12b2ced91e61
+    component_id: block.system_menu_block.footer
+    component_version: 68bdb40e1ac48125
+    inputs:
+      label: Footer
+      label_display: '0'
+      level: 1
+      depth: null
+      expand_all_items: false

@@ -1,0 +1,42 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'News card'
+description: 'Dated news teaser for the Card grid slot (image-led spark-card).'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - title
+  properties:
+    title:
+      type: string
+      title: Title
+      examples:
+        - 'New community grant program announced'
+    date:
+      type: string
+      title: Date
+      description: 'Display date, e.g. "Jul 4, 2026".'
+      default: ''
+      examples:
+        - 'Jul 4, 2026'
+    summary:
+      type: string
+      title: Summary
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+    url:
+      type: string
+      format: uri-reference
+      title: Link
+      default: ''
+    image:
+      type: object
+      title: Image
+      $ref: 'json-schema-definitions://canvas.module/image'
+      examples:
+        - src: 'https://placehold.co/1200x800'
+          alt: 'Placeholder image'
+      default: ''

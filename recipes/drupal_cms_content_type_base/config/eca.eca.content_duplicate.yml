@@ -1,0 +1,140 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - eca_content
+    - eca_misc
+    - eca_render
+    - modeler_api
+third_party_settings:
+  modeler_api:
+    modeler_id: bpmn_io
+    label: 'Duplicate content'
+id: content_duplicate
+weight: 0
+template: null
+events:
+  eca_render__entity_operations_link:
+    plugin: 'eca_render:entity_operations'
+    label: 'Operation links'
+    configuration:
+      entity_type_id: node
+      bundle: ''
+    successors:
+      -
+        id: eca_clone_entity_link
+        condition: ''
+  content_entity__prepareform_entity:
+    plugin: 'content_entity:prepareform'
+    label: 'Prepare entity form'
+    configuration:
+      type: 'node _all'
+    successors:
+      -
+        id: eca_token_load_query_arg_query
+        condition: ''
+  eca_render__local_tasks_tasks:
+    plugin: 'eca_render:local_tasks'
+    label: 'Alter local task'
+    configuration: {  }
+    successors:
+      -
+        id: eca_token_load_route_param_parmeter
+        condition: ''
+conditions:
+  eca_entity_is_accessible_link:
+    plugin: eca_entity_is_accessible
+    label: 'create access?'
+    configuration:
+      negate: false
+      operation: create
+      entity: temp
+gateways: {  }
+actions:
+  eca_render_build_link:
+    label: Link
+    plugin: eca_render_build
+    configuration:
+      name: ''
+      token_name: ''
+      weight: null
+      mode: append
+      value: |-
+        "#type": link
+        "#url": /[entity:entity_type]/add/[entity:bundle_id]?duplicate=[entity:id]
+        "#title": Duplicate
+      use_yaml: true
+      validate_yaml: false
+    successors: {  }
+  eca_token_load_entity_entity:
+    label: 'Load original entity'
+    plugin: eca_token_load_entity
+    configuration:
+      token_name: original
+      from: id
+      entity_type: node
+      entity_id: '[id]'
+      revision_id: ''
+      properties: ''
+      langcode: _interface
+      latest_revision: false
+      unchanged: false
+      object: entity
+    successors:
+      -
+        id: action_message_action_message
+        condition: ''
+  action_message_action_message:
+    label: 'Show duplicate message'
+    plugin: action_message_action
+    configuration:
+      message: 'You are duplicating "[original:label]"'
+      replace_tokens: true
+    successors:
+      -
+        id: eca_clone_entity_duplicate
+        condition: ''
+  eca_clone_entity_duplicate:
+    label: 'Duplicate content'
+    plugin: eca_clone_entity
+    configuration:
+      token_name: entity
+      label: ''
+      published: false
+      owner: ''
+      object: original
+    successors: {  }
+  eca_clone_entity_link:
+    label: Duplicate
+    plugin: eca_clone_entity
+    configuration:
+      token_name: temp
+      label: ''
+      published: false
+      owner: ''
+      object: entity
+    successors:
+      -
+        id: eca_render_build_link
+        condition: eca_entity_is_accessible_link
+  eca_token_load_route_param_parmeter:
+    label: 'Load route parameter'
+    plugin: eca_token_load_route_param
+    configuration:
+      token_name: entity
+      request: 2
+      parameter_name: node
+    successors:
+      -
+        id: eca_clone_entity_link
+        condition: ''
+  eca_token_load_query_arg_query:
+    label: 'Load entity ID'
+    plugin: eca_token_load_query_arg
+    configuration:
+      token_name: id
+      argument_name: duplicate
+    successors:
+      -
+        id: eca_token_load_entity_entity
+        condition: ''

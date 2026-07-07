@@ -1,0 +1,38 @@
+_meta:
+  version: '1.0'
+  entity_type: menu_link_content
+  uuid: d393a906-1f82-46f3-8c2e-3e1322a717a9
+  bundle: menu_link_content
+  default_langcode: en
+  depends:
+    00d105b3-6f05-40c6-a289-3dd61c89480e: node
+default:
+  enabled:
+    -
+      value: true
+  title:
+    -
+      value: 'Privacy policy'
+  menu_name:
+    -
+      value: footer
+  link:
+    -
+      target_uuid: 00d105b3-6f05-40c6-a289-3dd61c89480e
+      title: ''
+      options: {  }
+  external:
+    -
+      value: false
+  rediscover:
+    -
+      value: false
+  weight:
+    -
+      value: 0
+  expanded:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true

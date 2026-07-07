@@ -1,0 +1,48 @@
+purge_on_cron: true
+purge_cron_limit: 50
+allowed_attachment_paths:
+  - 'public://*'
+email_collection_access: true
+allowed_attachment_extensions: {  }
+blocked_attachment_extensions:
+  - exe
+  - bat
+  - cmd
+  - com
+  - pif
+  - scr
+  - vbs
+  - js
+  - jar
+  - php
+  - php3
+  - php4
+  - php5
+  - phtml
+  - pl
+  - py
+  - cgi
+  - asp
+  - aspx
+  - jsp
+  - sh
+  - bash
+  - zsh
+  - fish
+  - ksh
+  - csh
+  - ps1
+  - vb
+allowed_attachment_mime_types: {  }
+blocked_attachment_mime_types:
+  - application/x-executable
+  - application/x-msdownload
+  - application/x-msdos-program
+  - application/x-msi
+  - application/x-php
+  - text/x-php
+  - application/x-httpd-php
+  - application/javascript
+  - text/javascript
+  - application/x-javascript
+max_attachment_size: 10

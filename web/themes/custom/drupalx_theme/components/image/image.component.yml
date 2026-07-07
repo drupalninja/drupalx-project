@@ -1,0 +1,59 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Image
+description: 'Image with aspect-ratio, rounding, and the offset-accent frame treatment. On Drupal, dx_image() upgrades it to a width-stepped WebP srcset; statically it renders the plain src.'
+status: stable
+group: DrupalX Primitives
+
+props:
+  type: object
+  required:
+    - image
+  properties:
+    image:
+      type: object
+      title: Image
+      $ref: 'json-schema-definitions://canvas.module/image'
+      examples:
+        - src: 'https://placehold.co/1200x800'
+          alt: 'Placeholder image'
+    aspect:
+      type: string
+      title: 'Aspect ratio'
+      default: auto
+      enum:
+        - auto
+        - '16x9'
+        - '4x3'
+        - square
+      meta:enum:
+        auto: 'Natural (no crop)'
+        '16x9': 'Wide 16:9'
+        '4x3': 'Standard 4:3'
+        square: Square
+    rounded:
+      type: string
+      title: 'Corner rounding'
+      default: '2xl'
+      enum:
+        - none
+        - xl
+        - '2xl'
+      meta:enum:
+        none: Square corners
+        xl: Rounded
+        '2xl': 'Extra rounded'
+    frame:
+      type: string
+      title: Frame
+      description: 'offset-accent draws the warm offset plate behind the photo (the editorial photo-card treatment).'
+      default: none
+      enum:
+        - none
+        - offset-accent
+      meta:enum:
+        none: None
+        offset-accent: 'Offset accent plate'
+    caption:
+      type: string
+      title: Caption
+      default: ''

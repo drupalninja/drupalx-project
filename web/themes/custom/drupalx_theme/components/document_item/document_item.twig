@@ -1,0 +1,32 @@
+{#
+/**
+ * Document item — one downloadable row: filetype chip, title, meta, download
+ * affordance. Whole row is the link.
+ */
+#}
+{% set filetype = filetype|default('pdf') %}
+{% set type_map = {
+  'pdf': { chip: 'bg-clay-50 text-clay-700', label: 'PDF' },
+  'doc': { chip: 'bg-sky-50 text-sky-700', label: 'DOC' },
+  'xls': { chip: 'bg-primary-50 text-primary-700', label: 'XLS' },
+  'generic': { chip: 'bg-primary-50 text-primary-700', label: 'FILE' },
+} %}
+{% set tc = type_map[filetype]|default(type_map['generic']) %}
+<article class="spark-card relative flex items-center gap-4 rounded-xl border border-primary-100 bg-white px-5 py-4 shadow-sm">
+  <span class="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-lg {{ tc.chip }}">
+    {% include 'drupalx_theme:icon' with { name: 'file-text', size: 'sm' } only %}
+    <span class="text-[0.55rem] font-black tracking-wide">{{ tc.label }}</span>
+  </span>
+  <div class="min-w-0 flex-1">
+    <h3 class="truncate font-bold text-primary-800">
+      {% if url|default('') %}
+        <a href="{{ url }}" class="after:absolute after:inset-0 focus:outline-none">{{ title }}</a>
+      {% else %}{{ title }}{% endif %}
+    </h3>
+    {% if description|default('') %}<p class="truncate text-sm text-ink-500">{{ description }}</p>{% endif %}
+    {% if meta|default('') %}<p class="text-xs text-ink-500">{{ meta }}</p>{% endif %}
+  </div>
+  <span class="spark-card__more shrink-0 text-primary-700">
+    <span class="spark-card__arrow dx-icon dx-icon--md" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/download.svg') -}}</span>
+  </span>
+</article>

@@ -1,0 +1,27 @@
+langcode: en
+status: false
+dependencies: {  }
+id: simple_popup_blocks
+label: 'Simple Popup Blocks'
+description: 'Popups that will save into a cookie if they were already opened'
+default: false
+required: false
+opt_out: false
+only_once: false
+contextual_consent_only: false
+contextual_consent_text: ''
+info_url: ''
+privacy_policy_url: ''
+purposes:
+  - cms
+cookies:
+  -
+    regex: 'spb_(_.*)?'
+    path: ''
+    domain: ''
+callback_code: "var block = document.querySelector('.simple-popup-blocks-global');\r\nif (false == consent && block) {\r\nblock.remove()\r\n}"
+javascripts:
+  - /simple_popup_blocks/js/simple_popup_blocks.js
+wrapper_identifier: {  }
+attachments: {  }
+weight: 0

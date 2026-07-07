@@ -1,0 +1,106 @@
+{#
+/**
+ * Section: Hero — three styles from the bold-design playbook:
+ *  glass — full-bleed photo, frosted GLASS PANEL carrying the copy (never a
+ *          full-photo gradient scrim), Ken Burns drift on desktop.
+ *  split — light editorial split: display type on white, photo as a rounded
+ *          card with an accent offset frame + optional floating stat chip.
+ *  dark  — solid brand-glow band, no photo required.
+ * Heights are CAPPED (hero-h-*) — raw vh blows up the Canvas editor iframe.
+ */
+#}
+{% set style = style|default('split') %}
+{% set height = height|default('medium') %}
+{% set height_class = 'hero-h-' ~ height %}
+{% set has_image = image.src|default('') is not empty %}
+{# Capture the slot ONCE (block names must be unique per template), print the
+   captured HTML in whichever style branch renders. #}
+{% set hero_buttons_html %}{% block hero_buttons %}{% endblock %}{% endset %}
+{% set io = has_image ? dx_image(image, '100vw') : { srcset: null, sizes: null, width: null, height: null } %}
+
+{% if style == 'glass' and has_image %}
+  <section class="full-bleed relative overflow-hidden {{ height_class }} flex items-center">
+    <img
+      src="{{ image.src }}" alt="{{ image.alt|default('') }}"
+      class="ken-burns absolute inset-0 h-full w-full object-cover"
+      fetchpriority="high" decoding="async"
+      {% if io.srcset %}srcset="{{ io.srcset }}" sizes="100vw"{% endif %}
+    >
+    <div class="relative max-w-site mx-auto w-full px-4 sm:px-6 lg:px-8 py-16">
+      <div class="max-w-2xl rounded-2xl bg-primary-900/55 backdrop-blur-md border border-white/15 p-8 sm:p-10 shadow-2xl">
+        {% if eyebrow|default('') %}
+          <p class="eyebrow mb-3 text-accent-300">{{ eyebrow }}</p>
+        {% endif %}
+        <h1 class="hero-display text-white">{{ title }}</h1>
+        {% if body|default('') %}
+          <div class="mt-4 text-lg leading-relaxed text-white/90">{{ body|raw }}</div>
+        {% endif %}
+        <div class="mt-6 flex flex-wrap gap-3">
+          {{ hero_buttons_html }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% elseif style == 'dark' or (style == 'glass' and not has_image) %}
+  <section class="full-bleed brand-glow relative overflow-hidden {{ height_class }} flex items-center">
+    <div class="relative max-w-site mx-auto w-full px-4 sm:px-6 lg:px-8 py-16">
+      <div class="max-w-3xl">
+        {% if eyebrow|default('') %}
+          <p class="eyebrow mb-3 text-accent-300">{{ eyebrow }}</p>
+        {% endif %}
+        <h1 class="hero-display text-white">{{ title }}</h1>
+        {% if body|default('') %}
+          <div class="mt-4 text-lg leading-relaxed text-primary-100">{{ body|raw }}</div>
+        {% endif %}
+        <div class="mt-6 flex flex-wrap gap-3">
+          {{ hero_buttons_html }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% else %}
+  {# split — light editorial #}
+  <section class="full-bleed relative overflow-hidden bg-white">
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(55% 65% at 85% 12%, color-mix(in srgb, var(--color-accent-500) 9%, transparent), transparent 70%);"></div>
+    <div class="relative max-w-site mx-auto w-full px-4 sm:px-6 lg:px-8">
+      <div class="grid items-center gap-10 py-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16 {{ height_class }}">
+        <div>
+          <span class="mb-4 block h-1 w-12 rounded-full bg-accent-500" aria-hidden="true"></span>
+          {% if eyebrow|default('') %}
+            <p class="text-xs font-bold uppercase tracking-[0.2em] text-primary-600 sm:text-sm">{{ eyebrow }}</p>
+          {% endif %}
+          <h1 class="hero-display mt-4 text-primary-800">{{ title }}</h1>
+          {% if body|default('') %}
+            <div class="mt-4 max-w-lg text-base leading-relaxed text-ink-500 sm:text-lg">{{ body|raw }}</div>
+          {% endif %}
+          <div class="mt-6 flex flex-wrap gap-3">
+            {{ hero_buttons_html }}
+          </div>
+        </div>
+        {% if has_image %}
+          <div class="relative pb-8 pr-4 lg:pb-10 lg:pr-6">
+            <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-2xl bg-accent-500/25 lg:translate-x-6 lg:translate-y-6" aria-hidden="true"></div>
+            <div class="relative aspect-4/3 overflow-hidden rounded-2xl shadow-2xl">
+              <img
+                src="{{ image.src }}" alt="{{ image.alt|default('') }}"
+                class="ken-burns absolute inset-0 h-full w-full object-cover"
+                fetchpriority="high" decoding="async"
+                {% if io.srcset %}srcset="{{ io.srcset }}" sizes="(min-width: 1024px) 50vw, 100vw"{% endif %}
+              >
+            </div>
+            {% if stat_chip_number|default('') %}
+              <div class="absolute -bottom-1 left-4 rounded-xl bg-primary-800 px-5 py-3.5 text-white shadow-xl lg:left-8">
+                <p class="text-2xl font-black leading-none">{{ stat_chip_number }}</p>
+                {% if stat_chip_label|default('') %}
+                  <p class="mt-1 text-xs font-medium text-primary-100">{{ stat_chip_label }}</p>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endif %}

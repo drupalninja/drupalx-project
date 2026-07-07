@@ -1,0 +1,58 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Split'
+description: 'Alternating text + media split (image-beside-text with the offset-accent photo treatment).'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - title
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+    title:
+      type: string
+      title: Title
+      examples:
+        - 'Planning for the next generation'
+    body:
+      type: string
+      title: Body
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+    image:
+      type: object
+      title: Image
+      $ref: 'json-schema-definitions://canvas.module/image'
+      examples:
+        - src: 'https://placehold.co/1600x1000'
+          alt: 'Placeholder image'
+      default: ''
+    media_side:
+      type: string
+      title: 'Media side'
+      default: right
+      enum:
+        - left
+        - right
+      meta:enum:
+        left: 'Image left'
+        right: 'Image right'
+    tone:
+      type: string
+      title: Background
+      default: white
+      enum:
+        - white
+        - tint
+      meta:enum:
+        white: White
+        tint: 'Primary tint'
+
+slots:
+  split_buttons:
+    title: Buttons

@@ -1,0 +1,45 @@
+_meta:
+  version: '1.0'
+  entity_type: menu_link_content
+  uuid: c0c49d21-d66e-46da-a713-e6c0e632e097
+  bundle: menu_link_content
+  default_langcode: en
+  depends:
+    416b99e4-15a8-4fe1-8436-c7248d92ae1e: menu_link_content
+    cd89af5b-efbf-5a73-a945-eed9a307c514: canvas_page
+default:
+  enabled:
+    -
+      value: true
+  title:
+    -
+      value: 'Who we are'
+  description:
+    -
+      value: 'dx:About:Who we are'
+  menu_name:
+    -
+      value: main
+  link:
+    -
+      title: null
+      options: {  }
+      target_uuid: cd89af5b-efbf-5a73-a945-eed9a307c514
+  external:
+    -
+      value: false
+  rediscover:
+    -
+      value: true
+  weight:
+    -
+      value: 0
+  expanded:
+    -
+      value: false
+  parent:
+    -
+      value: 'menu_link_content:416b99e4-15a8-4fe1-8436-c7248d92ae1e'
+  revision_translation_affected:
+    -
+      value: true

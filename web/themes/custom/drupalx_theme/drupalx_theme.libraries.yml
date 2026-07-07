@@ -1,0 +1,11 @@
+# One aggregated Tailwind build + one framework-free JS file. Fonts are
+# @font-face rules inside global.css (self-hosted woff2 in dist/fonts — never
+# a Google Fonts import); icons are inline SVG (no icon library needed).
+global:
+  css:
+    base:
+      dist/css/global.css: {}
+  js:
+    dist/js/global.js:
+      attributes:
+        defer: true

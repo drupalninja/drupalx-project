@@ -1,0 +1,7 @@
+name: 'DrupalX Image'
+type: module
+description: 'Responsive, modern-format (WebP) images for the drupalx_theme SDCs. Provides the `dx_image` Twig function so the section components emit a width-stepped srcset for anonymous visitors — without breaking the static-build contract (plain <img src> for external/static sources). Performance / SEO / Core Web Vitals.'
+core_version_requirement: ^11
+package: 'DrupalX'
+dependencies:
+  - drupal:image

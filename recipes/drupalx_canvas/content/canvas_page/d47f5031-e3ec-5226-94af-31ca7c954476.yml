@@ -1,0 +1,257 @@
+_meta:
+  version: '1.0'
+  entity_type: canvas_page
+  uuid: d47f5031-e3ec-5226-94af-31ca7c954476
+  default_langcode: en
+  depends:
+    66a33560-9da0-4ea6-b18c-33cf196020eb: file
+    8eb5d57c-d515-4b74-9adf-bde90d1376b1: media
+    58365554-610c-47b5-99ee-cd6c78a85f52: file
+    efeb2812-24c1-41d1-b28c-6dea6c86a35c: media
+default:
+  status:
+    -
+      value: true
+  owner:
+    -
+      target_id: 1
+  title:
+    -
+      value: Services
+  components:
+    -
+      uuid: c3535c39-e767-5571-b26a-a0985f0ba15d
+      component_id: sdc.drupalx_theme.page_hero
+      inputs:
+        title: 'What we do'
+        eyebrow: Services
+        lede:
+          value: '<p>Design systems, decoupled builds, and editor experiences — shipped as working software, not slideware.</p>'
+          format: canvas_full_html
+        tone: dark
+    -
+      uuid: 34371412-2998-5f77-99f7-bbe1982f2f13
+      component_id: sdc.drupalx_theme.section_cards
+      inputs:
+        eyebrow: Capabilities
+        title: 'Four things, done well'
+        lede:
+          value: ''
+          format: canvas_full_html
+        columns: '4'
+        tone: white
+        featured_first: false
+    -
+      parent_uuid: 34371412-2998-5f77-99f7-bbe1982f2f13
+      slot: cards
+      uuid: 7728c41f-5959-5a7c-a4e7-087aecb030d2
+      component_id: sdc.drupalx_theme.card
+      inputs:
+        title: 'Design systems'
+        body:
+          value: '<p>Tokens, type scale, and a component library your team can actually maintain.</p>'
+          format: canvas_full_html
+        url:
+          uri: 'internal:/about'
+          options: {  }
+        icon: sparkles
+        c: sky
+        more_label: 'Our approach'
+    -
+      parent_uuid: 34371412-2998-5f77-99f7-bbe1982f2f13
+      slot: cards
+      uuid: 9525d941-b2eb-5df1-9440-61cf22b7b46c
+      component_id: sdc.drupalx_theme.card
+      inputs:
+        title: 'Canvas builds'
+        body:
+          value: '<p>Experience Builder sites where every landing page is composed, not coded.</p>'
+          format: canvas_full_html
+        url:
+          uri: 'internal:/about'
+          options: {  }
+        icon: landmark
+        c: none
+        more_label: 'Learn more'
+    -
+      parent_uuid: 34371412-2998-5f77-99f7-bbe1982f2f13
+      slot: cards
+      uuid: 07298d97-3ffc-50f8-93b5-c890c79e2ae5
+      component_id: sdc.drupalx_theme.card
+      inputs:
+        title: 'Performance & a11y'
+        body:
+          value: '<p>Self-hosted fonts, responsive WebP images, WCAG AA as a floor not a stretch goal.</p>'
+          format: canvas_full_html
+        url:
+          uri: 'internal:/about'
+          options: {  }
+        icon: shield-check
+        c: clay
+        more_label: 'Learn more'
+    -
+      parent_uuid: 34371412-2998-5f77-99f7-bbe1982f2f13
+      slot: cards
+      uuid: 903e209d-ab34-5e9a-9411-c8a1218d1e9f
+      component_id: sdc.drupalx_theme.card
+      inputs:
+        title: 'Editor training'
+        body:
+          value: '<p>Your team leaves able to build a new page before lunch.</p>'
+          format: canvas_full_html
+        url:
+          uri: 'internal:/contact'
+          options: {  }
+        icon: graduation-cap
+        c: accent
+        more_label: 'Learn more'
+    -
+      uuid: 67dc47fa-174e-51b0-b358-6aa786be8166
+      component_id: sdc.drupalx_theme.section_cards
+      inputs:
+        eyebrow: Latest
+        title: 'News & events'
+        lede:
+          value: ''
+          format: canvas_full_html
+        columns: '2'
+        tone: white
+        featured_first: false
+    -
+      parent_uuid: 67dc47fa-174e-51b0-b358-6aa786be8166
+      slot: cards
+      uuid: d76e368c-47a6-5d12-bdb2-c152d96482a9
+      component_id: sdc.drupalx_theme.card_news
+      inputs:
+        title: 'Starter reaches 20 Canvas-ready components'
+        date: 'Jul 1, 2026'
+        summary:
+          value: '<p>Batch two lands: galleries, accordions, document lists, and dated cards.</p>'
+          format: canvas_full_html
+        url:
+          uri: 'internal:/about'
+          options: {  }
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: 8eb5d57c-d515-4b74-9adf-bde90d1376b1
+            target_type: media
+    -
+      parent_uuid: 67dc47fa-174e-51b0-b358-6aa786be8166
+      slot: cards
+      uuid: 8fa0a25e-9f89-5247-b2a3-da40fde61b41
+      component_id: sdc.drupalx_theme.card_news
+      inputs:
+        title: 'Why we render twig twice'
+        date: 'Jun 18, 2026'
+        summary:
+          value: '<p>One component source, two render targets — the architecture note.</p>'
+          format: canvas_full_html
+        url:
+          uri: 'internal:/about'
+          options: {  }
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: efeb2812-24c1-41d1-b28c-6dea6c86a35c
+            target_type: media
+    -
+      parent_uuid: 67dc47fa-174e-51b0-b358-6aa786be8166
+      slot: cards
+      uuid: d0262ea6-c671-5180-8e70-affd3107d8b3
+      component_id: sdc.drupalx_theme.card_event
+      inputs:
+        title: 'Canvas office hours'
+        month: JUL
+        day: '14'
+        time: '2:00–3:00 PM'
+        location: Online
+        url:
+          uri: 'internal:/contact'
+          options: {  }
+        c: sky
+    -
+      parent_uuid: 67dc47fa-174e-51b0-b358-6aa786be8166
+      slot: cards
+      uuid: cc014e94-4500-533c-b77d-fd5de7837c19
+      component_id: sdc.drupalx_theme.card_event
+      inputs:
+        title: 'Editor training workshop'
+        month: JUL
+        day: '28'
+        time: '10:00 AM–noon'
+        location: 'Community Room B'
+        url:
+          uri: 'internal:/contact'
+          options: {  }
+        c: clay
+    -
+      uuid: f1558880-e18e-5b04-86e8-b364a8ad9f33
+      component_id: sdc.drupalx_theme.accordion
+      inputs:
+        eyebrow: FAQ
+        title: 'Common questions'
+        lede:
+          value: ''
+          format: canvas_full_html
+        tone: tint
+    -
+      parent_uuid: f1558880-e18e-5b04-86e8-b364a8ad9f33
+      slot: items
+      uuid: 8320bc28-1fb4-5c28-bcfc-92103c7e1bca
+      component_id: sdc.drupalx_theme.accordion_item
+      inputs:
+        heading: 'Can editors break the design?'
+        body:
+          value: '<p>No — components expose enums and slots, not free-form HTML. The design system is enforced by the component schemas.</p>'
+          format: canvas_full_html
+        open: true
+    -
+      parent_uuid: f1558880-e18e-5b04-86e8-b364a8ad9f33
+      slot: items
+      uuid: 526acc59-74da-52da-bbc5-6da8705a57c0
+      component_id: sdc.drupalx_theme.accordion_item
+      inputs:
+        heading: 'Does the static site drift from Drupal?'
+        body:
+          value: '<p>They render the same twig from the same directory. The parity check in the starter diffs both outputs to prove it.</p>'
+          format: canvas_full_html
+        open: false
+    -
+      parent_uuid: f1558880-e18e-5b04-86e8-b364a8ad9f33
+      slot: items
+      uuid: af19962c-20ce-5480-a0d1-a41f77e3db10
+      component_id: sdc.drupalx_theme.accordion_item
+      inputs:
+        heading: 'What about images?'
+        body:
+          value: '<p>Pushed images become real media entities; the dx_image module serves width-stepped WebP derivatives to visitors automatically.</p>'
+          format: canvas_full_html
+        open: false
+    -
+      uuid: 1aec27ba-10cd-5081-b2a9-60adfe90c6f2
+      component_id: sdc.drupalx_theme.section_cta
+      inputs:
+        eyebrow: ''
+        title: 'Have a project in mind?'
+        body:
+          value: '<p>Tell us where your site hurts — we’ll show you the same page, twice.</p>'
+          format: canvas_full_html
+    -
+      parent_uuid: 1aec27ba-10cd-5081-b2a9-60adfe90c6f2
+      slot: cta_buttons
+      uuid: a89cf5ed-b526-56e3-8f42-6ea45d8f856d
+      component_id: sdc.drupalx_theme.button
+      inputs:
+        label: 'Start the conversation'
+        url:
+          uri: 'internal:/contact'
+          options: {  }
+        variant: accent
+        size: normal
+        icon: arrow-right
+  path:
+    -
+      alias: /services
+      langcode: en
+  revision_translation_affected:
+    -
+      value: true

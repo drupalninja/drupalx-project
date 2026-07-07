@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies: {  }
+id: user_created_awaiting_approval
+label: 'User: Created - Awaiting Approval'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: 'Account details for [easy_email:recipient_uid:0:entity:display-name] at [site:name] (pending admin approval)'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>[easy_email:recipient_uid:0:entity:display-name],</p><p>Thank you for registering at [site:name]. Your application for an account is currently pending approval. Once it has been approved, you will receive another email containing information about how to log in, set your password, and other details.</p><p>-- &nbsp;[site:name] team</p>'
+  format: easy_email
+bodyPlain: "[easy_email:recipient_uid:0:entity:display-name],\r\n\r\nThank you for registering at [site:name]. Your application for an account is currently pending approval. Once it has been approved, you will receive another email containing information about how to log in, set your password, and other details.\r\n\r\n--  [site:name] team"
+generateBodyPlain: false
+attachment: {  }
+saveAttachment: false
+attachmentScheme: public
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: true
+purgeInterval: 30
+purgePeriod: days

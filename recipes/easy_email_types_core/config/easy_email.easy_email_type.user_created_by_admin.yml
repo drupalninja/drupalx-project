@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies: {  }
+id: user_created_by_admin
+label: 'User: Created - By Administrator'
+key: ''
+recipient: {  }
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: 'An administrator created an account for you at [site:name]'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>[easy_email:recipient_uid:0:entity:display-name],</p><p>A site administrator at [site:name] has created an account for you. You may now log in by clicking this link:</p><p><a class="button" href="[easy_email:recipient_uid:0:entity:one-time-login-url]">Log in and set your password</a></p><p>This link can only be used once to log in and will lead you to a page where you can set your password.</p><p>After setting your password, you will be able to log in at <a href="[site:login-url]">[site:login-url]</a> in the future using:</p><p>username: [easy_email:recipient_uid:0:entity:account-name]<br>password: Your password</p><p>-- &nbsp;[site:name] team</p>'
+  format: easy_email
+bodyPlain: "[easy_email:recipient_uid:0:entity:display-name],\r\n\r\nA site administrator at [site:name] has created an account for you. You may now log in by clicking this link or copying and pasting it into your browser:\r\n\r\n[easy_email:recipient_uid:0:entity:one-time-login-url]\r\n\r\nThis link can only be used once to log in and will lead you to a page where you can set your password.\r\n\r\nAfter setting your password, you will be able to log in at [site:login-url] in the future using:\r\n\r\nusername: [easy_email:recipient_uid:0:entity:account-name]\r\npassword: Your password\r\n\r\n--  [site:name] team"
+generateBodyPlain: false
+attachment: {  }
+saveAttachment: false
+attachmentScheme: public
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: true
+purgeInterval: 30
+purgePeriod: days

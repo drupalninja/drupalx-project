@@ -1,0 +1,141 @@
+name: Content Basics
+type: Drupal CMS
+description: Provides basic tools for creating content.
+recipes:
+  - core/recipes/content_editor_role
+  # The media library cannot be opened via CKEditor unless at least one media
+  # type exists. This is due a core bug; see https://drupal.org/i/3486284#comment-15861965.
+  # However, we also ship a `field_featured_image`, which is meant to refer to
+  # an image media item, so it makes sense to have the image media type available
+  # right out of the gate.
+  - core/recipes/image_media_type
+install:
+  - autosave_form
+  - bpmn_io
+  - canvas
+  # This theme MUST be installed or Canvas breaks in strange ways.
+  - canvas_stark
+  # @todo Remove when https://www.drupal.org/i/3569949 is released.
+  #   Remember to also clean up composer.json!
+  - drupal_cms_helper
+  - eca_base
+  - eca_config
+  - eca_content
+  - eca_misc
+  - eca_render
+  - eca_ui
+  - eca_user
+  - linkit
+  # Allow content types to configure whether editors can easily add menu links to them.
+  - menu_ui
+  - modeler_api
+  - node
+  # We don't specifically use Pathauto in this recipe, but we can safely
+  # assume that content types built on our foundation will want to.
+  - pathauto
+  - scheduler
+  - scheduler_content_moderation_integration
+  - tagify
+  - tagify_user_list
+  - taxonomy
+  - token
+  - trash
+  - views
+  - workflows
+  # We don't have a specific use of the Options or Field UI modules in this recipe,
+  # but we expect that site builders will want to add fields to their content types,
+  # so install these modules anyway.
+  - field_ui
+  - options
+config:
+  # Treat all field storages strictly, since they influence the database layout.
+  strict:
+    - field.storage.node.field_content
+    - field.storage.node.field_description
+    - field.storage.node.field_featured_image
+    - field.storage.node.field_tags
+  import:
+    canvas: '*'
+    filter: '*'
+    linkit:
+      - image.style.linkit_result_thumbnail
+    node:
+      # Only import config which is also imported by the Standard profile.
+      - core.entity_view_mode.node.full
+      - core.entity_view_mode.node.rss
+      - core.entity_view_mode.node.teaser
+      - system.action.node_delete_action
+      - system.action.node_make_sticky_action
+      - system.action.node_make_unsticky_action
+      - system.action.node_promote_action
+      - system.action.node_publish_action
+      - system.action.node_save_action
+      - system.action.node_unpromote_action
+      - system.action.node_unpublish_action
+      - views.view.content
+    taxonomy: '*'
+    trash: '*'
+    scheduler: '*'
+    scheduler_content_moderation_integration: '*'
+  actions:
+    autosave_form.settings:
+      # Enable autosave for all content types.
+      simpleConfigUpdate:
+        allowed_content_entity_types:
+          node:
+            bundles: []
+    node.settings:
+      simpleConfigUpdate:
+        use_admin_theme: true
+    scheduler.settings:
+      simpleConfigUpdate:
+        hide_seconds: true
+    tagify.settings:
+      simpleConfigUpdate:
+        set_default_widget: true
+    trash.settings:
+      simpleConfigUpdate:
+        enabled_entity_types.node: []
+    user.role.anonymous:
+      # We assume all published content should be accessible to anonymous users.
+      grantPermission: 'access content'
+    user.role.authenticated:
+      grantPermission: 'view own unpublished content'
+    user.role.content_editor:
+      grantPermissions:
+        - 'access content overview'
+        - 'access media overview'
+        - 'access trash'
+        - 'administer menu'
+        - 'administer url aliases'
+        - 'create canvas_page'
+        - 'create image media'
+        - 'create page content'
+        - 'create url aliases'
+        - 'delete any image media'
+        - 'delete any page content'
+        - 'delete canvas_page'
+        - 'delete page revisions'
+        - 'edit any image media'
+        - 'edit any page content'
+        - 'edit canvas_page'
+        - 'revert all revisions'
+        - 'schedule publishing of nodes'
+        - 'use text format content_format'
+        - 'use basic_editorial transition unpublish'
+        - 'use basic_editorial transition create_new_draft'
+        - 'use basic_editorial transition publish'
+        - 'view all revisions'
+        - 'view any unpublished content'
+        - 'view own unpublished media'
+        - 'view scheduled content'
+      # The dashboard is provided by drupal_cms_admin_ui, so we cannot assume
+      # it exists when this recipe is applied.
+      grantPermissionsIfExist:
+        - 'view welcome dashboard'
+    # Disable the taxonomy and media scheduler views because they are not
+    # needed and break the navigation menu.
+    views.view.scheduler_scheduled_media:
+      disable: {}
+    views.view.scheduler_scheduled_taxonomy_term:
+      disable: {}

@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: f7b5b15b-bd1e-4286-b932-2e5b722659ef
+  bundle: page
+  default_langcode: en
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: false
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Accessibility Tools demo page'
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /accessibility-tools-demo-page
+      langcode: en
+  field_content:
+    -
+      value: '<p>This page shows some of the accessibility issues flagged by the Editoria11y accessibility checker.</p><p>Some things to try on this page:</p><ul><li>Explore the tips, either by manually toggling the tooltips below, or by using the “Next” button on the checker controls at the bottom right of the page.</li><li>Try marking a manual check as “OK” or “Hidden,” then click "Show hidden alert" from the checker controls.</li><li>Explore the document outline using the "Check headings and alt text" button on the checker controls.</li><li>Click "Open site reports in a new tab" from the checker controls.</li><li>Edit the page, and try all that again while modifying the content.</li></ul><p>When you are done, delete this page.</p><hr><h2>Sample content with a lot of issues</h2><h3>Headings</h3><h4>Empty headings</h4><p>This heading has no text:</p><h3>&nbsp;</h3><h4>Skipped heading levels</h4><h6>This H6 should have been an H3</h6><h4>Suspiciously long headings</h4><h5>A very long heading. Headings should not be used for emphasis, but rather for a document outline, so if you find yourself talking this much, this probably is being used for visual formatting, not a heading.</h5><h4>Suspiciously short blockquotes that maybe should be headings</h4><blockquote><p>Not a blockquote</p></blockquote><h4>Suspicious paragraphs that look like headings</h4><p><strong>This looks suspiciously like a heading</strong></p><p>Note that this test only flags an all-bold paragraph that has no punctuation at all,</p><p><strong>so this paragraph will not be flagged as a false positive.</strong></p><h3>Meaningful Links</h3><h4>Links with no text at all</h4><p>&nbsp;</p><h4>Links titled with a URL</h4><p><a href="https://editoria11y.princeton.edu">https://editoria11y.princeton.edu</a></p><h4>Links only titled with generic text</h4><p>“Click here,” “learn more,” “download,” etc.</p><p><a href="https://www.youtube.com/watch?v=DLzxrzFCyOs">Click here</a></p><h4>Links that open in a new window without an external link icon or text warning</h4><p><a href="https://www.youtube.com/watch?v=DLzxrzFCyOs">An informative video.</a></p><h4>Links to a documents</h4><p>Note that you can set what Editoria11y should look for in your preferences file. By default it checks for PDF and DOC files.</p><p><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ#.pdf">A fake PDF link.</a></p><h3>Tables</h3><h4>Tables without valid headers</h4><table><tbody><tr><td>A table without a TH header is invalid</td><td>And no, an “H3” does not count.</td></tr></tbody></table><h4>Empty table header cells</h4><table><thead><tr><th>Empty table heading cells will also be flagged:</th><th><br>&nbsp;</th></tr></thead></table><h3>Legibility</h3><h4>Lists</h4><p>a. Fake lists</p><p>b. use letters or numbers.</p><p>c. rather than real formatting.</p><h4>Caps lock</h4><p>SEVERAL WORDS IN A ROW OF CAPS LOCK TEXT WILL TRIGGER A MANUAL CHECK WARNING.</p>'
+      format: content_format
+  field_description:
+    -
+      value: 'This is a page to demonstrate how to use the Accessibility Tools'

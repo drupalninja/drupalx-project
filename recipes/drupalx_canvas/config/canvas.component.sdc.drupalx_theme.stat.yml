@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+  theme:
+    - drupalx_theme
+label: Stat
+id: sdc.drupalx_theme.stat
+source: sdc
+source_local_id: 'drupalx_theme:stat'
+provider: drupalx_theme
+active_version: 5e3558889ecbc790
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        number:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: $140M+
+          expression: ℹ︎string␟value
+        label:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'investment leveraged'
+          expression: ℹ︎string␟value
+        c:
+          required: false
+          field_type: list_string
+          field_storage_settings:
+            allowed_values_function: canvas_load_allowed_values_for_component_prop
+          field_instance_settings: {  }
+          field_widget: options_select
+          default_value: null
+          expression: ℹ︎list_string␟value
+    fallback_metadata:
+      slot_definitions: {  }

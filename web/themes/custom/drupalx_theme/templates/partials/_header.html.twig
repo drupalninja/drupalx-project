@@ -1,0 +1,112 @@
+{#
+/**
+ * @file
+ * Site header — sticky bar, ≤6 top-level nav items, hover-intent dropdowns
+ * (.spark-dropdown / .spark-mega from global.css), CTA button, mobile drawer
+ * (toggled by global.js via data-dx-nav-toggle / data-dx-mobile-nav).
+ *
+ * Data contract (same for Drupal preprocess AND the static build):
+ *   nav:  [{ title, url, children: [{ title, url, description? }] }]
+ *   site: { name, tagline?, cta: { label, url }? }
+ */
+#}
+{% set name = site.name|default('DrupalX Canvas') %}
+{% set cta = site.cta|default({ label: 'Get in touch', url: '/contact' }) %}
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-primary-100">
+  <div class="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between gap-6 h-18 py-3">
+
+      {# Brand #}
+      <a href="/" class="flex items-center gap-3 shrink-0" aria-label="{{ name }} — home">
+        <span class="w-10 h-10 rounded-xl bg-primary-700 text-white inline-flex items-center justify-center">
+          <span class="dx-icon dx-icon--md" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/landmark.svg') -}}</span>
+        </span>
+        <span class="flex flex-col leading-tight">
+          <span class="font-display font-semibold text-lg text-primary-800">{{ name }}</span>
+          {% if site.tagline %}
+            <span class="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ink-500">{{ site.tagline }}</span>
+          {% endif %}
+        </span>
+      </a>
+
+      {# Desktop nav #}
+      {# max-lg:hidden, NOT `hidden lg:block` — Drupal core's .hidden is !important and would beat the override. #}
+      <nav class="max-lg:hidden" aria-label="Primary">
+        <ul class="flex items-center gap-1">
+          {% for item in nav %}
+            <li class="relative group">
+              <a href="{{ item.url }}"
+                 class="inline-flex items-center gap-1 px-3 py-2 rounded-lg text-[0.95rem] font-semibold text-ink-700 hover:text-primary-700 hover:bg-primary-50 transition-colors">
+                {{ item.title }}
+                {% if item.children|default([]) is not empty %}
+                  <span class="dx-icon dx-icon--sm text-ink-500" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/chevron-down.svg') -}}</span>
+                {% endif %}
+              </a>
+              {% if item.children|default([]) is not empty %}
+                <div class="spark-dropdown absolute left-0 top-full pt-2 w-72 z-50">
+                  <ul class="spark-mega bg-white rounded-2xl border border-primary-100 shadow-xl overflow-hidden py-2
+                             before:content-[''] before:block before:absolute before:inset-x-0 before:top-2 before:h-1 before:rounded-t-2xl before:bg-gradient-to-r before:from-primary-500 before:to-accent-500">
+                    {% for child in item.children %}
+                      <li>
+                        <a href="{{ child.url }}" class="block px-5 py-2.5 hover:bg-primary-50">
+                          <span class="block font-semibold text-[0.92rem] text-primary-800">{{ child.title }}</span>
+                          {% if child.description|default('') %}
+                            <span class="block text-[0.8rem] text-ink-500 leading-snug">{{ child.description }}</span>
+                          {% endif %}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      {# CTA + mobile toggle #}
+      <div class="flex items-center gap-3">
+        {% if cta.label|default('') %}
+          <a href="{{ cta.url }}"
+             class="max-sm:hidden inline-flex items-center gap-2 rounded-full bg-primary-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-800 transition-colors">
+            {{ cta.label }}
+            <span class="dx-icon dx-icon--sm" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/arrow-right.svg') -}}</span>
+          </a>
+        {% endif %}
+        <button type="button" data-dx-nav-toggle aria-expanded="false" aria-label="Toggle navigation"
+                class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg border border-primary-100 text-primary-800">
+          <span class="dx-icon dx-icon--md" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/menu.svg') -}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {# Mobile drawer #}
+  <div data-dx-mobile-nav class="hidden lg:hidden border-t border-primary-100 bg-white">
+    <nav class="max-w-site mx-auto px-4 sm:px-6 py-4" aria-label="Primary mobile">
+      <ul class="grid gap-1">
+        {% for item in nav %}
+          <li>
+            <a href="{{ item.url }}" class="block px-3 py-3 rounded-lg font-semibold text-primary-800 hover:bg-primary-50">{{ item.title }}</a>
+            {% if item.children|default([]) is not empty %}
+              <ul class="pl-4 border-l-2 border-primary-100 ml-3 mb-2">
+                {% for child in item.children %}
+                  <li><a href="{{ child.url }}" class="block px-3 py-2 text-[0.95rem] text-ink-700 hover:text-primary-700">{{ child.title }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+        {% if cta.label|default('') %}
+          <li class="pt-2">
+            <a href="{{ cta.url }}" class="inline-flex items-center gap-2 rounded-full bg-primary-700 px-5 py-2.5 text-sm font-semibold text-white">
+              {{ cta.label }}
+              <span class="dx-icon dx-icon--sm" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/arrow-right.svg') -}}</span>
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,23 @@
+langcode: en
+status: false
+dependencies: {  }
+id: ai_alt_text_generation
+label: 'Drupal AI Alt Text Generation'
+description: 'This service generates alt texts for images using AI vision models. The image and metadata are sent to the selected AI service.'
+default: false
+required: false
+opt_out: false
+only_once: false
+contextual_consent_only: false
+contextual_consent_text: 'Transfer image and meta data to chosen AI service?'
+info_url: ''
+privacy_policy_url: ''
+purposes:
+  - cms
+cookies: {  }
+callback_code: ''
+javascripts: {  }
+wrapper_identifier:
+  - .ai-alt-text-generation
+attachments: {  }
+weight: 0

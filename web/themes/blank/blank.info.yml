@@ -1,0 +1,12 @@
+name: Blank
+regions:
+  footer: Footer
+  header: Header
+  content: Content
+description: 'A completely blank theme.'
+libraries-override:
+  core/normalize: false
+type: theme
+core_version_requirement: ^11
+'base theme': false
+version: 1.0.0

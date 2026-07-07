@@ -1,0 +1,4 @@
+site_key: '${site_uuid}'
+api_key: '${site_uuid}'
+api_endpoint: local
+enable_validation_logging: false

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: uncropped_960w_webp
+label: 'Uncropped | 960w | WebP'
+effects:
+  8bd270bf-d5f1-4eca-b53b-a4e8a62b283d:
+    uuid: 8bd270bf-d5f1-4eca-b53b-a4e8a62b283d
+    id: image_scale
+    weight: 1
+    data:
+      width: 960
+      height: null
+      upscale: false
+  0ce9a656-f212-4e70-911a-faadf1d1ee9f:
+    uuid: 0ce9a656-f212-4e70-911a-faadf1d1ee9f
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp

@@ -1,0 +1,13 @@
+{
+    "name": "drupal/drupal_cms_forms",
+    "description": "Adds a simple contact form, and tools for building forms.",
+    "type": "drupal-recipe",
+    "license": ["GPL-2.0-or-later"],
+    "require": {
+        "drupal/drupal_cms_anti_spam": "^2",
+        "drupal/drupal_cms_content_type_base": "^2",
+        "drupal/core": "^11.3.10",
+        "drupal/webform": "^6.3-beta3"
+    },
+    "version": "2.1.3"
+}

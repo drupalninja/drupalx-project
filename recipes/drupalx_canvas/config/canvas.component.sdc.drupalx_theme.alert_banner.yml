@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.canvas_full_html
+  module:
+    - options
+    - text
+  theme:
+    - drupalx_theme
+label: 'Alert banner'
+id: sdc.drupalx_theme.alert_banner
+source: sdc
+source_local_id: 'drupalx_theme:alert_banner'
+provider: drupalx_theme
+active_version: 629dfe9f17bd4850
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        message:
+          required: true
+          field_type: text_long
+          field_storage_settings: {  }
+          field_instance_settings:
+            allowed_formats:
+              - canvas_full_html
+          field_widget: text_textarea
+          default_value:
+            -
+              value: '<p>Offices close at noon on Friday, July 3.</p>'
+              format: canvas_full_html
+          expression: ℹ︎text_long␟processed
+        tone:
+          required: false
+          field_type: list_string
+          field_storage_settings:
+            allowed_values_function: canvas_load_allowed_values_for_component_prop
+          field_instance_settings: {  }
+          field_widget: options_select
+          default_value: null
+          expression: ℹ︎list_string␟value
+        alert_id:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value: null
+          expression: ℹ︎string␟value
+        dismissible:
+          required: false
+          field_type: boolean
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: boolean_checkbox
+          default_value: null
+          expression: ℹ︎boolean␟value
+    fallback_metadata:
+      slot_definitions: {  }

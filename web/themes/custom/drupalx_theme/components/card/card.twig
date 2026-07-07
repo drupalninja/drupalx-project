@@ -1,0 +1,55 @@
+{#
+/**
+ * Card — image- or icon-led spark-card with a wayfinding color bar. The whole
+ * card is the link (stretched); hover gives the lift + accent bar + arrow
+ * slide + image zoom from .spark-card.
+ */
+#}
+{% set c = c|default('none') %}
+{% set icon = icon|default('none') %}
+{% set more_label = more_label|default('Learn more') %}
+{% set has_image = image.src|default('') is not empty %}
+{% set io = has_image ? dx_image(image, '(min-width: 1024px) 33vw, 100vw') : { srcset: null } %}
+{% set c_map = {
+  'none': { bar: 'border-t-primary-600', chip: 'bg-primary-50 text-primary-700', more: 'text-primary-700' },
+  'sky': { bar: 'border-t-sky-600', chip: 'bg-sky-50 text-sky-700', more: 'text-sky-700' },
+  'clay': { bar: 'border-t-clay-600', chip: 'bg-clay-50 text-clay-700', more: 'text-clay-700' },
+  'accent': { bar: 'border-t-accent-600', chip: 'bg-accent-50 text-accent-700', more: 'text-accent-700' },
+} %}
+{% set cc = c_map[c]|default(c_map['none']) %}
+
+<article class="spark-card group/card relative flex h-full flex-col overflow-hidden rounded-2xl border border-primary-100 border-t-4 {{ cc.bar }} bg-white shadow-sm">
+  {% if has_image %}
+    <div class="overflow-hidden">
+      <img
+        src="{{ image.src }}" alt="{{ image.alt|default('') }}"
+        class="spark-card__img aspect-video w-full object-cover"
+        loading="lazy" decoding="async"
+        {% if io.srcset %}srcset="{{ io.srcset }}" sizes="{{ io.sizes }}"{% endif %}
+      >
+    </div>
+  {% endif %}
+  <div class="flex flex-1 flex-col p-6">
+    {% if not has_image and icon != 'none' %}
+      <span class="mb-4 inline-flex w-12 h-12 items-center justify-center rounded-xl {{ cc.chip }}">
+        {% include 'drupalx_theme:icon' with { name: icon, size: 'md' } only %}
+      </span>
+    {% endif %}
+    <h3 class="text-xl font-bold text-primary-800">
+      {% if url|default('') %}
+        <a href="{{ url }}" class="after:absolute after:inset-0 focus:outline-none">{{ title }}</a>
+      {% else %}
+        {{ title }}
+      {% endif %}
+    </h3>
+    {% if body|default('') %}
+      <div class="mt-2 text-[0.95rem] leading-relaxed text-ink-500">{{ body|raw }}</div>
+    {% endif %}
+    {% if url|default('') %}
+      <p class="spark-card__more mt-auto pt-4 text-sm font-bold {{ cc.more }}">
+        {{ more_label }}
+        <span class="spark-card__arrow dx-icon dx-icon--sm" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/arrow-right.svg') -}}</span>
+      </p>
+    {% endif %}
+  </div>
+</article>

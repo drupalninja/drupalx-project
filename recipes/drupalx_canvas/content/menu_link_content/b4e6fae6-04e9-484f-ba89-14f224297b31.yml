@@ -1,0 +1,45 @@
+_meta:
+  version: '1.0'
+  entity_type: menu_link_content
+  uuid: b4e6fae6-04e9-484f-ba89-14f224297b31
+  bundle: menu_link_content
+  default_langcode: en
+  depends:
+    416b99e4-15a8-4fe1-8436-c7248d92ae1e: menu_link_content
+    f84ae181-469c-5c45-ab73-dbf78ca1be78: canvas_page
+default:
+  enabled:
+    -
+      value: true
+  title:
+    -
+      value: Contact
+  description:
+    -
+      value: 'dx:About:Contact'
+  menu_name:
+    -
+      value: main
+  link:
+    -
+      title: null
+      options: {  }
+      target_uuid: f84ae181-469c-5c45-ab73-dbf78ca1be78
+  external:
+    -
+      value: false
+  rediscover:
+    -
+      value: true
+  weight:
+    -
+      value: 1
+  expanded:
+    -
+      value: false
+  parent:
+    -
+      value: 'menu_link_content:416b99e4-15a8-4fe1-8436-c7248d92ae1e'
+  revision_translation_affected:
+    -
+      value: true

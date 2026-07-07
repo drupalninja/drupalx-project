@@ -1,0 +1,45 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Document list'
+description: 'Resource / document library preview. Fill the documents slot with Document item components.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+    title:
+      type: string
+      title: Title
+      default: ''
+      examples:
+        - 'Reports & documents'
+    more_label:
+      type: string
+      title: 'View-all label'
+      default: ''
+      examples:
+        - 'Browse the full library'
+    more_url:
+      type: string
+      format: uri-reference
+      title: 'View-all link'
+      default: ''
+    tone:
+      type: string
+      title: Background
+      default: white
+      enum:
+        - white
+        - tint
+      meta:enum:
+        white: White
+        tint: 'Primary tint'
+
+slots:
+  documents:
+    title: Documents
+    description: 'Document item components.'

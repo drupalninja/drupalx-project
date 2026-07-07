@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: social_media_facebook
+label: 'Social media - Facebook'
+effects:
+  338d92b4-4580-4118-aa11-96fb253e343e:
+    uuid: 338d92b4-4580-4118-aa11-96fb253e343e
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 630
+      crop_type: focal_point
+  8ddd479d-03db-45d3-8591-a7b72e13bb21:
+    uuid: 8ddd479d-03db-45d3-8591-a7b72e13bb21
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp

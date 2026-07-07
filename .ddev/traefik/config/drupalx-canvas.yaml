@@ -1,0 +1,98 @@
+#ddev-generated
+# If you remove the ddev-generated line above you
+# are responsible for maintaining this file. DDEV will not then
+# update it, for example if you add `additional_hostnames`, etc.
+
+http:
+  routers:
+    drupalx-canvas-xhgui-80-http:
+      entrypoints:
+        - http-8143
+      rule: HostRegexp(`^drupalx-canvas\.ddev\.site$`)
+      
+      service: "drupalx-canvas-xhgui-80"
+      tls: false
+      # middlewares:
+      #   - "drupalx-canvas-redirectHttps"
+    drupalx-canvas-web-80-http:
+      entrypoints:
+        - http-80
+      rule: HostRegexp(`^drupalx-canvas\.ddev\.site$`)
+      
+      service: "drupalx-canvas-web-80"
+      tls: false
+      # middlewares:
+      #   - "drupalx-canvas-redirectHttps"
+    drupalx-canvas-web-8025-http:
+      entrypoints:
+        - http-8025
+      rule: HostRegexp(`^drupalx-canvas\.ddev\.site$`)
+      
+      service: "drupalx-canvas-web-8025"
+      tls: false
+      # middlewares:
+      #   - "drupalx-canvas-redirectHttps"
+    
+    
+    drupalx-canvas-xhgui-80-https:
+      entrypoints:
+        - http-8142
+      rule: HostRegexp(`^drupalx-canvas\.ddev\.site$`)
+      
+      service: "drupalx-canvas-xhgui-80"
+      
+      tls: true
+      
+    
+    
+    drupalx-canvas-web-80-https:
+      entrypoints:
+        - http-443
+      rule: HostRegexp(`^drupalx-canvas\.ddev\.site$`)
+      
+      service: "drupalx-canvas-web-80"
+      
+      tls: true
+      
+    drupalx-canvas-web-8025-https:
+      entrypoints:
+        - http-8026
+      rule: HostRegexp(`^drupalx-canvas\.ddev\.site$`)
+      
+      service: "drupalx-canvas-web-8025"
+      
+      tls: true
+      
+    
+
+  middlewares:
+    drupalx-canvas-redirectHttps:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+  services:
+    drupalx-canvas-xhgui-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-drupalx-canvas-xhgui:80
+        
+    
+    drupalx-canvas-web-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-drupalx-canvas-web:80
+        
+    drupalx-canvas-web-8025:
+      loadbalancer:
+        servers:
+          - url: http://ddev-drupalx-canvas-web:8025
+        
+    
+    
+    
+
+tls:
+  certificates:
+    - certFile: /mnt/ddev-global-cache/traefik/certs/drupalx-canvas.crt
+      keyFile: /mnt/ddev-global-cache/traefik/certs/drupalx-canvas.key

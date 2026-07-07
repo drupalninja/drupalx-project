@@ -1,0 +1,23 @@
+{
+  "name": "drupalx-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static-frontend pipeline for drupalx_theme (Twing-rendered SDCs): live-reload dev server, static site build, and a Canvas-compatibility validator. The theme resolves to ../web/themes/custom/drupalx_theme.",
+  "scripts": {
+    "setup": "npm install",
+    "dev": "node --require ./lib/node-compat.cjs site/dev.cjs",
+    "validate": "node --require ./lib/node-compat.cjs site/validate.cjs",
+    "manifest": "node --require ./lib/node-compat.cjs site/gen-manifest.cjs",
+    "prebuild:site": "npm run validate",
+    "build:site": "node --require ./lib/node-compat.cjs site/build.cjs",
+    "build": "npm run build:site"
+  },
+  "devDependencies": {
+    "cheerio": "^1.2.0",
+    "chokidar": "^3.6.0",
+    "js-yaml": "^4.1.0",
+    "sharp": "^0.33.5",
+    "twing": "^3.1.1",
+    "ws": "^8.18.0"
+  }
+}

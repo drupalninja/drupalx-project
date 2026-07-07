@@ -1,0 +1,39 @@
+{#
+/**
+ * Section: Split — alternating text + media with the offset-accent photo
+ * treatment (asymmetry directive: use media_side to zig-zag down the page).
+ */
+#}
+{% set media_side = media_side|default('right') %}
+{% set tone = tone|default('white') %}
+{% set has_image = image.src|default('') is not empty %}
+{% set io = has_image ? dx_image(image, '(min-width: 1024px) 50vw, 100vw') : { srcset: null } %}
+{% set split_buttons_html %}{% block split_buttons %}{% endblock %}{% endset %}
+
+<section class="full-bleed {{ tone == 'tint' ? 'bg-primary-50' : 'bg-white' }} py-16 md:py-24" data-reveal>
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <div class="{{ media_side == 'left' ? 'lg:order-2' : '' }}">
+        {% if eyebrow|default('') %}<p class="eyebrow mb-3">{{ eyebrow }}</p>{% endif %}
+        <h2 class="display-xl">{{ title }}</h2>
+        {% if body|default('') %}
+          <div class="mt-4 text-lg leading-relaxed text-ink-500">{{ body|raw }}</div>
+        {% endif %}
+        {% if split_buttons_html|trim %}
+          <div class="mt-6 flex flex-wrap gap-3">{{ split_buttons_html }}</div>
+        {% endif %}
+      </div>
+      {% if has_image %}
+        <div class="relative pb-6 pr-4 {{ media_side == 'left' ? 'lg:order-1' : '' }}">
+          <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-2xl bg-accent-500/25" aria-hidden="true"></div>
+          <img
+            src="{{ image.src }}" alt="{{ image.alt|default('') }}"
+            class="relative aspect-4/3 w-full rounded-2xl object-cover shadow-xl"
+            loading="lazy" decoding="async"
+            {% if io.srcset %}srcset="{{ io.srcset }}" sizes="{{ io.sizes }}"{% endif %}
+          >
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

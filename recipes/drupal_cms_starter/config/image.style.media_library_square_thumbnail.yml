@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: media_library_square_thumbnail
+label: 'Media Library Square Thumbnail'
+effects:
+  e1133a5d-4918-4fd3-8b1e-c4b21222cc59:
+    uuid: e1133a5d-4918-4fd3-8b1e-c4b21222cc59
+    id: image_convert_avif
+    weight: -9
+    data:
+      extension: webp
+  10aaa04e-b821-481e-8555-5c29088daa27:
+    uuid: 10aaa04e-b821-481e-8555-5c29088daa27
+    id: focal_point_scale_and_crop
+    weight: -10
+    data:
+      width: 220
+      height: 220
+      crop_type: focal_point

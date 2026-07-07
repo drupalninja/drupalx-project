@@ -1,0 +1,48 @@
+name: SEO Tools
+description: Adds common search engine optimisation tools such as meta tags, XML sitemap, robots.txt management and more.
+type: Drupal CMS
+recipes:
+  - core/recipes/image_media_type
+install:
+  - eca_base
+  - eca_config
+  - eca_content
+  - eca_misc
+  - eca_user
+  - eca_ui
+  - field_group
+  - focal_point
+  - layout_builder
+  - menu_link_content
+  - metatag
+  - metatag_open_graph
+  - metatag_twitter_cards
+  - modeler_api
+  - node
+  - seo_checklist
+  - simple_sitemap
+  - token_or
+  - yoast_seo
+config:
+  # Treat all field storages strictly, since they influence the database layout.
+  strict:
+    - field.storage.node.field_seo_analysis
+    - field.storage.node.field_seo_description
+    - field.storage.node.field_seo_image
+    - field.storage.node.field_seo_title
+  import:
+    metatag:
+      # Exclude Global, Front and Node as we create those in the config folder.
+      - metatag.metatag_defaults.403.yml
+      - metatag.metatag_defaults.404.yml
+      - metatag.metatag_defaults.taxonomy_term.yml
+      - metatag.metatag_defaults.user.yml
+    simple_sitemap: '*'
+  actions:
+    system.performance:
+      simpleConfigUpdate:
+        # Ensure caching is on and set to 15 minutes for Lighthouse.
+        cache.page.max_age: 900
+        # Ensure CSS and JS are preprocessed.
+        css.preprocess: true
+        js.preprocess: true

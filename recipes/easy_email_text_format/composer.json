@@ -1,0 +1,17 @@
+{
+  "name": "drupal/easy_email_text_format",
+  "type": "drupal-recipe",
+  "description": "Text format and editor config for editing HTML body of Easy Email templates.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/easy_email_text_format",
+  "minimum-stability": "stable",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/easy_email_text_format",
+    "source": "https://git.drupalcode.org/project/easy_email_text_format"
+  },
+  "require": {
+    "drupal/core": "^11"
+  },
+  "version": "1.1.0"
+}

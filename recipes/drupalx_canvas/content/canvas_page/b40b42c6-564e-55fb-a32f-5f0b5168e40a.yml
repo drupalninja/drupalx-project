@@ -1,0 +1,238 @@
+_meta:
+  version: '1.0'
+  entity_type: canvas_page
+  uuid: b40b42c6-564e-55fb-a32f-5f0b5168e40a
+  default_langcode: en
+  depends:
+    782360b7-0d73-4002-a283-84ef5a7cc20a: file
+    d3c36166-f2d5-4e4f-a948-a435f51c4e09: media
+    6f2756a6-155d-44e5-a7ab-3ceffa0b812a: file
+    6f441503-efcd-4c64-96f1-cacd2f0e5344: media
+default:
+  status:
+    -
+      value: true
+  owner:
+    -
+      target_id: 1
+  title:
+    -
+      value: Home
+  components:
+    -
+      uuid: 47bea039-9946-5178-bc94-65f73b4c2a0f
+      component_id: sdc.drupalx_theme.section_hero
+      inputs:
+        eyebrow: 'DrupalX Canvas starter'
+        title: 'One component library, two render targets'
+        body:
+          value: '<p>Author pages as data, preview them instantly as a static site, then push the same pages into Drupal Canvas — where editors compose with the very same components.</p>'
+          format: canvas_full_html
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: d3c36166-f2d5-4e4f-a948-a435f51c4e09
+            target_type: media
+        style: split
+        height: medium
+        stat_chip_number: 20+
+        stat_chip_label: 'Canvas-ready components'
+    -
+      parent_uuid: 47bea039-9946-5178-bc94-65f73b4c2a0f
+      slot: hero_buttons
+      uuid: c88d5429-365e-5be0-9f33-aafae0ecbe72
+      component_id: sdc.drupalx_theme.button
+      inputs:
+        label: 'Explore the components'
+        url:
+          uri: 'internal:/sections'
+          options: {  }
+        variant: primary
+        size: normal
+        icon: arrow-right
+    -
+      parent_uuid: 47bea039-9946-5178-bc94-65f73b4c2a0f
+      slot: hero_buttons
+      uuid: 063335ff-a24e-5fb5-93e3-c768a3ab8c74
+      component_id: sdc.drupalx_theme.button
+      inputs:
+        label: 'How it works'
+        url:
+          uri: 'internal:/about'
+          options: {  }
+        variant: ghost
+        size: normal
+        icon: none
+    -
+      uuid: 4bb51930-799f-5557-bda9-070069ccd9fe
+      component_id: sdc.drupalx_theme.section_stats
+      inputs:
+        eyebrow: ''
+        title: ''
+        tone: dark
+        columns: '4'
+    -
+      parent_uuid: 4bb51930-799f-5557-bda9-070069ccd9fe
+      slot: stats
+      uuid: b1b1d326-9212-5fa7-8874-64ff68ab924e
+      component_id: sdc.drupalx_theme.stat
+      inputs:
+        number: 20+
+        label: 'SDC components'
+        c: none
+    -
+      parent_uuid: 4bb51930-799f-5557-bda9-070069ccd9fe
+      slot: stats
+      uuid: 9cca8750-0655-5250-96f8-6848883c6a78
+      component_id: sdc.drupalx_theme.stat
+      inputs:
+        number: '2'
+        label: 'render targets, one source'
+        c: none
+    -
+      parent_uuid: 4bb51930-799f-5557-bda9-070069ccd9fe
+      slot: stats
+      uuid: 6c9f035a-fe06-5b7f-ad4b-b9d12af64d26
+      component_id: sdc.drupalx_theme.stat
+      inputs:
+        number: 100%
+        label: 'editable in Canvas'
+        c: none
+    -
+      parent_uuid: 4bb51930-799f-5557-bda9-070069ccd9fe
+      slot: stats
+      uuid: 6d1d6e85-d9e0-5817-b276-2788c10bc4be
+      component_id: sdc.drupalx_theme.stat
+      inputs:
+        number: '0'
+        label: 'CDN dependencies'
+        c: none
+    -
+      uuid: 772f82b9-8b43-538f-b1ef-1a7249ff73ef
+      component_id: sdc.drupalx_theme.section_cards
+      inputs:
+        eyebrow: 'What you get'
+        title: 'A starter that ships working pages'
+        lede:
+          value: '<p>Every card, band, and hero on this page is a Single-Directory Component — the same twig renders here and in Drupal.</p>'
+          format: canvas_full_html
+        columns: '3'
+        tone: white
+        featured_first: false
+    -
+      parent_uuid: 772f82b9-8b43-538f-b1ef-1a7249ff73ef
+      slot: cards
+      uuid: b3769ec4-7d2b-531c-b28b-23f5adb4be82
+      component_id: sdc.drupalx_theme.card
+      inputs:
+        title: 'Design in the browser'
+        body:
+          value: '<p>A live-reload static preview with no Drupal in the loop — components rebuild in milliseconds.</p>'
+          format: canvas_full_html
+        url:
+          uri: 'internal:/services'
+          options: {  }
+        icon: lightbulb
+        c: sky
+        more_label: 'See the workflow'
+    -
+      parent_uuid: 772f82b9-8b43-538f-b1ef-1a7249ff73ef
+      slot: cards
+      uuid: 9aa0b333-33d8-5e62-a5d7-7a837df40f18
+      component_id: sdc.drupalx_theme.card
+      inputs:
+        title: 'Push to Canvas'
+        body:
+          value: '<p>The same data pages import as real, editable Canvas pages — deterministic UUIDs keep re-pushes idempotent.</p>'
+          format: canvas_full_html
+        url:
+          uri: 'internal:/services'
+          options: {  }
+        icon: sparkles
+        c: clay
+        more_label: 'About the bridge'
+    -
+      parent_uuid: 772f82b9-8b43-538f-b1ef-1a7249ff73ef
+      slot: cards
+      uuid: 57b07b96-f92a-5c8d-b849-c7a395f5e81a
+      component_id: sdc.drupalx_theme.card
+      inputs:
+        title: 'Editors own the pages'
+        body:
+          value: '<p>Every prop is a Canvas form field: enums become selects, images use the media library, slots nest components.</p>'
+          format: canvas_full_html
+        url:
+          uri: 'internal:/about'
+          options: {  }
+        icon: users
+        c: accent
+        more_label: 'Meet the editor'
+    -
+      uuid: 3b2f3bd6-dc62-50dd-8040-dfaa277ccb3a
+      component_id: sdc.drupalx_theme.section_split
+      inputs:
+        eyebrow: 'The pipeline'
+        title: 'Author once, render everywhere'
+        body:
+          value: '<p>Pages are component trees in plain data files. The static build renders them with Twing for instant preview and deploys anywhere; <code>ddev push-pages</code> converts the same trees into Canvas page YAML and imports them — media, aliases, front page and all.</p>'
+          format: canvas_full_html
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: 6f441503-efcd-4c64-96f1-cacd2f0e5344
+            target_type: media
+        media_side: right
+        tone: white
+    -
+      parent_uuid: 3b2f3bd6-dc62-50dd-8040-dfaa277ccb3a
+      slot: split_buttons
+      uuid: 97fb29d5-5b6c-51b7-8504-bfd8c7b862e1
+      component_id: sdc.drupalx_theme.button
+      inputs:
+        label: 'Read the docs'
+        url:
+          uri: 'internal:/about'
+          options: {  }
+        variant: primary
+        size: normal
+        icon: arrow-right
+    -
+      uuid: 0101d67a-dc7b-5297-a586-d982d66c4292
+      component_id: sdc.drupalx_theme.section_cta
+      inputs:
+        eyebrow: 'Get started'
+        title: 'Spin up your own Canvas site today'
+        body:
+          value: '<p>Clone the template, run ddev install, and start composing pages from the component library.</p>'
+          format: canvas_full_html
+    -
+      parent_uuid: 0101d67a-dc7b-5297-a586-d982d66c4292
+      slot: cta_buttons
+      uuid: 01e58af6-f4d7-5929-808b-1c3010f3b8fd
+      component_id: sdc.drupalx_theme.button
+      inputs:
+        label: 'Get in touch'
+        url:
+          uri: 'internal:/contact'
+          options: {  }
+        variant: accent
+        size: normal
+        icon: arrow-right
+    -
+      parent_uuid: 0101d67a-dc7b-5297-a586-d982d66c4292
+      slot: cta_buttons
+      uuid: 30be5137-d7a4-5b64-908e-e76c3bcded98
+      component_id: sdc.drupalx_theme.button
+      inputs:
+        label: 'Component library'
+        url:
+          uri: 'internal:/sections'
+          options: {  }
+        variant: glass
+        size: normal
+        icon: chevron-right
+  path:
+    -
+      langcode: en
+      alias: null
+  revision_translation_affected:
+    -
+      value: true

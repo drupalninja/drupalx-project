@@ -1,0 +1,45 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Document item'
+description: 'One downloadable document row (filetype icon, title, meta).'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - title
+  properties:
+    title:
+      type: string
+      title: Title
+      examples:
+        - '2026 Annual Report'
+    description:
+      type: string
+      title: Description
+      default: ''
+    url:
+      type: string
+      format: uri-reference
+      title: 'File link'
+      default: ''
+    filetype:
+      type: string
+      title: 'File type'
+      default: pdf
+      enum:
+        - pdf
+        - doc
+        - xls
+        - generic
+      meta:enum:
+        pdf: PDF
+        doc: 'Word / document'
+        xls: 'Excel / spreadsheet'
+        generic: Other
+    meta:
+      type: string
+      title: 'Meta (size / date)'
+      default: ''
+      examples:
+        - 'PDF · 2.4 MB · June 2026'

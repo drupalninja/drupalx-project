@@ -1,0 +1,16 @@
+{#
+/**
+ * Accordion — native <details>/<summary> FAQ list (.faq-* from global.css,
+ * zero JS). Accordion item children fill the items slot.
+ */
+#}
+{% import '@drupalx_theme/components/_section/_section.twig' as sx %}
+{% set tone = tone|default('tint') %}
+<section class="full-bleed {{ tone == 'tint' ? 'bg-primary-50' : 'bg-white' }} py-16 md:py-24" data-reveal>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    {{ sx.header(eyebrow|default(''), title|default(''), lede|default(''), 'left', false) }}
+    <div class="faq-list">
+      {% block items %}{% endblock %}
+    </div>
+  </div>
+</section>

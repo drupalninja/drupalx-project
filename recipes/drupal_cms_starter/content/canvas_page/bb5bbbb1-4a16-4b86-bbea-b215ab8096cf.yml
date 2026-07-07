@@ -1,0 +1,48 @@
+_meta:
+  version: '1.0'
+  entity_type: canvas_page
+  uuid: bb5bbbb1-4a16-4b86-bbea-b215ab8096cf
+  default_langcode: en
+default:
+  revision_user:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  owner:
+    -
+      target_id: 1
+  title:
+    -
+      value: Home
+  components:
+    -
+      uuid: b7563f5f-d4db-4029-a292-593e82fda2ec
+      component_id: sdc.mercury.cta
+      inputs:
+        heading_text: 'Your hero content goes here'
+        level: 1
+        text: 'Bring your site to life, starting here.'
+        text_align: center
+        overlay_opacity: 20%
+    -
+      parent_uuid: b7563f5f-d4db-4029-a292-593e82fda2ec
+      slot: actions
+      uuid: 1c006688-4739-47e3-a57c-eaa65026afbf
+      component_id: sdc.mercury.button
+      inputs:
+        variant: primary
+        size: large
+        label: 'Call to action'
+        mobile_width: false
+        icon: arrow-right
+        icon_first: false
+        disabled: false
+  path:
+    -
+      alias: /home
+      langcode: en
+  revision_translation_affected:
+    -
+      value: true

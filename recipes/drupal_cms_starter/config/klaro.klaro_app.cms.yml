@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cms
+label: 'Drupal CMS'
+description: 'Store data (e.g. cookie for user session) in your browser (required to use this website).'
+default: true
+required: true
+opt_out: false
+only_once: false
+contextual_consent_only: null
+contextual_consent_text: null
+info_url: 'https://www.drupal.org'
+privacy_policy_url: ''
+purposes:
+  - cms
+cookies:
+  -
+    regex: '^[SESS|SSESS]'
+    path: ''
+    domain: ''
+callback_code: ''
+javascripts: {  }
+wrapper_identifier: {  }
+attachments: {  }
+weight: -1

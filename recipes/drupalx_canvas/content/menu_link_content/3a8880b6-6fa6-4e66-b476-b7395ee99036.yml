@@ -1,0 +1,41 @@
+_meta:
+  version: '1.0'
+  entity_type: menu_link_content
+  uuid: 3a8880b6-6fa6-4e66-b476-b7395ee99036
+  bundle: menu_link_content
+  default_langcode: en
+  depends:
+    d47f5031-e3ec-5226-94af-31ca7c954476: canvas_page
+default:
+  enabled:
+    -
+      value: true
+  title:
+    -
+      value: Services
+  description:
+    -
+      value: 'dx::Services'
+  menu_name:
+    -
+      value: main
+  link:
+    -
+      title: null
+      options: {  }
+      target_uuid: d47f5031-e3ec-5226-94af-31ca7c954476
+  external:
+    -
+      value: false
+  rediscover:
+    -
+      value: true
+  weight:
+    -
+      value: 2
+  expanded:
+    -
+      value: true
+  revision_translation_affected:
+    -
+      value: true

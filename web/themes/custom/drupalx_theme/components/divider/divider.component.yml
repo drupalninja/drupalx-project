@@ -1,0 +1,19 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Divider
+description: 'Subtle horizontal rule inside the content container.'
+status: stable
+group: DrupalX Primitives
+
+props:
+  type: object
+  properties:
+    width:
+      type: string
+      title: Width
+      default: content
+      enum:
+        - content
+        - prose
+      meta:enum:
+        content: 'Content width (1340)'
+        prose: 'Prose width (narrow)'

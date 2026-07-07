@@ -1,0 +1,13 @@
+#
+# If you want to use this file for your site template, rename it to `.gitignore`.
+# Otherwise, you can delete it. The format of this file is documented at
+# https://git-scm.com/docs/gitignore
+#
+# Tell Git to totally ignore the following files and directories:
+#
+# Drupal normally puts a .htaccess alongside exported configuration, to protect it from
+# prying eyes, but that's not relevant for a recipe.
+/config/.htaccess
+
+# Junk that macOS creates automatically.
+.DS_Store

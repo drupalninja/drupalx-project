@@ -1,0 +1,70 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.block.system_breadcrumb_block
+    - canvas.component.sdc.mercury.heading
+    - canvas.component.sdc.mercury.section
+    - canvas.component.sdc.mercury.text
+    - core.entity_view_mode.node.full
+    - field.field.node.page.field_content
+    - filter.format.content_format
+    - node.type.page
+  module:
+    - link
+    - node
+    - options
+id: node.page.full
+content_entity_type_id: node
+content_entity_type_bundle: page
+content_entity_type_view_mode: full
+component_tree:
+  '0:92e68054-9f78-4420-8752-96ec693d2fa9':
+    uuid: 92e68054-9f78-4420-8752-96ec693d2fa9
+    component_id: block.system_breadcrumb_block
+    component_version: ad6359c331fc7c45
+    inputs:
+      label: Breadcrumbs
+      label_display: '0'
+  '1:b436211b-95ef-40ea-987a-e7b0f5782e33':
+    uuid: b436211b-95ef-40ea-987a-e7b0f5782e33
+    component_id: sdc.mercury.section
+    component_version: a917d5c9be8f2830
+    inputs:
+      columns: '100'
+      mobile_columns: '1'
+      width: 75%
+      margin_block_start: '48'
+      margin_block_end: '48'
+      padding_block_start: '0'
+      padding_block_end: '0'
+      section_header: true
+      section_footer: true
+  '1:header_slot:0:f08be9dc-e328-4cb7-9499-df6db9bd8900':
+    parent_uuid: b436211b-95ef-40ea-987a-e7b0f5782e33
+    slot: header_slot
+    uuid: f08be9dc-e328-4cb7-9499-df6db9bd8900
+    component_id: sdc.mercury.heading
+    component_version: 9ba4baa1476e5856
+    inputs:
+      heading_text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:page␝title␞␟value'
+      level: 1
+      text_size: default
+      text_color: default
+      align: left
+      url: ''
+  '1:main_slot:0:caa1e4b2-d58b-4140-b99b-ab3e1ce55ad5':
+    parent_uuid: b436211b-95ef-40ea-987a-e7b0f5782e33
+    slot: main_slot
+    uuid: caa1e4b2-d58b-4140-b99b-ab3e1ce55ad5
+    component_id: sdc.mercury.text
+    component_version: 16c79c28a4108f9b
+    inputs:
+      text:
+        sourceType: entity-field
+        expression: 'ℹ︎␜entity:node:page␝field_content␞␟processed'
+      text_size: normal
+      text_color: default
+exposed_slots: {  }

@@ -1,0 +1,10 @@
+{
+    "name": "nextagencyio/drupalx-canvas-recipe",
+    "description": "DrupalX Canvas site recipe — drupalx_theme (Tailwind v4 SDC library) + Canvas page building on the Drupal CMS starter base.",
+    "type": "drupal-recipe",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/canvas": "~1.5.2",
+        "drupal/canvas_full_html": "^1.0"
+    }
+}

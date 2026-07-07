@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 3_4_225x300_focal_point_webp
+label: '3:4 | 225x300 | Focal Point | WebP'
+effects:
+  ee8503d0-3291-49fd-91f0-03330865ae3b:
+    uuid: ee8503d0-3291-49fd-91f0-03330865ae3b
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 225
+      height: 300
+      crop_type: focal_point
+  9345aea6-53fb-43ca-8f3e-a0bd87a4e796:
+    uuid: 9345aea6-53fb-43ca-8f3e-a0bd87a4e796
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp

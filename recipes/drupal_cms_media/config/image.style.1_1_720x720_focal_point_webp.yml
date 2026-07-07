@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 1_1_720x720_focal_point_webp
+label: '1:1 | 720x720 | Focal Point | WebP'
+effects:
+  6920a024-f16d-48a8-8a9b-0b61295c3555:
+    uuid: 6920a024-f16d-48a8-8a9b-0b61295c3555
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 720
+      height: 720
+      crop_type: focal_point
+  22aaebcd-5967-4b6d-9d92-a699a491f803:
+    uuid: 22aaebcd-5967-4b6d-9d92-a699a491f803
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp

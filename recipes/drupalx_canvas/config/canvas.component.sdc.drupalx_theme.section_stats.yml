@@ -1,0 +1,58 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+  theme:
+    - drupalx_theme
+label: 'Section: Stats'
+id: sdc.drupalx_theme.section_stats
+source: sdc
+source_local_id: 'drupalx_theme:section_stats'
+provider: drupalx_theme
+active_version: 8f0f72b781433636
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        eyebrow:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value: null
+          expression: ℹ︎string␟value
+        title:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'Our impact'
+          expression: ℹ︎string␟value
+        tone:
+          required: false
+          field_type: list_string
+          field_storage_settings:
+            allowed_values_function: canvas_load_allowed_values_for_component_prop
+          field_instance_settings: {  }
+          field_widget: options_select
+          default_value: null
+          expression: ℹ︎list_string␟value
+        columns:
+          required: false
+          field_type: list_string
+          field_storage_settings:
+            allowed_values_function: canvas_load_allowed_values_for_component_prop
+          field_instance_settings: {  }
+          field_widget: options_select
+          default_value: null
+          expression: ℹ︎list_string␟value
+    fallback_metadata:
+      slot_definitions:
+        stats:
+          title: Stats
+          description: 'Stat components (number + label).'

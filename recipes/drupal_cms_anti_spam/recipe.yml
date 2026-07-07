@@ -1,0 +1,40 @@
+name: Anti-spam
+type: Drupal CMS
+description: Sets up anti-spam and anti-abuse functionality.
+install:
+  - captcha
+  - friendlycaptcha
+  - honeypot
+input:
+  site_uuid:
+    data_type: string
+    description: 'The site UUID. Used internally to generate an API key for CAPTCHAs.'
+    constraints:
+      NotBlank: []
+    default:
+      source: config
+      config: ['system.site', 'uuid']
+config:
+  actions:
+    captcha.settings:
+      simpleConfigUpdate:
+        default_challenge: friendlycaptcha/friendlycaptcha
+    friendlycaptcha.settings:
+      simpleConfigUpdate:
+        # The keys are purely random and not required for the local API endpoint. The settings
+        # form would require them, but the actual functionality doesn't need them.
+        site_key: ${site_uuid}
+        api_key: ${site_uuid}
+        api_endpoint: local
+        enable_validation_logging: false
+    honeypot.settings:
+      simpleConfigUpdate:
+        # Protect the user registration form, password reset form, and comment form using
+        # Honeypot, since those are fairly likely to be exposed to anonymous users.
+        form_settings.comment_comment_form: true
+        form_settings.user_pass: true
+        form_settings.user_register_form: true
+    user.role.authenticated:
+      grantPermissions:
+        - 'bypass honeypot protection'
+        - 'skip CAPTCHA'

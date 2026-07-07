@@ -1,0 +1,504 @@
+name: Starter
+type: Site
+description: A simple template with just the basics. Bring your own design, and build what you need.
+install:
+  - announcements_feed
+  - automated_cron
+  - big_pipe
+  - block
+  - breakpoint
+  - ckeditor5
+  - config
+  - content_moderation
+  - contextual
+  - datetime
+  - dblog
+  - dynamic_page_cache
+  - editor
+  - field
+  - field_ui
+  - file
+  - filter
+  - image
+  - inline_form_errors
+  - layout_builder
+  - layout_discovery
+  - link
+  - media
+  - media_library
+  - menu_link_content
+  - menu_ui
+  - mysql
+  - navigation
+  - node
+  - options
+  - package_manager
+  - page_cache
+  - path
+  - path_alias
+  - responsive_image
+  - system
+  - taxonomy
+  - text
+  - update
+  - user
+  - views
+  - views_ui
+  - workflows
+  - automatic_updates
+  - autosave_form
+  - bpmn_io
+  - canvas
+  - captcha
+  - coffee
+  - crop
+  - cva
+  - dashboard
+  - drupal_cms_helper
+  - drupical
+  - easy_breadcrumb
+  - easy_email
+  - easy_email_override
+  - eca
+  - eca_base
+  - eca_config
+  - eca_content
+  - eca_misc
+  - eca_render
+  - eca_ui
+  - eca_user
+  - focal_point
+  - friendlycaptcha
+  - gin_login
+  - gin_toolbar
+  - honeypot
+  - jquery_ui
+  - jquery_ui_resizable
+  - klaro
+  - linkit
+  - login_emailusername
+  - mailsystem
+  - media_file_delete
+  - media_library_bulk_upload
+  - menu_link_attributes
+  - modeler_api
+  - navigation_extra_tools
+  - pathauto
+  - project_browser
+  - redirect_404
+  - redirect
+  - sam
+  - scheduler
+  - scheduler_content_moderation_integration
+  - svg_image
+  - symfony_mailer_lite
+  - tagify_user_list
+  - tagify
+  - token
+  - trash
+  - view_password
+  - claro
+  - canvas_stark
+  - easy_email_theme
+  - mercury
+  - gin
+config:
+  strict: false
+  actions:
+    core.date_format.fallback:
+      setProperties:
+        status: true
+        locked: true
+        pattern: 'D, j M Y - H:i'
+    core.date_format.html_date:
+      setProperties:
+        status: true
+        locked: true
+        pattern: Y-m-d
+    core.date_format.html_datetime:
+      setProperties:
+        status: true
+        locked: true
+        pattern: 'Y-m-d\TH:i:sO'
+    core.date_format.html_month:
+      setProperties:
+        status: true
+        locked: true
+        pattern: Y-m
+    core.date_format.html_time:
+      setProperties:
+        status: true
+        locked: true
+        pattern: 'H:i:s'
+    core.date_format.html_week:
+      setProperties:
+        status: true
+        locked: true
+        pattern: Y-\WW
+    core.date_format.html_year:
+      setProperties:
+        status: true
+        locked: true
+        pattern: 'Y'
+    core.date_format.html_yearless_date:
+      setProperties:
+        status: true
+        locked: true
+        pattern: m-d
+    core.date_format.long:
+      setProperties:
+        status: true
+        locked: false
+        pattern: 'l, j F Y - H:i'
+    core.date_format.medium:
+      setProperties:
+        status: true
+        locked: false
+        pattern: 'D, j M Y - H:i'
+    core.date_format.short:
+      setProperties:
+        status: true
+        locked: false
+        pattern: 'j M Y - H:i'
+    core.entity_form_mode.user.register:
+      setProperties:
+        status: true
+        targetEntityType: user
+        cache: true
+    core.entity_view_mode.user.compact:
+      setProperties:
+        status: true
+        targetEntityType: user
+        cache: true
+    core.entity_view_mode.user.full:
+      setProperties:
+        status: false
+        targetEntityType: user
+        cache: true
+    core.menu.static_menu_link_overrides:
+      simpleConfigUpdate:
+        definitions:
+          announcements_feed__announcement:
+            enabled: false
+            menu_name: admin
+            parent: system.admin
+            weight: 10
+            expanded: false
+    system.action.user_block_user_action:
+      setProperties:
+        status: true
+        type: user
+        plugin: user_block_user_action
+        configuration: {  }
+    system.action.user_cancel_user_action:
+      setProperties:
+        status: true
+        type: user
+        plugin: user_cancel_user_action
+        configuration: {  }
+    system.action.user_unblock_user_action:
+      setProperties:
+        status: true
+        type: user
+        plugin: user_unblock_user_action
+        configuration: {  }
+    system.advisories:
+      simpleConfigUpdate:
+        enabled: true
+        interval_hours: 6
+    system.cron:
+      simpleConfigUpdate:
+        threshold:
+          requirements_warning: 172800
+          requirements_error: 1209600
+        logging: true
+    system.date:
+      simpleConfigUpdate:
+        first_day: 0
+        country:
+          default: null
+        timezone:
+          default: Australia/Brisbane
+          user:
+            configurable: true
+            default: 0
+            warn: false
+    system.diff:
+      simpleConfigUpdate:
+        context:
+          lines_leading: 2
+          lines_trailing: 2
+    system.feature_flags:
+      simpleConfigUpdate:
+        linkset_endpoint: false
+    system.file:
+      simpleConfigUpdate:
+        allow_insecure_uploads: false
+        default_scheme: public
+        temporary_maximum_age: 21600
+    system.image.gd:
+      simpleConfigUpdate:
+        jpeg_quality: 75
+    system.image:
+      simpleConfigUpdate:
+        toolkit: gd
+    system.logging:
+      simpleConfigUpdate:
+        error_level: hide
+    system.mail:
+      simpleConfigUpdate:
+        interface:
+          default: php_mail
+        mailer_dsn:
+          scheme: sendmail
+          host: default
+          user: null
+          password: null
+          port: null
+          options: {  }
+    system.maintenance:
+      simpleConfigUpdate:
+        langcode: en
+        message: '@site is currently under maintenance. We should be back shortly. Thank you for your patience.'
+    system.menu.account:
+      setProperties:
+        status: true
+        description: 'Links related to the active user account'
+        locked: true
+    system.menu.admin:
+      setProperties:
+        status: true
+        description: 'Administrative task links'
+        locked: true
+    system.menu.footer:
+      setProperties:
+        status: true
+        description: 'Site information links'
+        locked: true
+    system.menu.main:
+      setProperties:
+        status: true
+        description: 'Site section links'
+        locked: true
+    system.menu.tools:
+      setProperties:
+        status: true
+        description: 'User tool links, often added by modules'
+        locked: true
+    system.performance:
+      simpleConfigUpdate:
+        cache:
+          page:
+            max_age: 900
+        css:
+          preprocess: true
+          gzip: true
+        fast_404:
+          enabled: true
+          paths: '/\.(?:txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i'
+          exclude_paths: '/\/(?:styles|imagecache)\//'
+          html: '<!DOCTYPE html><html><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>'
+        js:
+          preprocess: true
+          gzip: true
+    system.site:
+      simpleConfigUpdate:
+        langcode: en
+        slogan: ''
+        page:
+          403: /user/login
+          404: ''
+          front: /home
+        admin_compact_mode: false
+        weight_select_max: 100
+        default_langcode: en
+        mail_notification: null
+    system.theme.global:
+      simpleConfigUpdate:
+        favicon:
+          mimetype: image/vnd.microsoft.icon
+          path: ''
+          url: ''
+          use_default: true
+        features:
+          comment_user_picture: true
+          comment_user_verification: true
+          favicon: true
+          node_user_picture: true
+        logo:
+          path: ''
+          url: null
+          use_default: true
+    system.theme:
+      simpleConfigUpdate:
+        admin: gin
+        default: mercury
+    user.flood:
+      simpleConfigUpdate:
+        uid_only: false
+        ip_limit: 50
+        ip_window: 3600
+        user_limit: 5
+        user_window: 21600
+    user.mail:
+      simpleConfigUpdate:
+        langcode: en
+        cancel_confirm:
+          subject: 'Account cancellation request for [user:display-name] at [site:name]'
+          body: |-
+            [user:display-name]
+
+            A request to cancel your account has been made at [site:name].
+
+            You may now cancel your account on [site:url-brief] by clicking this link or copying and pasting it into your browser:
+
+            [user:cancel-url]
+
+            NOTE: The cancellation of your account is not reversible.
+
+            This link expires in one day and nothing will happen if it is not used.
+
+            --  [site:name] team
+        password_reset:
+          subject: 'Replacement login information for [user:display-name] at [site:name]'
+          body: |-
+            [user:display-name],
+
+            A request to reset the password for your account has been made at [site:name].
+
+            You may now log in by clicking this link or copying and pasting it into your browser:
+
+            [user:one-time-login-url]
+
+            This link can only be used once to log in and will lead you to a page where you can set your password. It expires after one day and nothing will happen if it's not used.
+
+            --  [site:name] team
+        register_admin_created:
+          subject: 'An administrator created an account for you at [site:name]'
+          body: |-
+            [user:display-name],
+
+            A site administrator at [site:name] has created an account for you. You may now log in by clicking this link or copying and pasting it into your browser:
+
+            [user:one-time-login-url]
+
+            This link can only be used once to log in and will lead you to a page where you can set your password.
+
+            After setting your password, you will be able to log in at [site:login-url] in the future using:
+
+            username: [user:name]
+            password: Your password
+
+            --  [site:name] team
+        register_no_approval_required:
+          subject: 'Account details for [user:display-name] at [site:name]'
+          body: |-
+            [user:display-name],
+
+            Thank you for registering at [site:name]. You may now log in by clicking this link or copying and pasting it into your browser:
+
+            [user:one-time-login-url]
+
+            This link can only be used once to log in and will lead you to a page where you can set your password.
+
+            After setting your password, you will be able to log in at [site:login-url] in the future using:
+
+            username: [user:name]
+            password: Your password
+
+            --  [site:name] team
+        register_pending_approval:
+          subject: 'Account details for [user:display-name] at [site:name] (pending admin approval)'
+          body: |-
+            [user:display-name],
+
+            Thank you for registering at [site:name]. Your application for an account is currently pending approval. Once it has been approved, you will receive another email containing information about how to log in, set your password, and other details.
+
+            --  [site:name] team
+        register_pending_approval_admin:
+          subject: 'Account details for [user:display-name] at [site:name] (pending admin approval)'
+          body: |-
+            [user:display-name] has applied for an account.
+
+            [user:edit-url]
+        status_activated:
+          subject: 'Account details for [user:display-name] at [site:name] (approved)'
+          body: |-
+            [user:display-name],
+
+            Your account at [site:name] has been activated.
+
+            You may now log in by clicking this link or copying and pasting it into your browser:
+
+            [user:one-time-login-url]
+
+            This link can only be used once to log in and will lead you to a page where you can set your password.
+
+            After setting your password, you will be able to log in at [site:login-url] in the future using:
+
+            username: [user:account-name]
+            password: Your password
+
+            --  [site:name] team
+        status_blocked:
+          subject: 'Account details for [user:display-name] at [site:name] (blocked)'
+          body: |-
+            [user:display-name],
+
+            Your account on [site:name] has been blocked.
+
+            --  [site:name] team
+        status_canceled:
+          subject: 'Account details for [user:display-name] at [site:name] (canceled)'
+          body: |-
+            [user:display-name],
+
+            Your account on [site:name] has been canceled.
+
+            --  [site:name] team
+    user.role.anonymous:
+      setProperties:
+        status: true
+        is_admin: false
+        permissions:
+          - 'access content'
+          - 'use klaro'
+          - 'view media'
+    user.role.authenticated:
+      setProperties:
+        status: true
+        is_admin: false
+        permissions:
+          - 'access administration pages'
+          - 'access coffee'
+          - 'access content'
+          - 'access contextual links'
+          - 'access navigation'
+          - 'bypass honeypot protection'
+          - 'delete own files'
+          - 'skip CAPTCHA'
+          - 'use klaro'
+          - 'view media'
+          - 'view own unpublished content'
+          - 'view the administration theme'
+    user.settings:
+      simpleConfigUpdate:
+        langcode: en
+        anonymous: Anonymous
+        verify_mail: true
+        notify:
+          cancel_confirm: true
+          password_reset: true
+          status_activated: true
+          status_blocked: false
+          status_canceled: false
+          register_admin_created: true
+          register_no_approval_required: true
+          register_pending_approval: true
+        register: admin_only
+        cancel_method: user_cancel_block
+        password_reset_timeout: 86400
+        password_strength: true
+extra:
+  drupal_cms_installer:
+    creator: Drupal CMS

@@ -1,0 +1,30 @@
+name: 'Easy Email: Standard Mail'
+description: 'Easy Email module and theme for sending HTML emails from Drupal.'
+type: 'Easy Email'
+install:
+  - file
+  - mailsystem
+  - symfony_mailer_lite
+  - easy_email
+  - easy_email_theme
+config:
+  import:
+    symfony_mailer_lite: "*"
+    easy_email: "*"
+    easy_email_theme: "*"
+  actions:
+    mailsystem.settings:
+      simple_config_update:
+        theme: 'easy_email_theme'
+        defaults:
+          sender: symfony_mailer_lite
+          formatter: symfony_mailer_lite
+        modules:
+          symfony_mailer_lite:
+            none:
+              sender: symfony_mailer_lite
+              formatter: symfony_mailer_lite
+          easy_email:
+            none:
+              sender: symfony_mailer_lite
+              formatter: symfony_mailer_lite

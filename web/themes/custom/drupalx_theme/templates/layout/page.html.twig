@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * DrupalX Theme — page shell.
+ *
+ * The site chrome (header + footer) lives in templates/partials/ and is
+ * SHARED with the static frontend build: both targets include the same
+ * partials with the same data contract — `nav` (array of {title, url,
+ * children[]}) and `site` ({name, tagline, cta, footer…}). On the Drupal
+ * side both variables are built by drupalx_theme_preprocess_page() from the
+ * main menu + theme settings; on the static side they come from
+ * frontend/site/pages.config.cjs. One markup source — no header drift.
+ */
+#}
+{% include '@drupalx_theme/templates/partials/_header.html.twig' with {
+  nav: dx_nav|default([]),
+  site: dx_site|default({}),
+  is_front: is_front|default(false),
+} only %}
+
+{% if page.highlighted %}
+  {{ page.highlighted }}
+{% endif %}
+
+{# No bottom padding — sections own their vertical rhythm, so a full-bleed
+   band butts cleanly against the footer. #}
+<main id="main-content" role="main">
+  {{ page.content }}
+</main>
+
+{% include '@drupalx_theme/templates/partials/_footer.html.twig' with {
+  nav: dx_nav|default([]),
+  site: dx_site|default({}),
+} only %}

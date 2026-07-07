@@ -1,0 +1,50 @@
+name: Google Analytics
+type: Drupal CMS
+description: Adds tracking of website traffic using Google Analytics and Google Tag Manager. Requires a Google Tag Manager ID.
+recipes:
+  - drupal_cms_privacy_basic
+install:
+  - google_tag
+input:
+  property_id:
+    data_type: string
+    description: "The Google Tag, in the form of GT-xxxxxx, G-xxxxxxxx, AW-xxxxxxxxx, GTM-xxxxxxxx or DC-xxxxxxxx."
+    prompt:
+      method: ask
+      arguments:
+        question: "Enter the Google Tag ID for tracking. This ID is unique to each site you want to track separately, and must be in the form of GT-xxxxxx, G-xxxxxxxx, AW-xxxxxxxxx, GTM-xxxxxxxx or DC-xxxxxxxx."
+    form:
+      '#type': 'textfield'
+      '#title': 'Google Tag ID'
+      '#description': "The Google Tag ID for tracking. This ID is unique to each site you want to track separately, and must be in the form of GT-xxxxxx, G-xxxxxxxx, AW-xxxxxxxxx, GTM-xxxxxxxx or DC-xxxxxxxx."
+    default:
+      source: value
+      value: ''
+config:
+  strict: false
+  import:
+    google_tag: '*'
+    klaro:
+      - klaro.klaro_app.ga
+      - klaro.klaro_app.gtm
+  actions:
+    google_tag.settings:
+      simpleConfigUpdate:
+        default_google_tag_entity: drupal
+    google_tag.container.drupal:
+      set:
+        property_name: tag_container_ids
+        value:
+          - ${property_id}
+    klaro.klaro_app.ga:
+      enable: []
+    klaro.klaro_app.gtm:
+      enable: []
+    klaro.settings:
+      simpleConfigUpdate:
+        dialog_mode: notice
+extra:
+  project_browser:
+    tasks:
+      - route_name: google_tag.settings_form
+        text: Configure

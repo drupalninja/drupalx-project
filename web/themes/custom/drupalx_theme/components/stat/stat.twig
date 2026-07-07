@@ -1,0 +1,18 @@
+{#
+/**
+ * Stat — one big-number cell for the Stats section. `c: none` inherits the
+ * band's text color (white on the dark band); sky/clay/accent color the
+ * numeral (best on the light tone; accent also reads well on dark).
+ */
+#}
+{% set c = c|default('none') %}
+{% set c_map = {
+  'none': '',
+  'sky': 'text-sky-600',
+  'clay': 'text-clay-600',
+  'accent': 'text-accent-500',
+} %}
+<div class="px-2 py-3 text-center sm:px-4">
+  <p class="stat-num {{ c_map[c]|default('') }}">{{ number }}</p>
+  <p class="mt-1 text-xs font-semibold uppercase tracking-[0.12em] opacity-80">{{ label }}</p>
+</div>

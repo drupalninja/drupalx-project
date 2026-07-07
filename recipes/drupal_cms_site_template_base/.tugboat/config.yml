@@ -1,0 +1,66 @@
+# This file sets up integrating with Tugboat, which provides a preview
+# environment for people to test out your site template. If you don't
+# want to integrate with Tugboat at all, delete this directory.
+#
+# The format of this file is documented at https://docs.tugboatqa.com.
+#
+services:
+  db:
+    image: tugboatqa/mariadb
+  php:
+    image: tugboatqa/php:8.4-apache
+    depends:
+      - db
+    default: true
+    commands:
+      init:
+        - docker-php-ext-install opcache
+        - a2enmod headers rewrite
+      build:
+        # Delete any previous build.
+        - rm -r -f cms package
+
+        # Bump PHP's memory limit to accommodate heavy image processing.
+        # @see https://docs.tugboatqa.com/troubleshooting/fix-problem-x/index.html#php-out-of-memory-issues
+        - echo "memory_limit=512M" > /usr/local/etc/php/conf.d/tugboat.ini
+
+        # Copy the site template into its own directory so Composer can install it as
+        # a distinct package.
+        - composer archive --file=site_template --format=tar
+        - mkdir -p package
+        - tar -x -f site_template.tar -C package
+        - rm site_template.tar
+
+        # Spin up Drupal CMS.
+        - composer create-project "drupal/cms:^2" --stability=dev --no-install
+        - composer config minimum-stability dev --working-dir=cms
+
+        # Add Tugboat-specific settings.
+        - composer config --merge --json extra.drupal-scaffold.file-mapping '{"[web-root]/sites/default/default.settings.php":{"append":"../.tugboat/tugboat-settings.txt"}}' --working-dir=cms
+
+        # Ensure the site template will be installed from the local archive.
+        - composer --version
+        - composer repository add site_template path ../package --working-dir=cms
+        - composer require $(composer config name --working-dir=$TUGBOAT_ROOT) --no-update --working-dir=cms
+
+        # Install dependencies and unpack all recipes.
+        - composer install --working-dir=cms
+        - composer drupal:recipe-unpack --working-dir=cms
+
+        # Symlink the Drupal root into the Apache document root.
+        - ln -s -n -f $TUGBOAT_ROOT/cms/web $DOCROOT
+
+        # Install the site template using Drush and cancel the administrator account
+        # so that the Tugboat preview cannot be (easily) abused or defaced. The preview's
+        # purpose is to demonstrate the front-end theme and default content, not the
+        # administrative UI.
+        - |
+          set -e
+          cd $TUGBOAT_ROOT/cms
+          ./vendor/bin/drush site:install --yes --db-url=mysql://tugboat:tugboat@db/tugboat --site-name="Demo Site" ../recipes/$(basename $(composer config name --working-dir=$TUGBOAT_ROOT))
+          ./vendor/bin/drush user:cancel --yes --uid=1 --reassign-content
+
+        # Ensure the files directory is web-writable.
+        - mkdir -p $DOCROOT/sites/default/files
+        - chown -R www-data:www-data $DOCROOT/sites/default
+        - chmod 2775 $DOCROOT/sites/default/files

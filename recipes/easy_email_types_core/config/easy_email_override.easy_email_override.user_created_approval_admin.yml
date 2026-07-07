@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies: {  }
+id: user_created_approval_admin
+label: 'User: Created - Awaiting Approval - Admin Notification'
+module: user
+key: register_pending_approval_admin
+easy_email_type: user_created_approval_admin
+param_map:
+  -
+    source: account
+    destination: field_related_user
+copied_fields:
+  from: false
+  reply_to: false
+  to: false
+  cc: false
+  bcc: false
+  subject: false
+  body_html: false
+  body_plain: false
+  attachments: false

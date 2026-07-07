@@ -1,0 +1,15 @@
+{#
+/**
+ * Icon — inlines a curated Lucide SVG from the theme's dist/icons at render
+ * time via twig source(). Works identically in Drupal (theme-root namespace)
+ * and the static Twing build (lib/environment.js registers the same
+ * namespace). lucide-static SVGs use stroke="currentColor" so color inherits.
+ */
+#}
+{% set name = name|default('none') %}
+{% set size = size|default('md') %}
+{% if name and name != 'none' %}
+  <span class="dx-icon dx-icon--{{ size }}" aria-hidden="true">
+    {{- source('@drupalx_theme/dist/icons/' ~ name ~ '.svg') -}}
+  </span>
+{% endif %}

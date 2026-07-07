@@ -1,0 +1,59 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Event card'
+description: 'Event teaser with a date block, time and location, for the Card grid slot.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - title
+  properties:
+    title:
+      type: string
+      title: Title
+      examples:
+        - 'Board of directors meeting'
+    month:
+      type: string
+      title: 'Month (abbrev)'
+      default: ''
+      examples:
+        - JUL
+    day:
+      type: string
+      title: 'Day number'
+      default: ''
+      examples:
+        - '14'
+    time:
+      type: string
+      title: Time
+      default: ''
+      examples:
+        - '6:00–7:30 PM'
+    location:
+      type: string
+      title: Location
+      default: ''
+      examples:
+        - 'Community Center, Room 2'
+    url:
+      type: string
+      format: uri-reference
+      title: Link
+      default: ''
+    c:
+      type: string
+      title: 'Wayfinding color'
+      default: none
+      enum:
+        - none
+        - sky
+        - clay
+        - accent
+      meta:enum:
+        none: 'Primary (default)'
+        sky: Sky
+        clay: Clay
+        accent: Accent

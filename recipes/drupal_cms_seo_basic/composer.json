@@ -1,0 +1,19 @@
+{
+    "name": "drupal/drupal_cms_seo_basic",
+    "description": "Provides basic SEO best practices.",
+    "type": "drupal-recipe",
+    "license": ["GPL-2.0-or-later"],
+    "require": {
+        "drupal/core": "^11.3.10",
+        "drupal/easy_breadcrumb": "^2.0.9",
+        "drupal/pathauto": "^1.13",
+        "drupal/redirect": "^1.10",
+        "drupal/token": "^1.15"
+    },
+    "suggest": {
+        "drupal/drupal_cms_google_analytics": "Adds website traffic tracking with Google Analytics.",
+        "drupal/drupal_cms_seo_tools": "Add additional SEO tools to help configure and manage meta tags, SEO analysis, sitemaps, with an SEO checklist and dashboard.",
+        "drupal/drupal_cms_accessibility_tools": "Adds automated checks to help ensure content conforms to web accessibility guidelines."
+    },
+    "version": "2.1.3"
+}

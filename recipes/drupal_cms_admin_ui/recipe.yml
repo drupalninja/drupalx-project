@@ -1,0 +1,124 @@
+name: Admin UI
+type: Drupal CMS
+description: Sets up a nice administrative theme and navigation.
+install:
+  - announcements_feed
+  - automatic_updates
+  - coffee
+  - contextual
+  - dashboard
+  - dblog
+  # @todo Remove when https://www.drupal.org/i/3569949 is released.
+  #   Remember to also clean up composer.json!
+  - drupal_cms_helper
+  - drupical
+  - file
+  - gin
+  - gin_login
+  - gin_toolbar
+  - menu_link_content
+  - menu_ui
+  - navigation
+  - navigation_extra_tools
+  - project_browser
+  - sam
+  - tagify
+  - tagify_user_list
+  - update
+  - views_ui
+  - view_password
+config:
+  strict: false
+  import:
+    gin:
+      - block.block.gin_breadcrumbs
+      - block.block.gin_content
+      - block.block.gin_local_actions
+      - block.block.gin_messages
+      - block.block.gin_page_title
+      - block.block.gin_primary_local_tasks
+      - block.block.gin_secondary_local_tasks
+    navigation:
+      - system.menu.content
+      - system.menu.navigation-user-links
+    claro:
+      - block.block.claro_breadcrumbs
+      - block.block.claro_content
+      - block.block.claro_local_actions
+      - block.block.claro_messages
+      - block.block.claro_page_title
+      - block.block.claro_primary_local_tasks
+      - block.block.claro_secondary_local_tasks
+    user:
+      - views.view.user_admin_people
+  actions:
+    announcements_feed.settings:
+      simpleConfigUpdate:
+        limit: 2
+    automatic_updates.settings:
+      simpleConfigUpdate:
+        allow_core_minor_updates: true
+    core.menu.static_menu_link_overrides:
+      overrideMenuLinks:
+        announcements_feed.announcement:
+          enabled: false
+    drupical.settings:
+      simpleConfigUpdate:
+        limit: 5
+    gin_login.settings:
+      simpleConfigUpdate:
+        brand_image:
+          use_default: false
+          # This is placed by the file entity that ships with this recipe.
+          path: public://login-wallpaper.png
+    navigation.block_layout:
+      # To prevent duplicated items if this recipe is applied more than once,
+      # this needs to be changed as simple config. That's okay, though, because
+      # even though Navigation treats this as a layout section, it's still just
+      # a simple config object at heart.
+      simpleConfigUpdate:
+        # Replace the Shortcuts block with the Dashboard. (The UUID is from
+        # navigation.block_layout.yml.)
+        sections.0.components.2622e40b-8786-4b8c-8883-19e49da53023.configuration:
+          id: navigation_dashboard
+          label: Dashboard
+          label_display: '0'
+          provider: dashboard
+        # Add a link to the Drupal CMS user guide.
+        sections.0.components.52e884dd-0301-4265-b2b3-9cea53a403f3:
+          uuid: 52e884dd-0301-4265-b2b3-9cea53a403f3
+          region: footer
+          configuration:
+            id: navigation_link
+            label: Help
+            label_display: '0'
+            provider: navigation
+            title: Help
+            uri: 'https://project.pages.drupalcode.org/drupal_cms'
+            icon_class: help
+          weight: -2
+          additional: []
+    project_browser.admin_settings:
+      simpleConfigUpdate:
+        allow_ui_install: true
+        max_selections: 1
+    system.theme:
+      simpleConfigUpdate:
+        admin: gin
+    tagify.settings:
+      simpleConfigUpdate:
+        set_default_widget: true
+    update.settings:
+      simpleConfigUpdate:
+        check.disabled_extensions: true
+    user.role.authenticated:
+      grantPermissions:
+        - 'access administration pages'
+        - 'access coffee'
+        - 'access contextual links'
+        - 'access navigation'
+        - 'view the administration theme'
+    # Don't grant dashboard access to regular authenticated users, because by default
+    # it has nothing for them to do.
+    ?user.role.content_editor:
+      grantPermission: 'view welcome dashboard'

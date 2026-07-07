@@ -1,0 +1,137 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - eca_base
+    - eca_config
+    - eca_content
+    - eca_user
+    - modeler_api
+third_party_settings:
+  modeler_api:
+    modeler_id: bpmn_io
+    label: 'Show link to privacy settings'
+id: privacy_setting_link
+weight: 0
+template: null
+events:
+  config__save_config:
+    plugin: 'config:save'
+    label: 'Save config'
+    configuration:
+      config_name: ''
+      sync_mode: ''
+      write_mode: ''
+    successors:
+      -
+        id: eca_void_and_condition_1
+        condition: eca_scalar_app
+conditions:
+  eca_scalar_app:
+    plugin: eca_scalar
+    label: 'klaro app?'
+    configuration:
+      negate: false
+      left: '[config_name]'
+      right: klaro.klaro_app.
+      operator: beginswith
+      type: value
+      case: false
+  eca_scalar_enabled:
+    plugin: eca_scalar
+    label: 'active?'
+    configuration:
+      negate: false
+      left: '[config:status]'
+      right: '1'
+      operator: equal
+      type: value
+      case: false
+  eca_scalar_disabled:
+    plugin: eca_scalar
+    label: 'was inactive?'
+    configuration:
+      negate: true
+      left: '[config_original:status]'
+      right: '1'
+      operator: equal
+      type: value
+      case: false
+  eca_scalar_required_1:
+    plugin: eca_scalar
+    label: 'not required?'
+    configuration:
+      negate: true
+      left: '[config:required]'
+      right: '1'
+      operator: equal
+      type: value
+      case: false
+  eca_entity_field_value_disabled:
+    plugin: eca_entity_field_value
+    label: 'menu disabled?'
+    configuration:
+      negate: true
+      expected_value: '1'
+      field_name: enabled
+      operator: equal
+      type: value
+      case: false
+      entity: menulink
+gateways: {  }
+actions:
+  eca_void_and_condition_1:
+    label: AND
+    plugin: eca_void_and_condition
+    configuration: {  }
+    successors:
+      -
+        id: eca_void_and_condition_2
+        condition: eca_scalar_enabled
+  eca_void_and_condition_2:
+    label: AND
+    plugin: eca_void_and_condition
+    configuration: {  }
+    successors:
+      -
+        id: eca_switch_account_3
+        condition: eca_scalar_disabled
+  eca_switch_account_3:
+    label: 'Switch to user 1'
+    plugin: eca_switch_account
+    configuration:
+      user_id: '1'
+    successors:
+      -
+        id: eca_token_load_entity_link
+        condition: eca_scalar_required_1
+  eca_token_load_entity_link:
+    label: 'Load menu link'
+    plugin: eca_token_load_entity
+    configuration:
+      token_name: menulink
+      from: properties
+      entity_type: menu_link_content
+      entity_id: ''
+      revision_id: ''
+      properties: 'uuid: d7f4f1b2-af94-46b8-ac63-a8a5b14fb0f5'
+      langcode: _interface
+      latest_revision: false
+      unchanged: false
+      object: ''
+    successors:
+      -
+        id: eca_set_field_value_link_1
+        condition: eca_entity_field_value_disabled
+  eca_set_field_value_link_1:
+    label: 'Enable menu link'
+    plugin: eca_set_field_value
+    configuration:
+      field_name: enabled
+      field_value: '1'
+      method: 'set:clear'
+      strip_tags: false
+      trim: false
+      save_entity: true
+      object: menulink
+    successors: {  }

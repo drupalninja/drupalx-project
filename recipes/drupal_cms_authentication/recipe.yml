@@ -1,0 +1,49 @@
+name: Authentication Tweaks
+description: Adds useful authentication features.
+type: Drupal CMS
+recipes:
+  - core/recipes/user_picture
+install:
+  - bpmn_io
+  - drupal_cms_helper
+  - eca_base
+  - eca_misc
+  - eca_user
+  - eca_ui
+  - login_emailusername
+  - modeler_api
+  - svg_image
+  - token
+config:
+  # If the active config doesn't match what's in the recipe, we can assume that the site
+  # owner has made their own tweaks to the authentication flows, and we respect those.
+  strict: false
+  actions:
+    core.entity_view_display.user.user.*:
+      setComponent:
+        name: user_picture
+        options:
+          type: image
+          label: hidden
+          weight: 0
+          settings:
+            image_style: thumbnail
+            image_link: content
+            image_loading:
+              attribute: lazy
+            svg_attributes:
+              width: 72
+              height: 72
+            svg_render_as_image: false
+    field.field.user.user.user_picture:
+      setSettings:
+        file_directory: avatars
+        min_resolution: 72x72
+      # A custom config action defined by Drupal CMS Helper.
+      setDefaultImage: abcfbf7d-0cf1-4e24-b361-30bb3f7e5b39
+    system.site:
+      simpleConfigUpdate:
+        page.403: '/user/login'
+    user.settings:
+      simpleConfigUpdate:
+        register: admin_only

@@ -1,0 +1,28 @@
+{#
+/**
+ * Alert banner — tone-mapped notice band. Dismiss is handled by global.js
+ * ([data-dx-alert] + [data-dx-alert-dismiss], sessionStorage keyed by
+ * alert_id). Works as a Canvas component or in the highlighted region.
+ */
+#}
+{% set tone = tone|default('info') %}
+{% set alert_id = alert_id|default('default') %}
+{% set dismissible = dismissible|default(true) %}
+{% set tone_map = {
+  'info': { wrap: 'bg-sky-50 border-sky-600 text-sky-700', icon: 'info' },
+  'warning': { wrap: 'bg-accent-50 border-accent-600 text-accent-700', icon: 'triangle-alert' },
+  'emergency': { wrap: 'bg-clay-50 border-clay-600 text-clay-700', icon: 'megaphone' },
+} %}
+{% set tc = tone_map[tone]|default(tone_map['info']) %}
+<div class="full-bleed border-y {{ tc.wrap }}" data-dx-alert="{{ alert_id }}" role="status">
+  <div class="max-w-site mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-start gap-3">
+    {% include 'drupalx_theme:icon' with { name: tc.icon, size: 'sm' } only %}
+    <div class="flex-1 text-sm font-medium [&_a]:underline [&_a]:font-bold">{{ message|raw }}</div>
+    {% if dismissible == true or dismissible == 'true' %}
+      <button type="button" data-dx-alert-dismiss aria-label="Dismiss this alert"
+              class="shrink-0 -my-1 inline-flex h-8 w-8 items-center justify-center rounded-lg hover:bg-white/60">
+        {% include 'drupalx_theme:icon' with { name: 'x', size: 'sm' } only %}
+      </button>
+    {% endif %}
+  </div>
+</div>

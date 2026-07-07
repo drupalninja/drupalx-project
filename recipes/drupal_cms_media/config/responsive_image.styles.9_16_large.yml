@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.9_16_504x896_focal_point_webp
+    - image.style.9_16_540x960_focal_point_webp
+  module:
+    - eca_render
+  enforced:
+    config:
+      - eca.eca.define_breakpoints
+id: 9_16_large
+label: '9:16 Large'
+image_style_mappings:
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - 9_16_504x896_focal_point_webp
+        - 9_16_540x960_focal_point_webp
+    breakpoint_id: custom.sm
+    multiplier: 1x
+breakpoint_group: custom
+fallback_image_style: 9_16_504x896_focal_point_webp

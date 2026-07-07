@@ -1,0 +1,20 @@
+{#
+/**
+ * Section: Call to action — the page's one dark brand-glow band with a
+ * single strong ask. Use accent/glass button variants in the slot.
+ */
+#}
+<section class="full-bleed brand-glow py-16 md:py-24" data-reveal>
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    {% if eyebrow|default('') %}
+      <p class="eyebrow justify-center mb-3 text-accent-300">{{ eyebrow }}</p>
+    {% endif %}
+    <h2 class="display-xl text-white mx-auto max-w-3xl">{{ title }}</h2>
+    {% if body|default('') %}
+      <div class="mt-4 mx-auto max-w-2xl text-lg leading-relaxed text-primary-100">{{ body|raw }}</div>
+    {% endif %}
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      {% block cta_buttons %}{% endblock %}
+    </div>
+  </div>
+</section>

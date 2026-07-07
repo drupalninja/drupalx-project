@@ -1,0 +1,13 @@
+{#
+/**
+ * Section: Rich text — editorial prose (typography plugin tokens from
+ * @layer base keep headings/links on-brand).
+ */
+#}
+{% set width = width|default('prose') %}
+{% set tone = tone|default('white') %}
+<section class="full-bleed {{ tone == 'tint' ? 'bg-primary-50' : 'bg-white' }} py-12 md:py-16">
+  <div class="{{ width == 'wide' ? 'max-w-content' : 'max-w-3xl' }} mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="prose prose-lg max-w-none">{{ body|raw }}</div>
+  </div>
+</section>

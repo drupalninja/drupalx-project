@@ -1,0 +1,7 @@
+type: drupal11
+docroot: web
+ddev_version_constraint: '>= 1.25.0'
+hooks:
+  post-start:
+    - composer: install
+    - composer: drupal:recipe-unpack

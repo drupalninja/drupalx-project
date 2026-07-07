@@ -1,0 +1,51 @@
+# This file allows you to define a curated list of recommended add-ons for your site
+# template, which can be displayed by Project Browser. If you don't want to use this
+# feature, you can delete this file.
+#
+# In order for this list to be remotely updatable by you, this file must have a
+# permanent URL that never changes. It can be any URL you like, as long as it's
+# unchanging. You can name this file whatever you want; `recommended.yml` is
+# just a suggestion.
+#
+# If you are hosting your site template's repository on drupal.org, this file will have
+# a permalink via GitLab's API; see
+# https://docs.gitlab.com/api/repository_files/#get-file-from-repository for more
+# information.
+
+# This file contains an array of information about various projects, keyed by Composer
+# package name. For example:
+#
+# drupal/example:
+#  title: 'Example Project'     # Visible to users in Project Browser.
+#  type: recipe                 # The project type: `recipe` and `module` are natively supported, but this can be anything.
+#  logo: LOGO-URL-HERE          # URL of the project's logo, or `null` if there isn't one.
+#  core: '^11'                  # Core version(s) this project is compatible with, as a Composer constraint. Same as the `core_version_requirement` key in info files.
+#  machineName: example         # A short machine name for the project. Usually matches the package name after `drupal/`.
+#  body:
+     # Brief description of the project. Can be multi-line; HTML is allowed.
+#    summary: 'A short description of the project.'
+#  packageName: drupal/example  # Same as the key at the top level; the project's Composer package name.
+#
+# To use this feature, add the following to `recipe.yml`:
+#
+# install:
+#   - project_browser
+# config:
+#   actions:
+#     project_browser.admin_settings:
+#       simpleConfigUpdate:
+#         enabled_sources:
+#           recommended:
+#             uri: PERMALINK FOR THIS FILE
+#         default_source: recommended
+#
+# IMPORTANT: It is STRONGLY recommended that this file ONLY list projects that have stable,
+# supported releases. In other words, don't list anything that is only available in a dev,
+# alpha, beta, or release candidate version. Such projects might not be installable by end
+# users because because most Drupal projects, by default, are configured to allow stable
+# releases only (this is a Composer setting; see https://getcomposer.org/doc/04-schema.md#minimum-stability
+# for more information).
+#
+# Examples of site templates that use this feature:
+# - Byte: https://git.drupalcode.org/project/byte/-/blob/1.x/recommended.yml?ref_type=heads
+# - Drupal CMS Starter: https://git.drupalcode.org/project/drupal_cms/-/blob/2.x/recipes/drupal_cms_starter/recommended.yml?ref_type=heads

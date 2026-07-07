@@ -1,0 +1,41 @@
+{#
+/**
+ * Image — aspect/rounding/offset-accent frame. `image` arrives as a plain
+ * { src, alt, width?, height? } map (Canvas passes the resolved values; the
+ * static build passes it straight from data). dx_image() upgrades the render
+ * to a width-stepped WebP srcset on Drupal; statically it returns
+ * srcset: null and the plain <img src> ships.
+ */
+#}
+{% set aspect = aspect|default('auto') %}
+{% set rounded = rounded|default('2xl') %}
+{% set frame = frame|default('none') %}
+{% set aspect_map = {
+  'auto': '',
+  '16x9': 'aspect-video object-cover',
+  '4x3': 'aspect-4/3 object-cover',
+  'square': 'aspect-square object-cover',
+} %}
+{% set rounded_map = {
+  'none': '',
+  'xl': 'rounded-xl',
+  '2xl': 'rounded-2xl',
+} %}
+{% if image.src|default('') %}
+  {% set io = dx_image(image, '(min-width: 1024px) 50vw, 100vw') %}
+  <figure class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="{{ frame == 'offset-accent' ? 'relative before:content-[\'\'] before:absolute before:-inset-x-3 before:-inset-y-3 before:translate-x-5 before:translate-y-5 before:rounded-2xl before:bg-accent-100 before:-z-10' : '' }}">
+      <img
+        src="{{ image.src }}"
+        alt="{{ image.alt|default('') }}"
+        loading="lazy"
+        class="w-full {{ aspect_map[aspect]|default('') }} {{ rounded_map[rounded]|default('') }}"
+        {% if io.srcset %}srcset="{{ io.srcset }}" sizes="{{ io.sizes }}"{% endif %}
+        {% if io.width %}width="{{ io.width }}" height="{{ io.height }}"{% elseif image.width|default(0) %}width="{{ image.width }}" height="{{ image.height|default('') }}"{% endif %}
+      >
+    </div>
+    {% if caption|default('') %}
+      <figcaption class="mt-3 text-sm text-ink-500">{{ caption }}</figcaption>
+    {% endif %}
+  </figure>
+{% endif %}

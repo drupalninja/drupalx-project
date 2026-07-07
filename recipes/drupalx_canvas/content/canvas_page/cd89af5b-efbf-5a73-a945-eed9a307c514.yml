@@ -1,0 +1,127 @@
+_meta:
+  version: '1.0'
+  entity_type: canvas_page
+  uuid: cd89af5b-efbf-5a73-a945-eed9a307c514
+  default_langcode: en
+  depends:
+    ad430bdf-bc41-4b9a-b9ee-ca4e9a383fb0: file
+    11ee2e3e-64d5-4097-ac8f-26aad8444355: media
+    c9042cbe-34bd-45e0-9f4c-e44a67180785: file
+    23ea6668-48ef-492e-877b-bdc05c41f286: media
+default:
+  status:
+    -
+      value: true
+  owner:
+    -
+      target_id: 1
+  title:
+    -
+      value: About
+  components:
+    -
+      uuid: 78e4253b-9ecd-5c1d-aa7f-984c9c1ca78c
+      component_id: sdc.drupalx_theme.page_hero
+      inputs:
+        title: 'Who we are'
+        eyebrow: About
+        lede:
+          value: '<p>A small team of Drupal engineers and designers who believe editors deserve pages as good as the demos.</p>'
+          format: canvas_full_html
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: 11ee2e3e-64d5-4097-ac8f-26aad8444355
+            target_type: media
+        tone: dark
+    -
+      uuid: c5b4af1c-5f74-5561-b7d6-67919fb21b0a
+      component_id: sdc.drupalx_theme.section_richtext
+      inputs:
+        body:
+          value: |-
+            <h2>Editors first, always</h2>
+                   <p>Most component libraries look great in the pattern library and fall apart the first time an editor touches them. DrupalX Canvas starts from the opposite end: every component is designed as a <strong>Canvas edit form first</strong> — enums become selects, images use the media library, repeatable content is a slot of real nested components.</p>
+                   <p>The same twig renders a static preview site, so designers iterate in milliseconds and stakeholders review a real URL — then the identical pages land in Drupal, fully editable.</p>
+          format: canvas_full_html
+        width: prose
+        tone: white
+    -
+      uuid: 61a67b2b-8600-5cad-b04a-8dda37141e20
+      component_id: sdc.drupalx_theme.section_quote
+      inputs:
+        quote:
+          value: '<p>The static preview sold the design; Canvas sold the CMS. Same components, no re-build in between.</p>'
+          format: canvas_full_html
+        attribution: 'Jordan Blake'
+        role: 'Communications Director'
+        tone: tint
+    -
+      uuid: fbbb52a0-0afc-5a1c-9aa2-fb356bf959a6
+      component_id: sdc.drupalx_theme.section_stats
+      inputs:
+        eyebrow: ''
+        title: ''
+        tone: light
+        columns: '3'
+    -
+      parent_uuid: fbbb52a0-0afc-5a1c-9aa2-fb356bf959a6
+      slot: stats
+      uuid: ca0467bb-bf64-5b20-83d6-fff9ade152ed
+      component_id: sdc.drupalx_theme.stat
+      inputs:
+        number: '2019'
+        label: 'building decoupled Drupal'
+        c: none
+    -
+      parent_uuid: fbbb52a0-0afc-5a1c-9aa2-fb356bf959a6
+      slot: stats
+      uuid: 6880f9a4-20e4-5cc5-a4d9-fd3ffdb5c544
+      component_id: sdc.drupalx_theme.stat
+      inputs:
+        number: 40+
+        label: 'launches on this stack'
+        c: sky
+    -
+      parent_uuid: fbbb52a0-0afc-5a1c-9aa2-fb356bf959a6
+      slot: stats
+      uuid: 62bf340e-e23a-5a67-a50d-7a1f79baad3f
+      component_id: sdc.drupalx_theme.stat
+      inputs:
+        number: 95+
+        label: 'median Lighthouse performance'
+        c: clay
+    -
+      uuid: e08462d5-f8e6-5bda-9012-26f1ef4efd7f
+      component_id: sdc.drupalx_theme.section_split
+      inputs:
+        eyebrow: 'How it works'
+        title: 'The bridge, in one sentence'
+        body:
+          value: '<p>Pages are component trees in data files; the bridge converts each tree into Canvas page YAML with deterministic UUIDs and imports it — so a re-push <em>updates</em> pages instead of duplicating them.</p>'
+          format: canvas_full_html
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: 23ea6668-48ef-492e-877b-bdc05c41f286
+            target_type: media
+        media_side: left
+        tone: tint
+    -
+      parent_uuid: e08462d5-f8e6-5bda-9012-26f1ef4efd7f
+      slot: split_buttons
+      uuid: 34220e84-7e4d-55fe-aea8-5177a977971f
+      component_id: sdc.drupalx_theme.button
+      inputs:
+        label: 'See the components'
+        url:
+          uri: 'internal:/sections'
+          options: {  }
+        variant: primary
+        size: normal
+        icon: arrow-right
+  path:
+    -
+      alias: /about
+      langcode: en
+  revision_translation_affected:
+    -
+      value: true

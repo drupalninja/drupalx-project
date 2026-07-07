@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.3_2_1002x668_focal_point_webp
+    - image.style.3_2_1302x868_focal_point_webp
+    - image.style.3_2_1800x1200_focal_point_webp
+    - image.style.3_2_504x336_focal_point_webp
+    - image.style.3_2_702x468_focal_point_webp
+  module:
+    - eca_render
+  enforced:
+    config:
+      - eca.eca.define_breakpoints
+id: 3_2_wide
+label: '3:2 Wide'
+image_style_mappings:
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: 100vw
+      sizes_image_styles:
+        - 3_2_1002x668_focal_point_webp
+        - 3_2_1302x868_focal_point_webp
+        - 3_2_1800x1200_focal_point_webp
+        - 3_2_504x336_focal_point_webp
+        - 3_2_702x468_focal_point_webp
+    breakpoint_id: custom.sm
+    multiplier: 1x
+breakpoint_group: custom
+fallback_image_style: 3_2_504x336_focal_point_webp

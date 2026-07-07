@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - easy_email.easy_email_type.user_created_approval_admin
+    - field.storage.easy_email.field_related_user
+id: easy_email.user_created_approval_admin.field_related_user
+field_name: field_related_user
+entity_type: easy_email
+bundle: user_created_approval_admin
+label: 'Related User'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: false
+field_type: entity_reference

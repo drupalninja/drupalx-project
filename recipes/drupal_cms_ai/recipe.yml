@@ -1,0 +1,170 @@
+name: AI Assistant
+type: Drupal CMS
+description: "Adds integration with AI services, such as alt text generation and a chat bot to assist with site building. You can choose from several providers: amazee.ai, OpenAI or Anthropic."
+install:
+  - key
+  - block
+  - taxonomy
+  - ai
+  - ai_dashboard
+  - ai_provider_amazeeio
+  - ai_provider_openai
+  - ai_provider_anthropic
+  - ai_image_alt_text
+  - ai_assistant_api
+  - ai_chatbot
+  - ai_agents
+  - canvas_ai
+  # This theme MUST be installed or Canvas breaks in strange ways.
+  - canvas_stark
+  - easy_encryption_admin
+  - menu_link_content
+recipes:
+  - core/recipes/content_editor_role
+  - drupal_cms_privacy_basic
+input:
+  # This input is not actually used in our config actions; it's only here to
+  # provide a toggle for the API key fields in a form.
+  provider:
+    data_type: string
+    description: Which AI provider to use.
+    default:
+      source: value
+      value: amazeeai
+    form:
+      '#type': radios
+      '#title': AI provider
+      '#description': No API key is needed for amazee.ai. You will get a limited free trial to use AI features, which can be extended by registering for an account. If you select OpenAI or Anthropic, an API key is required.
+      '#options':
+        amazeeai: amazee.ai
+        openai: OpenAI
+        anthropic: Anthropic
+  openai_api_key:
+    data_type: string
+    description: The OpenAI API key.
+    prompt:
+      method: ask
+      arguments:
+        question: 'To use OpenAI, enter your OpenAI API key. Leave empty to use Anthropic or amazee.ai:'
+    form:
+      '#type': 'textfield'
+      '#description': 'You can find your API keys in <a href="https://platform.openai.com/settings/organization/api-keys" target="_blank">your OpenAI account settings (opens new window)</a>.<br><strong>Note:</strong> A paid OpenAI plan is required to use AI features.'
+      '#title': 'API key'
+      '#required': false
+      '#maxlength': 256
+      '#attributes':
+        autocomplete: off
+      # Only show this field if OpenAI is the selected provider.
+      '#states':
+        visible:
+          'input[name*="drupal_cms_ai"][name$="[provider]"]':
+            value: openai
+    default:
+      source: env
+      env: openai_api_key
+      fallback: ''
+  anthropic_api_key:
+    data_type: string
+    description: The Anthropic API key, if you want to use Anthropic.
+    prompt:
+      method: ask
+      arguments:
+        question: 'To use Anthropic, enter your Anthropic API key. Leave empty if you provided an OpenAI key or want to use amazee.ai:'
+    form:
+      '#type': 'textfield'
+      '#description': 'You can find your API keys in <a href="https://console.anthropic.com/settings/keys" target="_blank">your Anthropic account settings (opens new window)</a>.<br><strong>Note:</strong> A paid Anthropic plan is required to use AI features.'
+      '#title': 'API key'
+      '#required': false
+      '#maxlength': 256
+      '#attributes':
+        autocomplete: off
+      # Only show this field if Anthropic is the selected provider.
+      '#states':
+        visible:
+          'input[name*="drupal_cms_ai"][name$="[provider]"]':
+            value: anthropic
+    default:
+      source: env
+      env: anthropic_api_key
+      fallback: ''
+config:
+  strict: false
+  import:
+    ai_dashboard: '*'
+    ai_image_alt_text: '*'
+    ai_agents: '*'
+    canvas_ai: '*'
+  actions:
+    ai.settings:
+      ensureEasyEncryptionSetup: ~
+    ai_agents.settings:
+      simpleConfigUpdate:
+        agent_settings:
+          field_type_agent:
+            usage_instructions: >
+              Changes to field groups, like moving fields into details, tabs or fieldsets, can not be done by the field agent. Always advice the user how to do this manually.
+
+              If they ask you to change an edit form, assume they want you to change the fields on a content type if they are visiting a node form.
+
+              If they ask to create an Image Field, assume they want an Media Field with the image bundle, unless they tell you not to create a media field. Specifically ask for an Entity Reference Field with Entity Type media and the bundle image. Always set the form widget to Media Library if its available and the view mode to Rendered Entity.
+
+              If they ask to create a taxonomy field, make sure that you ask for select list on the form view.
+            permissions:
+              authenticated: 0
+              content_editor: 0
+              administrator: 0
+            plugin_settings: {  }
+    ai_provider_openai.settings:
+      setupAiProvider:
+        key_value: ${openai_api_key}
+        key_name: openai_api_key
+        key_label: 'OpenAI API key'
+        provider: openai
+      simpleConfigUpdate:
+        moderation: true
+    ai_provider_anthropic.settings:
+      setupAiProvider:
+        key_value: ${anthropic_api_key}
+        key_name: anthropic_api_key
+        key_label: 'Anthropic API key'
+        provider: anthropic
+      simpleConfigUpdate:
+        openai_moderation: false
+    ai_provider_amazeeio.settings:
+      ensureAmazeeAiAccess: ~
+      setupAiProvider:
+        provider: amazeeio
+        no_key_needed: true
+    block.block.ai_chatbot:
+      placeBlockInAdminTheme:
+        region:
+          gin: content
+          claro: content
+        default_region: content
+        plugin: ai_deepchat_block
+        settings:
+          id: ai_deepchat_block
+          label: 'Drupal Agent Chatbot'
+          label_display: '0'
+          provider: ai_chatbot
+          ai_assistant: drupal_cms_assistant
+          bot_name: 'Drupal Agent'
+          width: auto
+          height: '100%'
+          style_file: toolbar.yml
+          placement: toolbar
+          stream: 0
+          verbose_mode: true
+          default_avatar: /core/misc/druplicon.png
+          first_message: 'I am a Drupal AI Assistant, I can help you set up your Drupal site. I can give you instructions and I can also do some functions.'
+    klaro.klaro_app.deepchat:
+      enable: []
+    klaro.klaro_app.ai_alt_text_generation:
+      enable: []
+    user.role.content_editor:
+      grantPermission: 'generate ai alt tags'
+extra:
+  project_browser:
+    tasks:
+      - route_name: ai.settings_form
+        text: Configure

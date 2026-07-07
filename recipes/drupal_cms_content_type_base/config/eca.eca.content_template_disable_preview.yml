@@ -1,0 +1,78 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - eca_base
+    - eca_config
+    - eca_user
+    - modeler_api
+third_party_settings:
+  modeler_api:
+    modeler_id: bpmn_io
+    data: 'hash:d1b6e6d9c367f89044680cba771c072e'
+    label: 'Disable preview when Canvas is enabled'
+    documentation: "Disables Drupal's built-in preview functionality when a Canvas content template is created for a content type."
+    version: 1.0.0
+id: content_template_disable_preview
+weight: 0
+template: null
+events:
+  config__save_1_1:
+    plugin: 'config:save'
+    label: 'Content template created'
+    configuration:
+      config_name: canvas.content_template.node.
+      sync_mode: ''
+      write_mode: ''
+    successors:
+      -
+        id: eca_void_and_condition_0mr4y0c
+        condition: eca_scalar_1svhele
+conditions:
+  eca_scalar_1svhele:
+    plugin: eca_scalar
+    label: 'Template enabled?'
+    configuration:
+      negate: false
+      left: '[config:status]'
+      right: '1'
+      operator: equal
+      type: value
+      case: false
+  eca_scalar_1cmipw9:
+    plugin: eca_scalar
+    label: 'Template targets full view mode?'
+    configuration:
+      negate: false
+      left: '[config:content_entity_type_view_mode]'
+      right: full
+      operator: equal
+      type: value
+      case: false
+gateways: {  }
+actions:
+  eca_config_action_1jfklob:
+    label: 'Disable preview for content type'
+    plugin: eca_config_action
+    configuration:
+      action_id: 'entity_method:node.type:setPreviewMode'
+      config_name: 'node.type.[config:content_entity_type_bundle]'
+      data: '0'
+    successors: {  }
+  eca_void_and_condition_0mr4y0c:
+    label: and
+    plugin: eca_void_and_condition
+    configuration: {  }
+    successors:
+      -
+        id: eca_switch_account_1q56yux
+        condition: eca_scalar_1cmipw9
+  eca_switch_account_1q56yux:
+    label: 'Temporarily become administrator'
+    plugin: eca_switch_account
+    configuration:
+      user_id: '1'
+    successors:
+      -
+        id: eca_config_action_1jfklob
+        condition: ''

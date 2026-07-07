@@ -1,0 +1,68 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Icon
+description: 'Inline Lucide icon (build-time SVG from the theme''s curated set in dist/icons — no CDN, no client JS). Color inherits currentColor.'
+status: stable
+group: DrupalX Primitives
+
+props:
+  type: object
+  properties:
+    name:
+      type: string
+      title: Icon
+      description: 'Lucide icon name from the curated set (scripts/copy-icons.mjs). Use ''none'' to render nothing — never an empty string (Canvas rejects empty enum values).'
+      default: none
+      enum:
+        - none
+        - arrow-right
+        - arrow-up-right
+        - chart-column
+        - building-2
+        - calendar
+        - check
+        - chevron-down
+        - chevron-right
+        - clock
+        - download
+        - external-link
+        - file-text
+        - flag
+        - folder
+        - globe
+        - graduation-cap
+        - heart-handshake
+        - info
+        - landmark
+        - leaf
+        - library
+        - lightbulb
+        - mail
+        - map
+        - map-pin
+        - megaphone
+        - menu
+        - newspaper
+        - phone
+        - search
+        - shield-check
+        - sparkles
+        - star
+        - triangle-alert
+        - users
+        - x
+      examples:
+        - map-pin
+    size:
+      type: string
+      title: Size
+      default: md
+      enum:
+        - sm
+        - md
+        - lg
+      meta:enum:
+        sm: 'Small (16px)'
+        md: 'Medium (24px)'
+        lg: 'Large (40px)'
+      examples:
+        - md

@@ -1,0 +1,5 @@
+unattended:
+  method: web
+  level: disable
+allow_core_minor_updates: true
+status_check_mail: errors_only

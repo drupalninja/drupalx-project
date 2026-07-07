@@ -1,0 +1,27 @@
+{#
+/**
+ * Section: Quote — editorial pull-quote with oversized serif mark.
+ */
+#}
+{% set tone = tone|default('tint') %}
+{% set has_image = image.src|default('') is not empty %}
+<section class="full-bleed {{ tone == 'tint' ? 'bg-primary-50' : 'bg-white' }} py-16 md:py-24" data-reveal>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <span class="font-display text-7xl leading-none text-accent-500" aria-hidden="true">&ldquo;</span>
+    <blockquote class="font-display text-2xl md:text-3xl leading-snug text-primary-800 -mt-4">
+      {{ quote|raw }}
+    </blockquote>
+    {% if attribution|default('') %}
+      <figcaption class="mt-6 flex items-center justify-center gap-3">
+        {% if has_image %}
+          <img src="{{ image.src }}" alt="{{ image.alt|default(attribution) }}"
+               class="w-12 h-12 rounded-full object-cover" loading="lazy">
+        {% endif %}
+        <span class="text-left">
+          <span class="block font-bold text-primary-800">{{ attribution }}</span>
+          {% if role|default('') %}<span class="block text-sm text-ink-500">{{ role }}</span>{% endif %}
+        </span>
+      </figcaption>
+    {% endif %}
+  </div>
+</section>

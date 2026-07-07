@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies: {  }
+id: default
+label: Default
+module: '*'
+key: '*'
+easy_email_type: default
+param_map: {  }
+copied_fields:
+  from: true
+  reply_to: true
+  to: true
+  cc: true
+  bcc: true
+  subject: true
+  body_html: true
+  body_plain: true
+  attachments: true

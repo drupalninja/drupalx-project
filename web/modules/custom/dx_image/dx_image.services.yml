@@ -1,0 +1,8 @@
+services:
+  dx_image.twig:
+    class: Drupal\dx_image\TwigExtension\DxImageExtension
+    arguments:
+      - '@entity_type.manager'
+      - '@file_system'
+    tags:
+      - { name: twig.extension }

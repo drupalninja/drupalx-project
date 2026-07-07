@@ -1,0 +1,32 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 6f441503-efcd-4c64-96f1-cacd2f0e5344
+  bundle: image
+  default_langcode: en
+  depends:
+    6f2756a6-155d-44e5-a7ab-3ceffa0b812a: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 0
+  name:
+    -
+      value: starter-79bb5d4abce39e4b.jpg
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      langcode: en
+      alias: null
+  field_media_image:
+    -
+      alt: 'Team planning around a whiteboard'
+      title: ''
+      width: 1600
+      height: 1067
+      entity: 6f2756a6-155d-44e5-a7ab-3ceffa0b812a

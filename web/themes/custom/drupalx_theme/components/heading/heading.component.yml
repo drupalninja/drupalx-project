@@ -1,0 +1,60 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Heading
+description: 'Section heading with eyebrow/display/title styles from the bold-design type scale.'
+status: stable
+group: DrupalX Primitives
+
+props:
+  type: object
+  required:
+    - title
+  properties:
+    title:
+      type: string
+      title: Title
+      examples:
+        - 'What we do'
+    eyebrow:
+      type: string
+      title: Eyebrow
+      description: 'Small uppercase kicker rendered above the title (with the leading-dash flourish).'
+      default: ''
+      examples:
+        - 'Our services'
+    level:
+      type: string
+      title: 'Heading level'
+      description: 'The HTML heading element — pick for document outline, not size.'
+      default: h2
+      enum:
+        - h1
+        - h2
+        - h3
+        - h4
+      meta:enum:
+        h1: H1
+        h2: H2
+        h3: H3
+        h4: H4
+    style:
+      type: string
+      title: 'Visual style'
+      default: title
+      enum:
+        - display
+        - title
+        - subtitle
+      meta:enum:
+        display: 'Display (huge serif)'
+        title: 'Title (section)'
+        subtitle: 'Subtitle (small)'
+    align:
+      type: string
+      title: Alignment
+      default: left
+      enum:
+        - left
+        - center
+      meta:enum:
+        left: Left
+        center: Center

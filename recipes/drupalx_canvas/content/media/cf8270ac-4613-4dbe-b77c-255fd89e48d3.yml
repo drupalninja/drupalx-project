@@ -1,0 +1,32 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: cf8270ac-4613-4dbe-b77c-255fd89e48d3
+  bundle: image
+  default_langcode: en
+  depends:
+    b96ed1f3-8f3d-4224-b6a4-3925dd4819a1: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 0
+  name:
+    -
+      value: starter-16fb88dba7dabba6.jpg
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      langcode: en
+      alias: null
+  field_media_image:
+    -
+      alt: 'Skyline aerial view'
+      title: ''
+      width: 1600
+      height: 984
+      entity: b96ed1f3-8f3d-4224-b6a4-3925dd4819a1

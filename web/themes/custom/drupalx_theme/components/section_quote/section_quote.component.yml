@@ -1,0 +1,48 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Quote'
+description: 'Pull-quote / testimonial with optional avatar and attribution.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - quote
+  properties:
+    quote:
+      type: string
+      title: Quote
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples:
+        - '<p>Working with this team transformed how we publish.</p>'
+    attribution:
+      type: string
+      title: Attribution
+      default: ''
+      examples:
+        - 'Jordan Blake'
+    role:
+      type: string
+      title: 'Role / organization'
+      default: ''
+      examples:
+        - 'Communications Director'
+    image:
+      type: object
+      title: Image
+      $ref: 'json-schema-definitions://canvas.module/image'
+      examples:
+        - src: 'https://placehold.co/1200x800'
+          alt: 'Placeholder image'
+      default: ''
+    tone:
+      type: string
+      title: Background
+      default: tint
+      enum:
+        - white
+        - tint
+      meta:enum:
+        white: White
+        tint: 'Primary tint'

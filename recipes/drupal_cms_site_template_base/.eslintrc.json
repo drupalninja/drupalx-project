@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "yml/no-empty-document": "off"
+  }
+}
+

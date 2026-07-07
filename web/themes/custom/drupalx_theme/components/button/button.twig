@@ -1,0 +1,27 @@
+{#
+/**
+ * Button — pill link. Variants map to STATIC class strings (Tailwind v4 only
+ * generates classes it sees literally).
+ */
+#}
+{% set variant = variant|default('primary') %}
+{% set size = size|default('normal') %}
+{% set icon = icon|default('none') %}
+{% set variant_map = {
+  'primary': 'bg-primary-700 text-white hover:bg-primary-800',
+  'accent': 'bg-accent-500 text-primary-900 hover:bg-accent-400',
+  'ghost': 'border-2 border-primary-200 text-primary-700 hover:border-primary-400 hover:bg-primary-50',
+  'glass': 'bg-white/15 text-white border border-white/40 backdrop-blur-sm hover:bg-white/25',
+} %}
+{% set size_map = {
+  'small': 'px-4 py-2 text-sm',
+  'normal': 'px-6 py-3 text-[0.95rem]',
+  'large': 'px-8 py-4 text-lg',
+} %}
+<a href="{{ url }}"
+   class="inline-flex items-center gap-2 rounded-full font-semibold transition-colors {{ variant_map[variant]|default(variant_map['primary']) }} {{ size_map[size]|default(size_map['normal']) }}">
+  {{- label -}}
+  {% if icon and icon != 'none' %}
+    {% include 'drupalx_theme:icon' with { name: icon, size: 'sm' } only %}
+  {% endif %}
+</a>

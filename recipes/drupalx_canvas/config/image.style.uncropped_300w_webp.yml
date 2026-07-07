@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: uncropped_300w_webp
+label: 'Uncropped | 300w | WebP'
+effects:
+  ac265dad-e2f4-4db8-bf22-0c4f930df865:
+    uuid: ac265dad-e2f4-4db8-bf22-0c4f930df865
+    id: image_scale
+    weight: 1
+    data:
+      width: 300
+      height: null
+      upscale: false
+  edf92b44-e86e-4b5c-b11c-fd6e44ebda67:
+    uuid: edf92b44-e86e-4b5c-b11c-fd6e44ebda67
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp

@@ -1,0 +1,32 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Gallery'
+description: 'Captioned image grid. Fill the images slot with Image components.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+    title:
+      type: string
+      title: Title
+      default: ''
+    columns:
+      type: string
+      title: Columns
+      default: '3'
+      enum:
+        - '2'
+        - '3'
+      meta:enum:
+        '2': '2 columns'
+        '3': '3 columns'
+
+slots:
+  images:
+    title: Images
+    description: 'Image components.'

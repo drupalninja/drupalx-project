@@ -1,0 +1,27 @@
+{#
+/**
+ * Section: Stats — big-number proof band. Children (Stat components) fill the
+ * stats slot; the grid divides them with hairline rules.
+ */
+#}
+{% set tone = tone|default('dark') %}
+{% set columns = columns|default('4') %}
+{% set on_dark = tone == 'dark' %}
+{% set col_map = {
+  '2': 'grid-cols-2',
+  '3': 'grid-cols-2 sm:grid-cols-3',
+  '4': 'grid-cols-2 sm:grid-cols-4',
+} %}
+<section class="full-bleed {{ on_dark ? 'bg-primary-800 text-white' : 'bg-white' }}" data-reveal>
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    {% if eyebrow|default('') or title|default('') %}
+      <div class="pt-12 {{ on_dark ? '' : 'pt-16' }}">
+        {% if eyebrow|default('') %}<p class="eyebrow {{ on_dark ? 'text-accent-300' : '' }}">{{ eyebrow }}</p>{% endif %}
+        {% if title|default('') %}<h2 class="display-xl mt-2 {{ on_dark ? 'text-white' : '' }}">{{ title }}</h2>{% endif %}
+      </div>
+    {% endif %}
+    <div class="grid {{ col_map[columns]|default(col_map['4']) }} {{ on_dark ? 'divide-white/10' : 'divide-primary-100' }} sm:divide-x py-12">
+      {% block stats %}{% endblock %}
+    </div>
+  </div>
+</section>

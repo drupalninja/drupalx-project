@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: uncropped_500w_webp
+label: 'Uncropped | 500w | WebP'
+effects:
+  e340ff9b-0c69-4b8e-a1c3-96585413dce3:
+    uuid: e340ff9b-0c69-4b8e-a1c3-96585413dce3
+    id: image_scale
+    weight: 1
+    data:
+      width: 500
+      height: null
+      upscale: false
+  1b8708aa-72a4-43dc-9cd2-65f0c4198197:
+    uuid: 1b8708aa-72a4-43dc-9cd2-65f0c4198197
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp

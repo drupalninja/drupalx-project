@@ -1,0 +1,21 @@
+{
+  "name": "drupal/easy_email_standard",
+  "type": "drupal-recipe",
+  "description": "Easy Email module and theme for sending HTML emails from Drupal.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/easy_email_standard",
+  "minimum-stability": "stable",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/easy_email_standard",
+    "source": "https://git.drupalcode.org/project/easy_email_standard"
+  },
+  "require": {
+    "drupal/core": "^10.3 || ^11",
+    "drupal/easy_email": "^3.0.2",
+    "drupal/easy_email_theme": "^1",
+    "drupal/mailsystem": "^4",
+    "drupal/symfony_mailer_lite": "^2.0.1"
+  },
+  "version": "1.0.3"
+}

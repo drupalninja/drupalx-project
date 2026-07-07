@@ -1,0 +1,61 @@
+{
+    "_comment": [
+        "How to customize this file:",
+        "- Change the 'name' field to your own package name. If you want to publish this site template on drupal.org, the package name MUST start with 'drupal/' and only contain letters, numbers, and underscores.",
+        "- Change the 'description' field to a brief description of your site template. It's common to repeat the description in recipe.yml.",
+        "- 'type' MUST be 'drupal-recipe, so leave that as-is.",
+        "- 'license' should generally be left as GPL-2.0-or-later unless you have a specific reason to change it. Which license you choose may affect your ability to publish the site template.",
+        "- Add any modules, themes, or recipes that your site template depends on to the 'require' section. This is automatically done by the Drush 'site:export' command.",
+        "- When this file looks right to you, delete this _comment section."
+    ],
+    "name": "drupal/drupal_cms_site_template_base",
+    "description": "A blank template with the foundational features of Drupal CMS, for those who truly want to start from scratch.",
+    "type": "drupal-recipe",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "drupal/drupal_cms_admin_ui": "^2",
+        "drupal/drupal_cms_anti_spam": "^2",
+        "drupal/drupal_cms_authentication": "^2",
+        "drupal/drupal_cms_helper": "^2",
+        "drupal/drupal_cms_media": "^2",
+        "drupal/drupal_cms_privacy_basic": "^2",
+        "drupal/drupal_cms_seo_basic": "^2",
+        "drupal/easy_email_express": "^1",
+        "drupal/site_template_helper": "^1.0.3"
+    },
+    "config": {
+        "allow-plugins": {
+            "drupal/site_template_helper": true
+        }
+    },
+    "extra": {
+        "drupal-scaffold": {
+            "file-mapping": {
+                "[project-root]/AGENTS.md": "AGENTS.md"
+            }
+        },
+        "drupal-site-template": {
+            "_comment": [
+                "This section contains configuration used by drupal/site_template_helper to assist developers in creating site templates.",
+                "It will be automatically removed by `drush site:export`, but you should be sure to delete this section before publishing your site template."
+            ],
+            "generate-theme": {
+                "info": {
+                    "name": "Blank",
+                    "regions": {
+                        "header": "Header",
+                        "content": "Content",
+                        "footer": "Footer"
+                    },
+                    "libraries-override": {
+                        "core/normalize": false
+                    },
+                    "description": "A completely blank theme."
+                },
+                "from": false,
+                "name": "blank"
+            }
+        }
+    },
+    "version": "1.x-dev"
+}

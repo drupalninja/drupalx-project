@@ -1,0 +1,21 @@
+{#
+/**
+ * Heading — eyebrow + title on the bold-design type scale.
+ */
+#}
+{% set level = level|default('h2') %}
+{% set style = style|default('title') %}
+{% set align = align|default('left') %}
+{% set style_map = {
+  'display': 'display-xl',
+  'title': 'font-display text-3xl md:text-4xl font-semibold tracking-tight',
+  'subtitle': 'text-xl md:text-2xl font-bold',
+} %}
+{% set align_class = align == 'center' ? 'text-center' : '' %}
+{% set tag = level in ['h1', 'h2', 'h3', 'h4'] ? level : 'h2' %}
+<div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8 {{ align_class }}">
+  {% if eyebrow|default('') %}
+    <p class="eyebrow mb-3">{{ eyebrow }}</p>
+  {% endif %}
+  <{{ tag }} class="{{ style_map[style]|default(style_map['title']) }}">{{ title }}</{{ tag }}>
+</div>

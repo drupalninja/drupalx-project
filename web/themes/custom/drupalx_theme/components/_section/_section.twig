@@ -1,0 +1,56 @@
+{#
+/**
+ * Shared section macros — imported by the section_* SDCs in BOTH render
+ * targets via the theme-root namespace (registered by Drupal automatically
+ * and by lib/environment.js in the static build):
+ *
+ *   {% import '@drupalx_theme/components/_section/_section.twig' as sx %}
+ *
+ * NOT an SDC (no .component.yml) — just twig macros.
+ */
+#}
+
+{# Background tone -> wrapper classes. `dark` uses the brand-glow band.
+   All values are STATIC strings (Tailwind v4 literal-class rule). #}
+{% macro tone(name) %}
+{%- set map = {
+  'white': 'bg-white',
+  'tint': 'bg-primary-50',
+  'accent-tint': 'bg-accent-50',
+  'dark': 'brand-glow text-primary-100',
+} -%}
+{#- Twing 3 gotcha: a filter INSIDE a subscript (map[x|default(...)])
+    breaks its compiler — resolve the key to a var first. -#}
+{%- set key = name|default('white') -%}
+{{- map[key]|default(map['white']) -}}
+{% endmacro %}
+
+{# Standard vertical rhythm for a section band. #}
+{% macro pad(size) %}
+{%- set map = {
+  'normal': 'py-16 md:py-24',
+  'tight': 'py-10 md:py-14',
+  'none': '',
+} -%}
+{%- set key = size|default('normal') -%}
+{{- map[key]|default(map['normal']) -}}
+{% endmacro %}
+
+{# Section header: eyebrow + title + optional lede. `on_dark` flips text
+   colors (headings inherit primary-700 from @layer base otherwise). #}
+{% macro header(eyebrow, title, lede, align, on_dark) %}
+{%- set center = align|default('left') == 'center' -%}
+{% if eyebrow or title or lede %}
+  <div class="{{ center ? 'text-center mx-auto' : '' }} max-w-3xl mb-10 md:mb-14">
+    {% if eyebrow %}
+      <p class="eyebrow mb-3 {{ on_dark ? 'text-accent-300' : '' }}">{{ eyebrow }}</p>
+    {% endif %}
+    {% if title %}
+      <h2 class="display-xl {{ on_dark ? 'text-white' : '' }}">{{ title }}</h2>
+    {% endif %}
+    {% if lede %}
+      <div class="mt-4 text-lg leading-relaxed {{ on_dark ? 'text-primary-100' : 'text-ink-500' }}">{{ lede|raw }}</div>
+    {% endif %}
+  </div>
+{% endif %}
+{% endmacro %}

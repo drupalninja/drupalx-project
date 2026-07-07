@@ -1,0 +1,459 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/* Tailwind v4 scans these sources for literal class names. Twig components,
+ * Drupal templates, AND the frontend's data pages (rich-text HTML strings in
+ * pages-data can carry utility classes) — if it isn't scanned here, the class
+ * doesn't exist in the build. */
+@source '../../components';
+@source '../../templates';
+@source '../../../../../../frontend/pages';
+@source '../../../../../../frontend/site/pages-data';
+
+/* Self-hosted variable fonts (dist/fonts, copied from @fontsource-variable by
+ * scripts/copy-fonts.mjs). Never a Google Fonts @import — self-hosting is
+ * worth ~20 Lighthouse points / ~2.5s mobile FCP. */
+@import './fonts.css';
+
+/*
+ * Brand tokens — recolor per engagement.
+ *
+ * Per the Tailwind v4 convention, brand colors are defined here in @theme so
+ * they become real utilities (bg-primary-700, text-primary-600, etc.). Do NOT
+ * use arbitrary values like bg-[var(--primary)] in markup — define the token
+ * here and use the generated utility.
+ *
+ * Sample the scale from the issuer's brand: 500 is the brand color, 700 the
+ * deep primary (buttons + headings), 50/100 the tints. The starter ships a
+ * full 50-900 scale so utilities like `bg-primary-200` exist day 1.
+ */
+@theme {
+  /* Primary — DrupalX blue. Recolor from the issuer's logo/nav per engagement. */
+  --color-primary-50: #eef4fc;
+  --color-primary-100: #d8e6f8;
+  --color-primary-200: #b0cdf1;
+  --color-primary-300: #7fade7;
+  --color-primary-400: #4f8bd9;
+  --color-primary-500: #2f6fc4;
+  --color-primary-600: #265aa3;
+  --color-primary-700: #1e4a86;
+  --color-primary-800: #173a69;
+  --color-primary-900: #102a4c;
+
+  /* Accent — warm gold. Bright brand value = fills/decoration only (fails AA
+     as text); -600/-700 are darkened for AA text on white. */
+  --color-accent-50: #fdf6e5;
+  --color-accent-100: #f8e6b6;
+  --color-accent-200: #f3d78e;
+  --color-accent-300: #ecc766;
+  --color-accent-400: #e5b94d;
+  --color-accent-500: #dfab34;
+  --color-accent-600: #b6841a;
+  --color-accent-700: #8f6712;
+
+  /* ── SECONDARY accent families — for color-coded WAYFINDING ──────────
+   * A single brand hue everywhere reads monotone. Pull 2-3 secondary colors
+   * from the ISSUER'S OWN assets and recolor `sky` + `clay`, then use them to
+   * color-code multi-item sections (stat bands, card grids, tags) so the page
+   * isn't single-hue. Keep PRIMARY for structure + headings, ACCENT for
+   * actions; secondaries are for icons/tags/wayfinding.
+   *
+   * Each family ships a LIGHT tint (`-50/-100`, chip backgrounds) and an
+   * AA-DARK shade (`-600/-700`, icon/text on white). Apply via a STATIC
+   * class-map keyed by a `c` prop (Tailwind v4 only generates classes it sees
+   * literally — never `bg-${c}-100`). */
+  --color-sky-50: #eaf3fb;
+  --color-sky-100: #cde3f5;
+  --color-sky-300: #8fbde8;
+  --color-sky-600: #2570b6;
+  --color-sky-700: #1c5690;
+
+  --color-clay-50: #fbf0ea;
+  --color-clay-100: #f3d9cb;
+  --color-clay-400: #d4854f;
+  --color-clay-500: #c9703a;
+  --color-clay-600: #a4552a;
+  --color-clay-700: #82401f;
+
+  /* Ink — neutral text colors */
+  --color-ink: #212529;
+  --color-ink-700: #343a40;
+  --color-ink-500: #6c757d;
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  /* Display serif — editorial character on headlines. */
+  --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
+
+  /* ── TWO-TIER container widths (the modern wide layout) ──────────────
+   * `max-w-site` (1600) = WIDE sections that use the room: header bar
+   *   content, full-bleed hero, maps, edge-to-edge bands.
+   * `max-w-content` (1340) = the DEFAULT for CARD + READING sections.
+   * Widening EVERY section to 1600 makes card sections look stretched —
+   * reach for max-w-content there; prose stays narrower (max-w-2xl/3xl). */
+  --container-site: 1600px;
+  --container-content: 1340px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+}
+
+/*
+ * Header dropdown — hover-intent safe. Pairs with the `.spark-dropdown`
+ * panel wrapper in the header partial.
+ *
+ * 1. NO MARGIN GAP. The panel sits flush at top-full and creates its visual
+ *    gap with `pt-2` PADDING — the bridge between trigger and menu is inside
+ *    the hoverable area, so :hover never drops crossing it.
+ * 2. CLOSE DELAY. The panel toggles visibility/opacity (not display) so it
+ *    stays open 250ms after the pointer leaves.
+ * Opens on hover AND keyboard focus (focus-within). Keep `.group` on the
+ * trigger <li> and `.spark-dropdown` on the panel wrapper.
+ */
+.spark-dropdown {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-0.5rem) scale(0.97);
+  transform-origin: top left;
+  transition:
+    opacity 180ms ease,
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s linear 260ms;
+}
+.group:hover > .spark-dropdown,
+.group:focus-within > .spark-dropdown {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 180ms ease,
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s linear 0s;
+}
+/* Staggered fade-in for the mega-menu items as the panel opens. */
+.spark-mega li {
+  opacity: 0;
+  transform: translateY(0.25rem);
+  transition:
+    opacity 200ms ease,
+    transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.group:hover .spark-mega li,
+.group:focus-within .spark-mega li {
+  opacity: 1;
+  transform: translateY(0);
+}
+.spark-mega li:nth-child(1) { transition-delay: 30ms; }
+.spark-mega li:nth-child(2) { transition-delay: 55ms; }
+.spark-mega li:nth-child(3) { transition-delay: 80ms; }
+.spark-mega li:nth-child(4) { transition-delay: 105ms; }
+.spark-mega li:nth-child(5) { transition-delay: 130ms; }
+.spark-mega li:nth-child(6) { transition-delay: 155ms; }
+.spark-mega li:nth-child(7) { transition-delay: 180ms; }
+.spark-mega li:nth-child(8) { transition-delay: 205ms; }
+@media (prefers-reduced-motion: reduce) {
+  .spark-dropdown {
+    transform: none;
+    transition: visibility 0s linear 250ms;
+  }
+  .group:hover > .spark-dropdown,
+  .group:focus-within > .spark-dropdown {
+    transform: none;
+    transition: visibility 0s linear 0s;
+  }
+  .spark-mega li {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+ * .spark-card — the standard "fancy rollover" for clickable cards.
+ * Add `spark-card` to any <a>/<article> card for ONE consistent rollover:
+ *   - a lift (translateY) + deeper shadow
+ *   - the brand accent revealed as a top border on hover
+ *   - an arrow inside `.spark-card__more` slides right
+ *   - an image inside `.spark-card__img` zooms slightly
+ * All transitions respect prefers-reduced-motion. Use it; don't reinvent
+ * card hover with ad-hoc hover:-translate-y chains.
+ * ────────────────────────────────────────────────────────────────── */
+.spark-card {
+  position: relative;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+  will-change: transform;
+}
+.spark-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  /* Match the card's top corners so the bar tucks under the rounded edge. */
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  background: var(--color-primary-500);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+.spark-card:hover,
+.spark-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(16, 42, 76, 0.13);
+  border-color: var(--color-primary-300);
+}
+.spark-card:hover::before,
+.spark-card:focus-within::before {
+  transform: scaleX(1);
+}
+/* The "Read more →" affordance slides on hover. */
+.spark-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.spark-card__more > .spark-card__arrow {
+  transition: transform 200ms ease;
+}
+.spark-card:hover .spark-card__arrow,
+.spark-card:focus-within .spark-card__arrow {
+  transform: translateX(4px);
+}
+/* An image inside the card zooms subtly under the card's hover. */
+.spark-card__img {
+  transition: transform 350ms ease;
+}
+.spark-card:hover .spark-card__img,
+.spark-card:focus-within .spark-card__img {
+  transform: scale(1.05);
+}
+@media (prefers-reduced-motion: reduce) {
+  .spark-card,
+  .spark-card::before,
+  .spark-card__arrow,
+  .spark-card__img {
+    transition: none;
+  }
+  .spark-card:hover,
+  .spark-card:focus-within {
+    transform: none;
+  }
+}
+
+/* In-page anchors clear the sticky header. */
+:where(.prose [id], h1[id], h2[id], h3[id], h4[id]) {
+  scroll-margin-top: 6rem;
+}
+
+/*
+ * Element-level color rules MUST live in @layer base so Tailwind utility
+ * classes win (a bare `h1 { color: … }` beats `text-white` otherwise —
+ * symptom: invisible heading on a dark hero).
+ */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-primary-700);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .prose {
+    --tw-prose-body: var(--color-ink);
+    --tw-prose-headings: var(--color-primary-700);
+    --tw-prose-links: var(--color-primary-700);
+    line-height: 1.7;
+  }
+  .prose a {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  /* Hand cursor on all interactive controls. */
+  button,
+  [role='button'],
+  summary,
+  label:has(> input[type='checkbox']),
+  label:has(> input[type='radio']) {
+    cursor: pointer;
+  }
+  button:disabled,
+  [role='button'][aria-disabled='true'],
+  button[aria-disabled='true'] {
+    cursor: not-allowed;
+  }
+}
+
+/* Visible focus ring for keyboard users — a WCAG 2.4.7 baseline. */
+:focus-visible {
+  outline: 2px solid var(--color-accent-600);
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * BOLD DESIGN SYSTEM PRIMITIVES
+ * Reusable classes that make a page read premium & editorial instead
+ * of boxy. See the bold-design-system rules in the proposal skills.
+ * ═══════════════════════════════════════════════════════════════════ */
+
+/* Full-bleed escape hatch — break a section out of the centered container.
+ * Displacement-aware: when Drupal's admin chrome (the core navigation
+ * sidebar / toolbar) is present it sets --drupal-displace-offset-* on <html>;
+ * a plain 100vw would bleed UNDER the sidebar for logged-in users. The vars
+ * fall back to 0 in the static build and for anonymous visitors (= the
+ * classic 100vw hack). */
+.full-bleed {
+  width: calc(100vw - var(--drupal-displace-offset-left, 0px) - var(--drupal-displace-offset-right, 0px));
+  margin-inline: calc(50% - 50vw + (var(--drupal-displace-offset-left, 0px) + var(--drupal-displace-offset-right, 0px)) / 2);
+}
+
+/* The sticky site header likewise sticks below the admin top bar instead of
+ * sliding under it. Static build: var is 0 → top: 0 as before. */
+header.sticky {
+  top: var(--drupal-displace-offset-top, 0px);
+}
+
+/* Display type scale — genuinely huge, fluid, editorial. */
+.display-hero {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 7vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+/* Homepage hero headline — between display-xl and display-hero. */
+.hero-display {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 3.75rem);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+/* Hero height steps. CAPPED, never raw vh — the Canvas editor preview iframe
+ * is unbounded and a raw `min-h-[92vh]` blows it up. */
+.hero-h-short { min-height: min(46vh, 460px); }
+.hero-h-medium { min-height: min(64vh, 620px); }
+.hero-h-tall { min-height: min(88vh, 820px); }
+
+/* FAQ accordion — <details>/<summary>, no JS required. */
+.faq-list { display: grid; gap: 0.75rem; margin-top: 1.5rem; }
+.faq-item {
+  border: 1px solid var(--color-primary-100);
+  border-radius: 0.75rem;
+  background: #fff;
+  overflow: hidden;
+}
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary-800);
+  min-height: 44px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  flex-shrink: 0;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--color-accent-600);
+  transition: rotate 0.2s ease;
+}
+.faq-item[open] summary::after { rotate: 45deg; }
+.faq-item[open] summary { background: var(--color-primary-50); }
+.faq-item .faq-body { padding: 0.25rem 1.25rem 1.25rem; color: var(--color-ink-500); line-height: 1.65; }
+.faq-item .faq-body a { color: var(--color-primary-600); font-weight: 600; text-decoration: underline; }
+
+/* Oversized stat numeral — numbers as graphic (big-number band). Capped at
+ * 4rem so wide values ("$140M+") don't collide with divide-x rules. */
+.stat-num {
+  font-size: clamp(2.25rem, 4.5vw, 4rem);
+  line-height: 1.08;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+/* Eyebrow flourish — the small uppercase kicker with a leading dash. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-primary-600);
+}
+.eyebrow::before {
+  content: '';
+  width: 1.75rem;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+/* Dark band with a brand-toned glow (one dark section per page). */
+.brand-glow {
+  background:
+    radial-gradient(60% 80% at 30% 20%,
+      color-mix(in srgb, var(--color-accent-500) 22%, transparent), transparent 70%),
+    var(--color-primary-900);
+}
+
+/* Scroll-reveal — sections animate in on entrance. Add `data-reveal` to a
+ * section; the IntersectionObserver in global.js adds `.is-visible`.
+ * Progressive enhancement: content is VISIBLE by default; only once JS adds
+ * .reveal-ready to <html> do sections start hidden + animate in. */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+}
+
+/* Ken Burns — slow cinematic zoom on a hero image. Desktop only. */
+@keyframes ken-burns {
+  0%   { transform: scale(1.05) translate(0, 0); }
+  100% { transform: scale(1.18) translate(-2%, -1.5%); }
+}
+@media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
+  .ken-burns {
+    transform-origin: center;
+    animation: ken-burns 24s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+}
+
+/* Inline Lucide icon wrapper — the `icon` SDC inlines the SVG; this sizes it
+ * and inherits currentColor (lucide-static uses stroke="currentColor"). */
+.dx-icon { display: inline-flex; flex-shrink: 0; }
+.dx-icon svg { width: 100%; height: 100%; stroke-width: 2; }
+.dx-icon--sm { width: 1rem; height: 1rem; }
+.dx-icon--md { width: 1.5rem; height: 1.5rem; }
+.dx-icon--lg { width: 2.5rem; height: 2.5rem; }

@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - canvas.component.block.system_branding_block
+    - canvas.component.block.system_menu_block.main
+    - canvas.component.sdc.mercury.navbar
+  module:
+    - options
+  theme:
+    - mercury
+id: mercury.header
+theme: mercury
+region: header
+component_tree:
+  '0:3b448d2f-f191-44cb-8189-2362dbf3fe18':
+    uuid: 3b448d2f-f191-44cb-8189-2362dbf3fe18
+    component_id: sdc.mercury.navbar
+    component_version: 3149f199d66bbc29
+    inputs:
+      menu_align: right
+  '0:logo:0:032b3150-7557-468a-ba40-d1c8fdc27f11':
+    parent_uuid: 3b448d2f-f191-44cb-8189-2362dbf3fe18
+    slot: logo
+    uuid: 032b3150-7557-468a-ba40-d1c8fdc27f11
+    component_id: block.system_branding_block
+    component_version: b168140fdcaebae5
+    inputs:
+      label: 'Site branding'
+      label_display: '0'
+      use_site_logo: true
+      use_site_name: false
+      use_site_slogan: false
+  '0:navigation:0:6d13ceff-24ca-47d3-9a3b-10bc48480618':
+    parent_uuid: 3b448d2f-f191-44cb-8189-2362dbf3fe18
+    slot: navigation
+    uuid: 6d13ceff-24ca-47d3-9a3b-10bc48480618
+    component_id: block.system_menu_block.main
+    component_version: 023ff7ba63f80798
+    inputs:
+      label: 'Main navigation'
+      label_display: '0'
+      level: 1
+      depth: null
+      expand_all_items: false

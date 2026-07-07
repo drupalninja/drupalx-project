@@ -1,0 +1,4 @@
+additional_trusted_composer_plugins:
+  - tbachert/spi
+  - drupal/site_template_helper
+include_unknown_files_in_project_root: false

@@ -1,0 +1,19 @@
+{
+  "name": "drupal/easy_email_types_core",
+  "type": "drupal-recipe",
+  "description": "Easy Email templates that replicate and override the content of emails sent by Drupal core with HTML-formatted versions.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/easy_email_types_core",
+  "minimum-stability": "stable",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/easy_email_types_core",
+    "source": "https://git.drupalcode.org/project/easy_email_types_core"
+  },
+  "require": {
+    "drupal/core": "^10.3 || ^11",
+    "drupal/easy_email": "^3.0.2",
+    "drupal/easy_email_text_format": "^1"
+  },
+  "version": "1.0.4"
+}

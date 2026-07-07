@@ -1,0 +1,20 @@
+{
+  "name": "drupal/easy_email_express",
+  "type": "drupal-recipe",
+  "description": "Easy Email configuration that replaces all core emails with HTML formatted emails.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/easy_email_express",
+  "minimum-stability": "stable",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/easy_email_express",
+    "source": "https://git.drupalcode.org/project/easy_email_express"
+  },
+  "require": {
+    "drupal/core": "^10.3 || ^11",
+    "drupal/easy_email_standard": "^1.0.2",
+    "drupal/easy_email_types_core": "^1.0.3",
+    "drupal/easy_email_types_default": "^1.0.1"
+  },
+  "version": "1.0.4"
+}

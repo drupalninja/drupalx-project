@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+id: drupal
+label: Drupal
+weight: 0
+tag_container_ids: []
+advanced_settings:
+  consent_mode: false
+dimensions_metrics: {  }
+conditions:
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/admin*\r\n/batch*\r\n/node/add*\r\n/node/*/edit\r\n/node/*/delete\r\n/user/*/edit*\r\n/user/*/cancel*\r\n/taxonomy/term/*/edit\r\n/taxonomy/term/*/delete"
+events:
+  search: {  }
+  custom: {  }
+  generate_lead:
+    value: ''
+    currency: ''
+  login:
+    method: CMS
+  sign_up:
+    method: CMS

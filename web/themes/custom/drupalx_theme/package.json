@@ -1,0 +1,22 @@
+{
+  "name": "drupalx-theme",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tailwind v4 build for drupalx_theme — one global.css, self-hosted variable fonts, curated build-time Lucide icons. Build artifacts in dist/ are COMMITTED (Drupal renders with zero node builds).",
+  "scripts": {
+    "icons": "node scripts/copy-icons.mjs",
+    "fonts": "node scripts/copy-fonts.mjs",
+    "build:css": "tailwindcss -i src/css/global.css -o dist/css/global.css --minify",
+    "watch:css": "tailwindcss -i src/css/global.css -o dist/css/global.css --watch",
+    "build:js": "node -e \"require('fs').copyFileSync('src/js/global.js','dist/js/global.js')\"",
+    "build": "npm run icons && npm run fonts && npm run build:css && npm run build:js"
+  },
+  "devDependencies": {
+    "@fontsource-variable/fraunces": "^5.2.5",
+    "@fontsource-variable/inter": "^5.2.5",
+    "@tailwindcss/cli": "^4.1.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "lucide-static": "^0.525.0",
+    "tailwindcss": "^4.1.0"
+  }
+}

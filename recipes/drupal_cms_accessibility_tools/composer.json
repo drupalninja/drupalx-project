@@ -1,0 +1,11 @@
+{
+    "name": "drupal/drupal_cms_accessibility_tools",
+    "description": "Adds automated checks to help ensure content conforms to web accessibility guidelines.",
+    "type": "drupal-recipe",
+    "license": ["GPL-2.0-or-later"],
+    "require": {
+        "drupal/drupal_cms_content_type_base": "^2",
+        "drupal/editoria11y": "^2.2"
+    },
+    "version": "2.1.3"
+}

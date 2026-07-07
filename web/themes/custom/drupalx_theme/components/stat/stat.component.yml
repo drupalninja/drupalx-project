@@ -1,0 +1,37 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Stat
+description: 'One big-number stat for the Stats section slot.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - number
+    - label
+  properties:
+    number:
+      type: string
+      title: Number
+      examples:
+        - '$140M+'
+    label:
+      type: string
+      title: Label
+      examples:
+        - 'investment leveraged'
+    c:
+      type: string
+      title: 'Wayfinding color'
+      description: 'Colors the numeral on light tone (static class-map).'
+      default: none
+      enum:
+        - none
+        - sky
+        - clay
+        - accent
+      meta:enum:
+        none: 'Primary (default)'
+        sky: Sky
+        clay: Clay
+        accent: Accent

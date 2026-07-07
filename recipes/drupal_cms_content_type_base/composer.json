@@ -1,0 +1,23 @@
+{
+    "name": "drupal/drupal_cms_content_type_base",
+    "description": "Provides basic tools for creating content.",
+    "type": "drupal-recipe",
+    "license": ["GPL-2.0-or-later"],
+    "require": {
+        "drupal/autosave_form": "^1.10",
+        "drupal/bpmn_io": "^3",
+        "drupal/canvas": "^1.2",
+        "drupal/core": "^11.3.10",
+        "drupal/drupal_cms_helper": "^2",
+        "drupal/eca": "^3.0.8",
+        "drupal/linkit": "^7",
+        "drupal/modeler_api": "^1",
+        "drupal/pathauto": "^1.13",
+        "drupal/scheduler": "^2.2",
+        "drupal/scheduler_content_moderation_integration": "^3.0.4",
+        "drupal/tagify": "^1.2",
+        "drupal/token": "^1",
+        "drupal/trash": "^3.0.13"
+    },
+    "version": "2.1.3"
+}

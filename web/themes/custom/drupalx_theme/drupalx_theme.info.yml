@@ -1,0 +1,14 @@
+name: 'DrupalX Theme'
+type: theme
+description: 'Tailwind v4 SDC component theme for Drupal Canvas — glass-panel heroes, big-number stat bands, spark-card grids, wayfinding color families. One component source renders both the static frontend build and editable Canvas pages.'
+core_version_requirement: ^11
+base theme: stable9
+
+libraries:
+  - drupalx_theme/global
+
+regions:
+  primary_menu: 'Primary menu'
+  highlighted: Highlighted
+  content: Content
+  footer: Footer

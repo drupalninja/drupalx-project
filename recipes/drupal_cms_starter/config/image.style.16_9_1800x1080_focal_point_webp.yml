@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 16_9_1800x1080_focal_point_webp
+label: '16:9 | 1800x1080 | Focal Point | WebP'
+effects:
+  fea1c3a1-1f85-4682-8e80-a50f68d2f7eb:
+    uuid: fea1c3a1-1f85-4682-8e80-a50f68d2f7eb
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1800
+      height: 1080
+      crop_type: focal_point
+  1c5d7a9c-c642-4595-adad-f128e730c5ca:
+    uuid: 1c5d7a9c-c642-4595-adad-f128e730c5ca
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp

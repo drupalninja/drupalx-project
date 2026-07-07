@@ -1,0 +1,41 @@
+{#
+/**
+ * Event card — date-block teaser (spark-card). Child of the Card grid.
+ */
+#}
+{% set c = c|default('none') %}
+{% set c_map = {
+  'none': 'bg-primary-700',
+  'sky': 'bg-sky-600',
+  'clay': 'bg-clay-600',
+  'accent': 'bg-accent-600',
+} %}
+<article class="spark-card relative flex h-full gap-4 rounded-2xl border border-primary-100 bg-white p-5 shadow-sm">
+  {% if month|default('') or day|default('') %}
+    <div class="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-xl {{ c_map[c]|default(c_map['none']) }} text-white">
+      <span class="text-[0.65rem] font-bold uppercase tracking-[0.14em]">{{ month }}</span>
+      <span class="text-2xl font-black leading-none">{{ day }}</span>
+    </div>
+  {% endif %}
+  <div class="flex min-w-0 flex-1 flex-col">
+    <h3 class="font-bold leading-snug text-primary-800">
+      {% if url|default('') %}
+        <a href="{{ url }}" class="after:absolute after:inset-0 focus:outline-none">{{ title }}</a>
+      {% else %}{{ title }}{% endif %}
+    </h3>
+    <ul class="mt-2 grid gap-1 text-sm text-ink-500">
+      {% if time|default('') %}
+        <li class="flex items-center gap-1.5">
+          {% include 'drupalx_theme:icon' with { name: 'clock', size: 'sm' } only %}
+          {{ time }}
+        </li>
+      {% endif %}
+      {% if location|default('') %}
+        <li class="flex items-center gap-1.5">
+          {% include 'drupalx_theme:icon' with { name: 'map-pin', size: 'sm' } only %}
+          {{ location }}
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</article>

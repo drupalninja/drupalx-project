@@ -1,0 +1,53 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.canvas_full_html
+  module:
+    - options
+    - text
+  theme:
+    - drupalx_theme
+label: 'Section: Rich text'
+id: sdc.drupalx_theme.section_richtext
+source: sdc
+source_local_id: 'drupalx_theme:section_richtext'
+provider: drupalx_theme
+active_version: f197f810e2c17762
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        body:
+          required: true
+          field_type: text_long
+          field_storage_settings: {  }
+          field_instance_settings:
+            allowed_formats:
+              - canvas_full_html
+          field_widget: text_textarea
+          default_value:
+            -
+              value: '<p>Long-form editorial content.</p>'
+              format: canvas_full_html
+          expression: ℹ︎text_long␟processed
+        width:
+          required: false
+          field_type: list_string
+          field_storage_settings:
+            allowed_values_function: canvas_load_allowed_values_for_component_prop
+          field_instance_settings: {  }
+          field_widget: options_select
+          default_value: null
+          expression: ℹ︎list_string␟value
+        tone:
+          required: false
+          field_type: list_string
+          field_storage_settings:
+            allowed_values_function: canvas_load_allowed_values_for_component_prop
+          field_instance_settings: {  }
+          field_widget: options_select
+          default_value: null
+          expression: ℹ︎list_string␟value
+    fallback_metadata:
+      slot_definitions: {  }

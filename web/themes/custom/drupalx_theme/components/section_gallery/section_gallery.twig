@@ -1,0 +1,18 @@
+{#
+/**
+ * Section: Gallery — captioned image grid (Image children in the slot).
+ */
+#}
+{% import '@drupalx_theme/components/_section/_section.twig' as sx %}
+{% set columns = columns|default('3') %}
+{% set col_map = { '2': 'sm:grid-cols-2', '3': 'sm:grid-cols-2 lg:grid-cols-3' } %}
+<section class="full-bleed bg-white py-16 md:py-24" data-reveal>
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    {{ sx.header(eyebrow|default(''), title|default(''), '', 'left', false) }}
+    {# Gallery children are Image components; their own container padding is
+       neutralized so the grid owns the layout. #}
+    <div class="grid gap-6 {{ col_map[columns]|default(col_map['3']) }} [&>figure]:px-0 [&>figure]:max-w-none">
+      {% block images %}{% endblock %}
+    </div>
+  </div>
+</section>

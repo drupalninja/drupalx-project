@@ -1,0 +1,41 @@
+_meta:
+  version: '1.0'
+  entity_type: menu_link_content
+  uuid: 74cf71e3-30d3-4731-a33f-6e7979376761
+  bundle: menu_link_content
+  default_langcode: en
+  depends:
+    f84ae181-469c-5c45-ab73-dbf78ca1be78: canvas_page
+default:
+  enabled:
+    -
+      value: true
+  title:
+    -
+      value: Contact
+  description:
+    -
+      value: 'dx::Contact'
+  menu_name:
+    -
+      value: main
+  link:
+    -
+      title: null
+      options: {  }
+      target_uuid: f84ae181-469c-5c45-ab73-dbf78ca1be78
+  external:
+    -
+      value: false
+  rediscover:
+    -
+      value: true
+  weight:
+    -
+      value: 3
+  expanded:
+    -
+      value: true
+  revision_translation_affected:
+    -
+      value: true

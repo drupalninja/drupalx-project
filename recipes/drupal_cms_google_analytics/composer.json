@@ -1,0 +1,15 @@
+{
+    "name": "drupal/drupal_cms_google_analytics",
+    "type": "drupal-recipe",
+    "description": "Adds tracking of website traffic using Google Analytics and Google Tag Manager. Requires a Google Tag Manager ID.",
+    "license": ["GPL-2.0-or-later"],
+    "require": {
+        "drupal/core": "^11.3.10",
+        "drupal/google_tag": "^2.0.7",
+        "drupal/drupal_cms_privacy_basic": "^2"
+    },
+    "conflict": {
+        "drupal/project_browser": "<2-alpha7"
+    },
+    "version": "2.1.3"
+}

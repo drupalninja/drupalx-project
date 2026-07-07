@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies: {  }
+id: user_created_approval_admin
+label: 'User: Created - Awaiting Approval - Admin Notification'
+key: ''
+recipient:
+  - '[site:mail]'
+cc: {  }
+bcc: {  }
+fromName: ''
+fromAddress: ''
+replyToAddress: ''
+subject: 'Account details for [easy_email:field_related_user:0:entity:display-name] at [site:name] (pending admin approval)'
+inboxPreview: ''
+bodyHtml:
+  value: '<p>[easy_email:field_related_user:0:entity:display-name] has applied for an account.</p><p><a class="button" href="[easy_email:field_related_user:0:entity:edit-url]">Edit user account</a></p>'
+  format: easy_email
+bodyPlain: "[easy_email:field_related_user:0:entity:display-name] has applied for an account.\r\n\r\n[easy_email:field_related_user:0:entity:edit-url]"
+generateBodyPlain: false
+attachment: {  }
+saveAttachment: false
+attachmentScheme: public
+attachmentDirectory: ''
+saveEmail: true
+allowSavingEmail: true
+purgeEmails: true
+purgeInterval: 30
+purgePeriod: days

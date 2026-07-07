@@ -1,0 +1,24 @@
+{
+  "name": "drupal/drupal_cms_ai",
+  "description": "Adds integration with AI services, such as alt text generation and a chat bot to assist with site building. Requires an API key from Open AI or Anthropic.",
+  "type": "drupal-recipe",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "drupal/core": "^11.3.10",
+    "drupal/ai": "^1.2.6",
+    "drupal/ai_agents": "^1.2",
+    "drupal/ai_dashboard": "^1",
+    "drupal/ai_image_alt_text": "^1",
+    "drupal/ai_provider_amazeeio": "^1.2.7",
+    "drupal/ai_provider_anthropic": "^1.1",
+    "drupal/ai_provider_openai": "^1.1",
+    "drupal/canvas": "^1.2",
+    "drupal/drupal_cms_privacy_basic": "^2",
+    "drupal/easy_encryption": "^1",
+    "league/commonmark": "^2.4"
+  },
+  "conflict": {
+    "drupal/project_browser": "<2-alpha7"
+  },
+  "version": "2.1.3"
+}

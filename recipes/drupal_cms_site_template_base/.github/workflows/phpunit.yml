@@ -1,0 +1,61 @@
+# Contains a GitHub Actions workflow to run PHPUnit tests for this site template.
+# You can delete this file if you're not using hosting the repository on GitHub.
+#
+# See https://docs.github.com/en/actions for documentation about GitHub Actions.
+#
+on:
+  - push
+  - pull_request
+jobs:
+  phpunit:
+    name: Run PHPUnit tests
+    runs-on: ubuntu-latest
+    steps:
+      # Use DDEV to set up the environment, because it gives us everything we
+      # need and it just works.
+      - name: Set up DDEV
+        uses: ddev/github-action-setup-ddev@v1
+        with:
+          autostart: false
+
+      # Test with a plain Drupal project, like the default GitLab CI setup does.
+      - name: Initialize DDEV and create a Drupal project
+        # @see https://docs.ddev.com/en/stable/users/quickstart/#drupal
+        run: |
+          ddev config --project-type=drupal11 --docroot=web
+
+          # For performance, don't audit dependencies.
+          ddev config --web-environment-add="COMPOSER_NO_AUDIT=1"
+
+          # Fully copy the site template into the project, rather than symlinking it.
+          ddev config --web-environment-add="COMPOSER_MIRROR_PATH_REPOS=1"
+
+          # Set environment variables needed by PHPUnit.
+          # @see https://docs.ddev.com/en/stable/users/extend/custom-commands/#environment-variables-provided
+          ddev config --web-environment-add='SIMPLETEST_BASE_URL=$DDEV_PRIMARY_URL'
+          ddev config --web-environment-add='SIMPLETEST_DB=$DDEV_DATABASE_FAMILY://db:db@db/db'
+
+          ddev start
+          ddev composer create-project --no-install drupal/recommended-project
+
+          # Require development dependencies like PHPUnit, but don't install them yet.
+          ddev composer require --no-update --dev drupal/core-dev
+
+      # Check out this repository.
+      - uses: actions/checkout@v5
+        with:
+          path: source
+
+      # We'll need to know the package name in the next step, so extract it into an
+      # environment variable now.
+      - name: Extract package name
+        run: echo "PACKAGE_NAME=$(jq -r .name ./source/composer.json)" >> $GITHUB_ENV
+
+      - name: Install the site template
+        run: |
+          ddev composer repository add source path source
+          ddev composer config allow-plugins.drupal/site_template_helper true
+          ddev composer require --update-with-all-dependencies "$PACKAGE_NAME:@dev"
+
+      - name: Run tests
+        run: ddev exec phpunit --configuration=./web/core ./recipes/$(basename $PACKAGE_NAME)

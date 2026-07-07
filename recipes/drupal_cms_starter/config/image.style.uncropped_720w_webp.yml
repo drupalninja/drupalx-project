@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies: {  }
+name: uncropped_720w_webp
+label: 'Uncropped | 720w | WebP'
+effects:
+  93295bf7-164c-4763-9ce5-014b4007155c:
+    uuid: 93295bf7-164c-4763-9ce5-014b4007155c
+    id: image_scale
+    weight: 1
+    data:
+      width: 720
+      height: null
+      upscale: false
+  70230248-85a9-4941-8cde-0fd3cb86c23b:
+    uuid: 70230248-85a9-4941-8cde-0fd3cb86c23b
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp

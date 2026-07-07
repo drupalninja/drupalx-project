@@ -1,0 +1,21 @@
+#
+# Appended to default.settings.php by Drupal CMS's scaffold plugin configuration.
+#
+
+// Always export configuration outside the web root, per best practice.
+$sync_directory = realpath('../config/sync');
+if (is_dir($sync_directory)) {
+  $settings['config_sync_directory'] ??= $sync_directory;
+}
+
+// If the `assets` directory exists at the project root, Package Manager must copy it
+// into the sandbox directory so that the scaffolding operations can succeed. The
+// `assets` directory's location may vary, depending on the project layout.
+// @todo Remove when https://www.drupal.org/node/3531174 is fixed in core, allowing
+//   explicit unknown paths to be included in the sandbox directory.
+$assets_directory = realpath('../assets') ?: realpath('assets');
+$config['package_manager.settings']['include_unknown_files_in_project_root'] ??= is_dir($assets_directory);
+
+#
+# End of settings appended by Drupal CMS.
+#

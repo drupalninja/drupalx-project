@@ -1,0 +1,9 @@
+{#
+  Shim for Drupal Canvas's `canvas:image` component.
+  Components include it as: {% include 'canvas:image' ... with { src, alt, class } only %}
+  In Drupal that renders a (responsive) image; for the static Twing
+  render we emit a plain <img>.
+#}
+{% if src %}
+<img src="{{ src }}"{% if alt is defined %} alt="{{ alt }}"{% endif %}{% if class is defined %} class="{{ class }}"{% endif %}>
+{% endif %}

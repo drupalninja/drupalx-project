@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: advertising
+label: 'Advertising and Marketing'
+description: ''
+weight: 0

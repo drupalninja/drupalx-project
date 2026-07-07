@@ -1,0 +1,107 @@
+<?php
+
+/**
+ * @file
+ * Theme functions for DrupalX Theme.
+ */
+
+use Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_preprocess_page().
+ *
+ * Builds the data contract the shared chrome partials consume — the SAME
+ * contract the static frontend feeds them from site/pages.config.cjs:
+ *   dx_nav:  [{ title, url, children: [{ title, url }] }]
+ *   dx_site: { name, tagline, cta, footer: { blurb, contact, legal, year } }
+ *
+ * Branding strings come from theme settings (falling back to lean defaults),
+ * so a rebrand needs no template edit:
+ *   drush -y config:set drupalx_theme.settings dx_tagline "Your tagline"
+ */
+function drupalx_theme_preprocess_page(array &$variables): void {
+  $config = \Drupal::config('system.site');
+
+  // ── Navigation: the `main` menu, two levels deep.
+  $menu_tree = \Drupal::menuTree();
+  $parameters = (new MenuTreeParameters())
+    ->setMaxDepth(2)
+    ->onlyEnabledLinks();
+  $tree = $menu_tree->load('main', $parameters);
+  $tree = $menu_tree->transform($tree, [
+    ['callable' => 'menu.default_tree_manipulators:checkAccess'],
+    ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+  ]);
+
+  $nav = [];
+  foreach ($tree as $element) {
+    if (!$element->link->isEnabled()) {
+      continue;
+    }
+    $item = [
+      'title' => $element->link->getTitle(),
+      'url' => $element->link->getUrlObject()->toString(),
+      'children' => [],
+    ];
+    foreach ($element->subtree as $child) {
+      if (!$child->link->isEnabled()) {
+        continue;
+      }
+      // scripts/sync-menu.php stores its idempotency key in the description
+      // field (dx:…) — never surface that as dropdown copy.
+      $desc = (string) ($child->link->getDescription() ?? '');
+      $item['children'][] = [
+        'title' => $child->link->getTitle(),
+        'url' => $child->link->getUrlObject()->toString(),
+        'description' => str_starts_with($desc, 'dx:') ? '' : $desc,
+      ];
+    }
+    $nav[] = $item;
+  }
+  $variables['dx_nav'] = $nav;
+
+  // ── Site branding (theme settings override the lean defaults).
+  $setting = fn (string $key, ?string $default) => theme_get_setting($key, 'drupalx_theme') ?? $default;
+  $variables['dx_site'] = [
+    'name' => $config->get('name') ?: 'DrupalX Canvas',
+    'tagline' => $setting('dx_tagline', $config->get('slogan') ?: NULL),
+    'cta' => [
+      'label' => $setting('dx_cta_label', 'Get in touch'),
+      'url' => $setting('dx_cta_url', '/contact'),
+    ],
+    'footer' => [
+      'blurb' => $setting('dx_footer_blurb', NULL),
+      'legal' => $setting('dx_footer_legal', 'All rights reserved.'),
+      'year' => date('Y'),
+      'contact' => [
+        'address' => $setting('dx_contact_address', NULL),
+        'phone' => $setting('dx_contact_phone', NULL),
+        'email' => $setting('dx_contact_email', $config->get('mail') ?: NULL),
+      ],
+    ],
+  ];
+
+  // The chrome varies with the main menu + site config.
+  $variables['#cache']['contexts'][] = 'route';
+  $variables['#cache']['tags'][] = 'config:system.menu.main';
+  $variables['#cache']['tags'][] = 'config:system.site';
+}
+
+/**
+ * Implements hook_preprocess_block().
+ *
+ * Canvas pages compose their own hero (with the page title inside the
+ * section_hero / page_hero component), so the theme's page-title block would
+ * render a duplicate H1 above it. Suppress it on canvas_page routes only.
+ */
+function drupalx_theme_preprocess_block(array &$variables): void {
+  if (($variables['plugin_id'] ?? '') !== 'page_title_block') {
+    return;
+  }
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($route === 'entity.canvas_page.canonical' || \Drupal::routeMatch()->getParameter('canvas_page')) {
+    $variables['content'] = [];
+    $variables['attributes']['class'][] = 'hidden';
+  }
+}

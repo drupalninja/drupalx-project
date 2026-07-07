@@ -1,0 +1,26 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Accordion item'
+description: 'One question/answer row for the Accordion slot.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - heading
+  properties:
+    heading:
+      type: string
+      title: Question
+      examples:
+        - 'How long does a redesign take?'
+    body:
+      type: string
+      title: Answer
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+    open:
+      type: boolean
+      title: 'Open by default'
+      default: false

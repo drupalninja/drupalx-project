@@ -1,0 +1,38 @@
+{#
+/**
+ * News card — image-led dated teaser (spark-card). Child of the Card grid.
+ */
+#}
+{% set has_image = image.src|default('') is not empty %}
+{% set io = has_image ? dx_image(image, '(min-width: 1024px) 33vw, 100vw') : { srcset: null } %}
+<article class="spark-card relative flex h-full flex-col overflow-hidden rounded-2xl border border-primary-100 bg-white shadow-sm">
+  {% if has_image %}
+    <div class="overflow-hidden">
+      <img src="{{ image.src }}" alt="{{ image.alt|default('') }}"
+           class="spark-card__img aspect-video w-full object-cover" loading="lazy" decoding="async"
+           {% if io.srcset %}srcset="{{ io.srcset }}" sizes="{{ io.sizes }}"{% endif %}>
+    </div>
+  {% endif %}
+  <div class="flex flex-1 flex-col p-6">
+    {% if date|default('') %}
+      <p class="mb-2 flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-ink-500">
+        {% include 'drupalx_theme:icon' with { name: 'newspaper', size: 'sm' } only %}
+        {{ date }}
+      </p>
+    {% endif %}
+    <h3 class="text-lg font-bold leading-snug text-primary-800">
+      {% if url|default('') %}
+        <a href="{{ url }}" class="after:absolute after:inset-0 focus:outline-none">{{ title }}</a>
+      {% else %}{{ title }}{% endif %}
+    </h3>
+    {% if summary|default('') %}
+      <div class="mt-2 text-[0.92rem] leading-relaxed text-ink-500">{{ summary|raw }}</div>
+    {% endif %}
+    {% if url|default('') %}
+      <p class="spark-card__more mt-auto pt-4 text-sm font-bold text-primary-700">
+        Read more
+        <span class="spark-card__arrow dx-icon dx-icon--sm" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/arrow-right.svg') -}}</span>
+      </p>
+    {% endif %}
+  </div>
+</article>

@@ -1,0 +1,56 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Card grid'
+description: 'spark-card grid with wayfinding color bars and optional 2x featured first card (bento). Fill the cards slot with Card components.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+    title:
+      type: string
+      title: Title
+      default: ''
+      examples:
+        - 'What we do'
+    lede:
+      type: string
+      title: Lede
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+    columns:
+      type: string
+      title: Columns
+      default: '3'
+      enum:
+        - '2'
+        - '3'
+        - '4'
+      meta:enum:
+        '2': '2 columns'
+        '3': '3 columns'
+        '4': '4 columns'
+    tone:
+      type: string
+      title: Background
+      default: white
+      enum:
+        - white
+        - tint
+      meta:enum:
+        white: White
+        tint: 'Primary tint'
+    featured_first:
+      type: boolean
+      title: 'Feature the first card (2x width)'
+      default: false
+
+slots:
+  cards:
+    title: Cards
+    description: 'Card / News card / Event card components.'

@@ -1,0 +1,470 @@
+_meta:
+  version: '1.0'
+  entity_type: canvas_page
+  uuid: 11fe4274-13f8-561f-b9ec-8159a637991a
+  default_langcode: en
+  depends:
+    b96ed1f3-8f3d-4224-b6a4-3925dd4819a1: file
+    cf8270ac-4613-4dbe-b77c-255fd89e48d3: media
+    0e8866e7-1360-4b9c-8c0e-ebce7789c6ff: file
+    c47a7d22-8c07-484b-9d78-6efa6bf04a9a: media
+    6d084594-74b9-4954-963a-968bc29f0f5e: file
+    f1ea4969-5993-435d-9e4e-64edd91282d3: media
+default:
+  status:
+    -
+      value: true
+  owner:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Component library'
+  components:
+    -
+      uuid: 536498d4-dc9e-54cf-b160-676dd2bb01dd
+      component_id: sdc.drupalx_theme.alert_banner
+      inputs:
+        message:
+          value: '<p>This is the kitchen-sink page — every component renders here once.</p>'
+          format: canvas_full_html
+        tone: info
+        alert_id: kitchen-sink
+        dismissible: true
+    -
+      uuid: 15ac34f1-32f5-55d4-ad38-793cc60cdf06
+      component_id: sdc.drupalx_theme.section_hero
+      inputs:
+        eyebrow: 'Component library'
+        title: 'Every component, on one page'
+        body:
+          value: '<p>Glass hero, stat band, cards, splits, galleries, accordions — the whole set.</p>'
+          format: canvas_full_html
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: cf8270ac-4613-4dbe-b77c-255fd89e48d3
+            target_type: media
+        style: glass
+        height: short
+        stat_chip_number: ''
+        stat_chip_label: ''
+    -
+      parent_uuid: 15ac34f1-32f5-55d4-ad38-793cc60cdf06
+      slot: hero_buttons
+      uuid: 1a9e12b7-d946-5bfd-bf6b-09a2fa79df5d
+      component_id: sdc.drupalx_theme.button
+      inputs:
+        label: Primary
+        url:
+          uri: 'internal:/'
+          options: {  }
+        variant: glass
+        size: normal
+        icon: chevron-right
+    -
+      uuid: 8937a86d-f436-5271-81e6-9e72912217f0
+      component_id: sdc.drupalx_theme.page_hero
+      inputs:
+        title: 'Page hero (light)'
+        eyebrow: 'Inner pages'
+        lede:
+          value: '<p>The inner-page banner.</p>'
+          format: canvas_full_html
+        tone: light
+    -
+      uuid: 9b8245ef-aacb-54b3-84bd-bcdf3b620d55
+      component_id: sdc.drupalx_theme.heading
+      inputs:
+        title: 'Heading primitive'
+        eyebrow: 'With an eyebrow'
+        level: h2
+        style: title
+        align: left
+    -
+      uuid: 5cd64f34-9d64-5f5f-a79d-8841126f00a8
+      component_id: sdc.drupalx_theme.spacer
+      inputs:
+        size: sm
+    -
+      uuid: bbc71083-8745-50e5-b027-c8033865cc35
+      component_id: sdc.drupalx_theme.icon
+      inputs:
+        name: sparkles
+        size: lg
+    -
+      uuid: b87a30bf-1fce-5e99-aedb-0f0ec6149e0d
+      component_id: sdc.drupalx_theme.divider
+      inputs:
+        width: content
+    -
+      uuid: cf466788-579a-536a-ae26-f71995976e64
+      component_id: sdc.drupalx_theme.image
+      inputs:
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: c47a7d22-8c07-484b-9d78-6efa6bf04a9a
+            target_type: media
+        aspect: 16x9
+        rounded: 2xl
+        frame: offset-accent
+        caption: 'Image primitive with offset-accent frame.'
+    -
+      uuid: f570c9c7-2f7e-5dd0-b8fc-1f86294f7e90
+      component_id: sdc.drupalx_theme.section_stats
+      inputs:
+        eyebrow: 'Stat band'
+        title: 'Numbers as graphic'
+        tone: dark
+        columns: '4'
+    -
+      parent_uuid: f570c9c7-2f7e-5dd0-b8fc-1f86294f7e90
+      slot: stats
+      uuid: 25ad56ac-6ed3-59b5-aa00-bc04f33a5ca8
+      component_id: sdc.drupalx_theme.stat
+      inputs:
+        number: 98%
+        label: satisfaction
+        c: none
+    -
+      parent_uuid: f570c9c7-2f7e-5dd0-b8fc-1f86294f7e90
+      slot: stats
+      uuid: 14ad8591-0128-5948-8d77-1a6074adac33
+      component_id: sdc.drupalx_theme.stat
+      inputs:
+        number: '42'
+        label: components
+        c: sky
+    -
+      parent_uuid: f570c9c7-2f7e-5dd0-b8fc-1f86294f7e90
+      slot: stats
+      uuid: c9538f13-8153-58a0-ba3c-a38cec1932e7
+      component_id: sdc.drupalx_theme.stat
+      inputs:
+        number: '7'
+        label: 'days to launch'
+        c: clay
+    -
+      parent_uuid: f570c9c7-2f7e-5dd0-b8fc-1f86294f7e90
+      slot: stats
+      uuid: 75bcfc66-ecd1-59c5-9332-596c02a9b529
+      component_id: sdc.drupalx_theme.stat
+      inputs:
+        number: AA
+        label: accessibility
+        c: accent
+    -
+      uuid: 5455373e-30cc-59d6-8ae9-8b782ba4b55d
+      component_id: sdc.drupalx_theme.section_cards
+      inputs:
+        eyebrow: 'Card grid'
+        title: 'spark-card rollovers'
+        lede:
+          value: ''
+          format: canvas_full_html
+        columns: '3'
+        tone: white
+        featured_first: true
+    -
+      parent_uuid: 5455373e-30cc-59d6-8ae9-8b782ba4b55d
+      slot: cards
+      uuid: 47399b72-834e-5cd8-823e-c6a4375178f4
+      component_id: sdc.drupalx_theme.card
+      inputs:
+        title: 'Featured card'
+        body:
+          value: '<p>featured_first makes this one span two columns.</p>'
+          format: canvas_full_html
+        url:
+          uri: 'internal:/'
+          options: {  }
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: f1ea4969-5993-435d-9e4e-64edd91282d3
+            target_type: media
+        icon: none
+        c: none
+        more_label: 'Learn more'
+    -
+      parent_uuid: 5455373e-30cc-59d6-8ae9-8b782ba4b55d
+      slot: cards
+      uuid: d7b28602-27e8-5b25-9508-ef3ffadbaafe
+      component_id: sdc.drupalx_theme.card
+      inputs:
+        title: 'Icon card (sky)'
+        body:
+          value: '<p>Icon-led with a wayfinding chip.</p>'
+          format: canvas_full_html
+        url:
+          uri: 'internal:/'
+          options: {  }
+        icon: map
+        c: sky
+        more_label: 'Learn more'
+    -
+      parent_uuid: 5455373e-30cc-59d6-8ae9-8b782ba4b55d
+      slot: cards
+      uuid: 798669cc-4548-5413-b344-3a65e345832f
+      component_id: sdc.drupalx_theme.card
+      inputs:
+        title: 'Icon card (clay)'
+        body:
+          value: '<p>Same card, clay family.</p>'
+          format: canvas_full_html
+        url:
+          uri: 'internal:/'
+          options: {  }
+        icon: leaf
+        c: clay
+        more_label: 'Learn more'
+    -
+      uuid: 1b2da301-3cfa-5307-b127-2d7a657844a7
+      component_id: sdc.drupalx_theme.section_cards
+      inputs:
+        eyebrow: 'Dated cards'
+        title: 'News & events'
+        lede:
+          value: ''
+          format: canvas_full_html
+        columns: '2'
+        tone: white
+        featured_first: false
+    -
+      parent_uuid: 1b2da301-3cfa-5307-b127-2d7a657844a7
+      slot: cards
+      uuid: 294bf6e1-a3b4-5829-9ac3-437d4c018910
+      component_id: sdc.drupalx_theme.card_news
+      inputs:
+        title: 'News card'
+        date: 'Jul 4, 2026'
+        summary:
+          value: '<p>Dated, image-led teaser.</p>'
+          format: canvas_full_html
+        url:
+          uri: 'internal:/'
+          options: {  }
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: c47a7d22-8c07-484b-9d78-6efa6bf04a9a
+            target_type: media
+    -
+      parent_uuid: 1b2da301-3cfa-5307-b127-2d7a657844a7
+      slot: cards
+      uuid: 493b4371-7359-56af-9e63-9120f3667a80
+      component_id: sdc.drupalx_theme.card_event
+      inputs:
+        title: 'Event card'
+        month: AUG
+        day: '02'
+        time: '9:00 AM'
+        location: 'Main Hall'
+        url:
+          uri: 'internal:/'
+          options: {  }
+        c: sky
+    -
+      uuid: e9829f30-5c6f-5be5-9da7-4287a9ef3d2f
+      component_id: sdc.drupalx_theme.section_split
+      inputs:
+        eyebrow: Split
+        title: 'Text beside media'
+        body:
+          value: '<p>Alternate <code>media_side</code> to zig-zag down the page.</p>'
+          format: canvas_full_html
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: f1ea4969-5993-435d-9e4e-64edd91282d3
+            target_type: media
+        media_side: left
+        tone: tint
+    -
+      parent_uuid: e9829f30-5c6f-5be5-9da7-4287a9ef3d2f
+      slot: split_buttons
+      uuid: 904ede92-e558-5ffe-a29e-b4d8ab592461
+      component_id: sdc.drupalx_theme.button
+      inputs:
+        label: 'Ghost button'
+        url:
+          uri: 'internal:/'
+          options: {  }
+        variant: ghost
+        size: normal
+        icon: none
+    -
+      uuid: 7f4c5006-def6-5796-8f47-86003593546f
+      component_id: sdc.drupalx_theme.section_quote
+      inputs:
+        quote:
+          value: '<p>A pull-quote with an oversized serif mark and attribution.</p>'
+          format: canvas_full_html
+        attribution: 'Alex Rivera'
+        role: 'Product Lead'
+        tone: tint
+    -
+      uuid: 9411b60f-d502-573d-9d33-cfeb8bd32559
+      component_id: sdc.drupalx_theme.section_gallery
+      inputs:
+        eyebrow: Gallery
+        title: 'Captioned image grid'
+        columns: '3'
+    -
+      parent_uuid: 9411b60f-d502-573d-9d33-cfeb8bd32559
+      slot: images
+      uuid: c804971e-78ba-5781-941a-2258c173bba3
+      component_id: sdc.drupalx_theme.image
+      inputs:
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: c47a7d22-8c07-484b-9d78-6efa6bf04a9a
+            target_type: media
+        aspect: square
+        rounded: 2xl
+        frame: none
+        caption: 'Square crop'
+    -
+      parent_uuid: 9411b60f-d502-573d-9d33-cfeb8bd32559
+      slot: images
+      uuid: f3b0755b-9db9-5670-92be-432771a4e023
+      component_id: sdc.drupalx_theme.image
+      inputs:
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: cf8270ac-4613-4dbe-b77c-255fd89e48d3
+            target_type: media
+        aspect: square
+        rounded: 2xl
+        frame: none
+        caption: 'Another square'
+    -
+      parent_uuid: 9411b60f-d502-573d-9d33-cfeb8bd32559
+      slot: images
+      uuid: 7ff789c6-7792-5799-90e9-215eae4f0fc2
+      component_id: sdc.drupalx_theme.image
+      inputs:
+        image:
+          CANVAS_ENTITY_REFERENCE:
+            target_uuid: f1ea4969-5993-435d-9e4e-64edd91282d3
+            target_type: media
+        aspect: square
+        rounded: 2xl
+        frame: none
+        caption: 'Third square'
+    -
+      uuid: fcd98647-00ac-591e-81c2-c1a429328ea6
+      component_id: sdc.drupalx_theme.accordion
+      inputs:
+        eyebrow: Accordion
+        title: 'Disclosure list'
+        lede:
+          value: ''
+          format: canvas_full_html
+        tone: tint
+    -
+      parent_uuid: fcd98647-00ac-591e-81c2-c1a429328ea6
+      slot: items
+      uuid: 1c01f28a-ec2c-51bd-8006-e2a6b0bac68e
+      component_id: sdc.drupalx_theme.accordion_item
+      inputs:
+        heading: 'First question, open by default'
+        body:
+          value: '<p>Native details/summary — zero JS.</p>'
+          format: canvas_full_html
+        open: true
+    -
+      parent_uuid: fcd98647-00ac-591e-81c2-c1a429328ea6
+      slot: items
+      uuid: 66308e24-099f-5750-a88e-bff8a725961b
+      component_id: sdc.drupalx_theme.accordion_item
+      inputs:
+        heading: 'Second question'
+        body:
+          value: '<p>Answer two.</p>'
+          format: canvas_full_html
+        open: false
+    -
+      uuid: 9d1f6f40-66ec-5299-b70f-9c299e1e0c6b
+      component_id: sdc.drupalx_theme.document_list
+      inputs:
+        eyebrow: Documents
+        title: 'Document list'
+        more_label: 'Browse all documents'
+        more_url:
+          uri: 'internal:/'
+          options: {  }
+        tone: white
+    -
+      parent_uuid: 9d1f6f40-66ec-5299-b70f-9c299e1e0c6b
+      slot: documents
+      uuid: a3162627-1cb8-5300-bf03-60e7ab869186
+      component_id: sdc.drupalx_theme.document_item
+      inputs:
+        title: 'Annual report'
+        description: ''
+        url:
+          uri: 'internal:/'
+          options: {  }
+        filetype: pdf
+        meta: 'PDF · 2.4 MB'
+    -
+      parent_uuid: 9d1f6f40-66ec-5299-b70f-9c299e1e0c6b
+      slot: documents
+      uuid: 74919fe3-de28-54c7-822b-59fa4a2adb76
+      component_id: sdc.drupalx_theme.document_item
+      inputs:
+        title: 'Budget worksheet'
+        description: ''
+        url:
+          uri: 'internal:/'
+          options: {  }
+        filetype: xls
+        meta: 'XLS · 300 KB'
+    -
+      uuid: 5a4b691a-d4e7-5a11-81c3-b5433ddf6980
+      component_id: sdc.drupalx_theme.section_richtext
+      inputs:
+        body:
+          value: '<h2>Rich text</h2><p>Editorial prose with the typography plugin. <a href="/">Links</a>, <strong>bold</strong>, and lists:</p><ul><li>One</li><li>Two</li></ul>'
+          format: canvas_full_html
+        width: prose
+        tone: white
+    -
+      uuid: 2cc2f6e9-71ae-523c-946b-b06f0a8a3f1d
+      component_id: sdc.drupalx_theme.section_cta
+      inputs:
+        eyebrow: CTA
+        title: 'The one dark ask'
+        body:
+          value: '<p>Accent and glass buttons both read on the brand-glow band.</p>'
+          format: canvas_full_html
+    -
+      parent_uuid: 2cc2f6e9-71ae-523c-946b-b06f0a8a3f1d
+      slot: cta_buttons
+      uuid: 2c3e576c-e7b5-5bb3-b05d-60e05e2c1022
+      component_id: sdc.drupalx_theme.button
+      inputs:
+        label: Accent
+        url:
+          uri: 'internal:/'
+          options: {  }
+        variant: accent
+        size: normal
+        icon: arrow-right
+    -
+      parent_uuid: 2cc2f6e9-71ae-523c-946b-b06f0a8a3f1d
+      slot: cta_buttons
+      uuid: 8b569be8-d59d-515d-98fc-a88446940373
+      component_id: sdc.drupalx_theme.button
+      inputs:
+        label: Glass
+        url:
+          uri: 'internal:/'
+          options: {  }
+        variant: glass
+        size: normal
+        icon: none
+  path:
+    -
+      alias: /sections
+      langcode: en
+  revision_translation_affected:
+    -
+      value: true
