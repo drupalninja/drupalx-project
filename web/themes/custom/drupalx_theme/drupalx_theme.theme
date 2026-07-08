@@ -60,9 +60,10 @@ function drupalx_theme_preprocess_page(array &$variables): void {
     $nav[] = $item;
   }
   $variables['dx_nav'] = $nav;
-  // Brand mark is opt-in: set the dx_logo_url theme setting to a logo path to
-  // show an icon beside the site name. Default is the wordmark alone.
-  $variables['dx_logo_url'] = theme_get_setting('dx_logo_url', 'drupalx_theme') ?? '';
+  // Brand mark: the theme's logo.svg by default; a rebrand can point
+  // dx_logo_url at a different file via a theme setting.
+  $themePath = \Drupal::service('extension.list.theme')->getPath('drupalx_theme');
+  $variables['dx_logo_url'] = theme_get_setting('dx_logo_url', 'drupalx_theme') ?: '/' . $themePath . '/logo.svg';
 
   // ── Site branding (theme settings override the lean defaults).
   $setting = fn (string $key, ?string $default) => theme_get_setting($key, 'drupalx_theme') ?? $default;

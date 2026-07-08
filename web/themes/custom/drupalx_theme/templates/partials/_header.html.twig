@@ -17,13 +17,10 @@
   <div class="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between gap-6 h-18 py-3">
 
-      {# Brand — wordmark by default. A mark shows only when an engagement sets
-         dx_logo_url (e.g. to '/themes/custom/drupalx_theme/logo.svg'); the
-         starter ships no icon, so the name stands alone. #}
+      {# Brand — the theme's logo.svg (a layout mark; same file as the favicon).
+         Rebrand only touches logo.svg + dx_logo_url. #}
       <a href="/" class="flex items-center gap-3 shrink-0" aria-label="{{ name }} — home">
-        {% if dx_logo_url|default('') %}
-          <img src="{{ dx_logo_url }}" alt="" width="40" height="40" class="w-10 h-10 rounded-xl shrink-0">
-        {% endif %}
+        <img src="{{ dx_logo_url|default('/themes/custom/drupalx_theme/logo.svg') }}" alt="" width="40" height="40" class="w-10 h-10 rounded-xl shrink-0">
         <span class="flex flex-col leading-tight">
           <span class="font-display font-semibold text-lg text-primary-800">{{ name }}</span>
           {% if site.tagline %}
