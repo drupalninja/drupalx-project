@@ -46,3 +46,6 @@ $RECYCLE.BIN/
 # Per https://getcomposer.org/doc/articles/authentication-for-private-packages.md#authentication-in-auth-json-per-project,
 # this should never be under version control.
 /auth.json
+
+# DDEV-generated (regenerated on ddev start).
+/.ddev/traefik
