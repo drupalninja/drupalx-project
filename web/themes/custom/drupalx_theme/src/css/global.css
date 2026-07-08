@@ -393,23 +393,29 @@ header.sticky {
 }
 
 /* Eyebrow flourish — the small uppercase kicker with a leading dash. */
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-primary-600);
-}
-.eyebrow::before {
-  content: '';
-  width: 1.75rem;
-  height: 2px;
-  background: currentColor;
-  border-radius: 2px;
+/* .eyebrow lives in @layer components so a text-* utility on it wins.
+ * Unlayered, its `color` beat any Tailwind color utility — so an eyebrow
+ * meant to be text-accent-300 on a glass/dark hero rendered as the dark
+ * primary-600 instead (a real contrast failure over bright hero photos). */
+@layer components {
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-primary-600);
+  }
+  .eyebrow::before {
+    content: '';
+    width: 1.75rem;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+  }
 }
 
 /* Dark band with a brand-toned glow (one dark section per page). */
