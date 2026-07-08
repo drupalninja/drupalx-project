@@ -105,3 +105,34 @@ function drupalx_theme_preprocess_block(array &$variables): void {
     $variables['attributes']['class'][] = 'hidden';
   }
 }
+
+/**
+ * Implements hook_page_attachments_alter().
+ *
+ * Use the theme's own logo.svg as the browser-tab favicon so every rebrand's
+ * mark shows in the tab automatically. Without this, Drupal core's generic
+ * blue-drop favicon.ico renders — which reads as "a random Drupal icon" on a
+ * branded site. Runs in _alter (after system_page_attachments adds the core
+ * favicon) so it can replace it. Skipped when an admin set a custom favicon.
+ */
+function drupalx_theme_page_attachments_alter(array &$attachments): void {
+  // Only touch the front-end theme's pages, not admin (Gin).
+  if (\Drupal::service('router.admin_context')->isAdminRoute()) {
+    return;
+  }
+  $global = \Drupal::config('system.theme.global');
+  if ($global->get('favicon.use_default') === FALSE && $global->get('favicon.path')) {
+    return;
+  }
+  $theme = \Drupal::service('extension.list.theme')->getPath('drupalx_theme');
+  foreach ($attachments['#attached']['html_head_link'] ?? [] as $i => $link) {
+    if (($link[0]['rel'] ?? '') === 'icon') {
+      unset($attachments['#attached']['html_head_link'][$i]);
+    }
+  }
+  $attachments['#attached']['html_head_link'][] = [[
+    'rel' => 'icon',
+    'href' => '/' . $theme . '/logo.svg',
+    'type' => 'image/svg+xml',
+  ]];
+}
