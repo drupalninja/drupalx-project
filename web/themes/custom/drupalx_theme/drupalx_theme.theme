@@ -60,7 +60,9 @@ function drupalx_theme_preprocess_page(array &$variables): void {
     $nav[] = $item;
   }
   $variables['dx_nav'] = $nav;
-  $variables['dx_logo_url'] = '/' . \Drupal::service('extension.list.theme')->getPath('drupalx_theme') . '/logo.svg';
+  // Brand mark is opt-in: set the dx_logo_url theme setting to a logo path to
+  // show an icon beside the site name. Default is the wordmark alone.
+  $variables['dx_logo_url'] = theme_get_setting('dx_logo_url', 'drupalx_theme') ?? '';
 
   // ── Site branding (theme settings override the lean defaults).
   $setting = fn (string $key, ?string $default) => theme_get_setting($key, 'drupalx_theme') ?? $default;
@@ -110,14 +112,12 @@ function drupalx_theme_preprocess_block(array &$variables): void {
 /**
  * Implements hook_page_attachments_alter().
  *
- * Use the theme's own logo.svg as the browser-tab favicon so every rebrand's
- * mark shows in the tab automatically. Without this, Drupal core's generic
- * blue-drop favicon.ico renders — which reads as "a random Drupal icon" on a
- * branded site. Runs in _alter (after system_page_attachments adds the core
- * favicon) so it can replace it. Skipped when an admin set a custom favicon.
+ * The browser-tab favicon is the theme's logo.svg (a clean DrupalX mark),
+ * replacing Drupal core's generic blue-drop favicon.ico. The header itself
+ * shows the site name alone (no icon) — this only affects the tab. Skipped
+ * when an admin set a custom favicon in appearance settings.
  */
 function drupalx_theme_page_attachments_alter(array &$attachments): void {
-  // Only touch the front-end theme's pages, not admin (Gin).
   if (\Drupal::service('router.admin_context')->isAdminRoute()) {
     return;
   }

@@ -21,7 +21,9 @@
       {# Identity #}
       <div class="lg:col-span-2 max-w-md">
         <a href="/" class="flex items-center gap-3" aria-label="{{ name }} — home">
-          <img src="{{ dx_logo_url|default('/themes/custom/drupalx_theme/logo.svg') }}" alt="" width="40" height="40" class="w-10 h-10 rounded-xl shrink-0 ring-1 ring-white/15">
+          {% if dx_logo_url|default('') %}
+            <img src="{{ dx_logo_url }}" alt="" width="40" height="40" class="w-10 h-10 rounded-xl shrink-0 ring-1 ring-white/15">
+          {% endif %}
           <span class="font-display font-semibold text-xl text-white">{{ name }}</span>
         </a>
         {% if f.blurb|default('') %}

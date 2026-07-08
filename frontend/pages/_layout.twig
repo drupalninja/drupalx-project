@@ -41,7 +41,6 @@
     nav: nav,
     site: site,
     is_front: is_front|default(false),
-    dx_logo_url: '/logo.svg',
   } only %}
 
   {# No bottom padding — sections own their vertical rhythm, so a full-bleed
@@ -53,7 +52,6 @@
   {% include '@drupalx_theme/templates/partials/_footer.html.twig' with {
     nav: nav,
     site: site,
-    dx_logo_url: '/logo.svg',
   } only %}
 
   {# The theme's global JS — scroll-reveal, mobile nav, alert dismiss. #}
