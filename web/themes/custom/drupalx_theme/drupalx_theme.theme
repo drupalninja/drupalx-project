@@ -60,6 +60,7 @@ function drupalx_theme_preprocess_page(array &$variables): void {
     $nav[] = $item;
   }
   $variables['dx_nav'] = $nav;
+  $variables['dx_logo_url'] = '/' . \Drupal::service('extension.list.theme')->getPath('drupalx_theme') . '/logo.svg';
 
   // ── Site branding (theme settings override the lean defaults).
   $setting = fn (string $key, ?string $default) => theme_get_setting($key, 'drupalx_theme') ?? $default;

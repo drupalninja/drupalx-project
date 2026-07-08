@@ -17,11 +17,10 @@
   <div class="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between gap-6 h-18 py-3">
 
-      {# Brand #}
+      {# Brand — the theme's own logo.svg (same mark as the favicon), so header
+         + tab icon always match and a rebrand only touches logo.svg. #}
       <a href="/" class="flex items-center gap-3 shrink-0" aria-label="{{ name }} — home">
-        <span class="w-10 h-10 rounded-xl bg-primary-700 text-white inline-flex items-center justify-center">
-          <span class="dx-icon dx-icon--md" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/landmark.svg') -}}</span>
-        </span>
+        <img src="{{ dx_logo_url|default('/themes/custom/drupalx_theme/logo.svg') }}" alt="" width="40" height="40" class="w-10 h-10 rounded-xl shrink-0">
         <span class="flex flex-col leading-tight">
           <span class="font-display font-semibold text-lg text-primary-800">{{ name }}</span>
           {% if site.tagline %}
