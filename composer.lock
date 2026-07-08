@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2dcff27ed976d4fb372dd9e1eed5e02c",
+    "content-hash": "df6ba49c03d6a7e9823a35228eb45c75",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1399,23 +1399,24 @@
         },
         {
             "name": "drupal/ai_provider_amazeeio",
-            "version": "1.3.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ai_provider_amazeeio.git",
-                "reference": "1.3.1"
+                "reference": "1.3.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ai_provider_amazeeio-1.3.1.zip",
-                "reference": "1.3.1",
-                "shasum": "46ac1776214c79674da9dfe120137bbaabb6efed"
+                "url": "https://ftp.drupal.org/files/projects/ai_provider_amazeeio-1.3.2.zip",
+                "reference": "1.3.2",
+                "shasum": "44a6e3c37930289898cb653f66743f1c66a95ad4"
             },
             "require": {
                 "drupal/ai": "^1.3",
                 "drupal/core": "^10.4 || ^11",
                 "drupal/key": "*",
-                "drupal/search_api": ">1.20"
+                "drupal/search_api": ">1.20",
+                "ext-pgsql": "*"
             },
             "require-dev": {
                 "drupal/config_ignore": "^3.0"
@@ -1423,8 +1424,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.3.1",
-                    "datestamp": "1779993035",
+                    "version": "1.3.2",
+                    "datestamp": "1783437690",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6505,17 +6506,17 @@
         },
         {
             "name": "drupal/webform",
-            "version": "6.3.0-rc2",
+            "version": "6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/webform.git",
-                "reference": "6.3.0-rc2"
+                "reference": "6.3.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform-6.3.0-rc2.zip",
-                "reference": "6.3.0-rc2",
-                "shasum": "833904081e5eab7e8e36250fea3652c797ddfb28"
+                "url": "https://ftp.drupal.org/files/projects/webform-6.3.0.zip",
+                "reference": "6.3.0",
+                "shasum": "67b09271edfd2fb38dc699ff733911ad500ae5d7"
             },
             "require": {
                 "drupal/core": "^10.3 || ^11.0"
@@ -6560,11 +6561,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "6.3.0-rc2",
-                    "datestamp": "1782137794",
+                    "version": "6.3.0",
+                    "datestamp": "1783438699",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 },
                 "drush": {
@@ -8494,16 +8495,16 @@
         },
         {
             "name": "php-tuf/composer-stager",
-            "version": "v2.1.0",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-tuf/composer-stager.git",
-                "reference": "85f2bb8b50c0376f05d9a084145b9fd169550a9b"
+                "reference": "64f3b033736483af81551b0f41ab1126510cfea0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-tuf/composer-stager/zipball/85f2bb8b50c0376f05d9a084145b9fd169550a9b",
-                "reference": "85f2bb8b50c0376f05d9a084145b9fd169550a9b",
+                "url": "https://api.github.com/repos/php-tuf/composer-stager/zipball/64f3b033736483af81551b0f41ab1126510cfea0",
+                "reference": "64f3b033736483af81551b0f41ab1126510cfea0",
                 "shasum": ""
             },
             "require": {
@@ -8515,7 +8516,8 @@
             },
             "conflict": {
                 "symfony/process": ">=6.4 <6.4.33 || >=7.3 <7.3.11 || >=7.4 <7.4.5 || >=8.0 <8.0.5",
-                "symfony/symfony": ">=6.4 <6.4.33 || >=7.3 <7.3.11 || >=7.4 <7.4.5 || >=8.0 <8.0.5"
+                "symfony/symfony": ">=6.4 <6.4.33 || >=7.3 <7.3.11 || >=7.4 <7.4.5 || >=8.0 <8.0.5",
+                "symfony/yaml": ">=2.0.0 <5.4.52 || >=6.0.0 <6.4.40 || >=7.0.0 <7.4.12 || >=8.0.0 <8.0.12"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
@@ -8563,7 +8565,7 @@
                 "issues": "https://github.com/php-tuf/composer-stager/issues",
                 "source": "https://github.com/php-tuf/composer-stager"
             },
-            "time": "2026-02-04T20:55:34+00:00"
+            "time": "2026-07-07T14:30:49+00:00"
         },
         {
             "name": "psr/container",
@@ -13273,16 +13275,16 @@
         },
         {
             "name": "drush/drush",
-            "version": "13.7.4",
+            "version": "13.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drush-ops/drush.git",
-                "reference": "90123a96db5a4d2e0faa97242eef69785aa0e67d"
+                "reference": "b040551cda3ba173531a420c283b9f492d96698d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drush-ops/drush/zipball/90123a96db5a4d2e0faa97242eef69785aa0e67d",
-                "reference": "90123a96db5a4d2e0faa97242eef69785aa0e67d",
+                "url": "https://api.github.com/repos/drush-ops/drush/zipball/b040551cda3ba173531a420c283b9f492d96698d",
+                "reference": "b040551cda3ba173531a420c283b9f492d96698d",
                 "shasum": ""
             },
             "require": {
@@ -13410,7 +13412,7 @@
                 "issues": "https://github.com/drush-ops/drush/issues",
                 "security": "https://github.com/drush-ops/drush/security/advisories",
                 "slack": "https://drupal.slack.com/messages/C62H9CWQM",
-                "source": "https://github.com/drush-ops/drush/tree/13.7.4"
+                "source": "https://github.com/drush-ops/drush/tree/13.7.5"
             },
             "funding": [
                 {
@@ -13418,7 +13420,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-06-15T20:22:19+00:00"
+            "time": "2026-07-07T15:10:52+00:00"
         },
         {
             "name": "grasmash/expander",
