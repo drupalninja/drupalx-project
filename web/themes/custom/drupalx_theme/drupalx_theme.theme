@@ -90,6 +90,17 @@ function drupalx_theme_preprocess_page(array &$variables): void {
   $variables['#cache']['contexts'][] = 'route';
   $variables['#cache']['tags'][] = 'config:system.menu.main';
   $variables['#cache']['tags'][] = 'config:system.site';
+
+  // For authenticated users, attach the admin-toolbar displace fix so the
+  // displacement-aware .full-bleed / sticky-header offsets track the core
+  // Navigation sidebar when it collapses on a front-end page. (A theme
+  // hook_page_attachments() does not reliably fire; hook_preprocess_page()
+  // does, and #attached here is honored.) Anonymous visitors have no admin
+  // toolbar, so neither this script nor its drupal.displace dependency load.
+  if (\Drupal::currentUser()->isAuthenticated()) {
+    $variables['#attached']['library'][] = 'drupalx_theme/admin_toolbar_displace';
+    $variables['#cache']['contexts'][] = 'user.roles:authenticated';
+  }
 }
 
 /**

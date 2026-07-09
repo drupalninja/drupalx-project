@@ -9,3 +9,17 @@ global:
     dist/js/global.js:
       attributes:
         defer: true
+
+# Admin-toolbar displace fix — re-runs Drupal.displace() when the core
+# Navigation sidebar collapses on a FRONT-END page, so the theme's
+# displacement-aware .full-bleed / sticky-header offsets track the sidebar
+# width instead of sticking at the expanded value. Attached only for
+# authenticated users (see drupalx_theme_preprocess_page) — anonymous
+# visitors have no admin toolbar, so it (and drupal.displace) never load.
+admin_toolbar_displace:
+  js:
+    dist/js/admin-toolbar-displace.js:
+      attributes:
+        defer: true
+  dependencies:
+    - core/drupal.displace
