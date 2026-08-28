@@ -1,0 +1,42 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Timeline'
+description: 'Process / methodology timeline — a vertical sequence of numbered steps with icons, titles, and optional bullet points. For how-it-works pages, project phases, or methodology explanations.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+      examples:
+        - 'How it works'
+    title:
+      type: string
+      title: Heading
+      default: ''
+      examples:
+        - 'Our process'
+    lede:
+      type: string
+      title: Lede
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+    tone:
+      type: string
+      title: Background
+      default: white
+      enum:
+        - white
+        - tint
+      meta:enum:
+        white: White
+        tint: 'Primary tint'
+
+slots:
+  steps:
+    title: Steps
+    description: 'Timeline step components — one per process step.'

@@ -1,0 +1,44 @@
+{#
+/**
+ * Map point — one location: a row in the list beside a Section: Map, and the
+ * source of one pin on the map itself.
+ *
+ * The data-* attributes are read by dist/js/map.js, and the element's INNER
+ * HTML becomes the marker's popup. So this single template is both the
+ * accessible fallback and the map's data — they cannot drift apart, which is
+ * the whole reason the points are authored as slot children rather than as a
+ * blob of coordinates on the section.
+ *
+ * The color dot is aria-hidden: it repeats the pin colour, which is
+ * decoration. The name and details carry the meaning.
+ */
+#}
+{% set c = c|default('none') %}
+{% set dot_map = {
+  'none': 'bg-primary-600',
+  'sky': 'bg-sky-600',
+  'clay': 'bg-clay-600',
+  'accent': 'bg-accent-600',
+} %}
+<li
+  data-dx-map-point
+  data-lat="{{ lat }}"
+  data-lng="{{ lng }}"
+  data-color="{{ c }}"
+  data-label="{{ label|default('') }}"
+  class="flex gap-3 p-4"
+>
+  <span class="mt-1.5 size-2.5 shrink-0 rounded-full {{ dot_map[c]|default(dot_map['none']) }}" aria-hidden="true"></span>
+  <div class="min-w-0">
+    <h3 class="text-base font-bold text-primary-800">
+      {% if url|default('') %}
+        <a href="{{ url }}" class="hover:text-accent-700">{{ title }}</a>
+      {% else %}
+        {{ title }}
+      {% endif %}
+    </h3>
+    {% if body|default('') %}
+      <div class="mt-1 text-sm leading-relaxed text-ink-500">{{ body|raw }}</div>
+    {% endif %}
+  </div>
+</li>

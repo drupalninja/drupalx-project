@@ -1,0 +1,72 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.canvas_full_html
+  module:
+    - link
+    - text
+  theme:
+    - drupalx_theme
+label: 'Section: Landing'
+id: sdc.drupalx_theme.section_landing
+source: sdc
+source_local_id: 'drupalx_theme:section_landing'
+provider: drupalx_theme
+active_version: dd6d04398e334655
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        intro:
+          required: false
+          field_type: text_long
+          field_storage_settings: {  }
+          field_instance_settings:
+            allowed_formats:
+              - canvas_full_html
+          field_widget: text_textarea
+          default_value:
+            -
+              value: '<p>Everything you need in one place.</p>'
+              format: canvas_full_html
+          expression: ℹ︎text_long␟processed
+        help_title:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value: null
+          expression: ℹ︎string␟value
+        help_body:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value: null
+          expression: ℹ︎string␟value
+        help_url:
+          required: false
+          field_type: link
+          field_storage_settings: {  }
+          field_instance_settings:
+            title: 0
+            link_type: 17
+          field_widget: link_default
+          default_value: null
+          expression: ℹ︎link␟url
+        help_label:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value: null
+          expression: ℹ︎string␟value
+    fallback_metadata:
+      slot_definitions:
+        tiles:
+          title: Tiles
+          description: 'Landing tile components — one per child page link.'

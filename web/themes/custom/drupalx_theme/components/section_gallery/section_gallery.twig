@@ -5,13 +5,19 @@
 #}
 {% import '@drupalx_theme/components/_section/_section.twig' as sx %}
 {% set columns = columns|default('3') %}
-{% set col_map = { '2': 'sm:grid-cols-2', '3': 'sm:grid-cols-2 lg:grid-cols-3' } %}
+{% set layout = layout|default('default') %}
+{% set col_map = { '2': 'sm:grid-cols-2', '3': 'sm:grid-cols-2 lg:grid-cols-3', '4': 'sm:grid-cols-2 lg:grid-cols-4' } %}
+{# Compact: native-width archive thumbs (400px) in a 2×2 — cap grid width so
+   cells do not stretch across max-w-content and park photos at opposite edges. #}
+{% set grid_layout = layout == 'compact'
+  ? 'max-w-[824px] mx-auto gap-4 justify-items-start'
+  : 'gap-6' %}
 <section class="full-bleed bg-white py-16 md:py-24" data-reveal>
   <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
     {{ sx.header(eyebrow|default(''), title|default(''), '', 'left', false) }}
     {# Gallery children are Image components; their own container padding is
        neutralized so the grid owns the layout. #}
-    <div class="grid gap-6 {{ col_map[columns]|default(col_map['3']) }} [&>figure]:px-0 [&>figure]:max-w-none">
+    <div class="grid {{ grid_layout }} {{ col_map[columns]|default(col_map['3']) }} [&>figure]:flex [&>figure]:h-full [&>figure]:min-w-0 [&>figure]:max-w-none [&>figure]:flex-col [&>figure]:px-0 [&>figure]:w-full">
       {% block images %}{% endblock %}
     </div>
   </div>

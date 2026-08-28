@@ -7,9 +7,18 @@
 {% set io = has_image ? dx_image(image, '(min-width: 1024px) 33vw, 100vw') : { srcset: null } %}
 <article class="spark-card relative flex h-full flex-col overflow-hidden rounded-2xl border border-primary-100 bg-white shadow-sm">
   {% if has_image %}
-    <div class="overflow-hidden">
+    {# image_fit=contain letterboxes instead of cropping. Cover stays the
+       default (a news thumbnail is usually an editorial photograph), but an
+       issuer's feed is often title cards and event flyers, where a 16/10 crop
+       slices the headline in half (2026-08-26). #}
+    {% set fit = image_fit|default('cover') %}
+    <div class="overflow-hidden {{ fit == 'contain' ? 'bg-primary-50' : '' }}">
       <img src="{{ image.src }}" alt="{{ image.alt|default('') }}"
-           class="spark-card__img aspect-video w-full object-cover" loading="lazy" decoding="async"
+           {# 16/10 to match NewsEvents.astro and the card SDC (2026-08-02).
+              Stays object-COVER: a news thumbnail is an editorial photograph,
+              where filling the slot is right. The letterbox treatment is for
+              wayfinding cards, whose images are logos and scanned documents. #}
+           class="spark-card__img aspect-[16/10] w-full {{ fit == 'contain' ? 'object-contain' : 'object-cover' }}" loading="lazy" decoding="async"
            {% if io.srcset %}srcset="{{ io.srcset }}" sizes="{{ io.sizes }}"{% endif %}>
     </div>
   {% endif %}

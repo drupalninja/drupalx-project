@@ -49,6 +49,36 @@ props:
       type: boolean
       title: 'Feature the first card (2x width)'
       default: false
+    layout:
+      type: string
+      title: Layout
+      description: >-
+        Bento breaks the uniform matrix: the FIRST card is TWO ROWS TALL (set
+        that card''s style to Feature) and the compact cards fill the columns
+        beside it. Use an EVEN number of compact cards — four fills the grid
+        exactly; an odd number leaves one empty cell. Ignores Columns and
+        Feature-the-first-card.
+      default: grid
+      enum:
+        - grid
+        - bento
+      meta:enum:
+        grid: 'Grid (even columns)'
+        bento: 'Bento (first card 2x2, rest compact)'
+    paginate:
+      type: boolean
+      title: 'Paginate this grid'
+      description: >-
+        Chunk the grid into pages. Leave off for an editor-composed grid of a
+        few cards; turn it on for an imported grid that runs to dozens. Every
+        card is still rendered server-side, so search engines and the site
+        search see the whole list.
+      default: false
+    per_page:
+      type: integer
+      title: 'Cards per page'
+      description: '12 keeps 3-up rows whole. Only applies when Paginate is on.'
+      default: 12
 
 slots:
   cards:

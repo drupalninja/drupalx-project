@@ -1,0 +1,62 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - options
+  theme:
+    - drupalx_theme
+label: 'Landing tile'
+id: sdc.drupalx_theme.landing_tile
+source: sdc
+source_local_id: 'drupalx_theme:landing_tile'
+provider: drupalx_theme
+active_version: 368bddd61b2d5071
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        title:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'Pay & Apply'
+          expression: ℹ︎string␟value
+        blurb:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'Taxes, permits, utilities'
+          expression: ℹ︎string␟value
+        url:
+          required: false
+          field_type: link
+          field_storage_settings: {  }
+          field_instance_settings:
+            title: 0
+            link_type: 17
+          field_widget: link_default
+          default_value:
+            -
+              uri: /services
+              options: {  }
+          expression: ℹ︎link␟url
+        icon:
+          required: false
+          field_type: list_string
+          field_storage_settings:
+            allowed_values_function: canvas_load_allowed_values_for_component_prop
+          field_instance_settings: {  }
+          field_widget: options_select
+          default_value: null
+          expression: ℹ︎list_string␟value
+    fallback_metadata:
+      slot_definitions: {  }

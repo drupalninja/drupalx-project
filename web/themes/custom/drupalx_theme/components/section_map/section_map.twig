@@ -1,0 +1,64 @@
+{#
+/**
+ * Section: Map — Leaflet locations map (ported from LeafletMap.astro,
+ * 2026-08-10). The JS lives in dist/js/map.js; this template is the markup
+ * and the data.
+ *
+ * TWO RULES CARRIED OVER FROM THE ASTRO TWIN, both load-bearing:
+ *
+ *  1. `isolate` on the map box. Leaflet's panes run z-index 400–1000 and,
+ *     without a stacking context here, they escape and paint OVER the sticky
+ *     site header. Symptom: scroll the page and the map covers the nav.
+ *  2. Pin/popup styles are global (global.css `.dx-map-pin`, `.leaflet-popup`
+ *     overrides), never scoped — Leaflet injects that markup at runtime.
+ *
+ * THE POINTS ARE THE LIST. In Canvas the pins cannot be a prop (slot children
+ * are HTML, not data), so each Map point renders a real <li> in the list under
+ * the map and map.js reads the coordinates back off those elements. The
+ * accessibility rule from the twin — never let the map be the only path to the
+ * data — is therefore structural here rather than a thing to remember.
+ *
+ * attach_library, not a global: Leaflet is ~150KB and only this section needs
+ * it, so it loads on the pages that have a map and nowhere else.
+ */
+#}
+{% import '@drupalx_theme/components/_section/_section.twig' as sx %}
+{{ attach_library('drupalx_theme/leaflet') }}
+{% set tone = tone|default('white') %}
+{% set height = height|default('medium') %}
+{% set h_map = { 'short': 'h-80', 'medium': 'h-[440px]', 'tall': 'h-[560px]' } %}
+{# The point list is a FIXED-HEIGHT SCROLLER at every breakpoint (Jay,
+   2026-08-26): 26 map points ran a full screen past the bottom of the map and
+   left the map column a hole. Same height as the map so the columns line up. #}
+{% set h_list = { 'short': 'max-h-80', 'medium': 'max-h-[440px]', 'tall': 'max-h-[560px]' } %}
+{# Unique per instance so several maps can share a page — Canvas gives each
+   component instance a distinct id in the render context. #}
+{% set list_id = 'dx-map-points-' ~ (random(100000, 999999)) %}
+<section class="full-bleed {{ tone == 'tint' ? 'bg-primary-50' : 'bg-white' }} py-16 md:py-24" data-reveal>
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    {{ sx.header(eyebrow|default(''), title|default(''), lede|default(''), 'left', false) }}
+    <div class="grid items-start gap-8 lg:grid-cols-[1.6fr_1fr]">
+      {# role="application" + a real name: without them a screen reader reads
+         the map as an unlabelled group of links. #}
+      <div
+        data-dx-map
+        data-dx-map-points="{{ list_id }}"
+        data-lat="{{ center_lat|default('') }}"
+        data-lng="{{ center_lng|default('') }}"
+        data-zoom="{{ zoom|default('11') }}"
+        data-scroll-zoom="{{ scroll_zoom|default(false) ? 'true' : 'false' }}"
+        role="application"
+        aria-label="{{ aria_label|default('Map of locations') }}"
+        class="isolate w-full overflow-hidden rounded-2xl border border-primary-100 bg-primary-50 {{ h_map[height]|default(h_map['medium']) }}"
+      ></div>
+      {# The wrapper carries the bottom fade: platform scrollbars are overlay
+         bars that fade out when idle (always, on macOS), so the fade is what
+         actually tells a reader the panel continues. #}
+      <div class="dx-scroll-list-wrap relative">
+        <ul id="{{ list_id }}" class="dx-scroll-list divide-y divide-primary-100 overflow-y-auto overscroll-contain rounded-2xl border border-primary-100 bg-white {{ h_list[height]|default(h_list['medium']) }}">
+          {% block points %}{% endblock %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,69 @@
+{#
+/**
+ * Section: Events — the "something on this page is alive" band in its
+ * editorial, NON-uniform form. Deliberately asymmetric: a narrow sticky
+ * pitch column beside a wider event rail, and inside that rail the FIRST
+ * event is a large dark highlight card while the rest are compact rows.
+ *
+ * Ported from the nmvoices-2026 EventsRail.astro (2026-08-12). The Astro
+ * twin takes an events array; the Canvas version takes a slot of event_item
+ * children (Canvas rule: repeatable content = slots, never array props).
+ *
+ * The first-child / not-first-child CSS switch is what makes the slot items
+ * render as lead-card-then-rows without a prop flag. The event_item SDC
+ * renders BOTH shapes; this wrapper's CSS shows only the right one per child.
+ *
+ * Canonical vocabulary: `events`. Astro twin: EventsRail.astro.
+ */
+#}
+{% set events_html %}{% block events %}{% endblock %}{% endset %}
+{% set has_events = events_html|trim is not empty %}
+
+<section class="full-bleed bg-primary-50 py-16 lg:py-24" data-reveal aria-label="{{ title|default('Events') }}">
+  {# grid-cols-1 is REQUIRED, not redundant: without an explicit base track
+     the implicit column auto-sizes to the rail's max-content width and
+     overflows the viewport on phones. #}
+  <div class="mx-auto grid max-w-content grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:px-8">
+    {# Pitch column — narrower than the rail on purpose. #}
+    <div class="lg:sticky lg:top-28 lg:self-start">
+      {% if eyebrow|default('') %}
+        <p class="eyebrow text-accent-700">{{ eyebrow }}</p>
+      {% endif %}
+      {% if title|default('') %}
+        {# Sized DOWN from .display-xl: this column is the narrow side of the
+           split, and the 4rem display scale broke the title into ragged lines. #}
+        <h2 class="font-display mt-3 text-[clamp(1.875rem,2.6vw,2.5rem)] leading-[1.1] tracking-[-0.02em] text-primary-900">
+          {{ title }}
+          {% if title_accent|default('') %}
+            <span class="text-accent-700"> {{ title_accent }}</span>
+          {% endif %}
+        </h2>
+      {% endif %}
+      {% if lede|default('') %}
+        <div class="mt-4 text-lg leading-relaxed text-primary-600">{{ lede|raw }}</div>
+      {% endif %}
+      {% if cta_url|default('') and cta_label|default('') %}
+        <a href="{{ cta_url }}" class="group mt-7 inline-flex min-h-11 items-center gap-2 rounded-full bg-primary-700 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-800">
+          {{ cta_label }}
+          <span class="dx-icon dx-icon--sm transition-transform group-hover:translate-x-0.5" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/arrow-right.svg') -}}</span>
+        </a>
+      {% endif %}
+    </div>
+
+    {# Rail — the event_item slot. First child = lead card, rest = compact
+       rows. The CSS switch is here, not in event_item, so the slot children
+       don't need to know their position. #}
+    <div class="min-w-0">
+      {% if has_events %}
+        <div class="events-rail">
+          {{ events_html }}
+        </div>
+      {% else %}
+        {# Empty state: a quiet placeholder, not a labelled empty box. #}
+        <div class="rounded-2xl border border-dashed border-primary-200 bg-white/50 p-8 text-center text-ink-500">
+          No upcoming events. Check back soon.
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

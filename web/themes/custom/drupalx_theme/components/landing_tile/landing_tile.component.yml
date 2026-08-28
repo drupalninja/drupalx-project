@@ -1,0 +1,93 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Landing tile'
+description: 'One link card in the Landing section grid — an icon chip, title, optional blurb, and a hover accent bar. For hub pages that group child links (Pay & Apply, Living Here, etc.).'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - title
+  properties:
+    title:
+      type: string
+      title: Title
+      examples:
+        - 'Pay & Apply'
+    blurb:
+      type: string
+      title: Blurb
+      description: 'One-line description shown under the title.'
+      default: ''
+      examples:
+        - 'Taxes, permits, utilities'
+    url:
+      type: string
+      format: uri-reference
+      title: Link
+      default: ''
+      examples:
+        - /services
+    icon:
+      type: string
+      title: Icon
+      description: 'Lucide icon name for the chip. Must be from the curated set.'
+      default: chevron-right
+      enum:
+        - chevron-right
+        - landmark
+        - file-text
+        - shield-check
+        - users
+        - mail
+        - phone
+        - map-pin
+        - calendar
+        - lightbulb
+        - sparkles
+        - heart-handshake
+        - life-buoy
+        - arrow-right
+        - clock
+        - dollar-sign
+        - house
+        - building
+        - briefcase
+        - graduation-cap
+        - leaf
+        - bus
+        - car
+        - trash
+        - droplet
+        - zap
+        - wifi
+        - paw-print
+      meta:enum:
+        chevron-right: 'Chevron right (default)'
+        landmark: Landmark
+        file-text: 'File / document'
+        shield-check: 'Shield check'
+        users: Users
+        mail: Mail
+        phone: Phone
+        map-pin: 'Map pin'
+        calendar: Calendar
+        lightbulb: Lightbulb
+        sparkles: Sparkles
+        heart-handshake: 'Heart handshake'
+        life-buoy: 'Life buoy'
+        arrow-right: 'Arrow right'
+        clock: Clock
+        dollar-sign: 'Dollar sign'
+        house: House
+        building: Building
+        briefcase: Briefcase
+        graduation-cap: 'Graduation cap'
+        leaf: Leaf
+        bus: Bus
+        car: Car
+        trash: Trash
+        droplet: Droplet
+        zap: Zap
+        wifi: Wifi
+        paw-print: 'Paw print'

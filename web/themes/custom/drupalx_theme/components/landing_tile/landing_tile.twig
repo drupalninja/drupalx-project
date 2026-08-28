@@ -1,0 +1,28 @@
+{#
+/**
+ * Landing tile — one link card in the Landing section grid. An icon chip,
+ * title, optional blurb, and a hover accent bar that slides in from the left.
+ *
+ * Ported from the Astro starter's SectionLanding.astro card pattern. The
+ * Astro twin takes an items array; the Canvas version uses a slot of
+ * landing_tile children (Canvas rule: repeatable content = slots).
+ *
+ * Canonical vocabulary: `landing` (tile). Astro twin: SectionLanding.astro.
+ */
+#}
+{% set icon = icon|default('chevron-right') %}
+{% set url = url|default('') %}
+<a href="{{ url }}"
+   class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-primary-100 p-6 transition-all hover:-translate-y-1 hover:border-accent-600 hover:shadow-lg">
+  <span class="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-accent-600 transition-transform duration-300 group-hover:scale-x-100"></span>
+  <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-accent-50 text-accent-700 transition-colors group-hover:bg-accent-600 group-hover:text-white">
+    {% include 'drupalx_theme:icon' with { name: icon, size: 'md' } only %}
+  </span>
+  <span class="flex items-center gap-1.5 text-lg font-bold text-primary-900 group-hover:text-accent-700">
+    {{ title }}
+    <span class="dx-icon dx-icon--sm -translate-x-1 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/arrow-right.svg') -}}</span>
+  </span>
+  {% if blurb|default('') %}
+    <span class="mt-1.5 block text-sm leading-relaxed text-ink-500">{{ blurb }}</span>
+  {% endif %}
+</a>

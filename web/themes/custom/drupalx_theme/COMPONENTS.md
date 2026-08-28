@@ -41,6 +41,12 @@ Props:
   - `alert_id` — string
   - `dismissible` — boolean
 
+### `breadcrumb_item`
+
+Props:
+  - `label` **(required)** — string
+  - `url` — link — plain string (e.g. `/about`)
+
 ### `button`  · helper: `button()`
 
 Props:
@@ -58,12 +64,17 @@ Props:
   - `url` — link — plain string (e.g. `/about`)
   - `image` — image — pass `img(src, alt)`
   - `icon` — enum: `none` / `arrow-right` / `arrow-up-right` / `chart-column` / `building-2` / `calendar` / `check` / `chevron-down` / … (37 values)
+  - `placeholder` — boolean
   - `c` — enum: `none` / `sky` / `clay` / `accent`
   - `more_label` — string
+  - `variant` — enum: `default` / `feature`
+  - `stat` — string
+  - `stat_label` — string
 
 ### `card_event`  · helper: `eventCard()`
 
 Props:
+  - `image` — image — pass `img(src, alt)`
   - `title` **(required)** — string
   - `month` — string
   - `day` — string
@@ -79,6 +90,22 @@ Props:
   - `date` — string
   - `summary` — rich-text — plain HTML string (use `rt()`)
   - `url` — link — plain string (e.g. `/about`)
+  - `image` — image — pass `img(src, alt)`
+
+### `card_video`
+
+Props:
+  - `title` **(required)** — string
+  - `image` — image — pass `img(src, alt)`
+  - `category` — string
+  - `url` — link — plain string (e.g. `/about`)
+
+### `directory_tile`
+
+Props:
+  - `title` **(required)** — string
+  - `sub` — string
+  - `href` **(required)** — string
   - `image` — image — pass `img(src, alt)`
 
 ### `divider`  · helper: `divider()`
@@ -106,6 +133,17 @@ Props:
 
 Slots: `documents` (each holds an array of child nodes)
 
+### `event_item`
+
+Props:
+  - `title` **(required)** — string
+  - `month` — string
+  - `day` — string
+  - `time` — string
+  - `location` — string
+  - `blurb` — string
+  - `url` — link — plain string (e.g. `/about`)
+
 ### `heading`  · helper: `heading()`
 
 Props:
@@ -118,7 +156,7 @@ Props:
 ### `icon`  · helper: `icon()`
 
 Props:
-  - `name` — enum: `none` / `arrow-right` / `arrow-up-right` / `chart-column` / `building-2` / `calendar` / `check` / `chevron-down` / … (37 values)
+  - `name` — enum: `none` / `arrow-right` / `arrow-up-right` / `briefcase` / `building` / `building-2` / `bus` / `calendar` / … (60 values)
   - `size` — enum: `sm` / `md` / `lg`
 
 ### `image`  · helper: `image()`
@@ -130,6 +168,31 @@ Props:
   - `frame` — enum: `none` / `offset-accent`
   - `caption` — string
 
+### `landing_tile`
+
+Props:
+  - `title` **(required)** — string
+  - `blurb` — string
+  - `url` — link — plain string (e.g. `/about`)
+  - `icon` — enum: `chevron-right` / `landmark` / `file-text` / `shield-check` / `users` / `mail` / `phone` / `map-pin` / … (28 values)
+
+### `logo_item`
+
+Props:
+  - `image` **(required)** — image — pass `img(src, alt)`
+  - `url` — link — plain string (e.g. `/about`)
+
+### `map_point`
+
+Props:
+  - `title` **(required)** — string
+  - `lat` **(required)** — string
+  - `lng` **(required)** — string
+  - `body` — rich-text — plain HTML string (use `rt()`)
+  - `url` — string
+  - `label` — string
+  - `c` — enum: `none` / `sky` / `clay` / `accent`
+
 ### `page_hero`  · helper: `pageHero()`
 
 Props:
@@ -138,6 +201,18 @@ Props:
   - `lede` — rich-text — plain HTML string (use `rt()`)
   - `image` — image — pass `img(src, alt)`
   - `tone` — enum: `dark` / `light`
+
+Slots: `crumbs` (each holds an array of child nodes)
+
+### `person_card`
+
+Props:
+  - `name` **(required)** — string
+  - `role` — string
+  - `email` — string
+  - `phone` — string
+  - `url` — link — plain string (e.g. `/about`)
+  - `image` — image — pass `img(src, alt)`
 
 ### `section_cards`  · helper: `cardGrid()`
 
@@ -148,8 +223,25 @@ Props:
   - `columns` — enum: `2` / `3` / `4`
   - `tone` — enum: `white` / `tint`
   - `featured_first` — boolean
+  - `layout` — enum: `grid` / `bento`
+  - `paginate` — boolean
+  - `per_page` — integer
 
 Slots: `cards` (each holds an array of child nodes)
+
+### `section_contact`
+
+Props:
+  - `eyebrow` — string
+  - `title` — string
+  - `body` — rich-text — plain HTML string (use `rt()`)
+  - `action` — string
+  - `address` — string
+  - `hours` — string
+  - `map_src` — string
+  - `tone` — enum: `white` / `tint`
+
+Slots: `phones` (each holds an array of child nodes)
 
 ### `section_cta`  · helper: `cta()`
 
@@ -159,6 +251,38 @@ Props:
   - `body` — rich-text — plain HTML string (use `rt()`)
 
 Slots: `cta_buttons` (each holds an array of child nodes)
+
+### `section_dark_band`
+
+Props:
+  - `eyebrow` — string
+  - `title` — string
+  - `lede` — rich-text — plain HTML string (use `rt()`)
+  - `align` — enum: `left` / `center`
+  - `glow` — boolean
+  - `content_cols` — enum: `none` / `2` / `3` / `4`
+
+Slots: `content` (each holds an array of child nodes)
+
+### `section_directory`
+
+Props:
+  - `label` — string
+  - `landing` — enum: `dark` / `tint` / `white`
+
+Slots: `tiles` (each holds an array of child nodes)
+
+### `section_events`
+
+Props:
+  - `eyebrow` — string
+  - `title` — string
+  - `title_accent` — string
+  - `lede` — rich-text — plain HTML string (use `rt()`)
+  - `cta_label` — string
+  - `cta_url` — link — plain string (e.g. `/about`)
+
+Slots: `events` (each holds an array of child nodes)
 
 ### `section_gallery`  · helper: `gallery()`
 
@@ -176,12 +300,81 @@ Props:
   - `title` **(required)** — string
   - `body` — rich-text — plain HTML string (use `rt()`)
   - `image` — image — pass `img(src, alt)`
-  - `style` — enum: `glass` / `split` / `dark`
-  - `height` — enum: `short` / `medium` / `tall`
+  - `style` — enum: `glass` / `split` / `dark` / `fullbleed` / `feature`
+  - `height` — enum: `short` / `medium` / `tall` / `full`
   - `stat_chip_number` — string
   - `stat_chip_label` — string
+  - `image_position` — enum: `left` / `right`
+  - `align` — enum: `center` / `left`
+  - `panel_width` — enum: `md` / `lg`
+  - `eyebrow_icon` — enum: `none` / `arrow-right` / `arrow-up-right` / `chart-column` / `building-2` / `calendar` / `check` / `chevron-down` / … (37 values)
 
 Slots: `hero_buttons` (each holds an array of child nodes)
+
+### `section_landing`
+
+Props:
+  - `intro` — rich-text — plain HTML string (use `rt()`)
+  - `help_title` — string
+  - `help_body` — string
+  - `help_url` — link — plain string (e.g. `/about`)
+  - `help_label` — string
+
+Slots: `tiles` (each holds an array of child nodes)
+
+### `section_logos`
+
+Props:
+  - `label` — string
+  - `tone` — enum: `white` / `tint`
+
+Slots: `logos` (each holds an array of child nodes)
+
+### `section_map`
+
+Props:
+  - `eyebrow` — string
+  - `title` — string
+  - `lede` — rich-text — plain HTML string (use `rt()`)
+  - `aria_label` — string
+  - `center_lat` — string
+  - `center_lng` — string
+  - `zoom` — string
+  - `height` — enum: `short` / `medium` / `tall`
+  - `tone` — enum: `white` / `tint`
+  - `scroll_zoom` — boolean
+
+Slots: `points` (each holds an array of child nodes)
+
+### `section_news_events`
+
+Props:
+  - `eyebrow` — string
+  - `title` — string
+  - `lede` — rich-text — plain HTML string (use `rt()`)
+  - `tone` — enum: `white` / `tint` / `accent-tint` / `dark`
+  - `pad` — enum: `normal` / `tight` / `none`
+  - `more_label` — string
+  - `more_url` — link — plain string (e.g. `/about`)
+  - `events_title` — string
+  - `events_more_label` — string
+  - `events_more_url` — link — plain string (e.g. `/about`)
+
+Slots: `news`, `events` (each holds an array of child nodes)
+
+### `section_people`
+
+Props:
+  - `eyebrow` — string
+  - `title` — string
+  - `lede` — rich-text — plain HTML string (use `rt()`)
+  - `columns` — enum: `2` / `3` / `4`
+  - `tone` — enum: `white` / `tint` / `accent-tint` / `dark`
+  - `pad` — enum: `normal` / `tight` / `none`
+  - `paginate` — boolean
+  - `per_page` — integer
+
+Slots: `people` (each holds an array of child nodes)
 
 ### `section_quote`  · helper: `quote()`
 
@@ -195,6 +388,8 @@ Props:
 ### `section_richtext`  · helper: `richtext()`
 
 Props:
+  - `eyebrow` — string
+  - `title` — string
   - `body` **(required)** — rich-text — plain HTML string (use `rt()`)
   - `width` — enum: `prose` / `wide`
   - `tone` — enum: `white` / `tint`
@@ -221,6 +416,29 @@ Props:
 
 Slots: `stats` (each holds an array of child nodes)
 
+### `section_story`
+
+Props:
+  - `eyebrow` — string
+  - `title` — string
+  - `quote` **(required)** — rich-text — plain HTML string (use `rt()`)
+  - `person` — string
+  - `image` — image — pass `img(src, alt)`
+  - `cta_label` — string
+  - `cta_url` — link — plain string (e.g. `/about`)
+
+Slots: `story_buttons` (each holds an array of child nodes)
+
+### `section_timeline`
+
+Props:
+  - `eyebrow` — string
+  - `title` — string
+  - `lede` — rich-text — plain HTML string (use `rt()`)
+  - `tone` — enum: `white` / `tint`
+
+Slots: `steps` (each holds an array of child nodes)
+
 ### `spacer`  · helper: `spacer()`
 
 Props:
@@ -232,4 +450,12 @@ Props:
   - `number` **(required)** — string
   - `label` **(required)** — string
   - `c` — enum: `none` / `sky` / `clay` / `accent`
+
+### `timeline_step`
+
+Props:
+  - `title` **(required)** — string
+  - `step` — string
+  - `icon` — enum: `chevron-right` / `sprout` / `git-branch` / `layers` / `flask-conical` / `factory` / `circle-check-big` / `lightbulb` / … (14 values)
+  - `points` — array
 

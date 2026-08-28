@@ -1,0 +1,68 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Timeline step'
+description: 'One step in the Timeline section — a numbered circle, an icon, a title, and optional bullet points. For process pages, methodology, or how-it-works sequences.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - title
+  properties:
+    title:
+      type: string
+      title: Title
+      examples:
+        - 'Select continuous "immortalized" root from various plant tissues'
+    step:
+      type: string
+      title: 'Step number'
+      description: 'The number displayed in the circle. Defaults to auto-incremented position.'
+      default: ''
+      examples:
+        - '1'
+    icon:
+      type: string
+      title: Icon
+      description: 'Lucide icon name shown beside the step number. Must be from the curated set.'
+      default: chevron-right
+      enum:
+        - chevron-right
+        - sprout
+        - git-branch
+        - layers
+        - flask-conical
+        - factory
+        - circle-check-big
+        - lightbulb
+        - users
+        - clipboard-check
+        - search
+        - pen-line
+        - send
+        - rocket
+      meta:enum:
+        chevron-right: 'Chevron right (default)'
+        sprout: Sprout
+        git-branch: 'Git branch'
+        layers: Layers
+        flask-conical: 'Flask conical'
+        factory: Factory
+        circle-check-big: 'Check circle'
+        lightbulb: Lightbulb
+        users: Users
+        clipboard-check: 'Clipboard check'
+        search: Search
+        pen-line: 'Pen line'
+        send: Send
+        rocket: Rocket
+    points:
+      type: array
+      title: 'Bullet points'
+      description: 'Optional checklist of key points under the step title.'
+      default: []
+      items:
+        type: string
+      examples:
+        - - 'Free of pesticides and fungicides'
+          - 'Simple growth environment'

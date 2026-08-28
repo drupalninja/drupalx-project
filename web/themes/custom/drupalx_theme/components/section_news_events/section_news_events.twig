@@ -1,0 +1,69 @@
+{#
+/**
+ * Section: News + events — the newsroom band. A main Latest-News column beside
+ * a compact "This week" meetings rail. The news card grid is HARD-LOCKED to
+ * 2-up (`sm:grid-cols-2`) — never 3-col, never 4-col, never a `columns` prop,
+ * never featured/bento. Pass 2 cards (or 4 for two full rows); do not leave an
+ * odd orphan on the last row. The events rail is a stacked list, not a grid.
+ *
+ * Canonical vocabulary: `news-events`. Astro twin: NewsEvents.astro.
+ *
+ * Composed from DrupalX's OWN children — card_news and card_event already ship
+ * here — over its own sx.header / sx.tone / sx.pad macros and full-bleed band.
+ * That is why this is a design pass rather than the copy the parity TODO
+ * warned against: only the two-column newsroom LAYOUT was missing, and the
+ * pieces it arranges were already in the library.
+ */
+#}
+{% import '@drupalx_theme/components/_section/_section.twig' as sx %}
+{% set tone = tone|default('tint') %}
+{% set events_title = events_title|default('This week') %}
+{% set on_dark = tone == 'dark' %}
+{# Render the events slot to a string FIRST so the rail can be omitted when it
+   is empty. Without this the section drew a "This week" heading over an empty
+   grid — a labelled box promising content that is not there, which reads as a
+   broken page rather than a quiet one. Seen on the ssseva pilot, whose source
+   homepage has news but no upcoming events. #}
+{% set events_html %}{% block events %}{% endblock %}{% endset %}
+{% set has_events = events_html|trim is not empty %}
+<section {% if on_dark %}data-surface="dark"{% endif %} class="full-bleed {{ sx.tone(tone) }} {{ sx.pad(pad|default('normal')) }}" data-reveal>
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    {{ sx.header(eyebrow|default(''), title|default(''), lede|default(''), 'left', on_dark) }}
+    <div class="grid gap-8 {{ has_events ? 'lg:grid-cols-[1.6fr_1fr]' : '' }} lg:gap-10">
+      {# Main — latest news. #}
+      <div>
+        {# HARD RULE (Jay, 2026-08-14): news cards are ONLY ever 2-up. #}
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {% block news %}{% endblock %}
+        </div>
+        {% if more_url|default('') and more_label|default('') %}
+          <a href="{{ more_url }}" class="group mt-6 inline-flex min-h-11 items-center gap-1.5 text-sm font-bold {{ on_dark ? 'text-accent-300 hover:text-accent-200' : 'text-accent-700 hover:text-accent-800' }}">
+            {{ more_label }}
+            <span class="dx-icon dx-icon--sm transition-transform group-hover:translate-x-0.5" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/arrow-right.svg') -}}</span>
+          </a>
+        {% endif %}
+      </div>
+      {# Rail — upcoming meetings. An <aside> with its own label, so a screen
+         reader can skip the rail without reading through the news column. #}
+      {% if has_events %}
+      <aside aria-label="{{ events_title }}">
+        <div class="rounded-2xl border border-primary-100 bg-white p-5 shadow-sm">
+          <div class="mb-4 flex items-center gap-2">
+            <span class="dx-icon dx-icon--sm text-accent-600" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/calendar.svg') -}}</span>
+            <h3 class="text-lg font-black text-primary-800">{{ events_title }}</h3>
+          </div>
+          <div class="grid gap-3">
+            {{ events_html }}
+          </div>
+          {% if events_more_url|default('') and events_more_label|default('') %}
+            <a href="{{ events_more_url }}" class="group mt-4 inline-flex min-h-11 items-center gap-1.5 text-sm font-bold text-primary-700 hover:text-primary-800">
+              {{ events_more_label }}
+              <span class="dx-icon dx-icon--sm transition-transform group-hover:translate-x-0.5" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/arrow-right.svg') -}}</span>
+            </a>
+          {% endif %}
+        </div>
+      </aside>
+      {% endif %}
+    </div>
+  </div>
+</section>

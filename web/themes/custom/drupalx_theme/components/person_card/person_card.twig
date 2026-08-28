@@ -1,0 +1,105 @@
+{#
+/**
+ * Person card — roster card (spark-card). Child of the Section: People grid.
+ *
+ * CONTENT HONESTY: name, role and contacts come from the source site
+ * letter-for-letter. A wrong staff name is a fabrication fail, and a stock
+ * face is worse — so a person with no real headshot gets a tinted initials
+ * disc, never a generic portrait.
+ *
+ * With a real headshot: 4/3 portrait slot with object-cover (a face IS the
+ * subject). Without one: compact horizontal row — a small disc + text. The
+ * tall empty 4/3 slot read as a missing image and wasted a whole tile on
+ * name + role alone. Matches PeopleGrid.astro (`photo` vs `initials`).
+ */
+#}
+{% set has_image = image.src|default('') is not empty %}
+{% set io = has_image ? dx_image(image, '(min-width: 1024px) 33vw, 100vw') : { srcset: null } %}
+{# `split(' ', 2)` and NOT `split(' ')|slice(0, 2)`.
+   Twing 3's `slice` filter calls util.isNumber(), which Node removed — so the
+   sliced version renders fine in Drupal's PHP Twig and throws
+   "util_1.isNumber is not a function" in the static build. This component was
+   the only user of `slice` in the library and had no static page reaching it
+   until 2026-08-09, so the crash sat here unseen.
+   The limit form is equivalent for the initials: "Mary Jane Smith" splits to
+   ['Mary', 'Jane Smith'] and still yields MJ. #}
+{% set initials = name|split(' ', 2)|map(w => w|first)|join('')|upper %}
+<article class="spark-card group/card relative flex h-full flex-col overflow-hidden rounded-2xl border border-primary-100 bg-white shadow-sm">
+  {% if has_image %}
+    <div class="aspect-[4/3] overflow-hidden bg-primary-50">
+      <img src="{{ image.src }}" alt="{{ image.alt|default(name) }}"
+           class="spark-card__img h-full w-full object-cover" loading="lazy" decoding="async"
+           {% if io.srcset %}srcset="{{ io.srcset }}" sizes="{{ io.sizes }}"{% endif %}>
+    </div>
+    <div class="flex flex-1 flex-col gap-1 p-6">
+      <h3 class="text-lg font-bold leading-snug text-primary-800">
+        {% if url|default('') %}
+          <a href="{{ url }}" class="after:absolute after:inset-0 focus:outline-none">{{ name }}</a>
+        {% else %}{{ name }}{% endif %}
+      </h3>
+      {% if role|default('') %}
+        <p class="text-xs font-bold uppercase tracking-[0.12em] text-ink-500">{{ role }}</p>
+      {% endif %}
+      {#
+        `relative` so these links sit ABOVE the stretched title link — without it
+        the card-wide ::after swallows them and a mailto is unclickable. min-h-11
+        is the 44px touch target.
+      #}
+      {% if email|default('') or phone|default('') %}
+        <ul class="relative mt-3 flex flex-col gap-1.5 text-sm">
+          {% if email|default('') %}
+            <li>
+              <a href="mailto:{{ email }}" class="inline-flex min-h-11 items-center gap-2 text-primary-700 underline-offset-2 hover:underline">
+                {% include 'drupalx_theme:icon' with { name: 'mail', size: 'sm' } only %}
+                <span class="break-all">{{ email }}</span>
+              </a>
+            </li>
+          {% endif %}
+          {% if phone|default('') %}
+            <li>
+              <a href="tel:{{ phone|replace({' ': '', '(': '', ')': '', '-': '', '.': ''}) }}" class="inline-flex min-h-11 items-center gap-2 text-primary-700 underline-offset-2 hover:underline">
+                {% include 'drupalx_theme:icon' with { name: 'phone', size: 'sm' } only %}
+                {{ phone }}
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      {% endif %}
+    </div>
+  {% else %}
+    {# Compact: small disc + text. No tall portrait slot when there is no photo. #}
+    <div class="flex flex-1 items-center gap-4 p-4 sm:p-5">
+      <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-700 font-display text-sm font-bold tracking-wide text-white sm:h-14 sm:w-14 sm:text-base" aria-hidden="true">{{ initials }}</span>
+      <div class="relative min-w-0 flex-1 flex flex-col gap-0.5">
+        <h3 class="text-base font-bold leading-snug text-primary-800">
+          {% if url|default('') %}
+            <a href="{{ url }}" class="after:absolute after:inset-0 focus:outline-none">{{ name }}</a>
+          {% else %}{{ name }}{% endif %}
+        </h3>
+        {% if role|default('') %}
+          <p class="text-xs font-bold uppercase tracking-[0.12em] text-ink-500">{{ role }}</p>
+        {% endif %}
+        {% if email|default('') or phone|default('') %}
+          <ul class="relative mt-2 flex flex-col gap-1 text-sm">
+            {% if email|default('') %}
+              <li>
+                <a href="mailto:{{ email }}" class="inline-flex min-h-11 items-center gap-2 text-primary-700 underline-offset-2 hover:underline">
+                  {% include 'drupalx_theme:icon' with { name: 'mail', size: 'sm' } only %}
+                  <span class="break-all">{{ email }}</span>
+                </a>
+              </li>
+            {% endif %}
+            {% if phone|default('') %}
+              <li>
+                <a href="tel:{{ phone|replace({' ': '', '(': '', ')': '', '-': '', '.': ''}) }}" class="inline-flex min-h-11 items-center gap-2 text-primary-700 underline-offset-2 hover:underline">
+                  {% include 'drupalx_theme:icon' with { name: 'phone', size: 'sm' } only %}
+                  {{ phone }}
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</article>

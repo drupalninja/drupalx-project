@@ -1,0 +1,16 @@
+{#
+/**
+ * Breadcrumb Item — a single crumb rendered inside page_hero's crumbs slot.
+ * The trailing chevron separator is hidden on the last child by the parent
+ * nav's [&>*:last-child_.breadcrumb-sep]:hidden class.
+ */
+#}
+{% set url = url|default('') %}
+<span class="inline-flex items-center gap-1.5">
+  {% if url %}
+    <a href="{{ url }}" class="transition-colors hover:text-accent-400">{{ label }}</a>
+  {% else %}
+    <span aria-current="page">{{ label }}</span>
+  {% endif %}
+  <span class="breadcrumb-sep dx-icon dx-icon--sm opacity-50" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/chevron-right.svg') -}}</span>
+</span>

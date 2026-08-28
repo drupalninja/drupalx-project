@@ -1,0 +1,66 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Map point'
+description: 'One location on a Section: Map — a pin on the map AND a row in the list beside it. Child of the Map points slot.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - title
+    - lat
+    - lng
+  properties:
+    title:
+      type: string
+      title: Name
+      examples:
+        - 'Riverbend Town Office'
+    lat:
+      type: string
+      title: Latitude
+      description: 'Decimal degrees, e.g. 44.2601. North is positive.'
+      examples:
+        - '44.2601'
+    lng:
+      type: string
+      title: Longitude
+      description: 'Decimal degrees, e.g. -72.5754. West is NEGATIVE — a dropped minus sign puts a Vermont office in Kazakhstan.'
+      examples:
+        - '-72.5754'
+    body:
+      type: string
+      title: Details
+      description: 'Address, hours, phone. Shown in the list and in the map popup.'
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+      examples:
+        - '<p>12 Mill Street<br>Open 8–4, Monday to Friday</p>'
+    url:
+      type: string
+      title: Link
+      default: ''
+      examples:
+        - /departments/town-clerk
+    label:
+      type: string
+      title: 'Pin label'
+      description: 'Short text inside the pin head — a count or an acreage. Empty gives a plain white dot. Keep it to 3 characters.'
+      default: ''
+      examples:
+        - '12'
+    c:
+      type: string
+      title: 'Wayfinding color'
+      default: none
+      enum:
+        - none
+        - sky
+        - clay
+        - accent
+      meta:enum:
+        none: 'Primary (default)'
+        sky: Sky
+        clay: Clay
+        accent: Accent

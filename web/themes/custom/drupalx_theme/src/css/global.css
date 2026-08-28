@@ -48,7 +48,7 @@
   --color-accent-300: #ecc766;
   --color-accent-400: #e5b94d;
   --color-accent-500: #dfab34;
-  --color-accent-600: #b6841a;
+  --color-accent-600: #9c6e0e;
   --color-accent-700: #8f6712;
 
   /* ── SECONDARY accent families — for color-coded WAYFINDING ──────────
@@ -78,20 +78,73 @@
   /* Ink — neutral text colors */
   --color-ink: #212529;
   --color-ink-700: #343a40;
-  --color-ink-500: #6c757d;
+  /* #6c757d was 4.69:1 on pure white — 0.19 above AA — so it failed on every
+     surface that is not pure white: 4.41 on the off-white page background,
+     4.45 on the faint brand tint. axe caught it on the document list and the
+     catalogue labels, and it would have failed on any muted text anywhere off
+     white. Darkened to clear AA on all three surfaces with real headroom;
+     still reads as the muted grey it is meant to be. */
+  --color-ink-500: #5a6169;
 
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
   /* Display serif — editorial character on headlines. */
   --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
 
-  /* ── TWO-TIER container widths (the modern wide layout) ──────────────
+  /* ── Container widths (the modern wide layout) ───────────────────────
    * `max-w-site` (1600) = WIDE sections that use the room: header bar
    *   content, full-bleed hero, maps, edge-to-edge bands.
-   * `max-w-content` (1340) = the DEFAULT for CARD + READING sections.
-   * Widening EVERY section to 1600 makes card sections look stretched —
-   * reach for max-w-content there; prose stays narrower (max-w-2xl/3xl). */
+   * `max-w-content` (1600) = card + reading SECTIONS.
+   *
+   * These were two tiers, 1600 / 1340. They are now one width, and the
+   * reason is that the split did not survive contact: with two values a
+   * page alternated between them section by section, so the left edge of
+   * a stat band and the left edge of the news grid below it did not line
+   * up — a 130px stagger that reads as a mistake rather than a rhythm.
+   * One width, and vertical alignment is free.
+   *
+   * The old warning still holds and is now handled a level down:
+   * widening every section to 1600 makes CARD sections look stretched
+   * and PROSE unreadable, so prose blocks cap themselves on measure
+   * (max-w-[68ch]) inside the wide container rather than the container
+   * narrowing to do it for them. Reading width is a property of the
+   * text, not of the page. */
   --container-site: 1600px;
-  --container-content: 1340px;
+  --container-content: 1600px;
+
+  /* The accent, restated for DARK surfaces. accent-600 is the gold that reads
+     correctly on white and disappears on primary-900; accent-300 is the stop
+     that survives there. Naming it once means a dark surface can say so and
+     everything inside follows — see [data-surface='dark'] below. */
+  --color-accent-on-dark: var(--color-accent-300);
+
+  /* ── Families the Astro starter had and this theme did not ────────────
+   * Added 2026-08-09. The palette itself is municipalsite's (DrupalX blue +
+   * gold) — drupalx-canvas is municipalsite's descendant, not the Astro
+   * starter's twin, and a brief attempt at the latter was reverted the same
+   * day. These FAMILIES stay because components here now reference them:
+   *
+   * The families below existed only on the Astro side. `neutral` is the
+   * borders/chrome ramp beside `ink` (body text); `on-*` are the AA-safe
+   * text colours for filled brand surfaces — components must never hardcode
+   * text-white on bg-accent-*. Port changes BOTH ways (stack-parity). */
+  --color-accent-800: #6b4d0e;
+  --color-accent-900: #48340a;
+  --color-neutral-50: #f8f8f7;
+  --color-neutral-100: #efefed;
+  --color-neutral-200: #dcdcd9;
+  --color-neutral-300: #bcbcb7;
+  --color-neutral-400: #8f8f89;
+  --color-neutral-500: #6b6b66;
+  --color-neutral-600: #4f4f4b;
+  --color-neutral-700: #3a3a37;
+  --color-neutral-800: #2a2a28;
+  --color-neutral-900: #1a1a19;
+  --color-gold-500: #e9b13a;
+  --color-gold-600: #c8932a;
+  --color-clay-200: #ecc0a4;
+  --color-clay-300: #e2a67f;
+  --color-on-accent: #ffffff;
+  --color-on-primary: #ffffff;
 }
 
 html {
@@ -347,6 +400,30 @@ header.sticky {
 .hero-h-short { min-height: min(46vh, 460px); }
 .hero-h-medium { min-height: min(64vh, 620px); }
 .hero-h-tall { min-height: min(88vh, 820px); }
+/* Full — fills the viewport below the sticky header on the LIVE site
+ * (--header-h is published by global.js from the header's real rendered
+ * height; falls back to 4.5rem if that script never ran, e.g. inside the
+ * Canvas editor iframe). Still capped at 900px so an unbounded iframe
+ * height can't blow this up the way raw 100vh would — same safety rule as
+ * the other three steps, just anchored to the real viewport when there is
+ * one. Matches foodismedicine.sparkdemo.cloud's hero proportions (Jay,
+ * 2026-08-02); same technique as the Astro starters' HeroGlass. */
+.hero-h-full { min-height: min(calc(100vh - var(--header-h, 4.5rem)), 900px); }
+
+/* TEXT-ONLY heroes get their own, much shorter scale.
+ *
+ * The four steps above are sized for a hero with a PHOTO, where the height is
+ * doing work — the image needs room to read. A listing page whose hero is just
+ * eyebrow + title + one line of body has nothing to fill that space with: the
+ * ssseva news hero was 576px tall around 293px of content, i.e. 283px of empty
+ * dark band above the first story. Same authored `height` value, half the
+ * emptiness. section_hero adds .hero--text whenever there is no image, so the
+ * author's short/medium/tall choice still means something — it just means it
+ * on a scale that fits text. */
+.hero--text.hero-h-short { min-height: min(26vh, 260px); }
+.hero--text.hero-h-medium { min-height: min(34vh, 340px); }
+.hero--text.hero-h-tall { min-height: min(46vh, 440px); }
+.hero--text.hero-h-full { min-height: min(56vh, 540px); }
 
 /* FAQ accordion — <details>/<summary>, no JS required. */
 .faq-list { display: grid; gap: 0.75rem; margin-top: 1.5rem; }
@@ -363,7 +440,10 @@ header.sticky {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 1.25rem;
+  /* Roomier than the 1rem/1.25rem it shipped with: an accordion is a list of
+   * tappable rows, and tight rows read as a dense table rather than
+   * something to interact with. Matches the body padding below. */
+  padding: 1.15rem 1.5rem;
   font-weight: 700;
   color: var(--color-primary-800);
   min-height: 44px;
@@ -379,7 +459,7 @@ header.sticky {
 }
 .faq-item[open] summary::after { rotate: 45deg; }
 .faq-item[open] summary { background: var(--color-primary-50); }
-.faq-item .faq-body { padding: 0.25rem 1.25rem 1.25rem; color: var(--color-ink-500); line-height: 1.65; }
+.faq-item .faq-body { padding: 1rem 1.5rem 2rem; color: var(--color-ink-500); line-height: 1.65; }
 .faq-item .faq-body a { color: var(--color-primary-600); font-weight: 600; text-decoration: underline; }
 
 /* Oversized stat numeral — numbers as graphic (big-number band). Capped at
@@ -407,8 +487,27 @@ header.sticky {
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--color-primary-600);
+    /* Variable, not a hard value: a hard colour here silently beats every
+       inherited correction, and the dark case then has to be remembered by
+       each of the dozen components that render an eyebrow. */
+    color: var(--eyebrow-color, var(--color-primary-600));
   }
+
+  /* DARK SURFACES — one declaration, inherited by every eyebrow inside.
+   *
+   * Per-component overrides are the thing that failed in the Astro twin:
+   * twelve components render an eyebrow, each had to remember the dark case,
+   * and the one that did remember was overruled anyway. A surface knows
+   * whether it is dark; an eyebrow three levels down does not. So the surface
+   * says so once and everything inside follows.
+   *
+   * Mark a section with data-surface="dark" whenever its background is a dark
+   * brand fill or a scrimmed photo. */
+  [data-surface='dark'] {
+    --eyebrow-color: var(--color-accent-on-dark);
+  }
+
+
   .eyebrow::before {
     content: '';
     width: 1.75rem;
@@ -463,3 +562,211 @@ header.sticky {
 .dx-icon--sm { width: 1rem; height: 1rem; }
 .dx-icon--md { width: 1.5rem; height: 1.5rem; }
 .dx-icon--lg { width: 2.5rem; height: 2.5rem; }
+
+/* Events rail — the first event_item child renders as a large dark highlight
+   card; subsequent children are compact rows. The event_item SDC renders BOTH
+   shapes; this CSS shows only the right one per child position. */
+.events-rail > .event-item:first-child .event-item__lead { display: block; }
+.events-rail > .event-item:first-child .event-item__row { display: none; }
+.events-rail > .event-item:not(:first-child) .event-item__lead { display: none; }
+.events-rail > .event-item:not(:first-child) .event-item__row { display: flex; }
+.events-rail > .event-item:not(:first-child) { margin-top: 0.75rem; }
+
+/* AI Concierge overlay — a LIGHT glass takeover (frosted paper, not a dark
+ * slab): the page texture reads softly through the heavy backdrop-blur and
+ * the conversation sits on white cards with ink text. */
+/* Site header — matte white bar stays opaque on scroll (no glass/dark swap). */
+#dx-site-header.bg-white {
+  background-color: rgb(255 255 255);
+  backdrop-filter: none;
+}
+#dx-site-header.bg-white.is-scrolled {
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+}
+
+.concierge-overlay { background: rgba(244, 247, 246, 0.88); }
+
+/* Blinking caret after the hero ask-bar's typewriter hint. */
+[data-concierge-typer]::after {
+  content: '';
+  display: inline-block;
+  width: 2px; height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: var(--color-accent-500);
+  animation: cg-blink 1s step-end infinite;
+}
+@keyframes cg-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  [data-concierge-typer]::after { animation: none; opacity: 0; }
+}
+
+/* ── Pager ──────────────────────────────────────────────────────────────
+   Buttons are built at RUNTIME by global.js, so Tailwind's scanner never
+   sees them — utility classes on those nodes would simply not be generated.
+   Plain CSS against the vars, same reasoning as Pagination.astro's
+   `is:global` block in the Astro starters. Min 2.75rem is the 44px touch
+   target. */
+.dx-pager button {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-md, 0.375rem);
+  border: 1px solid var(--color-primary-200, #ccc);
+  background: #fff;
+  color: var(--color-primary-800, #1f2937);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 150ms, color 150ms;
+}
+.dx-pager button:hover { background: var(--color-primary-50, #f5f7f5); }
+.dx-pager button[aria-current='page'] {
+  background: var(--color-primary-700, #14532d);
+  border-color: var(--color-primary-700, #14532d);
+  color: #fff;
+}
+.dx-pager:empty { display: none; }
+
+
+/* ── GHOST BUTTONS ON A DARK SURFACE — DELIBERATELY UNLAYERED ─────────────
+ *
+ * The `ghost` button variant is a LIGHT-background button (primary-200
+ * border, primary-700 text). Dropped into a glass or dark hero it renders as
+ * mid-teal on near-black — the homepage's "How it works" button was
+ * effectively invisible until 2026-08-09. A `glass` variant exists for dark
+ * surfaces, but nothing stops an author reaching for `ghost` and the failure
+ * is silent: the button renders, it is just unreadable.
+ *
+ * Fixed at the SURFACE, like the eyebrow colour above — the band knows it is
+ * dark, the component should not have to.
+ *
+ * NOT in @layer components, which is where this first went and why it did
+ * nothing: Tailwind's `utilities` layer comes AFTER `components`, and CASCADE
+ * LAYER ORDER BEATS SPECIFICITY. `.text-primary-700` won against a selector
+ * five times more specific. Unlayered CSS outranks every layer, so this is
+ * the one place the rule reliably lands. */
+/* WAYFINDING COLOURS ON A DARK BAND.
+ *
+ * The -600 steps are tuned for text on white. On the navy stat band they fail
+ * AA outright: text-sky-600 measured 2.21:1 and text-clay-600 2.12:1 against
+ * primary-800, where large text needs 3. Nobody notices, because a stat that
+ * is hard to read still LOOKS like a designed stat.
+ *
+ * accent already had --color-accent-on-dark; sky and clay did not, so the two
+ * families that exist purely for wayfinding were the two that broke. Remap at
+ * the SURFACE — the band knows it is dark, the data author should not have to
+ * remember a different token per background.
+ *
+ * Unlayered for the same reason as the button rule below: Tailwind's
+ * `utilities` layer beats `components` on layer order, not specificity. */
+[data-surface='dark'] .text-sky-600 { color: var(--color-sky-300); }
+[data-surface='dark'] .text-clay-600 { color: var(--color-clay-300); }
+[data-surface='dark'] .text-primary-600,
+[data-surface='dark'] .text-primary-700 { color: var(--color-primary-200); }
+
+[data-surface='dark'] a.border-primary-200,
+[data-surface='dark'] button.border-primary-200 {
+  border-color: color-mix(in srgb, #fff 40%, transparent);
+  color: #fff;
+}
+[data-surface='dark'] a.border-primary-200:hover,
+[data-surface='dark'] button.border-primary-200:hover {
+  background-color: color-mix(in srgb, #fff 15%, transparent);
+  border-color: color-mix(in srgb, #fff 70%, transparent);
+}
+
+/* ── LEAFLET MAP (Section: Map) ─────────────────────────────────────────────
+ *
+ * UNSCOPED ON PURPOSE, and this is the rule that got re-derived on pilot after
+ * pilot: Leaflet builds its pin and popup markup at RUNTIME with
+ * L.divIcon()/bindPopup(), so that markup never carries any component-scoping
+ * attribute. Style it from a component-scoped block and the rules silently do
+ * not apply — the pins render as bare white rectangles.
+ *
+ * These rules only ever match inside a [data-dx-map], and the whole leaflet
+ * library is attached per-section, so nothing here costs a page without a map.
+ */
+.dx-map-pin {
+  /* Leaflet's own divIcon default paints a white box behind the SVG. */
+  background: transparent;
+  border: 0;
+}
+.dx-map-pin svg {
+  display: block;
+  filter: drop-shadow(0 2px 3px rgb(0 0 0 / 0.3));
+}
+
+/* Popups: square off Leaflet's default 12px radius to the theme's own, and
+ * take the type off the browser default it otherwise inherits. */
+.leaflet-popup-content-wrapper {
+  border-radius: var(--radius-xl);
+  font-family: inherit;
+}
+.leaflet-popup-content {
+  margin: 0.875rem 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+.leaflet-popup-content h3 {
+  font-weight: 700;
+  color: var(--color-primary-800);
+}
+/* The map is inside a rounded container; Leaflet's controls otherwise sit
+ * flush in the corner and clip against it. */
+.leaflet-control-container .leaflet-top,
+.leaflet-control-container .leaflet-bottom {
+  padding: 0.25rem;
+}
+
+/* Hero → Directory clearance. section_directory pulls UP over the hero by
+   -mt-24 / sm:-mt-28 / lg:-mt-36 (6 / 7 / 9rem) — that overlap is the design —
+   but nothing reserved the room, so the hero's glass panel (worst with the
+   concierge ask-bar) landed a few px above the tiles on every civic homepage
+   (Jay, ogemaw 2026-08-26: "recurring problem on our sites"). The hero's inner
+   wrapper now pads its bottom by the overlap + breathing room whenever a
+   directory follows it. Unlayered on purpose: the wrapper carries the py-16
+   utility and utilities beat @layer components. Same rule ported to the
+   Astro + PressX twins. */
+.section-hero:has(+ .section-directory) .section-hero__inner {
+  padding-bottom: calc(6rem + 2.5rem);
+}
+@media (min-width: 640px) {
+  .section-hero:has(+ .section-directory) .section-hero__inner { padding-bottom: calc(7rem + 2.5rem); }
+}
+@media (min-width: 1024px) {
+  .section-hero:has(+ .section-directory) .section-hero__inner { padding-bottom: calc(9rem + 3rem); }
+}
+
+
+/* Scrollable list panel (section_map's point list). A fixed-height list has to
+   LOOK scrollable.
+
+   `scrollbar-color` and ::-webkit-scrollbar are MUTUALLY EXCLUSIVE in Chromium
+   — set the standard property and the pseudo-element styling is dropped,
+   leaving the fading overlay bar, which makes a capped list look like a list
+   that simply ends. So: pseudo-elements for WebKit/Blink, the standard
+   property only where they are unsupported (Firefox), and a bottom FADE that
+   works regardless of what the platform does with scrollbars. */
+.dx-scroll-list::-webkit-scrollbar { width: 10px; }
+.dx-scroll-list::-webkit-scrollbar-track { background: transparent; }
+.dx-scroll-list::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary-300);
+  border: 3px solid transparent;
+  background-clip: content-box;
+  border-radius: 9999px;
+}
+.dx-scroll-list::-webkit-scrollbar-thumb:hover { background-color: var(--color-primary-500); }
+@supports not selector(::-webkit-scrollbar) {
+  .dx-scroll-list { scrollbar-width: thin; scrollbar-color: var(--color-primary-300) transparent; }
+}
+.dx-scroll-list-wrap::after {
+  content: '';
+  position: absolute;
+  inset-inline: 1px;
+  bottom: 1px;
+  height: 3rem;
+  border-radius: 0 0 1rem 1rem;
+  background: linear-gradient(to top, var(--color-white, #fff), transparent);
+  pointer-events: none;
+}

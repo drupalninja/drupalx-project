@@ -1,0 +1,64 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Dark band'
+description: 'The page''s one dark full-bleed band with the brand glow, holding whatever you drop in its slot — a map, a stat row, a card pair, a pull quote. Section: Call to action is the ask-shaped version of this; use that when the content is buttons.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+      examples:
+        - 'The region'
+    title:
+      type: string
+      title: Title
+      default: ''
+      examples:
+        - 'Ten counties, one plan'
+    lede:
+      type: string
+      title: Lede
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+      examples:
+        - '<p>Detours are posted at Route 4 and at the covered bridge.</p>'
+    align:
+      type: string
+      title: 'Header alignment'
+      default: left
+      enum:
+        - left
+        - center
+      meta:enum:
+        left: Left
+        center: Centered
+    glow:
+      type: boolean
+      title: 'Brand glow'
+      description: 'The same-hue radial wash behind the band. Off gives a flat primary-900.'
+      default: true
+    content_cols:
+      type: string
+      title: 'Content columns'
+      description: 'Wrap the content slot in a grid with this many columns. Use none for full-width content (a map, a single quote).'
+      default: none
+      enum:
+        - none
+        - '2'
+        - '3'
+        - '4'
+      meta:enum:
+        none: 'Full width (no grid)'
+        '2': '2 columns'
+        '3': '3 columns'
+        '4': '4 columns'
+
+slots:
+  content:
+    title: Content
+    description: 'Anything that belongs on the dark band — Stat, Card, Quote, Button or Image components.'

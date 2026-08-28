@@ -1,0 +1,40 @@
+{#
+/**
+ * Video card — a 16:9 thumbnail with a play overlay, category badge, and
+ * title. Links to an external video (YouTube, Vimeo). For the Card grid slot
+ * in video library pages.
+ *
+ * Ported from the simmental-2026 videos.astro card pattern. The Astro twin
+ * embeds the video data inline; the Canvas version is a self-contained card
+ * that goes in any card grid slot.
+ *
+ * Canonical vocabulary: `video` (card). Astro twin: videos.astro.
+ */
+#}
+{% set has_image = image.src|default('') is not empty %}
+{% set url = url|default('') %}
+<article class="spark-card group relative flex h-full flex-col overflow-hidden rounded-xl border border-primary-100 bg-white transition hover:border-accent-400 hover:shadow-md">
+  <a href="{{ url }}" class="block after:absolute after:inset-0" aria-label="{{ title }}">
+    <div class="relative aspect-video w-full overflow-hidden bg-primary-900">
+      {% if has_image %}
+        <img src="{{ image.src }}" alt="{{ image.alt|default('') }}"
+             class="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+             loading="lazy" decoding="async">
+      {% endif %}
+      {# Play overlay — centered circle with a play icon. #}
+      <span class="absolute inset-0 grid place-items-center">
+        <span class="grid size-14 place-items-center rounded-full bg-black/55 text-white transition group-hover:bg-accent-600">
+          <span class="dx-icon dx-icon--lg translate-x-0.5" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/play.svg') -}}</span>
+        </span>
+      </span>
+    </div>
+  </a>
+  <div class="p-5">
+    {% if category|default('') %}
+      <span class="text-xs font-bold uppercase tracking-wide text-accent-600">{{ category }}</span>
+    {% endif %}
+    <h3 class="mt-1 font-display text-lg font-bold text-primary-900 group-hover:text-accent-700">
+      {{ title }}
+    </h3>
+  </div>
+</article>

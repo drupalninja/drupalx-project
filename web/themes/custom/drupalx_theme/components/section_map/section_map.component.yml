@@ -1,0 +1,86 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Map'
+description: 'Leaflet map of locations, with the same points rendered as a readable list beside it. Fill the points slot with Map point components — they are both the pins and the accessible list.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+      examples:
+        - 'Find us'
+    title:
+      type: string
+      title: Title
+      default: ''
+      examples:
+        - 'Where we work'
+    lede:
+      type: string
+      title: Lede
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+    aria_label:
+      type: string
+      title: 'Map description (for screen readers)'
+      description: 'Names the map for assistive tech, e.g. "Map of our ten county offices".'
+      default: 'Map of locations'
+      examples:
+        - 'Map of our ten county offices'
+    center_lat:
+      type: string
+      title: 'Centre — latitude'
+      description: 'Leave BOTH centre fields empty to frame the map around its points automatically (usually what you want).'
+      default: ''
+      examples:
+        - '44.2601'
+    center_lng:
+      type: string
+      title: 'Centre — longitude'
+      default: ''
+      examples:
+        - '-72.5754'
+    zoom:
+      type: string
+      title: Zoom
+      description: '1 is the whole world, 19 is a single building. Only used when a centre is set.'
+      default: '11'
+      examples:
+        - '11'
+    height:
+      type: string
+      title: 'Map height'
+      default: medium
+      enum:
+        - short
+        - medium
+        - tall
+      meta:enum:
+        short: 'Short (320px)'
+        medium: 'Medium (440px)'
+        tall: 'Tall (560px)'
+    tone:
+      type: string
+      title: Background
+      default: white
+      enum:
+        - white
+        - tint
+      meta:enum:
+        white: White
+        tint: 'Primary tint'
+    scroll_zoom:
+      type: boolean
+      title: 'Zoom with the scroll wheel'
+      description: 'Off by default — a map that swallows the page scroll on the way past is the most complained-about map behaviour.'
+      default: false
+
+slots:
+  points:
+    title: Points
+    description: 'Map point components. Each one is a pin AND a row in the list beside the map.'

@@ -1,0 +1,31 @@
+{#
+/**
+ * Section: Logos — partner/donor/funder recognition band. A centered label
+ * above a responsive logo grid. Built in every nonprofit engagement (sepsis,
+ * cbtrust, nmvoices) and many municipal sites (accreditation seals, partner
+ * logos).
+ *
+ * Ported from the sepsis-2026 SupporterBar.astro (2026-08-12). The Astro twin
+ * takes a partners array; the Canvas version takes a slot of logo_item
+ * children (Canvas rule: repeatable content = slots).
+ *
+ * Canonical vocabulary: `logos`. Astro twin: SupporterBar.astro.
+ */
+#}
+{% set tone = tone|default('white') %}
+{% set tone_class = { 'white': 'bg-white', 'tint': 'bg-primary-50' }[tone]|default('bg-white') %}
+{% set logos_html %}{% block logos %}{% endblock %}{% endset %}
+{% set has_logos = logos_html|trim is not empty %}
+
+{% if has_logos %}
+  <section class="full-bleed {{ tone_class }} py-14">
+    <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
+      {% if label|default('') %}
+        <p class="text-center text-xs font-bold uppercase tracking-[.2em] text-ink-500">{{ label }}</p>
+      {% endif %}
+      <div class="mt-7 flex flex-wrap items-center justify-center gap-5">
+        {{ logos_html }}
+      </div>
+    </div>
+  </section>
+{% endif %}

@@ -1,0 +1,50 @@
+{#
+/**
+ * Timeline step — one step in the Timeline section. A numbered circle beside
+ * a content card with an icon, step label, title, and optional bullet points.
+ *
+ * Ported from the nature-west-2026 process.astro step pattern. The Astro twin
+ * takes a STEPS array; the Canvas version uses a slot of timeline_step
+ * children (Canvas rule: repeatable content = slots).
+ *
+ * Canonical vocabulary: `timeline` (step). Astro twin: process.astro.
+ */
+#}
+{% set icon = icon|default('chevron-right') %}
+{% set step = step|default('') %}
+<div class="grid grid-cols-1 gap-8 lg:grid-cols-[auto_1fr] lg:gap-12">
+  {# Step number circle — large, primary-colored, with the number. #}
+  <div class="flex items-center gap-4 lg:flex-col lg:items-center">
+    <div class="flex size-20 shrink-0 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg">
+      <span class="font-display text-3xl font-extrabold">{{ step }}</span>
+    </div>
+    <div class="flex size-12 items-center justify-center rounded-xl bg-primary-100 text-primary-700 lg:hidden">
+      {% include 'drupalx_theme:icon' with { name: icon, size: 'md' } only %}
+    </div>
+  </div>
+
+  {# Step content card. #}
+  <div class="rounded-2xl border border-primary-100 bg-white p-6 shadow-sm sm:p-8">
+    <div class="mb-3 flex items-center gap-3">
+      <div class="hidden size-10 items-center justify-center rounded-lg bg-primary-100 text-primary-700 lg:flex">
+        {% include 'drupalx_theme:icon' with { name: icon, size: 'sm' } only %}
+      </div>
+      {% if step %}
+        <span class="text-sm font-bold uppercase tracking-wider text-accent-600">Step {{ step }}</span>
+      {% endif %}
+    </div>
+    <h3 class="font-display text-xl font-extrabold text-primary-800 sm:text-2xl">
+      {{ title }}
+    </h3>
+    {% if points|default([])|length > 0 %}
+      <ul class="mt-5 space-y-2.5">
+        {% for point in points %}
+          <li class="flex items-start gap-3 text-base text-ink-700">
+            <span class="dx-icon dx-icon--sm mt-0.5 shrink-0 text-accent-600" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/circle-check-big.svg') -}}</span>
+            <span>{{ point }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</div>

@@ -46,3 +46,8 @@ props:
       meta:enum:
         dark: 'Dark (brand glow)'
         light: 'Light (tint)'
+
+slots:
+  crumbs:
+    title: Breadcrumbs
+    description: 'Breadcrumb Item components — a trail from the site root to this page. The last item (current page) has no URL.'

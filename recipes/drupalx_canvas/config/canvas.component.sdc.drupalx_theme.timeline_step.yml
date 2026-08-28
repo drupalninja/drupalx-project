@@ -1,0 +1,61 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+  theme:
+    - drupalx_theme
+label: 'Timeline step'
+id: sdc.drupalx_theme.timeline_step
+source: sdc
+source_local_id: 'drupalx_theme:timeline_step'
+provider: drupalx_theme
+active_version: 3f053783ed23a2ab
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        title:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'Select continuous "immortalized" root from various plant tissues'
+          expression: ℹ︎string␟value
+        step:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: '1'
+          expression: ℹ︎string␟value
+        icon:
+          required: false
+          field_type: list_string
+          field_storage_settings:
+            allowed_values_function: canvas_load_allowed_values_for_component_prop
+          field_instance_settings: {  }
+          field_widget: options_select
+          default_value: null
+          expression: ℹ︎list_string␟value
+        points:
+          required: false
+          field_type: string
+          cardinality: -1
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'Free of pesticides and fungicides'
+            -
+              value: 'Simple growth environment'
+          expression: ℹ︎string␟value
+    fallback_metadata:
+      slot_definitions: {  }

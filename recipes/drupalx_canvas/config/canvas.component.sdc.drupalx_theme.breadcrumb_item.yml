@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+  theme:
+    - drupalx_theme
+label: 'Breadcrumb Item'
+id: sdc.drupalx_theme.breadcrumb_item
+source: sdc
+source_local_id: 'drupalx_theme:breadcrumb_item'
+provider: drupalx_theme
+active_version: 187a6f98fd11c6f6
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        label:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: Home
+          expression: ℹ︎string␟value
+        url:
+          required: false
+          field_type: link
+          field_storage_settings: {  }
+          field_instance_settings:
+            title: 0
+            link_type: 17
+          field_widget: link_default
+          default_value:
+            -
+              uri: /
+              options: {  }
+          expression: ℹ︎link␟url
+    fallback_metadata:
+      slot_definitions: {  }

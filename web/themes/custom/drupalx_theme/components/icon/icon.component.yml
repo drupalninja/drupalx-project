@@ -16,25 +16,39 @@ props:
         - none
         - arrow-right
         - arrow-up-right
-        - chart-column
+        - briefcase
+        - building
         - building-2
+        - bus
         - calendar
+        - car
+        - chart-column
         - check
         - chevron-down
         - chevron-right
+        - circle-check-big
+        - clipboard-check
         - clock
+        - dollar-sign
         - download
+        - droplet
         - external-link
+        - factory
         - file-text
         - flag
+        - flask-conical
         - folder
+        - git-branch
         - globe
         - graduation-cap
         - heart-handshake
+        - house
         - info
         - landmark
+        - layers
         - leaf
         - library
+        - life-buoy
         - lightbulb
         - mail
         - map
@@ -42,14 +56,23 @@ props:
         - megaphone
         - menu
         - newspaper
+        - paw-print
+        - pen-line
         - phone
+        - play
+        - rocket
         - search
+        - send
         - shield-check
         - sparkles
+        - sprout
         - star
+        - trash
         - triangle-alert
         - users
+        - wifi
         - x
+        - zap
       examples:
         - map-pin
     size:

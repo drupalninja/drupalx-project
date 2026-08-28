@@ -80,6 +80,31 @@ props:
         - triangle-alert
         - users
         - x
+    image_fit:
+      type: string
+      title: 'Image fit'
+      description: >-
+        Contain (the default) scales the whole image into the slot and
+        letterboxes it against the card tint — the safe choice for IMPORTED
+        imagery, which is often a logo or a scanned form. Choose Cover only for
+        a grid of CHOSEN photographs, where filling the slot edge to edge is
+        what makes the row read image-led.
+      default: contain
+      enum:
+        - contain
+        - cover
+      meta:enum:
+        contain: 'Contain (safe for imported imagery)'
+        cover: 'Cover (chosen photography)'
+    placeholder:
+      type: boolean
+      title: 'Branded placeholder tile'
+      description: >-
+        Show a branded tile in the image slot when this card has no image. Turn
+        it on only in a grid where OTHER cards do have images, so the row keeps
+        one rhythm — a grid where no card has an image reads better with the
+        icon chip, which is what you get with this off.
+      default: false
     c:
       type: string
       title: 'Wayfinding color'
@@ -98,3 +123,30 @@ props:
       type: string
       title: 'Read-more label'
       default: 'Learn more'
+    variant:
+      type: string
+      title: 'Card style'
+      description: >-
+        Feature is the tall dark photo card that anchors a Bento card grid —
+        put it FIRST in the slot and set the grid''s Layout to Bento, which is
+        what makes it span two rows.
+      default: default
+      enum:
+        - default
+        - feature
+      meta:enum:
+        default: 'Default (light spark-card)'
+        feature: 'Feature (tall dark photo card, for Bento grids)'
+    stat:
+      type: string
+      title: 'Stat — number'
+      description: 'Optional big number on a Feature card. Ignored by the default style.'
+      default: ''
+      examples:
+        - '$75M+'
+    stat_label:
+      type: string
+      title: 'Stat — label'
+      default: ''
+      examples:
+        - 'in awards secured'

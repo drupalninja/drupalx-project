@@ -8,12 +8,14 @@
 <section class="full-bleed {{ tone == 'tint' ? 'bg-primary-50' : 'bg-white' }} py-16 md:py-24" data-reveal>
   <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
     {{ sx.header(eyebrow|default(''), title|default(''), '', 'left', false) }}
-    <div class="grid gap-3">
+    {# Calm rhythm: cap the register on measure inside max-w-content — same
+       rail as section_richtext wide (max-w-4xl), not full 1600px bars. #}
+    <div class="grid max-w-4xl gap-3">
       {% block documents %}{% endblock %}
     </div>
     {% if more_url|default('') and more_label|default('') %}
       <p class="mt-8">
-        <a href="{{ more_url }}" class="inline-flex items-center gap-2 font-bold text-primary-700 hover:underline underline-offset-4">
+        <a href="{{ more_url }}" class="inline-flex min-h-11 items-center gap-2 font-bold text-primary-700 hover:underline underline-offset-4">
           {{ more_label }}
           <span class="dx-icon dx-icon--sm" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/arrow-right.svg') -}}</span>
         </a>

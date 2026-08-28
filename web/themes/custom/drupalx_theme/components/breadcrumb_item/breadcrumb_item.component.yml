@@ -1,0 +1,24 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: Breadcrumb Item
+description: 'One link in a page hero breadcrumb trail. The last item (current page) has no URL. Place inside the Page hero crumbs slot.'
+status: stable
+group: DrupalX Primitives
+
+props:
+  type: object
+  required:
+    - label
+  properties:
+    label:
+      type: string
+      title: Label
+      examples:
+        - 'Home'
+    url:
+      type: string
+      format: uri-reference
+      title: URL
+      description: 'Link target. Leave empty for the current-page (last) crumb.'
+      default: ''
+      examples:
+        - '/'

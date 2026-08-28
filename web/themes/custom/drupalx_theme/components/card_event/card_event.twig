@@ -10,10 +10,24 @@
   'clay': 'bg-clay-600',
   'accent': 'bg-accent-600',
 } %}
-<article class="spark-card relative flex h-full gap-4 rounded-2xl border border-primary-100 bg-white p-5 shadow-sm">
+{# An event card sat beside an image-led news card renders as a small date
+   chip in a tall empty box — the grid row stretches both to the same height
+   and only one has anything to fill it. Optional image, same 16/10 crop and
+   object-cover as card_news so a news/events pair reads as one row. #}
+{% set has_image = image.src|default('') is not empty %}
+{% set io = has_image ? dx_image(image, '(min-width: 1024px) 33vw, 100vw') : { srcset: null } %}
+<article class="spark-card relative flex h-full flex-col overflow-hidden rounded-2xl border border-primary-100 bg-white shadow-sm">
+  {% if has_image %}
+    <div class="overflow-hidden">
+      <img src="{{ image.src }}" alt="{{ image.alt|default('') }}"
+           class="spark-card__img aspect-[16/10] w-full object-cover" loading="lazy" decoding="async"
+           {% if io.srcset %}srcset="{{ io.srcset }}" sizes="{{ io.sizes }}"{% endif %}>
+    </div>
+  {% endif %}
+  <div class="flex flex-1 gap-4 p-5">
   {% if month|default('') or day|default('') %}
     <div class="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-xl {{ c_map[c]|default(c_map['none']) }} text-white">
-      <span class="text-[0.65rem] font-bold uppercase tracking-[0.14em]">{{ month }}</span>
+      <span class="text-[0.75rem] font-bold uppercase tracking-[0.14em]">{{ month }}</span>
       <span class="text-2xl font-black leading-none">{{ day }}</span>
     </div>
   {% endif %}
@@ -38,4 +52,5 @@
       {% endif %}
     </ul>
   </div>
+</div>
 </article>

@@ -1,0 +1,69 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: News + events'
+description: 'Newsroom band — a latest-news grid beside a compact upcoming-events rail. News cards are hard-locked to 2-up (never 3/4-col); pass 2 or 4 cards. Fill the news slot with News cards and the events slot with Event cards.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+    title:
+      type: string
+      title: Title
+      default: ''
+      examples:
+        - 'News & events'
+    lede:
+      type: string
+      title: Lede
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+    tone:
+      type: string
+      title: Background
+      default: tint
+      enum: [white, tint, accent-tint, dark]
+    pad:
+      type: string
+      title: 'Vertical rhythm'
+      default: normal
+      enum: [normal, tight, none]
+    more_label:
+      type: string
+      title: 'News link label'
+      default: ''
+      examples:
+        - 'All news'
+    more_url:
+      type: string
+      format: uri-reference
+      title: 'News link'
+      default: ''
+    events_title:
+      type: string
+      title: 'Events rail heading'
+      default: 'This week'
+    events_more_label:
+      type: string
+      title: 'Events link label'
+      default: ''
+      examples:
+        - 'Full calendar'
+    events_more_url:
+      type: string
+      format: uri-reference
+      title: 'Events link'
+      default: ''
+
+slots:
+  news:
+    title: News
+    description: 'News card components.'
+  events:
+    title: Events
+    description: 'Event card components.'

@@ -10,6 +10,33 @@ global:
       attributes:
         defer: true
 
+# AI concierge — attached ONLY by the front page (see page.html.twig's
+# {{ attach_library() }}), never globally. The overlay is a homepage feature,
+# and there is no reason to ship its JS on every inner page. Fails soft when
+# /concierge-corpus.json is absent, so a site that never generates a corpus
+# simply has no concierge rather than a broken one.
+concierge:
+  js:
+    dist/js/concierge.js:
+      attributes:
+        defer: true
+
+# Leaflet — attached ONLY by the Section: Map component (see its twig's
+# {{ attach_library() }}), never globally. Self-hosted from dist/vendor/leaflet
+# by `npm run leaflet`; no CDN, same rule as the fonts.
+#
+# `minified: true` and `preprocess: false` keep Drupal's aggregator from
+# re-minifying an already-minified vendor bundle.
+leaflet:
+  css:
+    component:
+      dist/vendor/leaflet/leaflet.css: { minified: true, preprocess: false }
+  js:
+    dist/vendor/leaflet/leaflet.js: { minified: true, preprocess: false }
+    dist/js/map.js:
+      attributes:
+        defer: true
+
 # Admin-toolbar displace fix — re-runs Drupal.displace() when the core
 # Navigation sidebar collapses on a FRONT-END page, so the theme's
 # displacement-aware .full-bleed / sticky-header offsets track the sidebar

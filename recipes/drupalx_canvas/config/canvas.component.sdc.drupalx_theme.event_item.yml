@@ -1,0 +1,92 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+  theme:
+    - drupalx_theme
+label: 'Event item'
+id: sdc.drupalx_theme.event_item
+source: sdc
+source_local_id: 'drupalx_theme:event_item'
+provider: drupalx_theme
+active_version: 02c367239ca87f64
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        title:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'Community town hall'
+          expression: ℹ︎string␟value
+        month:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: SEP
+          expression: ℹ︎string␟value
+        day:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: '25'
+          expression: ℹ︎string␟value
+        time:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: '6:00–7:30 PM'
+          expression: ℹ︎string␟value
+        location:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'Community Center, Room 2'
+          expression: ℹ︎string␟value
+        blurb:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'Join us for a community conversation about the future of our downtown.'
+          expression: ℹ︎string␟value
+        url:
+          required: false
+          field_type: link
+          field_storage_settings: {  }
+          field_instance_settings:
+            title: 0
+            link_type: 17
+          field_widget: link_default
+          default_value:
+            -
+              uri: /events/town-hall
+              options: {  }
+          expression: ℹ︎link␟url
+    fallback_metadata:
+      slot_definitions: {  }

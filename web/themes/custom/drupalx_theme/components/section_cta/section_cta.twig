@@ -4,12 +4,13 @@
  * single strong ask. Use accent/glass button variants in the slot.
  */
 #}
-<section class="full-bleed brand-glow py-16 md:py-24" data-reveal>
+<section data-surface="dark" class="full-bleed brand-glow py-16 md:py-24" data-reveal>
   <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8 text-center">
     {% if eyebrow|default('') %}
-      <p class="eyebrow justify-center mb-3 text-accent-300">{{ eyebrow }}</p>
+      <p class="eyebrow justify-center mb-3">{{ eyebrow }}</p>
     {% endif %}
-    <h2 class="display-xl text-white mx-auto max-w-3xl">{{ title }}</h2>
+    {# Only when there IS one — a heading element with no text is a screen-reader dead end and reserves vertical space for nothing (2026-08-02, parity with the Astro twins). #}
+    {% if title|default('') %}<h2 class="display-xl text-white mx-auto max-w-3xl">{{ title }}</h2>{% endif %}
     {% if body|default('') %}
       <div class="mt-4 mx-auto max-w-2xl text-lg leading-relaxed text-primary-100">{{ body|raw }}</div>
     {% endif %}

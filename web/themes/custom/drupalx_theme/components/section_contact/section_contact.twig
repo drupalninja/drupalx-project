@@ -1,0 +1,107 @@
+{#
+/**
+ * Section: Contact — the FORM, beside a reach-us rail.
+ *
+ * Ported from the Astro twins' src/pages/contact.astro (2026-08-09) so both
+ * engines answer a contact requirement the same way. The vocabulary doc names
+ * this section mandatory for a reason: a redesign whose contact page only
+ * lists a phone number reads THINNER than the site it replaces, and issuers
+ * notice. Form + every phone + address + map, or it is not a contact page.
+ *
+ * The thank-you panel is inline and JS-toggled, so the form never 404s in a
+ * demo build where no mail backend exists.
+ *
+ * accent-700 and NOT accent-600 on the filled controls: this ramp is a GOLD,
+ * and 600 (#b6841a) is too mid-tone for either ink — white measures 3.33:1
+ * and the dark 4.33:1, so nothing clears AA on it. 700 gives 5.1:1 with
+ * white. `npm run verify:contrast` flagged this the moment the palette moved
+ * back to gold; the teal it was written against passed at 600.
+ */
+#}
+{% import '@drupalx_theme/components/_section/_section.twig' as sx %}
+
+{% set tone = tone|default('white') %}
+{% set phones_html %}{% block phones %}{% endblock %}{% endset %}
+{% set field = 'mt-1.5 w-full rounded-xl border border-ink-500/20 bg-white px-3.5 py-3 text-sm transition focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/25' %}
+
+<section class="full-bleed {{ sx.tone(tone) }} py-16 md:py-24" data-reveal>
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_0.85fr]">
+
+      {# ── Form ─────────────────────────────────────────────────────── #}
+      <div>
+        {% if eyebrow|default('') %}<p class="eyebrow mb-3">{{ eyebrow }}</p>{% endif %}
+        {% if title|default('') %}<h2 class="display-xl">{{ title }}</h2>{% endif %}
+        {% if body|default('') %}
+          <div class="mt-4 text-lg leading-relaxed text-ink-500">{{ body|raw }}</div>
+        {% endif %}
+
+        <div data-contact-thankyou hidden class="mt-6 flex items-start gap-4 rounded-2xl border border-accent-500/40 bg-accent-50 p-6">
+          <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-accent-700 text-[color:var(--color-on-accent)]" aria-hidden="true">✓</span>
+          <div>
+            <p class="font-bold text-primary-800">Thank you — we’ll be in touch.</p>
+            <p class="mt-1 text-sm text-ink-700">A member of our team will follow up soon.</p>
+          </div>
+        </div>
+
+        <form data-contact-form method="POST" action="{{ action|default('') }}" class="mt-6 space-y-5">
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <div>
+              <label for="dx-contact-name" class="block text-sm font-semibold text-primary-800">Name <span class="text-accent-700">*</span></label>
+              <input id="dx-contact-name" name="name" type="text" required autocomplete="name" class="{{ field }}">
+            </div>
+            <div>
+              <label for="dx-contact-phone" class="block text-sm font-semibold text-primary-800">Phone</label>
+              <input id="dx-contact-phone" name="phone" type="tel" autocomplete="tel" class="{{ field }}">
+            </div>
+          </div>
+          <div>
+            <label for="dx-contact-email" class="block text-sm font-semibold text-primary-800">Email <span class="text-accent-700">*</span></label>
+            <input id="dx-contact-email" name="email" type="email" required autocomplete="email" class="{{ field }}">
+          </div>
+          <div>
+            <label for="dx-contact-message" class="block text-sm font-semibold text-primary-800">How can we help? <span class="text-accent-700">*</span></label>
+            <textarea id="dx-contact-message" name="message" rows="5" required class="{{ field }}"></textarea>
+          </div>
+          <button type="submit" class="inline-flex items-center gap-2 rounded-md bg-accent-700 px-7 py-3.5 text-base font-bold text-[color:var(--color-on-accent)] transition hover:-translate-y-0.5 hover:bg-accent-800">
+            Send message <span aria-hidden="true">→</span>
+          </button>
+        </form>
+      </div>
+
+      {# ── Reach-us rail ────────────────────────────────────────────── #}
+      <aside class="space-y-8">
+        {% if phones_html|trim %}
+          <div>
+            <h2 class="text-lg font-bold text-primary-800">Call us</h2>
+            <ul class="mt-4 space-y-4">{{ phones_html }}</ul>
+          </div>
+        {% endif %}
+
+        {% if address|default('') %}
+          <div>
+            <h2 class="text-lg font-bold text-primary-800">Visit or write</h2>
+            <p class="mt-3 flex items-start gap-3 text-ink-700">
+              <span class="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-700" aria-hidden="true">◎</span>
+              <span>{{ address }}</span>
+            </p>
+          </div>
+        {% endif %}
+
+        {% if hours|default('') %}
+          <div>
+            <h2 class="text-lg font-bold text-primary-800">Hours</h2>
+            <p class="mt-3 text-ink-700">{{ hours }}</p>
+          </div>
+        {% endif %}
+
+        {% if map_src|default('') %}
+          <div class="overflow-hidden rounded-2xl border border-ink-500/10">
+            <iframe src="{{ map_src }}" title="Location map" width="100%" height="260" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        {% endif %}
+      </aside>
+
+    </div>
+  </div>
+</section>

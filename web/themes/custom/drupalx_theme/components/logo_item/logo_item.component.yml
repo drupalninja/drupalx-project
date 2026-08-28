@@ -1,0 +1,26 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Logo item'
+description: 'One partner/donor/funder logo in the Logos section grid. A linked image in a bordered card, contained to fit.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - image
+  properties:
+    image:
+      type: object
+      title: Logo image
+      $ref: 'json-schema-definitions://canvas.module/image'
+      examples:
+        - src: 'https://placehold.co/200x80'
+          alt: 'Partner name'
+    url:
+      type: string
+      format: uri-reference
+      title: Link
+      description: 'Optional link to the partner''s website.'
+      default: ''
+      examples:
+        - 'https://example.org'

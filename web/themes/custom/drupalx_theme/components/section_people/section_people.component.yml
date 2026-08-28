@@ -1,0 +1,57 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: People'
+description: 'Staff / board / officials roster grid. Fill the people slot with Person card components.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+    title:
+      type: string
+      title: Title
+      default: ''
+      examples:
+        - 'Our team'
+    lede:
+      type: string
+      title: Lede
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+    columns:
+      type: string
+      title: Columns
+      default: '3'
+      enum: ['2', '3', '4']
+    tone:
+      type: string
+      title: Background
+      default: white
+      enum: [white, tint, accent-tint, dark]
+    pad:
+      type: string
+      title: 'Vertical rhythm'
+      default: normal
+      enum: [normal, tight, none]
+    paginate:
+      type: boolean
+      title: 'Paginate this roster'
+      description: >-
+        Chunk the roster into pages. Leave off for a handful of people; turn it
+        on for an imported roster of dozens. Every person still renders
+        server-side, so search sees the whole list.
+      default: false
+    per_page:
+      type: integer
+      title: 'People per page'
+      default: 12
+
+slots:
+  people:
+    title: People
+    description: 'Person card components.'

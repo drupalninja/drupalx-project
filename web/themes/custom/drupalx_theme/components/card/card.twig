@@ -18,20 +18,112 @@
 } %}
 {% set cc = c_map[c]|default(c_map['none']) %}
 
-<article class="spark-card group/card relative flex h-full flex-col overflow-hidden rounded-2xl border border-primary-100 border-t-4 {{ cc.bar }} bg-white shadow-sm">
-  {% if has_image %}
-    <div class="overflow-hidden">
+{#
+  FEATURE VARIANT (2026-08-10, ported from BentoGrid.astro's featured item).
+  The tall dark photo card that breaks a uniform card matrix. It is a CARD
+  prop, not a grid prop, because in Canvas the cards are slot children and a
+  section cannot restyle its own children — so the grid owns the 2x2 span
+  (section_cards layout=bento) and the card owns how it looks.
+
+  object-cover here, unlike the default variant's object-contain: this variant
+  is only ever used with a chosen hero-grade photograph, never with whatever
+  logo or scanned form an import happened to carry.
+#}
+{% if variant|default('default') == 'feature' %}
+  {% set fio = has_image ? dx_image(image, '(min-width: 1024px) 50vw, 100vw') : { srcset: null, sizes: null } %}
+  <article data-surface="dark" class="spark-card group/card relative flex h-full min-h-[22rem] flex-col justify-end overflow-hidden rounded-2xl bg-primary-900 text-white shadow-sm">
+    {% if has_image %}
       <img
         src="{{ image.src }}" alt="{{ image.alt|default('') }}"
-        class="spark-card__img aspect-video w-full object-cover"
+        class="spark-card__img absolute inset-0 h-full w-full object-cover"
+        loading="lazy" decoding="async"
+        {% if fio.srcset %}srcset="{{ fio.srcset }}" sizes="{{ fio.sizes }}"{% endif %}
+      >
+      {# Two-part scrim, matching section_hero's fullbleed rule: one flat
+         to-transparent wash over the whole photo is the muddy version. #}
+      <div class="absolute inset-0 bg-primary-900/45" aria-hidden="true"></div>
+      <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-primary-900 via-primary-900/70 to-transparent" aria-hidden="true"></div>
+    {% else %}
+      <div class="absolute inset-0 brand-glow" aria-hidden="true"></div>
+    {% endif %}
+    <div class="relative p-7">
+      {% if stat|default('') %}
+        <p class="text-4xl font-extrabold leading-none tabular-nums text-white">{{ stat }}</p>
+        {% if stat_label|default('') %}
+          <p class="mt-1 text-xs font-semibold uppercase tracking-wide text-primary-100">{{ stat_label }}</p>
+        {% endif %}
+      {% endif %}
+      <h3 class="{{ stat|default('') ? 'mt-5' : '' }} text-2xl font-bold text-white">
+        {% if url|default('') %}
+          <a href="{{ url }}" class="after:absolute after:inset-0 focus:outline-none">{{ title }}</a>
+        {% else %}
+          {{ title }}
+        {% endif %}
+      </h3>
+      {% if body|default('') %}
+        <div class="mt-2 line-clamp-3 text-[0.95rem] leading-relaxed text-primary-100">{{ body|raw }}</div>
+      {% endif %}
+      {% if url|default('') %}
+        <p class="spark-card__more mt-5 text-sm font-bold text-white">
+          {{ more_label }}
+          <span class="spark-card__arrow dx-icon dx-icon--sm" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/arrow-right.svg') -}}</span>
+        </p>
+      {% endif %}
+    </div>
+  </article>
+
+{% else %}
+<article class="spark-card group/card relative flex h-full flex-col overflow-hidden rounded-2xl border border-primary-100 border-t-4 {{ cc.bar }} bg-white shadow-sm">
+  {#
+    MEDIA SLOT — kept at parity with PathwayGroup.astro / CardGroup.astro
+    (2026-08-02). Three changes, all measured on the cbtrust import:
+
+    1. aspect-[16/10], not aspect-video. Jay: "our starter cards should do a
+       more landscape ratio i think and less square". 16/9 is short enough to
+       crop a portrait or a tall logo badly once the image is letterboxed
+       rather than cropped; 16/10 (1.6) still reads clearly landscape.
+    2. object-contain, not object-cover. Issuer imagery is whatever the issuer
+       happens to have — logos, scanned forms, spreadsheet screenshots — and
+       cover chops all of it to the slot without knowing what matters
+       (cbtrust's branding page showed logos sliced through the wordmark).
+       Contain scales the whole image in and letterboxes the remainder against
+       the card's own tint, so a card never shows a fragment of something.
+    3. A placeholder tile for an imageless card in an IMAGE-LED grid, so the
+       row keeps one rhythm. Opt-in via `placeholder` because a grid where NO
+       card has an image wants the icon chip instead — a wall of identical
+       placeholder tiles is decoration standing in for information. In the
+       Astro starters the group derives this from its own cards; here the card
+       is a Canvas slot child and cannot see its siblings, so the choice is a
+       prop the section (or the importer) sets.
+  #}
+  {% if has_image %}
+    {# image_fit=cover is OPT-IN: contain stays the default so an import can
+       never show a fragment of a logo or a scanned form, while a CURATED grid
+       of real photographs can fill the slot edge to edge and actually read
+       image-led (2026-08-26). #}
+    <div class="flex aspect-[16/10] items-center justify-center overflow-hidden bg-primary-50">
+      <img
+        src="{{ image.src }}" alt="{{ image.alt|default('') }}"
+        class="spark-card__img h-full w-full {{ image_fit|default('contain') == 'cover' ? 'object-cover' : 'object-contain' }}"
         loading="lazy" decoding="async"
         {% if io.srcset %}srcset="{{ io.srcset }}" sizes="{{ io.sizes }}"{% endif %}
       >
     </div>
+  {% elseif placeholder|default(false) %}
+    <div class="relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-gradient-to-br from-primary-50 via-accent-50 to-sky-50">
+      <div class="absolute -right-10 -top-12 size-44 rounded-full bg-accent-500/15 blur-3xl"></div>
+      <div class="absolute -bottom-14 -left-10 size-44 rounded-full bg-sky-300/25 blur-3xl"></div>
+      <div class="relative flex size-16 items-center justify-center rounded-2xl bg-white/80 shadow-sm ring-1 ring-accent-600/10 backdrop-blur">
+        {% include 'drupalx_theme:icon' with { name: icon != 'none' ? icon : 'file-text', size: 'md' } only %}
+      </div>
+    </div>
   {% endif %}
   <div class="flex flex-1 flex-col p-6">
-    {% if not has_image and icon != 'none' %}
-      <span class="mb-4 inline-flex w-12 h-12 items-center justify-center rounded-xl {{ cc.chip }}">
+    {% if not has_image and not placeholder|default(false) and icon != 'none' %}
+      {# data-icon-led: the chip IS the card's visual lead. verify-design-rules
+         accepts it in place of a photo; without the marker every icon grid on
+         the site reads as an image-less content grid (ogemaw, 2026-08-26). #}
+      <span data-icon-led class="mb-4 inline-flex w-12 h-12 items-center justify-center rounded-xl {{ cc.chip }}">
         {% include 'drupalx_theme:icon' with { name: icon, size: 'md' } only %}
       </span>
     {% endif %}
@@ -42,8 +134,14 @@
         {{ title }}
       {% endif %}
     </h3>
+    {#
+      Clamped to 4 lines. An unbounded summary ran past the card's bottom edge
+      and was cut MID-SENTENCE with no ellipsis on the cbtrust import. The
+      shaper is told to keep card bodies short, but a component that depends on
+      a model behaving is not a component that holds.
+    #}
     {% if body|default('') %}
-      <div class="mt-2 text-[0.95rem] leading-relaxed text-ink-500">{{ body|raw }}</div>
+      <div class="mt-2 line-clamp-4 text-[0.95rem] leading-relaxed text-ink-500">{{ body|raw }}</div>
     {% endif %}
     {% if url|default('') %}
       <p class="spark-card__more mt-auto pt-4 text-sm font-bold {{ cc.more }}">
@@ -53,3 +151,4 @@
     {% endif %}
   </div>
 </article>
+{% endif %}

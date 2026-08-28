@@ -1,0 +1,40 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Landing'
+description: 'Hub page section — an intro paragraph, a grid of link cards (landing tiles) for child pages, and a "can''t find what you need?" help band. For top-level IA hub pages like Pay & Apply, Living Here, Doing Business.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    intro:
+      type: string
+      title: Intro
+      description: 'Optional centered intro paragraph above the grid.'
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+      examples:
+        - '<p>Everything you need in one place.</p>'
+    help_title:
+      type: string
+      title: 'Help band title'
+      default: "Can't find what you need?"
+    help_body:
+      type: string
+      title: 'Help band body'
+      default: 'Our team is glad to help.'
+    help_url:
+      type: string
+      format: uri-reference
+      title: 'Help band link'
+      default: /contact
+    help_label:
+      type: string
+      title: 'Help band button label'
+      default: 'Contact us'
+
+slots:
+  tiles:
+    title: Tiles
+    description: 'Landing tile components — one per child page link.'

@@ -1,0 +1,94 @@
+{#
+/**
+ * AI Concierge overlay — injected ONCE from the layout on the FRONT PAGE only
+ * (static build: pages/_layout.twig; Drupal: page.html.twig). Any element with
+ * [data-concierge-open] — the hero ask-bar, a prompt chip — opens the
+ * full-screen chat takeover.
+ *
+ * HOMEPAGE-HERO ONLY, and there is no floating FAB. The concierge is a homepage
+ * feature, not a chat bubble that follows a resident onto every inner page; the
+ * entry point is _concierge-ask.html.twig in the hero. An earlier port carried a
+ * fixed-position FAB, which inverted that rule — it is deliberately absent here.
+ * If a project genuinely wants a persistent launcher, add it in that project,
+ * not in the shared theme.
+ *
+ * Persona/prompts/fallback come from the `assistant` var (site.assistant in
+ * pages.config.cjs on the static side; theme settings on the Drupal side) —
+ * generic municipal defaults below so the partial works unconfigured.
+ *
+ * Grounding: a small client-side RAG. On first open it fetches
+ * /concierge-corpus.json (generated at build time from the real page content),
+ * keyword-retrieves the top pages for a question, and renders a grounded
+ * answer stitched from those pages + source cards that link to them. NO server
+ * and no external API — it works in the static demo exactly as it reads. At
+ * launch the same UI points at the CMS-backed RAG endpoint (fetchAnswer() in
+ * concierge.js is the single swap point).
+ */
+#}
+{% set a = assistant|default({}) %}
+{% set assistant_name = a.name|default('Site Assistant') %}
+{% set site_name = site_name|default('this site') %}
+{% set blurb = a.blurb|default('Answers from ' ~ site_name ~ '’s own pages') %}
+{% set heading = a.heading|default('How can we help?') %}
+{% set intro = a.intro|default('Ask a question — answers are grounded in this site’s own pages.') %}
+{% set prompts = a.prompts|default([
+  'How do I pay my property taxes?',
+  'When is the next board meeting?',
+  'How do I apply for a permit?',
+  'How do I request a record?',
+  'What are the office hours?',
+  'How do I contact a department?',
+]) %}
+{% set fallback = a.fallback|default('I couldn’t find that on ' ~ site_name ~ ' — try the contact page.') %}
+{% set store_key = a.storeKey|default('site-concierge') %}
+
+<div id="concierge-overlay" class="concierge-overlay fixed inset-0 z-[100] hidden backdrop-blur-xl"
+  role="dialog" aria-modal="true" aria-label="{{ assistant_name }}"
+  data-cg-store-key="{{ store_key }}" data-cg-fallback="{{ fallback }}">
+  <div class="mx-auto flex h-full max-w-4xl flex-col px-4 sm:px-6">
+    <div class="flex items-center justify-between py-5">
+      <div class="flex items-center gap-3">
+        <span class="flex size-10 items-center justify-center rounded-xl bg-accent-700 text-white">
+          {% include 'drupalx_theme:icon' with { name: 'sparkles', size: 'md' } only %}
+        </span>
+        <div>
+          <p class="text-base font-extrabold text-primary-800">{{ assistant_name }}</p>
+          <p class="text-xs text-ink-500">{{ blurb }}</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-1">
+        <button type="button" data-concierge-clear class="hidden items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-ink-500 transition hover:bg-primary-50 hover:text-primary-800">
+          Clear
+        </button>
+        <button type="button" data-concierge-close class="flex size-11 items-center justify-center rounded-lg text-ink-500 transition hover:bg-primary-50 hover:text-primary-800" aria-label="Close">
+          {% include 'drupalx_theme:icon' with { name: 'x', size: 'md' } only %}
+        </button>
+      </div>
+    </div>
+
+    <div id="concierge-thread" class="flex-1 space-y-6 overflow-y-auto pb-6">
+      <div id="concierge-empty" class="flex flex-col items-center justify-center py-12 text-center">
+        <span class="flex size-16 items-center justify-center rounded-2xl bg-accent-50 text-accent-700">
+          {% include 'drupalx_theme:icon' with { name: 'sparkles', size: 'lg' } only %}
+        </span>
+        <h2 class="mt-4 text-2xl font-black text-primary-800">{{ heading }}</h2>
+        <p class="mt-2 max-w-md text-ink-700">{{ intro }}</p>
+        <div class="mt-6 grid w-full max-w-lg gap-2 sm:grid-cols-2">
+          {% for p in prompts %}
+            <button type="button" data-concierge-prompt="{{ p }}" class="rounded-xl border border-primary-100 bg-white px-4 py-3 text-left text-sm font-semibold text-ink-700 shadow-sm transition hover:border-accent-400 hover:bg-primary-50">{{ p }}</button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <form id="concierge-form" class="mb-5 flex items-center gap-2 rounded-2xl border border-primary-200 bg-white p-2 shadow-lg focus-within:border-accent-400 focus-within:ring-2 focus-within:ring-accent-400/40">
+      <input id="concierge-input" type="text" autocomplete="off"
+        placeholder="Ask a question about {{ site_name }}…"
+        class="flex-1 bg-transparent px-4 py-3 text-base text-ink placeholder:text-ink-500 outline-none focus:outline-none"
+        aria-label="Ask the {{ assistant_name }} a question">
+      <button type="submit" class="flex size-11 items-center justify-center rounded-xl bg-accent-700 text-white transition hover:bg-accent-800" aria-label="Send">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+      </button>
+    </form>
+  </div>
+</div>

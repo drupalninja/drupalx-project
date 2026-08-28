@@ -1,0 +1,32 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Directory'
+description: 'Image-led "explore the place" tiles that overlap the hero. Place immediately after Section: Hero — the overlap is the point, and the landing band must match the section that follows.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    label:
+      type: string
+      title: 'Accessible label'
+      description: 'Names the region for screen readers — the tiles carry no heading.'
+      default: 'Explore'
+    landing:
+      type: string
+      title: 'Landing band'
+      description: 'The band the tiles land on. MUST match the background of the section BELOW, or the seam shows as a stripe.'
+      default: dark
+      enum:
+        - dark
+        - tint
+        - white
+      meta:enum:
+        dark: 'Dark brand band'
+        tint: 'Brand tint'
+        white: 'White'
+
+slots:
+  tiles:
+    title: Tiles
+    description: 'Directory Tile components. Three or four — each a destination, not a topic.'

@@ -1,0 +1,57 @@
+{#
+/**
+ * Event item — one row in the Events section rail. The parent section_events
+ * wraps the slot items: the first child gets the large dark highlight card
+ * treatment (via :first-child), the rest are compact rows. This component
+ * renders BOTH shapes — the parent's CSS does the switching.
+ *
+ * Canonical vocabulary: `events` (row item). Astro twin: EventsRail.astro's
+ * event objects. Ported from the nmvoices-2026 engagement (2026-08-12).
+ */
+#}
+<article class="event-item group relative">
+  {# Lead card (first child) — dark, large, with blurb. #}
+  <div class="event-item__lead relative overflow-hidden rounded-2xl bg-primary-900 p-7 text-white">
+    <div class="flex items-start gap-5">
+      {% if month|default('') or day|default('') %}
+        <div class="shrink-0 rounded-xl bg-white/10 px-3.5 py-2.5 text-center ring-1 ring-white/20">
+          <div class="text-xs font-bold uppercase tracking-[0.18em] text-accent-300">{{ month }}</div>
+          <div class="font-display text-3xl font-extrabold leading-none text-white">{{ day }}</div>
+        </div>
+      {% endif %}
+      <div class="min-w-0">
+        <h3 class="font-display text-2xl font-bold text-white">
+          {% if url|default('') %}
+            <a href="{{ url }}" class="after:absolute after:inset-0">{{ title }}</a>
+          {% else %}{{ title }}{% endif %}
+        </h3>
+        {% if time|default('') or location|default('') %}
+          <p class="mt-1.5 text-sm text-primary-100">{{ [time, location]|filter(v => v)|join(' · ') }}</p>
+        {% endif %}
+        {% if blurb|default('') %}
+          <p class="mt-3 line-clamp-3 text-sm leading-relaxed text-primary-100">{{ blurb }}</p>
+        {% endif %}
+        <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-300">
+          Event details
+          <span class="dx-icon dx-icon--sm transition-transform group-hover:translate-x-1" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/arrow-right.svg') -}}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+  {# Compact row (subsequent children) — light, date chip + title + arrow. #}
+  <a href="{{ url|default('#') }}" class="event-item__row flex items-center gap-4 rounded-2xl border border-primary-100 bg-white p-4 sm:gap-5 sm:p-5">
+    {% if month|default('') or day|default('') %}
+      <span class="shrink-0 rounded-xl bg-primary-50 px-3 py-2 text-center ring-1 ring-primary-100">
+        <span class="block text-xs font-bold uppercase tracking-[0.12em] text-accent-700">{{ month }}</span>
+        <span class="block font-display text-xl font-extrabold leading-none text-primary-800">{{ day }}</span>
+      </span>
+    {% endif %}
+    <span class="min-w-0 flex-1">
+      <span class="block font-semibold text-primary-900">{{ title }}</span>
+      {% if time|default('') or location|default('') %}
+        <span class="mt-0.5 block truncate text-sm text-ink-500">{{ [time, location]|filter(v => v)|join(' · ') }}</span>
+      {% endif %}
+    </span>
+    <span class="dx-icon dx-icon--sm shrink-0 text-primary-400" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/arrow-right.svg') -}}</span>
+  </a>
+</article>

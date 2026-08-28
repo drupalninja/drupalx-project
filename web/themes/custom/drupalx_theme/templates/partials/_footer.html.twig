@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Site footer — dark multi-column: identity, site nav, contact, legal bar.
+ * Site footer — dark: identity bar, three link columns, legal bar.
  *
  * Data contract (same for Drupal preprocess AND the static build):
  *   nav:  [{ title, url, children[] }]
@@ -16,16 +16,30 @@
 
 <footer class="bg-primary-900 text-primary-100">
   <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
-    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+    {# Identity bar — logo + blurb, full width #}
+    <div class="max-w-2xl">
+      <a href="{{ home_url|default('/') }}" class="inline-flex min-h-11 items-center gap-3" aria-label="{{ name }} — home">
+        <img src="{{ dx_logo_url|default(site.logo)|default('/themes/custom/drupalx_theme/logo.svg') }}" alt="" width="40" height="40" class="w-10 h-10 rounded-xl shrink-0 ring-1 ring-white/15">
+        <span class="font-display font-semibold text-xl text-white">{{ name }}</span>
+      </a>
+      {% if f.blurb|default('') %}
+        <p class="mt-4 text-[0.95rem] leading-relaxed text-primary-200">{{ f.blurb }}</p>
+      {% endif %}
+    </div>
 
-      {# Identity #}
-      <div class="lg:col-span-2 max-w-md">
-        <a href="/" class="flex items-center gap-3" aria-label="{{ name }} — home">
-          <img src="{{ dx_logo_url|default('/themes/custom/drupalx_theme/logo.svg') }}" alt="" width="40" height="40" class="w-10 h-10 rounded-xl shrink-0 ring-1 ring-white/15">
-          <span class="font-display font-semibold text-xl text-white">{{ name }}</span>
-        </a>
-        {% if f.blurb|default('') %}
-          <p class="mt-4 text-[0.95rem] leading-relaxed text-primary-200">{{ f.blurb }}</p>
+    {# Divider #}
+    <hr class="mt-10 border-white/10">
+
+    {# Three columns: address, explore, contact #}
+    <div class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+      {# Address #}
+      <div>
+        <h2 class="text-xs font-bold uppercase tracking-[0.16em] text-accent-300">Visit</h2>
+        {% if contact.address|default('') %}
+          <p class="mt-4 flex gap-2.5 text-[0.95rem] text-primary-200">
+            <span class="dx-icon dx-icon--sm mt-1 shrink-0 text-accent-300" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/map-pin.svg') -}}</span>
+            <span>{{ contact.address }}</span>
+          </p>
         {% endif %}
       </div>
 
@@ -43,22 +57,16 @@
       <div>
         <h2 class="text-xs font-bold uppercase tracking-[0.16em] text-accent-300">Contact</h2>
         <ul class="mt-4 grid gap-3 text-[0.95rem]">
-          {% if contact.address|default('') %}
-            <li class="flex gap-2.5">
-              <span class="dx-icon dx-icon--sm mt-1 text-accent-300" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/map-pin.svg') -}}</span>
-              <span>{{ contact.address }}</span>
-            </li>
-          {% endif %}
           {% if contact.phone|default('') %}
             <li class="flex gap-2.5">
               <span class="dx-icon dx-icon--sm mt-1 text-accent-300" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/phone.svg') -}}</span>
-              <a href="tel:{{ contact.phone|replace({' ': '', '(': '', ')': '', '-': ''}) }}" class="hover:text-white hover:underline underline-offset-4">{{ contact.phone }}</a>
+              <a href="tel:{{ contact.phone|replace({' ': '', '(': '', ')': '', '-': ''}) }}" class="inline-flex min-h-11 items-center hover:text-white hover:underline underline-offset-4">{{ contact.phone }}</a>
             </li>
           {% endif %}
           {% if contact.email|default('') %}
             <li class="flex gap-2.5">
               <span class="dx-icon dx-icon--sm mt-1 text-accent-300" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/mail.svg') -}}</span>
-              <a href="mailto:{{ contact.email }}" class="hover:text-white hover:underline underline-offset-4">{{ contact.email }}</a>
+              <a href="mailto:{{ contact.email }}" class="inline-flex min-h-11 items-center hover:text-white hover:underline underline-offset-4">{{ contact.email }}</a>
             </li>
           {% endif %}
         </ul>

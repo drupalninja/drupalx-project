@@ -1,0 +1,43 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Person card'
+description: 'Roster card for a staff member, board member or official. Child of the Section: People grid. With a headshot: portrait card. Without: compact initials row (never a stock face).'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - name
+  properties:
+    name:
+      type: string
+      title: Name
+      examples:
+        - 'Jana Davis'
+    role:
+      type: string
+      title: 'Role / title'
+      default: ''
+      examples:
+        - 'Executive Director'
+    email:
+      type: string
+      title: Email
+      default: ''
+    phone:
+      type: string
+      title: Phone
+      default: ''
+    url:
+      type: string
+      format: uri-reference
+      title: 'Profile link'
+      default: ''
+    image:
+      type: object
+      title: Headshot
+      description: >-
+        A REAL headshot from the source. Leave empty when there is none — the
+        card renders the person's initials rather than a stock face.
+      $ref: 'json-schema-definitions://canvas.module/image'
+      default: ''

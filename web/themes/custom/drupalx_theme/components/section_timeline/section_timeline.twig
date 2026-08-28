@@ -1,0 +1,28 @@
+{#
+/**
+ * Section: Timeline — a vertical sequence of numbered steps with icons,
+ * titles, and optional bullet points. For process pages, methodology,
+ * project phases, or how-it-works sequences.
+ *
+ * Ported from the nature-west-2026 process.astro step layout. The Astro twin
+ * takes a STEPS array; the Canvas version uses a slot of timeline_step
+ * children (Canvas rule: repeatable content = slots).
+ *
+ * Canonical vocabulary: `timeline`. Astro twin: process.astro.
+ */
+#}
+{% import '@drupalx_theme/components/_section/_section.twig' as sx %}
+{% set tone = tone|default('white') %}
+{% set steps_html %}{% block steps %}{% endblock %}{% endset %}
+{% set has_steps = steps_html|trim is not empty %}
+
+<section class="full-bleed {{ sx.tone(tone) }} {{ sx.pad('normal') }}" data-reveal>
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    {{ sx.header(eyebrow|default(''), title|default(''), lede|default(''), 'left', false) }}
+    {% if has_steps %}
+      <div class="space-y-12">
+        {{ steps_html }}
+      </div>
+    {% endif %}
+  </div>
+</section>

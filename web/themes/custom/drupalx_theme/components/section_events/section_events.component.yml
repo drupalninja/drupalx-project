@@ -1,0 +1,54 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Events'
+description: 'Asymmetric events band — a sticky pitch column (eyebrow + heading + lede + CTA) beside an event rail where the first item is a large dark highlight card and the rest are compact rows. The "something on this page is alive" section for active calendars.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+      examples:
+        - 'On the road'
+    title:
+      type: string
+      title: Heading
+      default: ''
+      examples:
+        - 'Upcoming events'
+    title_accent:
+      type: string
+      title: 'Heading accent'
+      description: 'Optional accent-colored trailing word in the heading.'
+      default: ''
+      examples:
+        - 'comes to you'
+    lede:
+      type: string
+      title: Lede
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+      examples:
+        - '<p>Seven conversations across the region.</p>'
+    cta_label:
+      type: string
+      title: 'CTA label'
+      default: ''
+      examples:
+        - 'See the full calendar'
+    cta_url:
+      type: string
+      format: uri-reference
+      title: 'CTA link'
+      default: ''
+      examples:
+        - /events
+
+slots:
+  events:
+    title: Events
+    description: 'Event item components. The first item renders as a large dark highlight card; the rest are compact rows.'

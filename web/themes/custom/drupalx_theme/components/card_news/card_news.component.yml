@@ -40,3 +40,18 @@ props:
         - src: 'https://placehold.co/1200x800'
           alt: 'Placeholder image'
       default: ''
+    image_fit:
+      type: string
+      title: 'Image fit'
+      description: >-
+        Cover (the default) fills the 16/10 slot — right for an editorial
+        photograph. Contain letterboxes the whole image against the card tint,
+        for a news feed of title cards, flyers or posters that a crop would
+        slice through.
+      default: cover
+      enum:
+        - cover
+        - contain
+      meta:enum:
+        cover: 'Cover (editorial photography)'
+        contain: 'Contain (title cards, flyers — never crop)'

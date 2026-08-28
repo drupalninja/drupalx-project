@@ -1,0 +1,60 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Contact'
+description: 'Real contact FORM beside a reach-us rail (phones, address, hours, map). Every redesign contact page needs one — an info-only contact page reads thinner than the site it replaces.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+    title:
+      type: string
+      title: Title
+      default: 'Send us a message'
+      examples:
+        - 'Send us a message'
+    body:
+      type: string
+      title: Intro
+      contentMediaType: text/html
+      x-formatting-context: block
+      default: ''
+    # WHERE THE FORM POSTS. Left empty the form still renders and shows the
+    # inline thank-you via JS — the demo-day rule is that no form on the site
+    # 404s. In production point this at the Drupal webform endpoint.
+    action:
+      type: string
+      title: 'Form action URL'
+      default: ''
+    address:
+      type: string
+      title: Address
+      default: ''
+    hours:
+      type: string
+      title: Hours
+      default: ''
+    map_src:
+      type: string
+      title: 'Map embed URL'
+      description: 'Google Maps embed src from the issuer’s current contact page. Empty = no map.'
+      default: ''
+    tone:
+      type: string
+      title: Tone
+      default: white
+      enum:
+        - white
+        - tint
+      meta:enum:
+        white: 'White'
+        tint: 'Brand tint'
+
+slots:
+  phones:
+    title: 'Phone rows'
+    description: 'Every number the current contact page lists. Fill with Document Item or plain text rows.'

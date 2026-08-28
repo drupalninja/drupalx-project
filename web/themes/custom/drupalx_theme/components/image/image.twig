@@ -5,16 +5,30 @@
  * static build passes it straight from data). dx_image() upgrades the render
  * to a width-stepped WebP srcset on Drupal; statically it returns
  * srcset: null and the plain <img src> ships.
+ *
+ * Aspect MUST live on a wrapper, not the <img>. Tailwind preflight sets
+ * `img { height: auto }`, and small archive sources have intrinsic widths
+ * below the grid cell — putting aspect-square on the img made each tile
+ * shrink-wrap to the file's native width. Match section_hero / card: box
+ * owns the ratio, img fills with object-cover.
+ *
+ * Small archive thumbs (width < 640px, e.g. COG 400×284 Measure G photos)
+ * must NOT upscale into a forced 4:3 slot — cap the frame at intrinsic px
+ * and use the file's own aspect ratio so naturalWidth == clientWidth.
  */
 #}
 {% set aspect = aspect|default('auto') %}
 {% set rounded = rounded|default('2xl') %}
 {% set frame = frame|default('none') %}
-{% set aspect_map = {
+{% set crop = aspect != 'auto' %}
+{% set iw = image.width|default(0) %}
+{% set ih = image.height|default(0) %}
+{% set cap_native = crop and iw > 0 and ih > 0 and iw < 640 %}
+{% set aspect_box = {
   'auto': '',
-  '16x9': 'aspect-video object-cover',
-  '4x3': 'aspect-4/3 object-cover',
-  'square': 'aspect-square object-cover',
+  '16x9': 'relative aspect-video overflow-hidden',
+  '4x3': 'relative aspect-4/3 overflow-hidden',
+  'square': 'relative aspect-square overflow-hidden',
 } %}
 {% set rounded_map = {
   'none': '',
@@ -23,19 +37,19 @@
 } %}
 {% if image.src|default('') %}
   {% set io = dx_image(image, '(min-width: 1024px) 50vw, 100vw') %}
-  <figure class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="{{ frame == 'offset-accent' ? 'relative before:content-[\'\'] before:absolute before:-inset-x-3 before:-inset-y-3 before:translate-x-5 before:translate-y-5 before:rounded-2xl before:bg-accent-100 before:-z-10' : '' }}">
+  <figure class="max-w-content mx-auto w-full min-w-0 px-4 sm:px-6 lg:px-8">
+    <div class="{{ frame == 'offset-accent' ? 'relative before:content-[\'\'] before:absolute before:-inset-x-3 before:-inset-y-3 before:translate-x-5 before:translate-y-5 before:rounded-2xl before:bg-accent-100 before:-z-10' : '' }} {{ cap_native ? 'relative w-full overflow-hidden' : aspect_box[aspect]|default('') }} {{ crop ? rounded_map[rounded]|default('') : '' }}"{% if cap_native %} style="max-width: {{ iw }}px; aspect-ratio: {{ iw }} / {{ ih }};"{% endif %}>
       <img
         src="{{ image.src }}"
         alt="{{ image.alt|default('') }}"
         loading="lazy"
-        class="w-full {{ aspect_map[aspect]|default('') }} {{ rounded_map[rounded]|default('') }}"
+        class="{{ crop ? 'absolute inset-0 h-full w-full object-cover' : 'w-full' }} {{ not crop ? rounded_map[rounded]|default('') : '' }}"
         {% if io.srcset %}srcset="{{ io.srcset }}" sizes="{{ io.sizes }}"{% endif %}
         {% if io.width %}width="{{ io.width }}" height="{{ io.height }}"{% elseif image.width|default(0) %}width="{{ image.width }}" height="{{ image.height|default('') }}"{% endif %}
       >
     </div>
     {% if caption|default('') %}
-      <figcaption class="mt-3 text-sm text-ink-500">{{ caption }}</figcaption>
+      <figcaption class="mt-3 text-sm text-ink-500 text-left"{% if cap_native %} style="max-width: {{ iw }}px;"{% endif %}>{{ caption }}</figcaption>
     {% endif %}
   </figure>
 {% endif %}

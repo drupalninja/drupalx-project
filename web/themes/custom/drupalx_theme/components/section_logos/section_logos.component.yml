@@ -1,0 +1,31 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Logos'
+description: 'Partner/donor/funder recognition band — a centered label above a responsive logo grid. For nonprofit "with support from" sections, municipal partner acknowledgments, or accreditation displays.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  properties:
+    label:
+      type: string
+      title: Label
+      description: 'The centered uppercase heading above the logo grid (e.g. "With support from").'
+      default: ''
+      examples:
+        - 'With support from partners advancing our mission'
+    tone:
+      type: string
+      title: Background
+      default: white
+      enum:
+        - white
+        - tint
+      meta:enum:
+        white: White
+        tint: 'Brand tint'
+
+slots:
+  logos:
+    title: Logos
+    description: 'Logo item components — one per partner/donor/funder.'

@@ -1,6 +1,6 @@
 $schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 name: 'Section: Hero'
-description: 'Homepage hero — glass panel over photo, light editorial split with offset photo card + floating stat chip, or solid dark band. One per page, at the top.'
+description: 'Homepage hero — five styles: glass panel over photo, light editorial split with offset photo card, solid dark band, full-bleed type on a scrimmed photo, or a photo card in a tinted band. One per page, at the top.'
 status: stable
 group: DrupalX Sections
 
@@ -45,25 +45,31 @@ props:
         - glass
         - split
         - dark
+        - fullbleed
+        - feature
       meta:enum:
         glass: 'Glass panel over full-bleed photo'
         split: 'Light editorial split (photo card + offset frame)'
         dark: 'Solid dark band (no photo needed)'
+        fullbleed: 'Huge type on a scrimmed photo (needs a strong, evenly-lit picture)'
+        feature: 'Photo card in a tinted band (forgiving of an imperfect photo)'
       examples:
         - split
     height:
       type: string
       title: Height
       description: 'Capped heights (never raw vh — the Canvas editor iframe is unbounded).'
-      default: medium
+      default: full
       enum:
         - short
         - medium
         - tall
+        - full
       meta:enum:
         short: Short
         medium: Medium
         tall: Tall
+        full: 'Full (fills the viewport below the header)'
     stat_chip_number:
       type: string
       title: 'Stat chip — number'
@@ -77,6 +83,90 @@ props:
       default: ''
       examples:
         - 'invested in the region'
+    image_position:
+      type: string
+      title: 'Image position (split style)'
+      description: 'Which side the photo sits on in the split style. Ignored by other styles.'
+      default: right
+      enum:
+        - left
+        - right
+      meta:enum:
+        left: 'Photo on the left'
+        right: 'Photo on the right (default)'
+      examples:
+        - right
+    align:
+      type: string
+      title: 'Panel alignment (glass style)'
+      description: 'Where the glass panel sits horizontally. Center is the default; left seats it against the left edge for a photo whose subject sits right-of-centre. Ignored by other styles.'
+      default: center
+      enum:
+        - center
+        - left
+      meta:enum:
+        center: 'Centered panel (default)'
+        left: 'Left-aligned panel'
+      examples:
+        - center
+    panel_width:
+      type: string
+      title: 'Panel width (glass style)'
+      description: 'Glass panel max width. lg suits most headings; md for a short heading or a left-aligned panel. Ignored by other styles.'
+      default: lg
+      enum:
+        - md
+        - lg
+      meta:enum:
+        md: 'Medium (max-w-xl)'
+        lg: 'Large (max-w-3xl, default)'
+      examples:
+        - lg
+    eyebrow_icon:
+      type: string
+      title: 'Eyebrow icon (glass style)'
+      description: 'Lucide icon shown before the eyebrow text in the glass style. Use ''none'' for no icon. Ignored by other styles.'
+      default: none
+      enum:
+        - none
+        - arrow-right
+        - arrow-up-right
+        - chart-column
+        - building-2
+        - calendar
+        - check
+        - chevron-down
+        - chevron-right
+        - clock
+        - download
+        - external-link
+        - file-text
+        - flag
+        - folder
+        - globe
+        - graduation-cap
+        - heart-handshake
+        - info
+        - landmark
+        - leaf
+        - library
+        - lightbulb
+        - mail
+        - map
+        - map-pin
+        - megaphone
+        - menu
+        - newspaper
+        - phone
+        - search
+        - shield-check
+        - sparkles
+        - star
+        - triangle-alert
+        - users
+        - x
+      examples:
+        - none
 
 slots:
   hero_buttons:

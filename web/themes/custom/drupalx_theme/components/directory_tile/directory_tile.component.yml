@@ -1,0 +1,32 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Directory Tile'
+description: 'One image-led wayfinding tile for the Directory section slot. A DESTINATION, not a topic — "Pay & Apply", not "Finance".'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - title
+    - href
+  properties:
+    title:
+      type: string
+      title: Title
+      examples:
+        - 'Pay & Apply'
+    sub:
+      type: string
+      title: 'Sub-line'
+      default: ''
+      examples:
+        - 'Taxes, permits, utilities'
+    href:
+      type: string
+      title: Link
+      examples:
+        - /services
+    image:
+      type: object
+      title: Image
+      $ref: 'json-schema-definitions://canvas.module/image'

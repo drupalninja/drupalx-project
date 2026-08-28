@@ -20,7 +20,7 @@
     <div class="flex-1 text-sm font-medium [&_a]:underline [&_a]:font-bold">{{ message|raw }}</div>
     {% if dismissible == true or dismissible == 'true' %}
       <button type="button" data-dx-alert-dismiss aria-label="Dismiss this alert"
-              class="shrink-0 -my-1 inline-flex h-8 w-8 items-center justify-center rounded-lg hover:bg-white/60">
+              class="shrink-0 -my-1 inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg hover:bg-white/60">
         {% include 'drupalx_theme:icon' with { name: 'x', size: 'sm' } only %}
       </button>
     {% endif %}

@@ -1,0 +1,94 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.canvas_full_html
+  module:
+    - options
+    - text
+  theme:
+    - drupalx_theme
+label: 'Map point'
+id: sdc.drupalx_theme.map_point
+source: sdc
+source_local_id: 'drupalx_theme:map_point'
+provider: drupalx_theme
+active_version: 80662b259e1c8c8d
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        title:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'Riverbend Town Office'
+          expression: ℹ︎string␟value
+        lat:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: '44.2601'
+          expression: ℹ︎string␟value
+        lng:
+          required: true
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: '-72.5754'
+          expression: ℹ︎string␟value
+        body:
+          required: false
+          field_type: text_long
+          field_storage_settings: {  }
+          field_instance_settings:
+            allowed_formats:
+              - canvas_full_html
+          field_widget: text_textarea
+          default_value:
+            -
+              value: '<p>12 Mill Street<br>Open 8–4, Monday to Friday</p>'
+              format: canvas_full_html
+          expression: ℹ︎text_long␟processed
+        url:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: /departments/town-clerk
+          expression: ℹ︎string␟value
+        label:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: '12'
+          expression: ℹ︎string␟value
+        c:
+          required: false
+          field_type: list_string
+          field_storage_settings:
+            allowed_values_function: canvas_load_allowed_values_for_component_prop
+          field_instance_settings: {  }
+          field_widget: options_select
+          default_value: null
+          expression: ℹ︎list_string␟value
+    fallback_metadata:
+      slot_definitions: {  }

@@ -28,6 +28,19 @@
   {{ page.content }}
 </main>
 
+{# AI concierge overlay — FRONT PAGE ONLY, matching the static build's
+   pages/_layout.twig so both render targets agree. The hero's ask-bar is the
+   trigger, and a trigger without its dialog is a dead control, so the gate here
+   must stay the same gate the hero uses. Its JS is attached here rather than in
+   the global library for the same reason: no inner page should pay for it. #}
+{% if is_front|default(false) and dx_site.assistant|default(null) %}
+  {{ attach_library('drupalx_theme/concierge') }}
+  {% include '@drupalx_theme/templates/partials/_concierge.html.twig' with {
+    assistant: dx_site.assistant,
+    site_name: dx_site.name|default('this site'),
+  } only %}
+{% endif %}
+
 {% include '@drupalx_theme/templates/partials/_footer.html.twig' with {
   nav: dx_nav|default([]),
   site: dx_site|default({}),

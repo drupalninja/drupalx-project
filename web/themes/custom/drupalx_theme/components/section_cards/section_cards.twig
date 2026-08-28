@@ -9,6 +9,30 @@
 {% set columns = columns|default('3') %}
 {% set tone = tone|default('white') %}
 {% set featured = featured_first|default(false) %}
+{% set layout = layout|default('grid') %}
+{#
+  BENTO (2026-08-10, ported from BentoGrid.astro). One featured card TWO ROWS
+  TALL with the compact cards filling the columns beside it — the homepage
+  section every pilot hand-built before this existed.
+
+  ROWS ONLY, never also columns. Spanning both (the first cut of this) makes
+  the feature eat 2 of the 3 columns, which leaves one cell per row: the third
+  compact card then wraps underneath the feature and the grid's whole right
+  side is a hole. The feature is tall, not wide.
+
+  So the card count that fills the rectangle is 1 feature + an EVEN number of
+  compacts (4 compacts = a flush 3x2 at lg). An odd count leaves one empty
+  cell at the end, exactly as it does in the Astro twin.
+
+  auto-rows-fr, not auto: `auto` sizes row 1 to whatever is tallest and row 2
+  to a compact card, so the feature's midpoint lands off-centre against its
+  neighbours. `fr` makes the two rows equal, so the feature is exactly two
+  compact cards tall.
+
+  Single column below sm — a 2-row span on a one-column grid is just a tall
+  card with nothing beside it, so the span is sm:-prefixed.
+#}
+{% set bento_grid = 'grid gap-6 sm:grid-cols-2 sm:auto-rows-fr lg:grid-cols-3 sm:[&>*:first-child]:row-span-2' %}
 {% set col_map = {
   '2': 'sm:grid-cols-2',
   '3': 'sm:grid-cols-2 lg:grid-cols-3',
@@ -17,7 +41,29 @@
 <section class="full-bleed {{ tone == 'tint' ? 'bg-primary-50' : 'bg-white' }} py-16 md:py-24" data-reveal>
   <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
     {{ sx.header(eyebrow|default(''), title|default(''), lede|default(''), 'left', false) }}
-    <div class="grid gap-6 {{ col_map[columns]|default(col_map['3']) }} {{ featured ? 'sm:[&>*:first-child]:col-span-2' : '' }}">
+    {#
+      PAGINATION (2026-08-02, parity with PathwayGroup/CardGroup in the Astro
+      starters). Off by default — an editor-composed grid is usually 3 to 6
+      cards. Turn it on for an IMPORTED grid that can run to dozens of rows;
+      cbtrust brought in card groups of 16, 14, 13 and 12.
+
+      Every card still renders server-side, so SEO and the site search see the
+      whole list — global.js only chunks what is on screen. `paginate` sets the
+      hooks its pager looks for; per_page defaults to 12, which keeps 3-up rows
+      whole.
+    #}
+    {% set paginate = paginate|default(false) %}
+    <div
+      class="{{ layout == 'bento' ? bento_grid : 'grid gap-6 ' ~ (col_map[columns]|default(col_map['3'])) ~ (featured ? ' sm:[&>*:first-child]:col-span-2' : '') }}"
+      {% if paginate %}
+        data-dx-paginate
+        data-dx-per-page="{{ per_page|default(12) }}"
+        data-dx-pager-label="{{ title|default('Results') }} pages"
+        {# The child cards are Canvas slot output, so the section cannot put
+           [data-dx-page-item] on each one directly. The pager falls back to
+           direct children when no item is marked. #}
+      {% endif %}
+    >
       {% block cards %}{% endblock %}
     </div>
   </div>

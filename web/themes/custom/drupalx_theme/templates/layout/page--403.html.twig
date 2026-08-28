@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * 403 Access denied — themed error page.
+ *
+ * Replaces the bare system.403 markup ("You are not authorized…") with an
+ * on-brand, full-bleed brand-glow band: a big 403 numeral, eyebrow, message,
+ * and CTAs (home + sign-in — signing in is the actual fix for most 403s).
+ * Keeps the shared site chrome (header + footer partials) from page.html.twig.
+ *
+ * The band is min-height-capped (hero-h-full) so it fills the viewport below
+ * the sticky header and the footer rests at the bottom instead of floating
+ * mid-screen the way the unstyled one-line message left it.
+ */
+#}
+{% include '@drupalx_theme/templates/partials/_header.html.twig' with {
+  nav: dx_nav|default([]),
+  site: dx_site|default({}),
+  is_front: is_front|default(false),
+} only %}
+
+{% if page.highlighted %}
+  {{ page.highlighted }}
+{% endif %}
+
+<main id="main-content" role="main">
+  <section data-surface="dark" class="full-bleed brand-glow relative overflow-hidden hero-h-full flex items-center">
+    {# Accent glow — a second, offset radial over the brand-glow base, matching
+       the dark hero's two-light feel rather than one flat wash. #}
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(45% 60% at 78% 12%, color-mix(in srgb, var(--color-accent-500) 20%, transparent), transparent 70%);" aria-hidden="true"></div>
+    <div class="relative max-w-site mx-auto w-full px-4 sm:px-6 lg:px-8 py-20">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow mb-6">Error 403</p>
+        <div class="font-display font-semibold leading-none tracking-tight text-white" style="font-size: clamp(5rem, 15vw, 9.5rem);" aria-hidden="true">403</div>
+        <h1 class="hero-display mt-6 text-white">Access denied</h1>
+        <p class="mt-5 text-lg leading-relaxed text-primary-100">You don't have permission to view this page. If you reached it by mistake, head back home or sign in to your account.</p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          {% include 'drupalx_theme:button' with { label: 'Return home', url: '/', variant: 'accent', icon: 'arrow-right' } only %}
+          {% include 'drupalx_theme:button' with { label: 'Sign in', url: '/user/login', variant: 'glass' } only %}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% include '@drupalx_theme/templates/partials/_footer.html.twig' with {
+  nav: dx_nav|default([]),
+  site: dx_site|default({}),
+} only %}

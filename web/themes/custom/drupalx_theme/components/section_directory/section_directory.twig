@@ -1,0 +1,39 @@
+{#
+/**
+ * Section: Directory — image-led wayfinding tiles that OVERLAP the hero.
+ *
+ * Ported from the Astro twins' DirectoryTiles.astro (2026-08-09). The
+ * negative top margin is the whole design: the tiles start inside the hero
+ * photograph and land on a band below it, which is what makes a civic
+ * homepage read as "here is what you came to DO" rather than a stack of
+ * cards. Refs: nricd / dover / arlington-vt pilots.
+ *
+ * `landing` MUST match the background of the section that follows, or the
+ * seam between this band and the next shows as a stripe.
+ */
+#}
+{% set landing = landing|default('dark') %}
+{% set landing_class = {
+  'dark': 'bg-primary-800',
+  'tint': 'bg-primary-50',
+  'white': 'bg-white',
+}[landing]|default('bg-primary-800') %}
+{% set tiles_html %}{% block tiles %}{% endblock %}{% endset %}
+
+<section class="section-directory relative z-10 -mt-24 pb-16 sm:-mt-28 lg:-mt-36 lg:pb-20" aria-label="{{ label|default('Explore') }}">
+  {# Landing band — starts at the photo's bottom edge (top = the -mt pull). #}
+  <div class="absolute inset-x-0 bottom-0 top-24 sm:top-28 lg:top-36 {{ landing_class }}" aria-hidden="true"></div>
+
+  {# max-w-content (1600), not Tailwind's max-w-screen-2xl (1536) — every
+   other section uses the theme token, so this one sat 64px narrower and
+   its left edge failed to line up with the section above it. #}
+  <div class="relative mx-auto max-w-content px-4 sm:px-6 lg:px-8">
+    {# Four tiles is the common case; the grid stays 4-up and a 3-tile set
+       simply fills three columns. Tailwind v4 needs literal classes, so this
+       cannot be computed from a count the way the Astro twin does it — the
+       tiles are a SLOT now and their number is not known at render time. #}
+    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {{ tiles_html }}
+    </ul>
+  </div>
+</section>

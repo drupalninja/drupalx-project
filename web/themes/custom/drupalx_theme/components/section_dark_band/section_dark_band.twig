@@ -1,0 +1,47 @@
+{#
+/**
+ * Section: Dark band — the full-bleed dark LAYOUT PRIMITIVE (ported from
+ * DarkBand.astro, 2026-08-10).
+ *
+ * The design rule it encodes: every page template gets ONE dark band, and its
+ * glow is a same-hue tonal wash — never a muddy cross-hue gradient. That is
+ * what `.brand-glow` already is (accent-into-primary-900 radial), so this
+ * reuses it rather than shipping a second gradient recipe.
+ *
+ * The difference from section_cta: THAT one is the ask (centered copy, a row
+ * of buttons, nothing else). This one owns only the band — background, glow,
+ * container, optional header — and hands the middle to a slot, which is what
+ * the map bands / stat rows / meeting-notice strips every pilot hand-builds
+ * actually need.
+ *
+ * data-surface="dark" is load-bearing, not decorative: `.eyebrow` reads
+ * --eyebrow-color off the nearest dark surface, and child components (Stat,
+ * Button) branch their own colors on it.
+ */
+#}
+{% set align = align|default('left') %}
+{% set glow = glow ?? true %}
+{% set cols = content_cols|default('none') %}
+{% set col_map = { '2': 'sm:grid-cols-2', '3': 'sm:grid-cols-3', '4': 'sm:grid-cols-4' } %}
+<section data-surface="dark" class="full-bleed {{ glow ? 'brand-glow' : 'bg-primary-900' }} py-16 md:py-24 text-white" data-reveal>
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    {% if eyebrow|default('') or title|default('') or lede|default('') %}
+      <div class="mb-10 max-w-3xl md:mb-14 {{ align == 'center' ? 'mx-auto text-center' : '' }}">
+        {% if eyebrow|default('') %}
+          <p class="eyebrow mb-3 {{ align == 'center' ? 'justify-center' : '' }}">{{ eyebrow }}</p>
+        {% endif %}
+        {# Guarded — an empty heading is a screen-reader dead end (section_cta). #}
+        {% if title|default('') %}<h2 class="display-xl text-white">{{ title }}</h2>{% endif %}
+        {% if lede|default('') %}
+          <div class="mt-4 text-lg leading-relaxed text-primary-100">{{ lede|raw }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% set content_html %}{% block content %}{% endblock %}{% endset %}
+    {% if cols and col_map[cols] %}
+      <div class="grid gap-8 {{ col_map[cols] }}">{{ content_html|raw }}</div>
+    {% else %}
+      {{ content_html|raw }}
+    {% endif %}
+  </div>
+</section>

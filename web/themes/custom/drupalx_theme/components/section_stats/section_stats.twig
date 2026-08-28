@@ -12,15 +12,19 @@
   '3': 'grid-cols-2 sm:grid-cols-3',
   '4': 'grid-cols-2 sm:grid-cols-4',
 } %}
-<section class="full-bleed {{ on_dark ? 'bg-primary-800 text-white' : 'bg-white' }}" data-reveal>
+<section {% if on_dark %}data-surface="dark"{% endif %} class="full-bleed {{ on_dark ? 'bg-primary-800 text-white' : 'bg-white' }}" data-reveal>
   <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
     {% if eyebrow|default('') or title|default('') %}
-      <div class="pt-12 {{ on_dark ? '' : 'pt-16' }}">
-        {% if eyebrow|default('') %}<p class="eyebrow {{ on_dark ? 'text-accent-300' : '' }}">{{ eyebrow }}</p>{% endif %}
+      {# CENTRED — a stats band is a MOMENT, not a content band (Jay,
+         2026-08-02). The Astro twins were left-aligned earlier the same day
+         "for consistency" and Jay corrected it: this belongs with the hero and
+         the closing CTA, not in the content column. #}
+      <div class="mx-auto max-w-3xl text-center pt-12 {{ on_dark ? '' : 'pt-16' }}">
+        {% if eyebrow|default('') %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
         {% if title|default('') %}<h2 class="display-xl mt-2 {{ on_dark ? 'text-white' : '' }}">{{ title }}</h2>{% endif %}
       </div>
     {% endif %}
-    <div class="grid {{ col_map[columns]|default(col_map['4']) }} {{ on_dark ? 'divide-white/10' : 'divide-primary-100' }} sm:divide-x py-12">
+    <div class="grid {{ col_map[columns]|default(col_map['4']) }} {{ on_dark ? 'divide-white/10' : 'divide-primary-100' }} sm:divide-x pt-12 pb-16">
       {% block stats %}{% endblock %}
     </div>
   </div>

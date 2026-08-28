@@ -20,6 +20,71 @@ use Drupal\Core\Url;
  * so a rebrand needs no template edit:
  *   drush -y config:set drupalx_theme.settings dx_tagline "Your tagline"
  */
+
+/**
+ * Pick a nav-dropdown glyph for a menu link from its own words.
+ *
+ * Drupal menu links have no icon field, and the description field is already
+ * spoken for (sync-menu.php keeps its idempotency key there). So the glyph is
+ * DERIVED, the same way the Astro twins' card-icon.ts derives one for a card
+ * whose source gave it no image.
+ *
+ * Restricted to the theme's curated set (scripts/copy-icons.mjs) — the template
+ * inlines by filename, so a name outside dist/icons renders nothing.
+ *
+ * Keyword rules are about the KINDS OF THING a civic or nonprofit menu points
+ * at: staff, documents, meetings, payments, contact. Most specific first.
+ */
+function _drupalx_theme_menu_icon(string $title, string $url): string {
+  return _drupalx_theme_menu_icon_candidates($title, $url)[0] ?? 'chevron-right';
+}
+
+/**
+ * Every glyph a menu link's words match, most specific first.
+ *
+ * Returned ranked (not just the winner) so a dropdown can keep its siblings
+ * DISTINCT: when two links both want `users`, the second takes its next-best
+ * match instead of collapsing to a chevron — see the sibling pass in
+ * drupalx_theme_preprocess_page().
+ */
+function _drupalx_theme_menu_icon_candidates(string $title, string $url): array {
+  $haystack = mb_strtolower($title . ' ' . $url);
+  $rules = [
+    '/\b(staff|employee|personnel|official|career|job)/' => 'briefcase',
+    '/\b(leader|govern|mayor|elect|trustee)/' => 'landmark',
+    '/\b(team|people|board|council|commission|director|who)/' => 'users',
+    '/\b(meeting|calendar|event|agenda|schedule|hour|date)/' => 'calendar',
+    '/\b(document|record|report|budget|minute|policy|bylaw|plan|form)/' => 'file-text',
+    '/\b(service|apply|request|permit|licen)/' => 'clipboard-check',
+    '/\b(news|press|announce|release|story|blog)/' => 'newspaper',
+    '/\b(alert|notice|emergency|warning|closure)/' => 'triangle-alert',
+    '/\b(contact|email|message|reach)/' => 'mail',
+    '/\b(phone|call|hotline)/' => 'phone',
+    '/\b(pay|bill|tax|fee|invoice|permit|licen)/' => 'landmark',
+    '/\b(map|direction|location|address|where|park|trail)/' => 'map-pin',
+    '/\b(accessib|accommodat|ada|inclusi)/' => 'shield-check',
+    '/\b(library|catalog|book|read)/' => 'library',
+    '/\b(school|student|educat|class|program|course)/' => 'graduation-cap',
+    '/\b(volunteer|donate|give|support|member|join)/' => 'heart-handshake',
+    '/\b(depart|office|division|building|facilit)/' => 'building-2',
+    '/\b(data|statistic|number|chart|dashboard|performance)/' => 'chart-column',
+    '/\b(search|find|look)/' => 'search',
+    '/\b(about|history|mission|story|charter)/' => 'info',
+    '/\b(environment|sustain|green|recycl|waste|climate)/' => 'leaf',
+    '/\b(project|initiative|campaign|effort)/' => 'flag',
+    '/\b(idea|innovat|propos|feedback|suggest)/' => 'lightbulb',
+    '/\b(download|file|pdf|attach)/' => 'download',
+    '/\b(featur|highlight|spotlight|new\b)/' => 'sparkles',
+  ];
+  $found = [];
+  foreach ($rules as $pattern => $icon) {
+    if (preg_match($pattern, $haystack) && !in_array($icon, $found, TRUE)) {
+      $found[] = $icon;
+    }
+  }
+  return $found;
+}
+
 function drupalx_theme_preprocess_page(array &$variables): void {
   $config = \Drupal::config('system.site');
 
@@ -51,37 +116,97 @@ function drupalx_theme_preprocess_page(array &$variables): void {
       // scripts/sync-menu.php stores its idempotency key in the description
       // field (dx:…) — never surface that as dropdown copy.
       $desc = (string) ($child->link->getDescription() ?? '');
+      $childTitle = $child->link->getTitle();
+      $childUrl = $child->link->getUrlObject()->toString();
       $item['children'][] = [
-        'title' => $child->link->getTitle(),
-        'url' => $child->link->getUrlObject()->toString(),
+        'title' => $childTitle,
+        'url' => $childUrl,
         'description' => str_starts_with($desc, 'dx:') ? '' : $desc,
+        'icon' => _drupalx_theme_menu_icon_candidates($childTitle, $childUrl),
       ];
+    }
+    // A panel repeating one glyph reads as unfinished — the failure these
+    // icons exist to prevent. Keyword rules are coarse enough that three
+    // "Documents"-ish links can collide, so each child takes its FIRST
+    // candidate no sibling has claimed yet; only a link with nothing left
+    // falls back to the neutral chevron (never a false grouping).
+    $seen = [];
+    foreach ($item['children'] as $k => $child) {
+      $icon = 'chevron-right';
+      foreach ($child['icon'] as $candidate) {
+        if (!isset($seen[$candidate])) {
+          $icon = $candidate;
+          break;
+        }
+      }
+      $seen[$icon] = TRUE;
+      $item['children'][$k]['icon'] = $icon;
     }
     $nav[] = $item;
   }
   $variables['dx_nav'] = $nav;
   // Brand mark: the theme's logo.svg by default; a rebrand can point
   // dx_logo_url at a different file via a theme setting.
-  $themePath = \Drupal::service('extension.list.theme')->getPath('drupalx_theme');
-  $variables['dx_logo_url'] = theme_get_setting('dx_logo_url', 'drupalx_theme') ?: '/' . $themePath . '/logo.svg';
+  $variables['dx_logo_url'] = theme_get_setting('dx_logo_url', 'drupalx_theme') ?: _drupalx_theme_logo_url();
 
   // ── Site branding (theme settings override the lean defaults).
   $setting = fn (string $key, ?string $default) => theme_get_setting($key, 'drupalx_theme') ?? $default;
+  // WORDMARK MODE + the SECOND cta + the UTILITY row.
+  //
+  // _header.html.twig reads site.logo_wordmark, site.cta_secondary and
+  // site.utility — the static build supplies all three from
+  // frontend/site/pages.config.cjs. This preprocess did not build any of
+  // them, so the Drupal-rendered header could only ever be: 40x40 rounded
+  // logo square, one CTA, no utility row — no matter what the engagement
+  // configured. A wide issuer wordmark came out squashed into a square and
+  // the CMS header visibly disagreed with the static site it is supposed to
+  // be the editor for. (ssseva 2026-08-09, first real engagement.)
+  $utility = $setting('dx_utility_links', NULL);
+  if (is_string($utility) && trim($utility) !== '') {
+    // One "Label|/path" per line, matching the other multi-value settings.
+    $utility = array_values(array_filter(array_map(
+      static function (string $line): ?array {
+        [$label, $url] = array_pad(array_map('trim', explode('|', $line, 2)), 2, '');
+        // The twig renders `u.title` (not `u.label`) — same key the static
+        // pages.config.cjs uses, so the two headers stay interchangeable.
+        return ($label !== '' && $url !== '') ? ['title' => $label, 'url' => $url] : NULL;
+      },
+      preg_split('/\R/', $utility) ?: []
+    )));
+  }
+  else {
+    $utility = [];
+  }
+  $cta2Label = $setting('dx_cta2_label', NULL);
+
   $variables['dx_site'] = [
     'name' => $config->get('name') ?: 'DrupalX Canvas',
     'tagline' => $setting('dx_tagline', $config->get('slogan') ?: NULL),
+    // page.html.twig includes the header partial with `only`, so the
+    // top-level $variables['dx_logo_url'] set above never reaches it — the
+    // partial fell through to its hardcoded /logo.svg and the dx_logo_url
+    // theme setting was dead code on the Drupal side. The partial reads
+    // `site.logo` (the same key the static pages.config.cjs supplies), so
+    // pass it through here where `only` cannot strip it.
+    'logo' => $variables['dx_logo_url'],
+    'logo_wordmark' => (bool) theme_get_setting('dx_logo_wordmark', 'drupalx_theme'),
+    'utility' => $utility,
     'cta' => [
       'label' => $setting('dx_cta_label', 'Get in touch'),
       'url' => $setting('dx_cta_url', '/contact'),
     ],
+    'cta_secondary' => $cta2Label ? [
+      'label' => $cta2Label,
+      'url' => $setting('dx_cta2_url', '/contact'),
+    ] : NULL,
     'footer' => [
-      'blurb' => $setting('dx_footer_blurb', NULL),
+      'blurb' => $setting('dx_footer_blurb', 'A Tailwind-first Drupal Canvas starter — component-driven pages authored once, rendered as a static site and as editable Canvas pages.'),
       'legal' => $setting('dx_footer_legal', 'All rights reserved.'),
       'year' => date('Y'),
       'contact' => [
-        'address' => $setting('dx_contact_address', NULL),
-        'phone' => $setting('dx_contact_phone', NULL),
-        'email' => $setting('dx_contact_email', $config->get('mail') ?: NULL),
+        'address' => $setting('dx_contact_address', '123 Main Street, Anytown, USA'),
+        'phone' => $setting('dx_contact_phone', '(555) 010-2030'),
+        'email' => $setting('dx_contact_email', 'hello@example.com'),
       ],
     ],
   ];
@@ -100,6 +225,28 @@ function drupalx_theme_preprocess_page(array &$variables): void {
   if (\Drupal::currentUser()->isAuthenticated()) {
     $variables['#attached']['library'][] = 'drupalx_theme/admin_toolbar_displace';
     $variables['#cache']['contexts'][] = 'user.roles:authenticated';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ *
+ * Themed error pages: the default system.403/404 controllers emit bare
+ * translatable markup ("You are not authorized…"), which renders as a single
+ * unstyled line inside page.html.twig — the site chrome floats and the
+ * message has no visual weight. Add a page template suggestion so the theme
+ * can replace that with an on-brand error layout while keeping the shared
+ * header/footer chrome. Only fires for the DEFAULT error routes; an admin
+ * who sets a custom system.site page.403/404 path gets that page rendered
+ * as-is (its own route, no suggestion).
+ */
+function drupalx_theme_theme_suggestions_page_alter(array &$suggestions, array $variables): void {
+  $route = \Drupal::routeMatch()->getRouteName();
+  if ($route === 'system.403') {
+    $suggestions[] = 'page__403';
+  }
+  elseif ($route === 'system.404') {
+    $suggestions[] = 'page__404';
   }
 }
 
@@ -137,7 +284,6 @@ function drupalx_theme_page_attachments_alter(array &$attachments): void {
   if ($global->get('favicon.use_default') === FALSE && $global->get('favicon.path')) {
     return;
   }
-  $theme = \Drupal::service('extension.list.theme')->getPath('drupalx_theme');
   foreach ($attachments['#attached']['html_head_link'] ?? [] as $i => $link) {
     if (($link[0]['rel'] ?? '') === 'icon') {
       unset($attachments['#attached']['html_head_link'][$i]);
@@ -145,7 +291,22 @@ function drupalx_theme_page_attachments_alter(array &$attachments): void {
   }
   $attachments['#attached']['html_head_link'][] = [[
     'rel' => 'icon',
-    'href' => '/' . $theme . '/logo.svg',
+    'href' => _drupalx_theme_logo_url(),
     'type' => 'image/svg+xml',
   ]];
+}
+
+/**
+ * URL of the theme's logo.svg, cache-busted by its mtime.
+ *
+ * Static theme files ship with a ten-year Cache-Control, so without a
+ * version query a regenerated mark (npm run gen:logo, or an engagement's
+ * real logo dropped in) keeps showing the OLD one in every browser that has
+ * already seen the site — the header AND the tab favicon.
+ */
+function _drupalx_theme_logo_url(): string {
+  $theme = \Drupal::service('extension.list.theme')->getPath('drupalx_theme');
+  $file = DRUPAL_ROOT . '/' . $theme . '/logo.svg';
+  $v = is_file($file) ? (string) filemtime($file) : '';
+  return '/' . $theme . '/logo.svg' . ($v ? '?v=' . $v : '');
 }

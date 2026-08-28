@@ -1,0 +1,54 @@
+{#
+/**
+ * Concierge hero ask-bar — the HOMEPAGE entry point into the concierge overlay.
+ *
+ * Ported from the Astro starter's <Concierge hero /> mode, which drupalx_theme
+ * was missing: the Canvas port (roscommon-coco-2026) brought the overlay and
+ * the client-side RAG across but no hero bar, leaving the floating FAB as the
+ * only way in. That inverts Jay's standing rule — the concierge is a homepage
+ * HERO feature, not a site-wide chat bubble — so this partial is the intended
+ * entry point and the FAB is suppressed (see global.css).
+ *
+ * Renders a button, not an <input>: the real input lives in the overlay, and
+ * two focusable text fields for one feature confuses screen-reader users. The
+ * typewriter span cycles the configured prompts as placeholder-ish hint text;
+ * it is aria-hidden, with a stable accessible name on the button itself.
+ *
+ * Vars:
+ *   assistant  — site.assistant (name/prompts). Falls back to generic copy.
+ *   light      — true on a LIGHT hero background (split/feature), false on a
+ *                dark one (glass/fullbleed/dark). Drives the two color sets.
+ */
+#}
+{% set a = assistant|default({}) %}
+{% set assistant_name = a.name|default('Site Assistant') %}
+{% set prompts = a.prompts|default(['How do I contact the City?']) %}
+{% set is_light = light|default(false) %}
+
+<button type="button" data-concierge-open
+  {# Full width of the hero panel — a max-w-xl block inside a centered panel
+     sat flush-left under centered copy (Jay, ogemaw 2026-08-26: "full width
+     or centered"). Full width needs no knowledge of the panel's alignment. #}
+  class="group mt-6 flex w-full items-center gap-3 rounded-2xl border px-5 py-4 text-left transition
+    {{ is_light
+      ? 'border-primary-200 bg-primary-50 hover:border-accent-400 hover:bg-primary-100'
+      : 'border-white/30 bg-white/10 backdrop-blur-md hover:border-white/60 hover:bg-white/15' }}"
+  aria-label="Ask the {{ assistant_name }} a question">
+  <span class="flex size-10 shrink-0 items-center justify-center rounded-xl border
+    {{ is_light
+      ? 'border-primary-200 bg-white text-accent-700'
+      : 'border-white/25 bg-white/15 text-white backdrop-blur-sm' }}">
+    {% include 'drupalx_theme:icon' with { name: 'sparkles', size: 'md' } only %}
+  </span>
+  <span class="min-w-0 flex-1">
+    <span class="block truncate text-base sm:text-lg {{ is_light ? 'text-ink-500' : 'text-white/75' }}"
+      data-concierge-typer
+      data-prompts="{{ prompts|json_encode }}"
+      {# prompts[0], not prompts|first — Twing's `first` filter calls through a
+         slice helper that throws on Node 24 ("util_1.isNumber is not a
+         function"). Index access sidesteps it. #}
+      aria-hidden="true">{{ prompts[0] }}</span>
+    <span class="mt-0.5 block text-xs font-semibold uppercase tracking-wider
+      {{ is_light ? 'text-primary-600' : 'text-white/60' }}">Ask {{ assistant_name }}</span>
+  </span>
+</button>

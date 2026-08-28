@@ -1,0 +1,62 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Section: Story'
+description: 'Editorial testimonial / story band — a portrait photo beside an eyebrow, heading, blockquote, attribution, and optional CTA on a dark brand band. For nonprofit "faces of" stories, resident testimonials, or impact narratives.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - quote
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+      examples:
+        - 'Faces of hope'
+    title:
+      type: string
+      title: Heading
+      default: ''
+      examples:
+        - 'A second chance at life'
+    quote:
+      type: string
+      title: Quote
+      contentMediaType: text/html
+      x-formatting-context: block
+      examples:
+        - '<p>The team was there when I needed them most.</p>'
+    person:
+      type: string
+      title: Attribution
+      default: ''
+      examples:
+        - 'Maria Rodriguez, resident'
+    image:
+      type: object
+      title: Portrait image
+      $ref: 'json-schema-definitions://canvas.module/image'
+      examples:
+        - src: 'https://placehold.co/600x750'
+          alt: 'Maria Rodriguez'
+      default: ''
+    cta_label:
+      type: string
+      title: 'CTA label'
+      default: ''
+      examples:
+        - 'Read her story'
+    cta_url:
+      type: string
+      format: uri-reference
+      title: 'CTA link'
+      default: ''
+      examples:
+        - /stories/maria
+
+slots:
+  story_buttons:
+    title: Buttons
+    description: 'Optional Button components rendered after the quote (alternative to the single CTA label/link props).'

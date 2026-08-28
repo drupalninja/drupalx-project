@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * 404 Page not found — themed error page.
+ *
+ * Sibling to page--403.html.twig. Same brand-glow band layout: big 404
+ * numeral, eyebrow, message, and CTAs (home + search). The 404 is the more
+ * common error (stale bookmarks, typos), so the secondary CTA points at
+ * search rather than sign-in — searching is the actual fix for a 404.
+ *
+ * Note: this template only fires when system.site:page.404 is EMPTY (the
+ * default system.404 route). When push-pages wires page.404 to the /404
+ * canvas page (as the starter does), that designed canvas page renders
+ * instead. This template is the fallback for engagements that haven't set
+ * a custom 404 path.
+ */
+#}
+{% include '@drupalx_theme/templates/partials/_header.html.twig' with {
+  nav: dx_nav|default([]),
+  site: dx_site|default({}),
+  is_front: is_front|default(false),
+} only %}
+
+{% if page.highlighted %}
+  {{ page.highlighted }}
+{% endif %}
+
+<main id="main-content" role="main">
+  <section data-surface="dark" class="full-bleed brand-glow relative overflow-hidden hero-h-full flex items-center">
+    <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(45% 60% at 78% 12%, color-mix(in srgb, var(--color-accent-500) 20%, transparent), transparent 70%);" aria-hidden="true"></div>
+    <div class="relative max-w-site mx-auto w-full px-4 sm:px-6 lg:px-8 py-20">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow mb-6">Error 404</p>
+        <div class="font-display font-semibold leading-none tracking-tight text-white" style="font-size: clamp(5rem, 15vw, 9.5rem);" aria-hidden="true">404</div>
+        <h1 class="hero-display mt-6 text-white">Page not found</h1>
+        <p class="mt-5 text-lg leading-relaxed text-primary-100">We can't find the page you're looking for. It may have moved or no longer exists. Try heading home or use search to find what you need.</p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          {% include 'drupalx_theme:button' with { label: 'Return home', url: '/', variant: 'accent', icon: 'arrow-right' } only %}
+          {% include 'drupalx_theme:button' with { label: 'Search', url: '/search', variant: 'glass', icon: 'search' } only %}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% include '@drupalx_theme/templates/partials/_footer.html.twig' with {
+  nav: dx_nav|default([]),
+  site: dx_site|default({}),
+} only %}

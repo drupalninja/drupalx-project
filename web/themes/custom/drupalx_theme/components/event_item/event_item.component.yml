@@ -1,0 +1,54 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Event item'
+description: 'One event in the Events section rail — a date block, title, time and location. The first item in the slot renders as a large dark highlight card; the rest are compact rows.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - title
+  properties:
+    title:
+      type: string
+      title: Title
+      examples:
+        - 'Community town hall'
+    month:
+      type: string
+      title: 'Month (abbrev)'
+      default: ''
+      examples:
+        - SEP
+    day:
+      type: string
+      title: 'Day number'
+      default: ''
+      examples:
+        - '25'
+    time:
+      type: string
+      title: Time
+      default: ''
+      examples:
+        - '6:00–7:30 PM'
+    location:
+      type: string
+      title: Location
+      default: ''
+      examples:
+        - 'Community Center, Room 2'
+    blurb:
+      type: string
+      title: Blurb
+      description: 'Short description shown only on the first (highlight) item.'
+      default: ''
+      examples:
+        - 'Join us for a community conversation about the future of our downtown.'
+    url:
+      type: string
+      format: uri-reference
+      title: Link
+      default: ''
+      examples:
+        - /events/town-hall

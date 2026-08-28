@@ -1,0 +1,39 @@
+$schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
+name: 'Video card'
+description: 'Video teaser card — a 16:9 thumbnail with a play overlay, category badge, and title. Links to an external video (YouTube, Vimeo). For the Card grid slot in video library pages.'
+status: stable
+group: DrupalX Sections
+
+props:
+  type: object
+  required:
+    - title
+  properties:
+    title:
+      type: string
+      title: Title
+      examples:
+        - 'How to take a DNA sample with a TSU'
+    image:
+      type: object
+      title: Thumbnail image
+      $ref: 'json-schema-definitions://canvas.module/image'
+      examples:
+        - src: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
+          alt: 'Video thumbnail'
+      default: ''
+    category:
+      type: string
+      title: Category
+      description: 'Optional uppercase badge shown above the title.'
+      default: ''
+      examples:
+        - 'Educational'
+    url:
+      type: string
+      format: uri-reference
+      title: 'Video link'
+      description: 'Link to the video (YouTube, Vimeo, or internal page).'
+      default: ''
+      examples:
+        - 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'

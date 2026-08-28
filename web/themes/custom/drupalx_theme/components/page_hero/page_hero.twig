@@ -8,8 +8,11 @@
 {% set tone = tone|default('dark') %}
 {% set has_image = image.src|default('') is not empty %}
 {% set io = has_image ? dx_image(image, '100vw') : { srcset: null } %}
+{% set crumbs_html %}{% block crumbs %}{% endblock %}{% endset %}
 
-<section class="full-bleed relative overflow-hidden {{ tone == 'dark' ? 'brand-glow' : 'bg-primary-50' }}">
+{# A scrimmed photo is a dark surface too, not just tone='dark' — the
+   eyebrow inside reads --eyebrow-color and has no way to know otherwise. #}
+<section {% if tone == 'dark' or has_image %}data-surface="dark"{% endif %} class="full-bleed relative overflow-hidden {{ tone == 'dark' ? 'brand-glow' : 'bg-primary-50' }}">
   {% if has_image %}
     <img
       src="{{ image.src }}" alt="{{ image.alt|default('') }}"
@@ -17,12 +20,23 @@
       decoding="async"
       {% if io.srcset %}srcset="{{ io.srcset }}" sizes="100vw"{% endif %}
     >
-    <div class="absolute inset-0 bg-gradient-to-r from-primary-900/85 via-primary-900/60 to-primary-900/20" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/35 via-black/25 to-black/35" aria-hidden="true"></div>
   {% endif %}
   <div class="relative max-w-site mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-    <div class="max-w-3xl">
+      {# GLASS PANEL over a photo — house rule (Jay, 2026-07-31): never text
+     straight on an image, and never fix it by darkening the photograph. The
+     panel makes contrast deterministic whatever image lands here; the scrim
+     above is now light enough to leave the photo readable. The ALPHA carries
+     the contrast, not backdrop-blur — blur scrambles a background without
+     darkening it. #}
+    <div class="max-w-3xl {{ has_image ? 'rounded-3xl border border-white/20 bg-primary-900/75 px-6 py-6 shadow-2xl backdrop-blur-md sm:px-8 sm:py-8' : '' }}">
+      {% if crumbs_html|trim %}
+        <nav aria-label="Breadcrumb" class="mb-3 flex flex-wrap items-center gap-1.5 text-sm text-primary-200 [&>*:last-child_.breadcrumb-sep]:hidden">
+          {{ crumbs_html }}
+        </nav>
+      {% endif %}
       {% if eyebrow|default('') %}
-        <p class="eyebrow mb-3 {{ tone == 'dark' or has_image ? 'text-accent-300' : '' }}">{{ eyebrow }}</p>
+        <p class="eyebrow mb-3">{{ eyebrow }}</p>
       {% endif %}
       <h1 class="display-xl {{ tone == 'dark' or has_image ? 'text-white' : 'text-primary-800' }}">{{ title }}</h1>
       {% if lede|default('') %}

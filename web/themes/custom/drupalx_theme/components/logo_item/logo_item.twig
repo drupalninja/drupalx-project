@@ -1,0 +1,23 @@
+{#
+/**
+ * Logo item — one partner/donor/funder logo in the Logos section grid.
+ * A linked (or unlinked) image in a bordered card, object-contain so the
+ * logo keeps its aspect ratio regardless of the card size.
+ *
+ * Canonical vocabulary: `logos` (row item). Astro twin: SupporterBar.astro's
+ * partner objects. Ported from the sepsis-2026 engagement (2026-08-12).
+ */
+#}
+{% set url = url|default('') %}
+{% set has_image = image.src|default('') is not empty %}
+{% if has_image %}
+  {% if url %}
+    <a href="{{ url }}" class="flex h-20 w-[calc(50%-0.625rem)] shrink-0 items-center justify-center rounded-xl border border-primary-100 bg-white p-3 shadow-sm transition-shadow hover:shadow-md sm:w-[calc(33.333%-0.834rem)] lg:w-44" aria-label="{{ image.alt|default('') }}">
+      <img src="{{ image.src }}" alt="{{ image.alt|default('') }}" class="max-h-12 max-w-full object-contain" loading="lazy" decoding="async">
+    </a>
+  {% else %}
+    <div class="flex h-20 w-[calc(50%-0.625rem)] shrink-0 items-center justify-center rounded-xl border border-primary-100 bg-white p-3 shadow-sm sm:w-[calc(33.333%-0.834rem)] lg:w-44">
+      <img src="{{ image.src }}" alt="{{ image.alt|default('') }}" class="max-h-12 max-w-full object-contain" loading="lazy" decoding="async">
+    </div>
+  {% endif %}
+{% endif %}

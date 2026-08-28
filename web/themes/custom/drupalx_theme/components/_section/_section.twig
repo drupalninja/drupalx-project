@@ -43,7 +43,9 @@
 {% if eyebrow or title or lede %}
   <div class="{{ center ? 'text-center mx-auto' : '' }} max-w-3xl mb-10 md:mb-14">
     {% if eyebrow %}
-      <p class="eyebrow mb-3 {{ on_dark ? 'text-accent-300' : '' }}">{{ eyebrow }}</p>
+      {# No on_dark branch: .eyebrow reads --eyebrow-color, and a
+         data-surface="dark" wrapper sets it for everything inside. #}
+      <p class="eyebrow mb-3">{{ eyebrow }}</p>
     {% endif %}
     {% if title %}
       <h2 class="display-xl {{ on_dark ? 'text-white' : '' }}">{{ title }}</h2>

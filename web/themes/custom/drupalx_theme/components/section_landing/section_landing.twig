@@ -1,0 +1,50 @@
+{#
+/**
+ * Section: Landing — a hub page section with an intro, a grid of link cards
+ * (landing tiles), and a help band. For top-level IA hub pages: "Pay & Apply",
+ * "Living Here", "Doing Business", "Your Government".
+ *
+ * Ported from the Astro starter's SectionLanding.astro (the grid + help band
+ * portion — the hero is a separate page_hero component). The Astro twin takes
+ * an items array; the Canvas version uses a slot of landing_tile children.
+ *
+ * Canonical vocabulary: `landing`. Astro twin: SectionLanding.astro.
+ */
+#}
+{% set help_title = help_title|default("Can't find what you need?") %}
+{% set help_body = help_body|default('Our team is glad to help.') %}
+{% set help_url = help_url|default('/contact') %}
+{% set help_label = help_label|default('Contact us') %}
+{% set tiles_html %}{% block tiles %}{% endblock %}{% endset %}
+{% set has_tiles = tiles_html|trim is not empty %}
+
+<section class="full-bleed bg-white py-16 md:py-24" data-reveal>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    {% if intro|default('') %}
+      <div class="mx-auto mb-10 max-w-3xl text-center text-lg text-ink-700">{{ intro|raw }}</div>
+    {% endif %}
+
+    {% if has_tiles %}
+      <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {{ tiles_html }}
+      </ul>
+    {% endif %}
+
+    {# Help band — the "can't find what you need?" nudge to contact. #}
+    <div class="mt-16 flex flex-col items-center justify-between gap-5 rounded-2xl border border-primary-100 bg-primary-50 px-7 py-8 sm:flex-row sm:text-left">
+      <div class="flex items-center gap-4 text-center sm:text-left">
+        <span class="hidden size-12 shrink-0 items-center justify-center rounded-full bg-white text-accent-700 shadow-sm sm:flex">
+          {% include 'drupalx_theme:icon' with { name: 'life-buoy', size: 'md' } only %}
+        </span>
+        <div>
+          <p class="text-lg font-bold text-primary-900">{{ help_title }}</p>
+          <p class="mt-0.5 text-sm text-ink-700">{{ help_body }}</p>
+        </div>
+      </div>
+      <a href="{{ help_url }}" class="inline-flex shrink-0 items-center gap-2 rounded-xl bg-accent-600 px-6 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-accent-700">
+        {% include 'drupalx_theme:icon' with { name: 'mail', size: 'sm' } only %}
+        {{ help_label }}
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+{#
+/**
+ * Section: People — staff / board / officials roster grid.
+ * Canonical vocabulary: `people`. Astro twin: PeopleGrid.astro + /staff.
+ *
+ * Written against DrupalX's own section grammar rather than ported from
+ * Provus: the shared sx.header / sx.tone / sx.pad macros, the full-bleed band
+ * and data-reveal that every other section_* here uses. Provus hand-rolls its
+ * header inline, which is exactly the drift the macros exist to stop.
+ *
+ * Paginates for the same reason the card grid does — an imported roster runs
+ * to dozens (cbtrust: 91 staff). All rows render server-side; global.js only
+ * chunks what is on screen.
+ */
+#}
+{% import '@drupalx_theme/components/_section/_section.twig' as sx %}
+{% set columns = columns|default('3') %}
+{% set tone = tone|default('white') %}
+{% set paginate = paginate|default(false) %}
+{% set col_map = {
+  '2': 'sm:grid-cols-2',
+  '3': 'sm:grid-cols-2 lg:grid-cols-3',
+  '4': 'sm:grid-cols-2 lg:grid-cols-4',
+} %}
+<section class="full-bleed {{ sx.tone(tone) }} {{ sx.pad(pad|default('normal')) }}" data-reveal>
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    {{ sx.header(eyebrow|default(''), title|default(''), lede|default(''), 'left', tone == 'dark') }}
+    <div
+      class="grid gap-6 {{ col_map[columns]|default(col_map['3']) }}"
+      {% if paginate %}
+        data-dx-paginate
+        data-dx-per-page="{{ per_page|default(12) }}"
+        data-dx-pager-label="{{ title|default('People') }} pages"
+      {% endif %}
+    >
+      {% block people %}{% endblock %}
+    </div>
+  </div>
+</section>

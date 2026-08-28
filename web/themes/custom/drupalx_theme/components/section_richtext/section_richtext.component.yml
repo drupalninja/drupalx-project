@@ -1,6 +1,6 @@
 $schema: 'https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json'
 name: 'Section: Rich text'
-description: 'Editorial prose block (typography plugin), prose or wide width.'
+description: 'Editorial prose block (typography plugin), prose or wide width. With an eyebrow + title on the tint background it is the mission band.'
 status: stable
 group: DrupalX Sections
 
@@ -9,6 +9,18 @@ props:
   required:
     - body
   properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      default: ''
+      examples:
+        - 'Our mission'
+    title:
+      type: string
+      title: Title
+      default: ''
+      examples:
+        - 'Why we do this work'
     body:
       type: string
       title: Body

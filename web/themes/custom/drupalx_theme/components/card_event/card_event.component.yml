@@ -9,6 +9,14 @@ props:
   required:
     - title
   properties:
+    image:
+      type: object
+      title: Image
+      $ref: 'json-schema-definitions://canvas.module/image'
+      examples:
+        - src: 'https://placehold.co/1200x800'
+          alt: 'Placeholder image'
+      default: ''
     title:
       type: string
       title: Title

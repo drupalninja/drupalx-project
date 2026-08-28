@@ -15,7 +15,8 @@
     <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
       <div class="{{ media_side == 'left' ? 'lg:order-2' : '' }}">
         {% if eyebrow|default('') %}<p class="eyebrow mb-3">{{ eyebrow }}</p>{% endif %}
-        <h2 class="display-xl">{{ title }}</h2>
+        {# Only when there IS one — a heading element with no text is a screen-reader dead end and reserves vertical space for nothing (2026-08-02, parity with the Astro twins). #}
+        {% if title|default('') %}<h2 class="display-xl">{{ title }}</h2>{% endif %}
         {% if body|default('') %}
           <div class="mt-4 text-lg leading-relaxed text-ink-500">{{ body|raw }}</div>
         {% endif %}
@@ -24,11 +25,14 @@
         {% endif %}
       </div>
       {% if has_image %}
-        <div class="relative pb-6 pr-4 {{ media_side == 'left' ? 'lg:order-1' : '' }}">
-          <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-2xl bg-accent-500/25" aria-hidden="true"></div>
+        <div class="relative self-center pb-6 pr-4 lg:pb-8 lg:pr-6 {{ media_side == 'left' ? 'lg:order-1' : '' }}">
+          <div class="absolute top-0 left-0 right-4 bottom-6 translate-x-4 translate-y-4 rounded-2xl bg-accent-500/25 lg:right-6 lg:bottom-8 lg:translate-x-6 lg:translate-y-6" aria-hidden="true"></div>
           <img
             src="{{ image.src }}" alt="{{ image.alt|default('') }}"
-            class="relative aspect-4/3 w-full rounded-2xl object-cover shadow-xl"
+            {# No forced aspect / object-cover: the photo keeps its own ratio, so a
+               3:2 or 16:9 issuer image is never cropped and a small one is never
+               stretched (Jay, ogemaw 2026-08-26: "no upscaled or cropped image"). #}
+            class="relative w-full rounded-2xl shadow-xl"
             loading="lazy" decoding="async"
             {% if io.srcset %}srcset="{{ io.srcset }}" sizes="{{ io.sizes }}"{% endif %}
           >

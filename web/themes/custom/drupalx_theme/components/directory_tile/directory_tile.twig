@@ -1,0 +1,37 @@
+{#
+/**
+ * Directory Tile — one photo tile for the Directory section slot.
+ *
+ * A CHILD component rather than an array prop on the section: Canvas maps each
+ * prop to a Drupal field, and an array-of-objects has no field type to map to,
+ * so a section carrying its tiles as a prop is discovered as an SDC but never
+ * materializes as an editable component. Every repeated item in this library
+ * works this way (stat, card, document_item, person_card) — follow it.
+ */
+#}
+{% set io = image.src|default('') is not empty ? dx_image(image, '(min-width: 1024px) 25vw, 50vw') : { srcset: null } %}
+<li>
+  <a href="{{ href }}" class="group/tile relative block aspect-4/3 overflow-hidden rounded-2xl shadow-xl ring-1 ring-black/5">
+    {% if image.src|default('') %}
+      <img
+        src="{{ image.src }}" alt=""
+        class="size-full object-cover transition duration-500 group-hover/tile:scale-105"
+        loading="lazy" decoding="async"
+        {% if io.srcset %}srcset="{{ io.srcset }}" sizes="{{ io.sizes }}"{% endif %}
+      >
+    {% else %}
+      {# No photo yet: a flat brand panel, never a broken-image icon. #}
+      <span class="block size-full bg-primary-700" aria-hidden="true"></span>
+    {% endif %}
+    <span class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" aria-hidden="true"></span>
+    <span class="absolute inset-x-0 bottom-0 p-4">
+      <span class="block font-display text-lg font-semibold text-white drop-shadow">{{ title }}</span>
+      {% if sub|default('') %}
+        <span class="mt-0.5 flex items-center gap-1 text-xs font-medium text-white/85">
+          {{ sub }}
+          <span class="transition-transform group-hover/tile:translate-x-1" aria-hidden="true">→</span>
+        </span>
+      {% endif %}
+    </span>
+  </a>
+</li>

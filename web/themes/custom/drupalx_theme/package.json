@@ -6,16 +6,21 @@
   "scripts": {
     "icons": "node scripts/copy-icons.mjs",
     "fonts": "node scripts/copy-fonts.mjs",
+    "leaflet": "node scripts/copy-leaflet.mjs",
     "build:css": "tailwindcss -i src/css/global.css -o dist/css/global.css --minify",
     "watch:css": "tailwindcss -i src/css/global.css -o dist/css/global.css --watch",
     "build:js": "node -e \"const fs=require('fs');fs.mkdirSync('dist/js',{recursive:true});for(const f of fs.readdirSync('src/js'))if(f.endsWith('.js'))fs.copyFileSync('src/js/'+f,'dist/js/'+f)\"",
-    "build": "npm run icons && npm run fonts && npm run build:css && npm run build:js"
+    "build": "npm run verify:contrast && npm run icons && npm run fonts && npm run leaflet && npm run build:css && npm run build:js",
+    "verify:contrast": "node scripts/verify-contrast.mjs",
+    "gen:logo": "node scripts/generate-logo.mjs",
+    "test": "node --test scripts/*.test.mjs"
   },
   "devDependencies": {
     "@fontsource-variable/fraunces": "^5.2.5",
     "@fontsource-variable/inter": "^5.2.5",
     "@tailwindcss/cli": "^4.1.0",
     "@tailwindcss/typography": "^0.5.16",
+    "leaflet": "^1.9.4",
     "lucide-static": "^0.525.0",
     "tailwindcss": "^4.1.0"
   }

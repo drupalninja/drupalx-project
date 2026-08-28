@@ -25,6 +25,16 @@ props:
       meta:enum:
         '2': '2 columns'
         '3': '3 columns'
+    layout:
+      type: string
+      title: Layout
+      default: default
+      enum:
+        - default
+        - compact
+      meta:enum:
+        default: 'Full-width grid (default)'
+        compact: 'Tight cluster for native-width archive photos'
 
 slots:
   images:

@@ -2,12 +2,30 @@
 /**
  * Section: Rich text — editorial prose (typography plugin tokens from
  * @layer base keep headings/links on-brand).
+ *
+ * The optional eyebrow + title turn this into the MISSION BAND (parity with
+ * paragraphs/MissionBand in the Astro twin, 2026-08-10): eyebrow, heading and
+ * a short rich-text body on the primary tint. It is deliberately NOT a
+ * separate component — the astro twin's mission band is exactly "richtext
+ * with a header on a tinted band", and a second SDC for it would be two
+ * vocabularies for one section.
  */
 #}
 {% set width = width|default('prose') %}
 {% set tone = tone|default('white') %}
+{% set measure_class = width == 'wide' ? 'max-w-4xl' : 'max-w-[68ch]' %}
 <section class="full-bleed {{ tone == 'tint' ? 'bg-primary-50' : 'bg-white' }} py-12 md:py-16">
-  <div class="{{ width == 'wide' ? 'max-w-content' : 'max-w-3xl' }} mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="prose prose-lg max-w-none">{{ body|raw }}</div>
+  {# Calm-rhythm inner pages: left-anchored on max-w-content, prose capped
+     inside the rail — not a centered max-w-3xl island (finances Budgets band). #}
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    {% if eyebrow|default('') or title|default('') %}
+      <div class="mb-6 {{ measure_class }}">
+        {% if eyebrow|default('') %}<p class="eyebrow mb-3">{{ eyebrow }}</p>{% endif %}
+        {# Guarded like section_cta's: an empty heading element is a
+           screen-reader dead end that still reserves vertical space. #}
+        {% if title|default('') %}<h2 class="display-xl">{{ title }}</h2>{% endif %}
+      </div>
+    {% endif %}
+    <div class="prose prose-lg {{ measure_class }}">{{ body|raw }}</div>
   </div>
 </section>

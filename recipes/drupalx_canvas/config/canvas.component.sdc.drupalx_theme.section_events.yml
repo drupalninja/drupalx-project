@@ -1,0 +1,91 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.canvas_full_html
+  module:
+    - link
+    - text
+  theme:
+    - drupalx_theme
+label: 'Section: Events'
+id: sdc.drupalx_theme.section_events
+source: sdc
+source_local_id: 'drupalx_theme:section_events'
+provider: drupalx_theme
+active_version: 7c8478c35b627a5f
+versioned_properties:
+  active:
+    settings:
+      prop_field_definitions:
+        eyebrow:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'On the road'
+          expression: ℹ︎string␟value
+        title:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'Upcoming events'
+          expression: ℹ︎string␟value
+        title_accent:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'comes to you'
+          expression: ℹ︎string␟value
+        lede:
+          required: false
+          field_type: text_long
+          field_storage_settings: {  }
+          field_instance_settings:
+            allowed_formats:
+              - canvas_full_html
+          field_widget: text_textarea
+          default_value:
+            -
+              value: '<p>Seven conversations across the region.</p>'
+              format: canvas_full_html
+          expression: ℹ︎text_long␟processed
+        cta_label:
+          required: false
+          field_type: string
+          field_storage_settings: {  }
+          field_instance_settings: {  }
+          field_widget: string_textfield
+          default_value:
+            -
+              value: 'See the full calendar'
+          expression: ℹ︎string␟value
+        cta_url:
+          required: false
+          field_type: link
+          field_storage_settings: {  }
+          field_instance_settings:
+            title: 0
+            link_type: 17
+          field_widget: link_default
+          default_value:
+            -
+              uri: /events
+              options: {  }
+          expression: ℹ︎link␟url
+    fallback_metadata:
+      slot_definitions:
+        events:
+          title: Events
+          description: 'Event item components. The first item renders as a large dark highlight card; the rest are compact rows.'

@@ -6,27 +6,66 @@
  * (toggled by global.js via data-dx-nav-toggle / data-dx-mobile-nav).
  *
  * Data contract (same for Drupal preprocess AND the static build):
- *   nav:  [{ title, url, children: [{ title, url, description? }] }]
+ *   nav:  [{ title, url, children: [{ title, url, description?, icon? }] }]
+ *         `icon` is a name from dist/icons; give every child a DISTINCT one.
  *   site: { name, tagline?, cta: { label, url }? }
  */
 #}
 {% set name = site.name|default('DrupalX Canvas') %}
 {% set cta = site.cta|default({ label: 'Get in touch', url: '/contact' }) %}
+{% set cta2 = site.cta_secondary|default(null) %}
+{% set utility = site.utility|default([]) %}
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-primary-100">
+{# MATTE vs GLASS bar. A glass header (`bg-white/95 backdrop-blur`) lets the
+   page show through — but a logo with a BAKED-IN white background cannot, so
+   on scroll it floats as an opaque white box over a see-through bar. When the
+   logo is a plate, the bar goes matte and the scroll cue is the shadow in
+   global.css (`#dx-site-header.bg-white.is-scrolled`), which is what that rule
+   was always waiting for. `site.header_matte` is auto-detected from the logo
+   file in site/build.cjs; set it explicitly to override. (2026-08-27.) #}
+<header id="dx-site-header" class="sticky top-0 z-50 {{ site.header_matte|default(false) ? 'bg-white' : 'bg-white/95 backdrop-blur' }} border-b border-primary-100">
+  {# UTILITY ROW — errands, not journeys, so the primary nav never has to widen
+     to hold them. Hidden below md: a second row of small links above the brand
+     is how a phone header eats a third of the viewport. The mobile drawer
+     picks them up instead. #}
+  {% if utility|default([]) is not empty %}
+    <div class="hidden border-b border-primary-100 bg-primary-50/70 md:block">
+      <div class="max-w-site mx-auto flex items-center justify-end gap-1 px-4 py-1.5 sm:px-6 lg:px-8">
+        {% for u in utility %}
+          <a href="{{ u.url }}" class="inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-xs font-semibold text-primary-800 transition-colors hover:bg-white hover:text-primary-900">{{ u.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
   <div class="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between gap-6 h-18 py-3">
+    <div class="flex items-center justify-between gap-6 h-20 py-4">
 
       {# Brand — the theme's logo.svg (a layout mark; same file as the favicon).
          Rebrand only touches logo.svg + dx_logo_url. #}
-      <a href="/" class="flex items-center gap-3 shrink-0" aria-label="{{ name }} — home">
-        <img src="{{ dx_logo_url|default('/themes/custom/drupalx_theme/logo.svg') }}" alt="" width="40" height="40" class="w-10 h-10 rounded-xl shrink-0">
+      {# WORDMARK MODE. Most issuer logos are WIDE lockups that already
+         contain the organisation's name — forcing one into the 40x40 rounded
+         square below squashes it to an unreadable smear, and printing the
+         site name beside it says the name twice. When site.logo_wordmark is
+         set, the mark is capped by HEIGHT with w-auto and the text block is
+         dropped. The crawler already detects this (brand.json
+         "logo-wordmark": true), so it can be wired straight through. #}
+      <a href="{{ home_url|default('/') }}" class="inline-flex min-h-11 items-center gap-3 shrink-0" aria-label="{{ name }} — home">
+      {% if site.logo_wordmark %}
+        {# The cap has to be RESPONSIVE. A wide lockup at h-14 hits the 20rem cap
+           on a 390px viewport, and with this row's shrink-0 + gap-6 that pushes
+           the mobile toggle PAST THE RIGHT EDGE — a real horizontal overflow on
+           every wordmark site (2026-08-26). The sibling Astro starter's
+           SiteHeader already caps at h-11/max-h-12; this is parity with it. #}
+        <img src="{{ dx_logo_url|default(site.logo)|default('/themes/custom/drupalx_theme/logo.svg') }}" alt="{{ name }}" class="h-11 w-auto max-w-[13rem] shrink-0 object-contain sm:h-12 sm:max-w-[16rem] lg:h-14 lg:max-w-[20rem] xl:h-16">
+      {% else %}
+        <img src="{{ dx_logo_url|default(site.logo)|default('/themes/custom/drupalx_theme/logo.svg') }}" alt="" width="40" height="40" class="w-10 h-10 rounded-xl shrink-0">
         <span class="flex flex-col leading-tight">
           <span class="font-display font-semibold text-lg text-primary-800">{{ name }}</span>
           {% if site.tagline %}
-            <span class="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-ink-500">{{ site.tagline }}</span>
+            <span class="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-ink-500">{{ site.tagline }}</span>
           {% endif %}
         </span>
+      {% endif %}
       </a>
 
       {# Desktop nav #}
@@ -43,16 +82,36 @@
                 {% endif %}
               </a>
               {% if item.children|default([]) is not empty %}
-                <div class="spark-dropdown absolute left-0 top-full pt-2 w-72 z-50">
-                  <ul class="spark-mega bg-white rounded-2xl border border-primary-100 shadow-xl overflow-hidden py-2
-                             before:content-[''] before:block before:absolute before:inset-x-0 before:top-2 before:h-1 before:rounded-t-2xl before:bg-gradient-to-r before:from-primary-500 before:to-accent-500">
+                <div class="spark-dropdown absolute left-0 top-full pt-2 w-[21rem] z-50">
+                  {# `relative` is LOAD-BEARING: without it the ::before gradient bar positions
+                     against the outer .spark-dropdown wrapper, and overflow-hidden on this ul
+                     cannot clip an absolutely-positioned pseudo whose containing block is an
+                     ancestor — so the square-ended bar overhung the panel's rounded corners.
+                     With the ul as the containing block, top-0 lands the bar on the panel edge
+                     and overflow-hidden clips it to the radius (no rounded-t needed). #}
+                  <ul class="spark-mega relative bg-white rounded-2xl border border-primary-100 shadow-xl overflow-hidden py-2
+                             before:content-[''] before:block before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary-500 before:to-accent-500">
                     {% for child in item.children %}
                       <li>
-                        <a href="{{ child.url }}" class="block px-5 py-2.5 hover:bg-primary-50">
-                          <span class="block font-semibold text-[0.92rem] text-primary-800">{{ child.title }}</span>
-                          {% if child.description|default('') %}
-                            <span class="block text-[0.8rem] text-ink-500 leading-snug">{{ child.description }}</span>
-                          {% endif %}
+                        <a href="{{ child.url }}" class="group/mi flex items-start gap-3 px-5 py-2.5 hover:bg-primary-50">
+                          {# Per-child glyph, matching the Astro twins' mega-menu.
+                             GIVE EVERY CHILD ITS OWN: the fallback below means an
+                             unset icon renders as a column of identical chevrons,
+                             which reads as a list nobody finished rather than a
+                             designed menu. Names come from the curated set in
+                             dist/icons (scripts/copy-icons.mjs) — a name outside
+                             it makes source() throw, so stay in the set. #}
+                          <span class="mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary-100 text-primary-700 transition-colors group-hover/mi:bg-primary-700 group-hover/mi:text-white">
+                            <span class="dx-icon dx-icon--sm" aria-hidden="true">
+                              {{- source('@drupalx_theme/dist/icons/' ~ (child.icon|default('chevron-right')) ~ '.svg', ignore_missing = true) -}}
+                            </span>
+                          </span>
+                          <span class="min-w-0">
+                            <span class="block font-semibold text-[0.92rem] text-primary-800 group-hover/mi:text-primary-700">{{ child.title }}</span>
+                            {% if child.description|default('') %}
+                              <span class="block text-[0.8rem] text-ink-500 leading-snug">{{ child.description }}</span>
+                            {% endif %}
+                          </span>
                         </a>
                       </li>
                     {% endfor %}
@@ -71,6 +130,15 @@
              class="max-sm:hidden inline-flex items-center gap-2 rounded-full bg-primary-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary-800 transition-colors">
             {{ cta.label }}
             <span class="dx-icon dx-icon--sm" aria-hidden="true">{{- source('@drupalx_theme/dist/icons/arrow-right.svg') -}}</span>
+          </a>
+        {% endif %}
+        {# SECOND CTA — outlined, and hidden until xl. Two filled buttons beside
+           a six-item nav is the single biggest width sink in this row; the twin
+           applies the same rule. The mobile drawer lists both. #}
+        {% if cta2 and cta2.label|default('') %}
+          <a href="{{ cta2.url }}"
+             class="max-xl:hidden inline-flex items-center gap-2 rounded-full border border-primary-700 px-5 py-2.5 text-sm font-semibold text-primary-700 hover:bg-primary-50 transition-colors">
+            {{ cta2.label }}
           </a>
         {% endif %}
         <button type="button" data-dx-nav-toggle aria-expanded="false" aria-label="Toggle navigation"
