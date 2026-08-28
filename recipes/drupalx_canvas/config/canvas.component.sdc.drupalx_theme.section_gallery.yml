@@ -10,7 +10,7 @@ id: sdc.drupalx_theme.section_gallery
 source: sdc
 source_local_id: 'drupalx_theme:section_gallery'
 provider: drupalx_theme
-active_version: c4e6e06e1dae8464
+active_version: 15372c4f077ee340
 versioned_properties:
   active:
     settings:
@@ -32,6 +32,15 @@ versioned_properties:
           default_value: null
           expression: ℹ︎string␟value
         columns:
+          required: false
+          field_type: list_string
+          field_storage_settings:
+            allowed_values_function: canvas_load_allowed_values_for_component_prop
+          field_instance_settings: {  }
+          field_widget: options_select
+          default_value: null
+          expression: ℹ︎list_string␟value
+        layout:
           required: false
           field_type: list_string
           field_storage_settings:

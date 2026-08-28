@@ -22,7 +22,7 @@ id: sdc.drupalx_theme.card
 source: sdc
 source_local_id: 'drupalx_theme:card'
 provider: drupalx_theme
-active_version: e26d2457a106b372
+active_version: 6268302a1d727aa6
 versioned_properties:
   active:
     settings:
@@ -86,6 +86,15 @@ versioned_properties:
           field_widget: options_select
           default_value: null
           expression: ℹ︎list_string␟value
+        image_fit:
+          required: false
+          field_type: list_string
+          field_storage_settings:
+            allowed_values_function: canvas_load_allowed_values_for_component_prop
+          field_instance_settings: {  }
+          field_widget: options_select
+          default_value: null
+          expression: ℹ︎list_string␟value
         placeholder:
           required: false
           field_type: boolean
@@ -139,95 +148,6 @@ versioned_properties:
           default_value:
             -
               value: 'in awards secured'
-          expression: ℹ︎string␟value
-    fallback_metadata:
-      slot_definitions: {  }
-  6d0620eb679aca73:
-    settings:
-      prop_field_definitions:
-        title:
-          required: true
-          field_type: string
-          field_storage_settings: {  }
-          field_instance_settings: {  }
-          field_widget: string_textfield
-          default_value:
-            -
-              value: 'Community development'
-          expression: ℹ︎string␟value
-        body:
-          required: false
-          field_type: text_long
-          field_storage_settings: {  }
-          field_instance_settings:
-            allowed_formats:
-              - canvas_full_html
-          field_widget: text_textarea
-          default_value:
-            -
-              value: '<p>Grants, planning, and technical assistance.</p>'
-              format: canvas_full_html
-          expression: ℹ︎text_long␟processed
-        url:
-          required: false
-          field_type: link
-          field_storage_settings: {  }
-          field_instance_settings:
-            title: 0
-            link_type: 17
-          field_widget: link_default
-          default_value:
-            -
-              uri: /services
-              options: {  }
-          expression: ℹ︎link␟url
-        image:
-          required: false
-          field_type: entity_reference
-          field_storage_settings:
-            target_type: media
-          field_instance_settings:
-            handler: 'default:media'
-            handler_settings:
-              target_bundles:
-                image: image
-                svg_image: svg_image
-          field_widget: media_library_widget
-          default_value: {  }
-          expression: 'ℹ︎entity_reference␟entity␜[␜entity:media:image␝field_media_image␞␟{src↠src_with_alternate_widths,alt↠alt,width↠width,height↠height}][␜entity:media:svg_image␝field_media_svg_image␞␟{src↠src_with_alternate_widths,alt↠alt,width↠width,height↠height}]'
-        icon:
-          required: false
-          field_type: list_string
-          field_storage_settings:
-            allowed_values_function: canvas_load_allowed_values_for_component_prop
-          field_instance_settings: {  }
-          field_widget: options_select
-          default_value: null
-          expression: ℹ︎list_string␟value
-        placeholder:
-          required: false
-          field_type: boolean
-          field_storage_settings: {  }
-          field_instance_settings: {  }
-          field_widget: boolean_checkbox
-          default_value: null
-          expression: ℹ︎boolean␟value
-        c:
-          required: false
-          field_type: list_string
-          field_storage_settings:
-            allowed_values_function: canvas_load_allowed_values_for_component_prop
-          field_instance_settings: {  }
-          field_widget: options_select
-          default_value: null
-          expression: ℹ︎list_string␟value
-        more_label:
-          required: false
-          field_type: string
-          field_storage_settings: {  }
-          field_instance_settings: {  }
-          field_widget: string_textfield
-          default_value: null
           expression: ℹ︎string␟value
     fallback_metadata:
       slot_definitions: {  }

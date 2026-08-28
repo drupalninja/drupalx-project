@@ -13,6 +13,7 @@ dependencies:
     - link
     - media
     - media_library
+    - options
     - text
   theme:
     - drupalx_theme
@@ -21,7 +22,7 @@ id: sdc.drupalx_theme.card_news
 source: sdc
 source_local_id: 'drupalx_theme:card_news'
 provider: drupalx_theme
-active_version: 4592312f5c4a0414
+active_version: 734ce25570d2a869
 versioned_properties:
   active:
     settings:
@@ -80,5 +81,14 @@ versioned_properties:
           field_widget: media_library_widget
           default_value: {  }
           expression: 'ℹ︎entity_reference␟entity␜[␜entity:media:image␝field_media_image␞␟{src↠src_with_alternate_widths,alt↠alt,width↠width,height↠height}][␜entity:media:svg_image␝field_media_svg_image␞␟{src↠src_with_alternate_widths,alt↠alt,width↠width,height↠height}]'
+        image_fit:
+          required: false
+          field_type: list_string
+          field_storage_settings:
+            allowed_values_function: canvas_load_allowed_values_for_component_prop
+          field_instance_settings: {  }
+          field_widget: options_select
+          default_value: null
+          expression: ℹ︎list_string␟value
     fallback_metadata:
       slot_definitions: {  }

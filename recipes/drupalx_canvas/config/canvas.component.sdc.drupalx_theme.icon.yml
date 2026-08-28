@@ -39,30 +39,3 @@ versioned_properties:
           expression: ℹ︎list_string␟value
     fallback_metadata:
       slot_definitions: {  }
-  30100dd94c908ca9:
-    settings:
-      prop_field_definitions:
-        name:
-          required: false
-          field_type: list_string
-          field_storage_settings:
-            allowed_values_function: canvas_load_allowed_values_for_component_prop
-          field_instance_settings: {  }
-          field_widget: options_select
-          default_value:
-            -
-              value: map-pin
-          expression: ℹ︎list_string␟value
-        size:
-          required: false
-          field_type: list_string
-          field_storage_settings:
-            allowed_values_function: canvas_load_allowed_values_for_component_prop
-          field_instance_settings: {  }
-          field_widget: options_select
-          default_value:
-            -
-              value: md
-          expression: ℹ︎list_string␟value
-    fallback_metadata:
-      slot_definitions: {  }
