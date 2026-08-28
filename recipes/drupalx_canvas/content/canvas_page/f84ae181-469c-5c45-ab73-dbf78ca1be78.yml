@@ -56,7 +56,7 @@ default:
         url:
           uri: 'mailto:hello@example.com'
           options: {  }
-        variant: primary
+        style: primary
         size: normal
         icon: mail
     -
@@ -128,7 +128,7 @@ default:
         url:
           uri: 'mailto:hello@example.com'
           options: {  }
-        variant: accent
+        style: accent
         size: normal
         icon: calendar
   path:

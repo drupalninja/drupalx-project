@@ -46,7 +46,7 @@ default:
         url:
           uri: 'internal:/sections'
           options: {  }
-        variant: primary
+        style: primary
         size: normal
         icon: arrow-right
     -
@@ -59,7 +59,7 @@ default:
         url:
           uri: 'internal:/about'
           options: {  }
-        variant: ghost
+        style: ghost
         size: normal
         icon: none
     -
@@ -191,7 +191,7 @@ default:
         url:
           uri: 'internal:/about'
           options: {  }
-        variant: primary
+        style: primary
         size: normal
         icon: arrow-right
     -
@@ -213,7 +213,7 @@ default:
         url:
           uri: 'internal:/contact'
           options: {  }
-        variant: accent
+        style: accent
         size: normal
         icon: arrow-right
     -
@@ -226,7 +226,7 @@ default:
         url:
           uri: 'internal:/sections'
           options: {  }
-        variant: glass
+        style: glass
         size: normal
         icon: chevron-right
   path:

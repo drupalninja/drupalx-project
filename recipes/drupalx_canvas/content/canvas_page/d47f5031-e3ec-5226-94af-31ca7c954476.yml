@@ -245,7 +245,7 @@ default:
         url:
           uri: 'internal:/contact'
           options: {  }
-        variant: accent
+        style: accent
         size: normal
         icon: arrow-right
   path:

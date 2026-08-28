@@ -52,7 +52,7 @@ Props:
 Props:
   - `label` **(required)** — string
   - `url` **(required)** — link — plain string (e.g. `/about`)
-  - `variant` — enum: `primary` / `accent` / `ghost` / `glass`
+  - `style` — enum: `primary` / `accent` / `ghost` / `glass`
   - `size` — enum: `small` / `normal` / `large`
   - `icon` — enum: `none` / `arrow-right` / `arrow-up-right` / `chart-column` / `building-2` / `calendar` / `check` / `chevron-down` / … (37 values)
 
@@ -64,10 +64,11 @@ Props:
   - `url` — link — plain string (e.g. `/about`)
   - `image` — image — pass `img(src, alt)`
   - `icon` — enum: `none` / `arrow-right` / `arrow-up-right` / `chart-column` / `building-2` / `calendar` / `check` / `chevron-down` / … (37 values)
+  - `image_fit` — enum: `contain` / `cover`
   - `placeholder` — boolean
   - `c` — enum: `none` / `sky` / `clay` / `accent`
   - `more_label` — string
-  - `variant` — enum: `default` / `feature`
+  - `style` — enum: `default` / `feature`
   - `stat` — string
   - `stat_label` — string
 
@@ -91,6 +92,7 @@ Props:
   - `summary` — rich-text — plain HTML string (use `rt()`)
   - `url` — link — plain string (e.g. `/about`)
   - `image` — image — pass `img(src, alt)`
+  - `image_fit` — enum: `cover` / `contain`
 
 ### `card_video`
 
@@ -290,6 +292,7 @@ Props:
   - `eyebrow` — string
   - `title` — string
   - `columns` — enum: `2` / `3`
+  - `layout` — enum: `default` / `compact`
 
 Slots: `images` (each holds an array of child nodes)
 

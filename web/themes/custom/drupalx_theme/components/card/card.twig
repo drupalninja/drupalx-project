@@ -29,7 +29,7 @@
   is only ever used with a chosen hero-grade photograph, never with whatever
   logo or scanned form an import happened to carry.
 #}
-{% if variant|default('default') == 'feature' %}
+{% if style|default('default') == 'feature' %}
   {% set fio = has_image ? dx_image(image, '(min-width: 1024px) 50vw, 100vw') : { srcset: null, sizes: null } %}
   <article data-surface="dark" class="spark-card group/card relative flex h-full min-h-[22rem] flex-col justify-end overflow-hidden rounded-2xl bg-primary-900 text-white shadow-sm">
     {% if has_image %}
@@ -100,7 +100,7 @@
     {# image_fit=cover is OPT-IN: contain stays the default so an import can
        never show a fragment of a logo or a scanned form, while a CURATED grid
        of real photographs can fill the slot edge to edge and actually read
-       image-led (2026-08-26). #}
+       image-led (idaho-aeyc, 2026-08-26). #}
     <div class="flex aspect-[16/10] items-center justify-center overflow-hidden bg-primary-50">
       <img
         src="{{ image.src }}" alt="{{ image.alt|default('') }}"

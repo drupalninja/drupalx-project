@@ -24,7 +24,7 @@ props:
       default: ''
       examples:
         - /contact
-    variant:
+    style:
       type: string
       title: Style variant
       default: primary

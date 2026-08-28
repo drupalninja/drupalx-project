@@ -123,7 +123,7 @@ props:
       type: string
       title: 'Read-more label'
       default: 'Learn more'
-    variant:
+    style:
       type: string
       title: 'Card style'
       description: >-

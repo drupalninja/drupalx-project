@@ -4,7 +4,10 @@
  * generates classes it sees literally).
  */
 #}
-{% set variant = variant|default('primary') %}
+{# `style`, not `variant`: core's ComponentElement injects variant = '' for every
+   SDC that has no #variant, so a PROP named variant can never be omitted — it
+   fails enum validation before the template runs. #}
+{% set variant = style|default('primary') %}
 {% set size = size|default('normal') %}
 {% set icon = icon|default('none') %}
 {% set variant_map = {

@@ -115,7 +115,7 @@ default:
         url:
           uri: 'internal:/sections'
           options: {  }
-        variant: primary
+        style: primary
         size: normal
         icon: arrow-right
   path:

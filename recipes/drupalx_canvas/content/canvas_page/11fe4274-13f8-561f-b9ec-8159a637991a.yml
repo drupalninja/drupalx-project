@@ -58,7 +58,7 @@ default:
         url:
           uri: 'internal:/'
           options: {  }
-        variant: glass
+        style: glass
         size: normal
         icon: chevron-right
     -
@@ -286,7 +286,7 @@ default:
         url:
           uri: 'internal:/'
           options: {  }
-        variant: ghost
+        style: ghost
         size: normal
         icon: none
     -
@@ -445,7 +445,7 @@ default:
         url:
           uri: 'internal:/'
           options: {  }
-        variant: accent
+        style: accent
         size: normal
         icon: arrow-right
     -
@@ -458,7 +458,7 @@ default:
         url:
           uri: 'internal:/'
           options: {  }
-        variant: glass
+        style: glass
         size: normal
         icon: none
   path:
